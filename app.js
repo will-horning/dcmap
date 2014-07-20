@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var classifyPoint = require('robust-point-in-polygon');
 var config = require('./config');
 var Instagram = require('instagram-node-lib');
+var request = require('request');
 
 Instagram.set('client_id', config.instagram_client_id);
 Instagram.set('client_secret', config.instagram_client_secret);
@@ -44,7 +45,11 @@ app.get('/callback', function(req, res){
 var i = 0;
 app.post('/callback', function(req, res){
     console.log('===============================');
-    io.emit('ig callback', req.body);
+    var url = 'https://api.instagram.com/v1/geographies/' + req.body['object_id'] + '/media/recent?client_id=' + config.instagram_client_id;
+    request(url, function(err, res, body){
+        io.emit('ig callback', body);
+    })
+    // io.emit('ig callback', req.body);
     if(i > 3000){
         Instagram.subscriptions.unsubscribe_all();
     }
