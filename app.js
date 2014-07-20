@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var bodyParser = require('body-parser');
 // var twitter_stream = require('./twitter_stream.js').createTwitterStream();
 var classifyPoint = require('robust-point-in-polygon');
 var config = require('./config');
@@ -27,6 +28,7 @@ Instagram.media.subscribe({lat: 38.99537317916349, lng: -77.0409607887268, radiu
 
 app.set('view engine', 'jade');
 app.use(express.static('public'));
+app.use(bodyParser());
 
 app.get('/', function(req, res){
 	res.render('index.jade');
@@ -38,6 +40,11 @@ app.get('/callback', function(req, res){
     res.send(req.query['hub.challenge']);
     // io.emit('ig callback', res);
     // var handshake =  Instagram.subscriptions.handshake(req, res);
+})
+
+app.post('/callback', function(req, res){
+    console.log('===============================');
+    io.emit('ig callback', req.body);
 })
 
 http.listen(process.env.PORT || 5000, function(){

@@ -3,7 +3,6 @@ $(document).ready(function(){
     var markerQueue = [];
 
 
-
     var map = L.mapbox.map('map', 'examples.map-0l53fhk2').setView([38.907, -77.0368], 11);
     // var heat = L.heatLayer(crime_vals.slice(0,10000), {radius: 10, maxZoom: 18}).addTo(map);
     // var draw = true;
