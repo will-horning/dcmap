@@ -72,7 +72,7 @@ var addInstagramMarker = function(iframe, map, latlon){
             maxWidth: 600,
             maxHeight: 300,
             className: 'myPopup'
-        }).setContent('<div class="igPopup" style="width:500px;"><iframe src="' + iframe + '"></iframe></div>');
+        }).setContent('<div class="igPopup" style="width:500px;"><iframe style="width:auto;height:auto;" src="' + iframe + '"></iframe></div>');
 
         var marker = L.marker(
             latlon, 
