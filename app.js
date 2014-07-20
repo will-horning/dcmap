@@ -34,7 +34,8 @@ app.get('/', function(req, res){
 
 app.get('/callback', function(req, res){
     console.log('----------------------------------');
-    console.log(res);
+    console.log(req.query.hub.challenge);
+    res.send(req.query.hub.challenge);
     // io.emit('ig callback', res);
     // var handshake =  Instagram.subscriptions.handshake(req, res);
 })
