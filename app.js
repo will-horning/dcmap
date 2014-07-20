@@ -56,9 +56,10 @@ app.post('/callback', function(req, res){
         var post_url = obj['data'][0]['link'];
         console.log('---------------');
         console.log(post_url);
-        request(post_url + 'embed', function(err, res, body2){
-            io.emit('ig callback', [body2, [lat, lon]]);
-        })
+        io.emit('ig callback', [post_url, [lat, lon]]);
+        // request(post_url + 'embed', function(err, res, body2){
+        //     io.emit('ig callback', [body2, [lat, lon]]);
+        // })
         // io.emit('ig callback', post_url);
         // io.emit('ig callback', body);
     })
