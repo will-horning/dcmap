@@ -9,7 +9,7 @@ var Instagram = require('instagram-node-lib');
 
 Instagram.set('client_id', config.instagram_client_id);
 Instagram.set('client_secret', config.instagram_client_secret);
-Instagram.set('callback_url', 'http://dcmap.herokuapps.com/callback');
+Instagram.set('callback_url', 'http://dcmap.herokuapp.com/callback');
 
 Instagram.media.subscribe({lat: 38.99537317916349, lng: -77.0409607887268, radius: 1000})
 
