@@ -36,21 +36,27 @@ app.get('/', function(req, res){
 });
 
 app.get('/callback', function(req, res){
-    console.log('----------------------------------');
-    console.log(req.query['hub.challenge']);
+    // console.log('----------------------------------');
+    // console.log(req.query['hub.challenge']);
     res.send(req.query['hub.challenge']);
     // io.emit('ig callback', res);
     // var handshake =  Instagram.subscriptions.handshake(req, res);
 })
+
 var i = 0;
 app.post('/callback', function(req, res){
-    console.log('===============================');
-    io.emit('ig callback', req.body);
+    // console.log('===============================');
+    // io.emit('ig callback', req.body);
     var url = 'https://api.instagram.com/v1/geographies/' + req.body[0]['object_id'] + '/media/recent?client_id=' + config.instagram_client_id;
     request(url, function(err, res, body){
+        var lat = obj['data'][0]['latitude'];
+        var lon = obj['data'][0]['longitude'];
         var obj = JSON.parse(body);
         var post_url = obj['data'][0]['link'];
-        io.emit('ig callback', post_url);
+        request(post_url + '/embed', function(err, res, body){
+            io.emit('ig callback', [body, [lat, lon]]);
+        })
+        // io.emit('ig callback', post_url);
         // io.emit('ig callback', body);
     })
     // io.emit('ig callback', req.body);

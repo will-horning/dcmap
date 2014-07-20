@@ -59,6 +59,34 @@ $(document).ready(function(){
     });
 
     socket.on('ig callback', function(res){
-        console.log(res);
+        var ihtml = res[0];
+        var latlon = res[1];
+
+        addInstagramMarker(ihtml, map, latlon);
     })
+
+var addInstagramMarker = function(iframe, map, latlon){
+        addCircleMarker(map, latlon);
+        var mypopup = L.popup({
+            maxWidth: 600,
+            maxHeight: 300,
+            className: 'myPopup'
+        }).setContent('<div class="igPopup" style="width:500px;">' + iframe + '</div>');
+
+        var marker = L.marker(
+            latlon, 
+            {icon: L.divIcon({
+                className: 'markericon',
+                iconAnchor: [12, 12],
+                html: '<img style="width:24px;" src="/images/mascoticons/32x32/instagram-32x32.png">'
+            })}
+        ).bindPopup(mypopup).addTo(map);
+        // markerQueue.push(marker);
+        // if(markerQueue.length > 30){
+        //     map.removeLayer(markerQueue.shift());
+        // }
+};
+
+
+
 })
