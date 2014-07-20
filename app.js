@@ -48,14 +48,14 @@ app.post('/callback', function(req, res){
     // console.log('===============================');
     // io.emit('ig callback', req.body);
     var url = 'https://api.instagram.com/v1/geographies/' + req.body[0]['object_id'] + '/media/recent?client_id=' + config.instagram_client_id;
-    request(url, function(err, res, body){
-            var obj = JSON.parse(body);
+    request(url, function(err, res, body1){
+            var obj = JSON.parse(body1);
         var lat = obj['data'][0]['location']['latitude'];
         var lon = obj['data'][0]['location']['longitude'];
 
         var post_url = obj['data'][0]['link'];
-        request(post_url + 'embed', function(err, res, body){
-            io.emit('ig callback', [body, [lat, lon]]);
+        request(post_url + 'embed', function(err, res, body2){
+            io.emit('ig callback', [body2, [lat, lon]]);
         })
         // io.emit('ig callback', post_url);
         // io.emit('ig callback', body);
