@@ -48,16 +48,14 @@ app.post('/callback', function(req, res){
     io.emit('ig callback', req.body);
     var url = 'https://api.instagram.com/v1/geographies/' + req.body[0]['object_id'] + '/media/recent?client_id=' + config.instagram_client_id;
     request(url, function(err, res, body){
-        io.emit('ig callback', url);
-        io.emit('ig callback', body);
+        var obj = JSON.parse(body);
+        var post_url = obj['link'];
+        io.emit('ig callback', post_url);
+        // io.emit('ig callback', body);
     })
     // io.emit('ig callback', req.body);
-    if(i > 3000){
-        Instagram.subscriptions.unsubscribe_all();
-    }
-    else{
-        i += 1;
-    }
+    if(i > 3000){Instagram.subscriptions.unsubscribe_all();}
+    else{i += 1;}
 })
 
 http.listen(process.env.PORT || 5000, function(){
