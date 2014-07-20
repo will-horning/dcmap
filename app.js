@@ -12,7 +12,7 @@ Instagram.set('client_id', config.instagram_client_id);
 Instagram.set('client_secret', config.instagram_client_secret);
 Instagram.set('callback_url', 'http://dcmap.herokuapp.com/callback');
 
-Instagram.media.subscribe({lat: 38.99537317916349, lng: -77.0409607887268, radius: 5000})
+Instagram.media.subscribe({lat: 38.99537317916349, lng: -77.0409607887268, radius: 2500})
 // http.get('https://api.instagram.com/v1/subscriptions?client_secret=b863779087e4c2890052d150203afd9&client_id=7e86dca8cbd048369f6fd6de70e4d9c3', function(res){
 //     console.log(res);
 // })
@@ -41,10 +41,16 @@ app.get('/callback', function(req, res){
     // io.emit('ig callback', res);
     // var handshake =  Instagram.subscriptions.handshake(req, res);
 })
-
+var i = 0;
 app.post('/callback', function(req, res){
     console.log('===============================');
     io.emit('ig callback', req.body);
+    if(i > 3000){
+        Instagram.subscriptions.unsubscribe_all();
+    }
+    else{
+        i += 1;
+    }
 })
 
 http.listen(process.env.PORT || 5000, function(){
