@@ -54,6 +54,7 @@ app.post('/callback', function(req, res){
         var lon = obj['data'][0]['location']['longitude'];
 
         var post_url = obj['data'][0]['link'];
+        post_url = post_url.substring(5);
         console.log('---------------');
         console.log(post_url);
         io.emit('ig callback', [post_url, [lat, lon]]);
