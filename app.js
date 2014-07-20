@@ -49,7 +49,7 @@ app.post('/callback', function(req, res){
     var url = 'https://api.instagram.com/v1/geographies/' + req.body[0]['object_id'] + '/media/recent?client_id=' + config.instagram_client_id;
     request(url, function(err, res, body){
         var obj = JSON.parse(body);
-        var post_url = obj['link'];
+        var post_url = obj['data'][0]['link'];
         io.emit('ig callback', post_url);
         // io.emit('ig callback', body);
     })
