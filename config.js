@@ -1,6 +1,8 @@
 var config = {};
 config.twitter_api = {}
 
+config.instagram_client_id = process.env['7e86dca8cbd048369f6fd6de70e4d9c3'];
+config.instagram_client_secret = process.env['ab863779087e4c2890052d150203afd9'];
 config.twitter_api.consumer_key = process.env['TWITTER_CONSUMER_API_KEY'];
 config.twitter_api.consumer_secret = process.env['TWITTER_CONSUMER_API_SECRET'];
 config.twitter_api.access_token = process.env['TWITTER_API_ACCESS_TOKEN'];

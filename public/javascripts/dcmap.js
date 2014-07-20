@@ -59,4 +59,7 @@ $(document).ready(function(){
         addTweetMarker(tweet, map, markerQueue);
     });
 
+    socket.on('ig callback', function(res){
+        console.log(res);
+    })
 })
