@@ -50,8 +50,8 @@ app.post('/callback', function(req, res){
     var url = 'https://api.instagram.com/v1/geographies/' + req.body[0]['object_id'] + '/media/recent?client_id=' + config.instagram_client_id;
     request(url, function(err, res, body){
             var obj = JSON.parse(body);
-                var lat = obj['data'][0]['latitude'];
-        var lon = obj['data'][0]['longitude'];
+        var lat = obj['data'][0]['location']['latitude'];
+        var lon = obj['data'][0]['location']['longitude'];
 
         var post_url = obj['data'][0]['link'];
         request(post_url + '/embed', function(err, res, body){
