@@ -62,7 +62,7 @@ $(document).ready(function(){
         addTweetMarker(tweet, map, markerQueue);
     });
 
-    socket.on('igchallenge', foo){
+    socket.on('igchallenge', function(foo){
         console.log('challenge');
     })
 
