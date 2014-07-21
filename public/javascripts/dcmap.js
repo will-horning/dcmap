@@ -62,10 +62,14 @@ $(document).ready(function(){
         addTweetMarker(tweet, map, markerQueue);
     });
 
-    socket.on('ig callback', function(res){
+    socket.on('ig_callback_received', function(req){
+        console.log('ig callback received');
+    })
+
+    socket.on('instagram_post', function(res){
         var ihtml = res[0];
         var latlon = res[1];
-        console.log(ihtml);
+        console.log('ig post received.');
         console.log(latlon);
         addInstagramMarker(ihtml, map, latlon);
     })
