@@ -2,10 +2,10 @@ var Twitter = require('twit');
 var config = require('./config');
 
 var T = new Twitter({
-    consumer_key: config.twitter_api.consumer_key,
-    consumer_secret: config.twitter_api.consumer_secret,
-    access_token: config.twitter_api.access_token,
-    access_token_secret: config.twitter_api.access_token_secret
+    consumer_key: config.twitter.consumer_key,
+    consumer_secret: config.twitter.consumer_secret,
+    access_token: config.twitter.access_token,
+    access_token_secret: config.twitter.access_token_secret
 });
 
 module.exports = {

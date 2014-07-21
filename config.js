@@ -1,12 +1,20 @@
 var config = {};
-config.twitter_api = {}
 
-config.instagram_client_id = process.env['INSTAGRAM_CLIENT_ID'];
-config.instagram_client_secret = process.env['INSTAGRAM_CLIENT_SECRET'];
-config.twitter_api.consumer_key = process.env['TWITTER_CONSUMER_API_KEY'];
-config.twitter_api.consumer_secret = process.env['TWITTER_CONSUMER_API_SECRET'];
-config.twitter_api.access_token = process.env['TWITTER_API_ACCESS_TOKEN'];
-config.twitter_api.access_token_secret = process.env['TWITTER_API_ACCESS_TOKEN_SECRET'];
+
+config.instagram = {};
+config.instagram.client_id = process.env['INSTAGRAM_CLIENT_ID'];
+config.instagram.client_secret = process.env['INSTAGRAM_CLIENT_SECRET'];
+config.instagram.delete_subs = 'https://api.instagram.com/v1/subscriptions?client_secret=%s&object=all&client_id=%s'
+config.instagram.get_subs = 'https://api.instagram.com/v1/subscriptions?client_secret=%s&client_id=%s'
+
+
+config.twitter = {};
+config.twitter.consumer_key = process.env['TWITTER_CONSUMER_API_KEY'];
+config.twitter.consumer_secret = process.env['TWITTER_CONSUMER_API_SECRET'];
+config.twitter.access_token = process.env['TWITTER_API_ACCESS_TOKEN'];
+config.twitter.access_token_secret = process.env['TWITTER_API_ACCESS_TOKEN_SECRET'];
+
+
 config.dc_bounding_box = [
     '-77.14007377624512',
     '38.81416486985497', 
