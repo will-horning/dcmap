@@ -62,6 +62,10 @@ $(document).ready(function(){
         addTweetMarker(tweet, map, markerQueue);
     });
 
+    socket.on('igchallenge', foo){
+        console.log('challenge');
+    }
+
     socket.on('ig_callback_received', function(req){
         console.log('ig callback received');
     })
