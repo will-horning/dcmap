@@ -40,6 +40,7 @@ Instagram.set('callback_url', 'http://dcmap.herokuapp.com/callback');
 
 
 getInstagramSubs(function(sub_status){
+    console.log('setting up subscriptions');
     if(sub_status.data.length > 1){
         deleteInstagramSubs(function(){
             Instagram.media.subscribe({
@@ -66,7 +67,6 @@ getInstagramSubs(function(sub_status){
 //     	}
 //     }
 // });
-
 
 app.set('view engine', 'jade');
 app.use(express.static('public'));
