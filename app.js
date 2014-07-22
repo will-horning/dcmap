@@ -10,7 +10,7 @@ var Instagram = require('./instagram_stream')
 var _ = require('lodash');
 _.str =require('underscore.string');
 
-
+var instagram_links = [];
 // var Instagram.deleteInstagramSubs = function(callback){
 //     var url = _.str.sprintf(
 //         config.instagram.delete_subs,
@@ -112,6 +112,15 @@ app.post('/instagram_callback', function(req, res){
             var post_url = ig_post.link.substring(5) + 'embed';        
             return [post_url, [lat, lon]];    
         });
+        results = _.filter(results, function(result){
+            if(_.contains(instagram_links, result[0])){
+                return false;
+            }
+            else{
+                instagram_links.push(result[0]);
+                return true;
+            }
+        })
         console.log('sending callback');
         io.emit('ig_callback', results);
     });
