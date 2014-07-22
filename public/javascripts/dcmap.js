@@ -55,6 +55,10 @@ $(document).ready(function(){
         addTweetMarker(tweet, map, markerQueue);
     });
 
+    socket.on('igres', function(q){
+        console.log(q);
+    });
+
     socket.on('ig_callback', function(results){
         console.log('ig post received.');
         console.log(results);
