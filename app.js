@@ -57,15 +57,15 @@ getInstagramSubs(function(sub_status){
     }
 });
 
-var twitter_stream = require('./twitter_stream.js').createTwitterStream();
-twitter_stream.on('tweet', function(tweet){
-    if(tweet.coordinates){
-    	var lonlat = tweet.coordinates.coordinates;
-    	if(classifyPoint(config.dc_bounding_polygon, lonlat) < 1){
-        	io.emit('tweet', tweet);
-    	}
-    }
-});
+// var twitter_stream = require('./twitter_stream.js').createTwitterStream();
+// twitter_stream.on('tweet', function(tweet){
+//     if(tweet.coordinates){
+//     	var lonlat = tweet.coordinates.coordinates;
+//     	if(classifyPoint(config.dc_bounding_polygon, lonlat) < 1){
+//         	io.emit('tweet', tweet);
+//     	}
+//     }
+// });
 
 
 app.set('view engine', 'jade');
@@ -102,7 +102,7 @@ app.post('/callback', function(req, res){
     console.log('callback received.');
     var url = 'https://api.instagram.com/v1/geographies/' + req.body[0].object_id + '/media/recent?client_id=' + config.instagram_client_id;
     request(url, function(err, res, body){
-        var results = _.map(JSON.parse(body), function(ig_post){
+        var results = _.map(JSON.parse(body).data, function(ig_post){
             var lat = ig_post.location.latitude;
             var lon = ig_post.location.longitude;
             var post_url = ig_post.link.substring(5) + 'embed';            
