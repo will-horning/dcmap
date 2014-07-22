@@ -112,7 +112,8 @@ app.post('/callback', function(req, res){
         var results = _.map(JSON.parse(body).data, function(ig_post){
             var lat = ig_post.location.latitude;
             var lon = ig_post.location.longitude;
-            var post_url = ig_post.link.substring(5) + 'embed';            
+            var post_url = ig_post.link.substring(5) + 'embed';        
+            return [post_url, [lat, lon]];    
         });
         console.log('sending callback');
         io.emit('ig_callback', results);
