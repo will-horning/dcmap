@@ -106,7 +106,6 @@ app.post('/callback', function(req, res){
             var lat = ig_post.location.latitude;
             var lon = ig_post.location.longitude;
             var post_url = ig_post.link.substring(5) + 'embed';            
-            return [post_url, [lat, lon]];
         });
         io.emit('ig_callback', results);
     });
