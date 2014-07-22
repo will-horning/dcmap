@@ -110,8 +110,6 @@ app.post('/callback', function(req, res){
         });
         io.emit('ig_callback', results);
     });
-    if(i > 3000){Instagram.subscriptions.unsubscribe_all();}
-    else{i += results.length;}
 });
 
 http.listen(process.env.PORT || 5000, function(){
