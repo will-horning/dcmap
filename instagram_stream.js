@@ -9,7 +9,7 @@ Instagram.set('client_id', config.instagram.client_id);
 Instagram.set('client_secret', config.instagram.client_secret);
 console.log(config.instagram.client_id);
 console.log(config.instagram.client_secret);
-Instagram.set('callback_url', 'http://dcmap.herokuapp.com/callback');
+Instagram.set('callback_url', 'http://dcmap.herokuapp.com/instagram_callback');
 
 var deleteInstagramSubs = function(callback){
     var url = _.str.sprintf(
@@ -34,19 +34,22 @@ var getInstagramSubs = function(callback){
     });
 };
 
-getInstagramSubs(function(sub_status){
-    console.log('setting up subscriptions');
-    deleteInstagramSubs(function(){
-        Instagram.media.subscribe({
-            lat: 38.99537317916349, 
-            lng: -77.0409607887268, 
-            radius: 5000
+var startGeoSub = function(callback){
+    getInstagramSubs(function(sub_status){
+        console.log('setting up subscriptions');
+        deleteInstagramSubs(function(){
+            Instagram.media.subscribe({
+                lat: 38.99537317916349, 
+                lng: -77.0409607887268, 
+                radius: 5000
+            });
         });
-    });
-});
+    });    
+}
 
 module.exports = {
     instagramStream: Instagram,
+    startGeoSub: startGeoSub,
     deleteInstagramSubs: deleteInstagramSubs,
     getInstagramSubs: getInstagramSubs
 };
