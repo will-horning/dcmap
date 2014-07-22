@@ -107,6 +107,7 @@ app.post('/callback', function(req, res){
             var lon = ig_post.location.longitude;
             var post_url = ig_post.link.substring(5) + 'embed';            
         });
+        console.log('sending callback');
         io.emit('ig_callback', results);
     });
 });
