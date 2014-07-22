@@ -59,10 +59,12 @@ $(document).ready(function(){
     socket.on('ig_callback', function(results){
         console.log('ig post received.');
         console.log(results);
-        var ihtml = results[0][0];
-        var latlon = results[0][1];
-        console.log(latlon);
-        addInstagramMarker(ihtml, map, latlon, markerQueue);
+        _.forEach(results, function(post){
+            var html = results[0][0];
+            var latlon = results[0][1];
+            console.log(post);
+            addInstagramMarker(html, map, latlon, markerQueue);        
+        })
     });
 
     // var addInstagramMarker = function(iframe, map, latlon, markerQueue){

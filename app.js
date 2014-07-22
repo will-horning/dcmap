@@ -85,14 +85,14 @@ app.get('/', function(req, res){
 	res.render('index.jade');
 });
 
-app.get('/callback', function(req, res){
+app.get('/instagram_callback', function(req, res){
     console.log('challenge received.');
     console.log(req.query['hub.challenge']);
     io.emit('console', req.query['hub challenge']);
     res.send(req.query['hub.challenge']);
 });
 
-app.post('/callback', function(req, res){
+app.post('/instagram_callback', function(req, res){
     console.log('callback received.');
     var url = _.str.sprintf(
         config.instagram.photo_post_url, 
