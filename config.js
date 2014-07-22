@@ -1,12 +1,14 @@
 var config = {};
 
 
+
+
 config.instagram = {};
 config.instagram.client_id = process.env['INSTAGRAM_CLIENT_ID'];
 config.instagram.client_secret = process.env['INSTAGRAM_CLIENT_SECRET'];
 config.instagram.delete_subs = 'https://api.instagram.com/v1/subscriptions?client_secret=%s&object=all&client_id=%s'
 config.instagram.get_subs = 'https://api.instagram.com/v1/subscriptions?client_secret=%s&client_id=%s'
-
+config.instagram.photo_post_url = 'https://api.instagram.com/v1/geographies/%s/media/recent?client_id=%s'
 
 config.twitter = {};
 config.twitter.consumer_key = process.env['TWITTER_CONSUMER_API_KEY'];

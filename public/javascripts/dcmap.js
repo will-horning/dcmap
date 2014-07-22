@@ -2,14 +2,9 @@ $(document).ready(function(){
 
     var markerQueue = [];
 
-
-    var map = L.mapbox.map('map', 'examples.map-0l53fhk2').setView([38.907, -77.0368], 11);
+    var map = L.mapbox.map('map', 'examples.map-0l53fhk2')
+    map.setView(config.mapCenter, config.mapZoom);
     // var heat = L.heatLayer(crime_vals.slice(0,10000), {radius: 10, maxZoom: 18}).addTo(map);
-
-    var dc_layer = null;
-    $.getJSON('/javascripts/geojson/dc_city_limits.geojson', function(data){
-        dc_layer = L.geoJson(data, {fillOpacity: 0}).addTo(map);
-    });
 
     map.on('popupopen', function(e){
         if($(e.popup._content).hasClass('tweetPopup')){
@@ -21,10 +16,6 @@ $(document).ready(function(){
                 $('.leaflet-popup').css('opacity', '1');
             });  
         }
-        // else if($(e.popup._content).hasClass('instagramPopup')){
-        //     $('.leaflet-popup').css('opacity', '0');
-
-        // }
     });
 
     // $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
@@ -64,13 +55,6 @@ $(document).ready(function(){
     socket.on('console', function(o){
         console.log({obj: o});
     });
-    // socket.on('igchallenge', function(foo){
-    //     console.log('challenge');
-    // })
-
-    // socket.on('ig_callback_received', function(req){
-    //     console.log('ig callback received');
-    // })
 
     socket.on('ig_callback', function(results){
         console.log('ig post received.');
@@ -81,27 +65,26 @@ $(document).ready(function(){
         addInstagramMarker(ihtml, map, latlon);
     });
 
-var addInstagramMarker = function(iframe, map, latlon){
-        addCircleMarker(map, latlon);
-        var mypopup = L.popup({
-            maxWidth: 600,
-            maxHeight: 800,
-            className: 'myPopup'
-        }).setContent('<div class="instagramPopup" style="width:500px;"><iframe style="width:500px;height:650px;" src="' + iframe + '"></iframe></div>');
-
-        var marker = L.marker(
-            latlon, 
-            {icon: L.divIcon({
-                className: 'markericon',
-                iconAnchor: [12, 12],
-                html: '<img style="width:24px;" src="/images/mascoticons/32x32/instagram-32x32.png">'
-            })}
-        ).bindPopup(mypopup).addTo(map);
-        // markerQueue.push(marker);
-        // if(markerQueue.length > 30){
-        //     map.removeLayer(markerQueue.shift());
-        // }
-};
+    var addInstagramMarker = function(iframe, map, latlon, markerQueue){
+            addCircleMarker(map, latlon);
+            var mypopup = L.popup({
+                maxWidth: 600,
+                maxHeight: 800,
+                className: 'myPopup'
+            }).setContent('<div class="instagramPopup" style="width:500px;"><iframe style="width:500px;height:630px;" src="' + iframe + '"></iframe></div>');
+            if(markerQueue.length > config.markerQueueSize){
+                map.removeLayer(markerQueue.shift());
+            }
+            var marker = L.marker(
+                latlon, 
+                {icon: L.divIcon({
+                    className: 'markericon',
+                    iconAnchor: [12, 12],
+                    html: '<img style="width:24px;" src="/images/mascoticons/32x32/instagram-32x32.png">'
+                })}
+            ).bindPopup(mypopup).addTo(map);
+            markerQueue.push(marker);
+    };
 
 
 
