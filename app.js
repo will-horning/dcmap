@@ -100,18 +100,18 @@ app.get('/callback', function(req, res){
 var i = 0;
 app.post('/callback', function(req, res){
     console.log('callback received.');
-    io.emit('console', req);
     var url = 'https://api.instagram.com/v1/geographies/' + req.body[0].object_id + '/media/recent?client_id=' + config.instagram_client_id;
-    request(url, function(err, res, body1){
-        JSON.parse(body1).forEach(function(ig_post){
+    request(url, function(err, res, body){
+        var results = _.map(JSON.parse(body), function(ig_post){
             var lat = ig_post.location.latitude;
             var lon = ig_post.location.longitude;
-            var post_url = ig_post.link.substring(5) + 'embed';
-            io.emit('instagram_post', [post_url, [lat, lon]]);
+            var post_url = ig_post.link.substring(5) + 'embed';            
+            return [post_url, [lat, lon]];
         });
+        io.emit('ig_callback', results);
     });
     if(i > 3000){Instagram.subscriptions.unsubscribe_all();}
-    else{i += 1;}
+    else{i += results.length;}
 });
 
 http.listen(process.env.PORT || 5000, function(){
