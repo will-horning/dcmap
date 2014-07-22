@@ -5,12 +5,11 @@ $(document).ready(function(){
 
     var map = L.mapbox.map('map', 'examples.map-0l53fhk2').setView([38.907, -77.0368], 11);
     // var heat = L.heatLayer(crime_vals.slice(0,10000), {radius: 10, maxZoom: 18}).addTo(map);
-    // var draw = true;
 
     var dc_layer = null;
     $.getJSON('/javascripts/geojson/dc_city_limits.geojson', function(data){
         dc_layer = L.geoJson(data, {fillOpacity: 0}).addTo(map);
-    })
+    });
 
     map.on('popupopen', function(e){
         if($(e.popup._content).hasClass('tweetPopup')){
@@ -26,7 +25,7 @@ $(document).ready(function(){
         //     $('.leaflet-popup').css('opacity', '0');
 
         // }
-    })
+    });
 
     // $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
     //     L.geoJson(data, {
@@ -64,7 +63,7 @@ $(document).ready(function(){
 
     socket.on('console', function(o){
         console.log({obj: o});
-    })
+    });
     // socket.on('igchallenge', function(foo){
     //     console.log('challenge');
     // })
@@ -79,7 +78,7 @@ $(document).ready(function(){
         console.log('ig post received.');
         console.log(latlon);
         addInstagramMarker(ihtml, map, latlon);
-    })
+    });
 
 var addInstagramMarker = function(iframe, map, latlon){
         addCircleMarker(map, latlon);
@@ -105,4 +104,4 @@ var addInstagramMarker = function(iframe, map, latlon){
 
 
 
-})
+});

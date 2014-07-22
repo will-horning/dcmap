@@ -11,15 +11,15 @@ var addCircleMarker = function(map, latlon){
 
 var addTweetMarker = function(tweet, map, markerQueue){
     var latlon = [
-        tweet['coordinates']['coordinates'][1],
-        tweet['coordinates']['coordinates'][0]
-    ]
+        tweet.coordinates.coordinates[1],
+        tweet.coordinates.coordinates[0]
+    ];
         addCircleMarker(map, latlon);
         var mypopup = L.popup({
             maxWidth: 600,
             maxHeight: 300,
             className: 'myPopup'
-        }).setContent('<div class="tweetPopup" style="width:500px;" id="' + tweet['id_str'] + '"></div>');
+        }).setContent('<div class="tweetPopup" style="width:500px;" id="' + tweet.id_str + '"></div>');
 
         var marker = L.marker(
             latlon, 
