@@ -73,9 +73,10 @@ $(document).ready(function(){
     // })
 
     socket.on('ig_callback', function(results){
+        console.log('ig post received.');
+        console.log(results);
         var ihtml = results[0][0];
         var latlon = results[0][1];
-        console.log('ig post received.');
         console.log(latlon);
         addInstagramMarker(ihtml, map, latlon);
     });
