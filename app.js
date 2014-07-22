@@ -42,11 +42,11 @@ Instagram.set('callback_url', 'http://dcmap.herokuapp.com/callback');
 getInstagramSubs(function(sub_status){
     if(sub_status['data'].length > 1){
         deleteInstagramSubs(function(){
-            Instagram.media.subscribe({lat: 38.99537317916349, lng: -77.0409607887268, radius: 2500})
+            Instagram.media.subscribe({lat: 38.99537317916349, lng: -77.0409607887268, radius: 5000})
         })
     }
     else if(sub_status['data'].length == 0){
-        Instagram.media.subscribe({lat: 38.99537317916349, lng: -77.0409607887268, radius: 2500})
+        Instagram.media.subscribe({lat: 38.99537317916349, lng: -77.0409607887268, radius: 5000})
     }
 })
 
