@@ -109,7 +109,9 @@ app.post('/callback', function(req, res){
     console.log('callback received.');
     var url = 'https://api.instagram.com/v1/geographies/' + req.body[0].object_id + '/media/recent?client_id=' + config.instagram_client_id;
     request(url, function(err, res, body){
+        console.log(JSON.parse(body).data);
         var results = _.map(JSON.parse(body).data, function(ig_post){
+            console.log(ig_post);
             var lat = ig_post.location.latitude;
             var lon = ig_post.location.longitude;
             var post_url = ig_post.link.substring(5) + 'embed';        
