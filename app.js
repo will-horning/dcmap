@@ -96,6 +96,7 @@ app.post('/callback', function(req, res){
     console.log('callback received.');
     var url = _.str.sprintf(
         config.instagram.photo_post_url, 
+        req.body[0].object_id,
         config.instagram.client_id
     );
     request(url, function(err, res, body){
