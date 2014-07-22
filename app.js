@@ -11,13 +11,6 @@ var _ = require('lodash');
 _.str =require('underscore.string');
 
 
-Instagram.set('client_id', config.instagram.client_id);
-Instagram.set('client_secret', config.instagram.client_secret);
-Instagram.set('callback_url', 'http://dcmap.herokuapp.com/callback');
-
-Instagram.media.subscribe({lat: 38.99537317916349, lng: -77.0409607887268, radius: 2500})
-
-
 var deleteInstagramSubs = function(callback){
     var url = _.str.sprintf(
         config.instagram.delete_subs,
@@ -37,9 +30,25 @@ var getInstagramSubs = function(callback){
         config.instagram.client_id
     )
     request(url, function(err, res, body){
-        callback(body);
+        callback(JSON.parse(body));
     })
 }
+
+Instagram.set('client_id', config.instagram.client_id);
+Instagram.set('client_secret', config.instagram.client_secret);
+Instagram.set('callback_url', 'http://dcmap.herokuapp.com/callback');
+
+
+getInstagramSubs(function(sub_status){
+    if(sub_status['data'].length > 1){
+        deleteInstagramSubs(function(){
+            Instagram.media.subscribe({lat: 38.99537317916349, lng: -77.0409607887268, radius: 2500})
+        })
+    }
+    else if(sub_status['data'].length == 0){
+        Instagram.media.subscribe({lat: 38.99537317916349, lng: -77.0409607887268, radius: 2500})
+    }
+})
 
 var twitter_stream = require('./twitter_stream.js').createTwitterStream();
 twitter_stream.on('tweet', function(tweet){
@@ -75,13 +84,13 @@ app.get('/', function(req, res){
 });
 
 app.get('/callback', function(req, res){
-    console.log('challenge callback received.');
+    io.emit('console', req.query['hub challenge']);
     res.send(req.query['hub.challenge']);
 })
 
 var i = 0;
 app.post('/callback', function(req, res){
-    io.emit('ig_callback_received', req);
+    io.emit('console', req);
     var url = 'https://api.instagram.com/v1/geographies/' + req.body[0]['object_id'] + '/media/recent?client_id=' + config.instagram_client_id;
     request(url, function(err, res, body1){
         JSON.parse(body1).forEach(function(ig_post){

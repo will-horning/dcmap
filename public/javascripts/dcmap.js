@@ -62,13 +62,16 @@ $(document).ready(function(){
         addTweetMarker(tweet, map, markerQueue);
     });
 
-    socket.on('igchallenge', function(foo){
-        console.log('challenge');
+    socket.on('console', function(o){
+        console.log({obj: o});
     })
+    // socket.on('igchallenge', function(foo){
+    //     console.log('challenge');
+    // })
 
-    socket.on('ig_callback_received', function(req){
-        console.log('ig callback received');
-    })
+    // socket.on('ig_callback_received', function(req){
+    //     console.log('ig callback received');
+    // })
 
     socket.on('instagram_post', function(res){
         var ihtml = res[0];
