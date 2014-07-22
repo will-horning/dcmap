@@ -39,8 +39,8 @@ var startGeoSub = function(callback){
         console.log('setting up subscriptions');
         deleteInstagramSubs(function(){
             Instagram.media.subscribe({
-                lat: 38.99537317916349, 
-                lng: -77.0409607887268, 
+                lat: 38.90538244174961, 
+                lng: -77.0416259765625, 
                 radius: 5000
             });
         });
