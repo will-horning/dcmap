@@ -36,6 +36,8 @@ var getInstagramSubs = function(callback){
 
 Instagram.set('client_id', config.instagram.client_id);
 Instagram.set('client_secret', config.instagram.client_secret);
+console.log(config.instagram.client_id);
+console.log(config.instagram.client_secret);
 Instagram.set('callback_url', 'http://dcmap.herokuapp.com/callback');
 
 
