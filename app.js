@@ -103,6 +103,7 @@ app.post('/instagram_callback', function(req, res){
         req.body[0].object_id,
         config.instagram.client_id
     );
+    console.log(req.body);
     io.emit('igres', req.body);
     request(url, function(err, res, body){
         var results = _.map(JSON.parse(body).data, function(ig_post){
