@@ -18,42 +18,42 @@ $(document).ready(function(){
         }
     });
 
-    // $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
-    //     L.geoJson(data, {
-    //         style: function(feature) {
-    //             switch (feature.properties.NAME) {
-    //                 case 'blue': return {color: "#0000ff"};
-    //                 case 'red':   return {color: "#ff0000"};
-    //                 case 'orange': return {color: "#ff6600"};
-    //                 case 'yellow': return {color: "#ffff00"};
-    //                 case 'green': return {color: "#006600"};
-    //                 default: return {color: "#ffffff"};
-    //             }
-    //         }
-    //     }).addTo(map);
-    // })
+    var addMetroLines = function(map){
+        $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
+            L.geoJson(data, {
+                style: function(feature) {
+                    switch (feature.properties.NAME) {
+                        case 'blue': return {color: "#0000ff"};
+                        case 'red':   return {color: "#ff0000"};
+                        case 'orange': return {color: "#ff6600"};
+                        case 'yellow': return {color: "#ffff00"};
+                        case 'green': return {color: "#006600"};
+                        default: return {color: "#ffffff"};
+                    }
+                }
+            }).addTo(map);
+        })
+    }
 
-    // $.getJSON('/javascripts/geojson/metro_stations.geojson', function(data){
-    //     var metro_layer = L.geoJson(data, {
-    //         pointToLayer: function(feature, latlng){
-    //             return L.marker(latlng, {icon: L.icon({
-    //                 iconUrl: '/images/metro_icon.gif',
-    //                 iconSize: [16, 16],
-    //                 iconAnchor: [8, 8]
-    //             })}).bindPopup(feature['properties']['NAME']);
-    //         }
-    //     }).addTo(map);
-    // })
-
+    var addMetroStations = function(map){
+        $.getJSON('/javascripts/geojson/metro_stations.geojson', function(data){
+            var metro_layer = L.geoJson(data, {
+                pointToLayer: function(feature, latlng){
+                    return L.marker(latlng, {icon: L.icon({
+                        iconUrl: '/images/metro_icon.gif',
+                        iconSize: [16, 16],
+                        iconAnchor: [8, 8]
+                    })}).bindPopup(feature['properties']['NAME']);
+                }
+            }).addTo(map);
+        })
+    }
+    
 
 
     var socket = io();
     socket.on('tweet', function(tweet){
         addTweetMarker(tweet, map, markerQueue);
-    });
-
-    socket.on('console', function(o){
-        console.log({obj: o});
     });
 
     socket.on('ig_callback', function(results){
@@ -62,29 +62,29 @@ $(document).ready(function(){
         var ihtml = results[0][0];
         var latlon = results[0][1];
         console.log(latlon);
-        addInstagramMarker(ihtml, map, latlon);
+        addInstagramMarker(ihtml, map, latlon, markerQueue);
     });
 
-    var addInstagramMarker = function(iframe, map, latlon, markerQueue){
-            addCircleMarker(map, latlon);
-            var mypopup = L.popup({
-                maxWidth: 600,
-                maxHeight: 800,
-                className: 'myPopup'
-            }).setContent('<div class="instagramPopup" style="width:500px;"><iframe style="width:500px;height:630px;" src="' + iframe + '"></iframe></div>');
-            if(markerQueue.length > config.markerQueueSize){
-                map.removeLayer(markerQueue.shift());
-            }
-            var marker = L.marker(
-                latlon, 
-                {icon: L.divIcon({
-                    className: 'markericon',
-                    iconAnchor: [12, 12],
-                    html: '<img style="width:24px;" src="/images/mascoticons/32x32/instagram-32x32.png">'
-                })}
-            ).bindPopup(mypopup).addTo(map);
-            markerQueue.push(marker);
-    };
+    // var addInstagramMarker = function(iframe, map, latlon, markerQueue){
+    //         addCircleMarker(map, latlon);
+    //         var mypopup = L.popup({
+    //             maxWidth: 600,
+    //             maxHeight: 800,
+    //             className: 'myPopup'
+    //         }).setContent('<div class="instagramPopup" style="width:500px;"><iframe style="width:500px;height:630px;" src="' + iframe + '"></iframe></div>');
+    //         if(markerQueue.length > config.markerQueueSize){
+    //             map.removeLayer(markerQueue.shift());
+    //         }
+    //         var marker = L.marker(
+    //             latlon, 
+    //             {icon: L.divIcon({
+    //                 className: 'markericon',
+    //                 iconAnchor: [12, 12],
+    //                 html: '<img style="width:24px;" src="/images/mascoticons/32x32/instagram-32x32.png">'
+    //             })}
+    //         ).bindPopup(mypopup).addTo(map);
+    //         markerQueue.push(marker);
+    // };
 
 
 
