@@ -41,21 +41,28 @@ Instagram.set('callback_url', 'http://dcmap.herokuapp.com/callback');
 
 getInstagramSubs(function(sub_status){
     console.log('setting up subscriptions');
-    if(sub_status.data.length > 1){
-        deleteInstagramSubs(function(){
+    deleteInstagramSubs(function(){
             Instagram.media.subscribe({
                 lat: 38.99537317916349, 
                 lng: -77.0409607887268, 
                 radius: 5000
             });
         });
-    }
-    else if(sub_status.data.length === 0){
-        Instagram.media.subscribe({
-            lat: 38.99537317916349, 
-            lng: -77.0409607887268, 
-            radius: 5000});
-    }
+    // if(sub_status.data.length > 1){
+    //     deleteInstagramSubs(function(){
+    //         Instagram.media.subscribe({
+    //             lat: 38.99537317916349, 
+    //             lng: -77.0409607887268, 
+    //             radius: 5000
+    //         });
+    //     });
+    // }
+    // else if(sub_status.data.length === 0){
+    //     Instagram.media.subscribe({
+    //         lat: 38.99537317916349, 
+    //         lng: -77.0409607887268, 
+    //         radius: 5000});
+    // }
 });
 
 // var twitter_stream = require('./twitter_stream.js').createTwitterStream();
