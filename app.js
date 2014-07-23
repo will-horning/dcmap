@@ -85,6 +85,10 @@ app.get('/', function(req, res){
 	res.render('index.jade');
 });
 
+app.get('/test', function(req, res){
+    res.render('test.jade');
+})
+
 Instagram.startGeoSub(function(){
     console.log('started instagram subscription');
 });

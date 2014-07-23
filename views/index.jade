@@ -3,19 +3,12 @@ html
   head
     title= title
     link(rel='stylesheet', href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css')
-    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='/css/marker.css')
   body
     script(src='//platform.twitter.com/widgets.js')
+  
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js')
-    script(src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.0/leaflet-heat.js')
-    script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src='/socket.io/socket.io.js')
-
+    script(src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.0/leaflet-heat.js')
     div(id='map', style="position:absolute;top:0;bottom:0;width:100%;")
-    script(src='/javascripts/client_config.js')
-    script(src='/javascripts/lodash.min.js')
-    script(src='/javascripts/underscore.string.js')
-    script(src='/javascripts/instagram_markers.js')
-    script(src='/javascripts/tweet_markers.js')
-    script(src='/javascripts/dcmap.js')
+    script(src='/javascripts/main.js')

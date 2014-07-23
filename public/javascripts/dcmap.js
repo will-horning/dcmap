@@ -1,6 +1,15 @@
+$ = require('zepto-browserify').$;
+var config = require('./client_config');
+var tweet_markers = require('./tweet_markers');
+var instagram_markers = require('./instagram_markers');
+var _ = require('lodash');
+
+_.str =require('underscore.string');
 $(document).ready(function(){
 
     var markerQueue = [];
+    var layers = {};
+
     var map = L.mapbox.map('map', 'examples.map-0l53fhk2')
     map.setView(config.mapCenter, config.mapZoom);
     // var heat = L.heatLayer(crime_vals.slice(0,10000), {radius: 10, maxZoom: 18}).addTo(map);
@@ -33,30 +42,48 @@ $(document).ready(function(){
             }).addTo(map);
         })
     }
+    
+    map.on('zoomend', function() {
+        console.log(layers);
+        if (map.getZoom() > 14) {
+            console.log(layers.camera_layer);
+            map.addLayer(layers.camera_layer);
+        } else {
+            map.removeLayer(layers.camera_layer);
+        }
+    });
 
-    var addMetroStations = function(map){
-        $.getJSON('/javascripts/geojson/metro_stations.geojson', function(data){
-            var metro_layer = L.geoJson(data, {
+        $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){
+            var camera_layer = L.geoJson(data, {
                 pointToLayer: function(feature, latlng){
                     return L.marker(latlng, {icon: L.icon({
-                        iconUrl: '/images/metro_icon.gif',
-                        iconSize: [16, 16],
-                        iconAnchor: [8, 8]
-                    })}).bindPopup(feature['properties']['NAME']);
+                        iconUrl: '/images/camera_icon.png',
+                        iconSize: [24, 24],
+                        iconAnchor: [12, 12]
+                    })});
                 }
-            }).addTo(map);
+            }).bindPopup('Traffic Camera');
+            layers.camera_layer = camera_layer;
         })
-    }
+
+    //     $.getJSON('/javascripts/geojson/metro_stations.geojson', function(data){
+    //         var metro_layer = L.geoJson(data, {
+    //             pointToLayer: function(feature, latlng){
+    //                 return L.marker(latlng, {icon: L.icon({
+    //                     iconUrl: '/images/metro_icon.gif',
+    //                     iconSize: [16, 16],
+    //                     iconAnchor: [8, 8]
+    //                 })}).bindPopup(feature['properties']['NAME']);
+    //             }
+    //         }).addTo(map);
+    //     })
     
 
 
     var socket = io();
     socket.on('tweet', function(tweet){
-        addTweetMarker(tweet, map, markerQueue);
-    });
-
-    socket.on('igres', function(q){
-        console.log(q);
+        console.log(tweet);
+        tweet_markers.addMarker(tweet, map, markerQueue);
     });
 
     socket.on('ig_callback', function(results){
@@ -66,30 +93,9 @@ $(document).ready(function(){
             var html = results[0][0];
             var latlon = results[0][1];
             // console.log(post);
-            addInstagramMarker(html, map, latlon, markerQueue);        
+            instagram_markers.addMarker(html, map, latlon, markerQueue);        
         })
     });
-
-    // var addInstagramMarker = function(iframe, map, latlon, markerQueue){
-    //         addCircleMarker(map, latlon);
-    //         var mypopup = L.popup({
-    //             maxWidth: 600,
-    //             maxHeight: 800,
-    //             className: 'myPopup'
-    //         }).setContent('<div class="instagramPopup" style="width:500px;"><iframe style="width:500px;height:630px;" src="' + iframe + '"></iframe></div>');
-    //         if(markerQueue.length > config.markerQueueSize){
-    //             map.removeLayer(markerQueue.shift());
-    //         }
-    //         var marker = L.marker(
-    //             latlon, 
-    //             {icon: L.divIcon({
-    //                 className: 'markericon',
-    //                 iconAnchor: [12, 12],
-    //                 html: '<img style="width:24px;" src="/images/mascoticons/32x32/instagram-32x32.png">'
-    //             })}
-    //         ).bindPopup(mypopup).addTo(map);
-    //         markerQueue.push(marker);
-    // };
 
 
 
