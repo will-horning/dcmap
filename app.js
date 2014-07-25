@@ -57,15 +57,15 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 
-var twitter_stream = require('./twitter_stream.js').createTwitterStream();
-twitter_stream.on('tweet', function(tweet){
-    if(tweet.coordinates){
-        var lonlat = tweet.coordinates.coordinates;
-        if(classifyPoint(config.dc_bounding_polygon, lonlat) < 1){
-            io.emit('tweet', tweet);
-        }
-    }
-});
+// var twitter_stream = require('./twitter_stream.js').createTwitterStream();
+// twitter_stream.on('tweet', function(tweet){
+//     if(tweet.coordinates){
+//         var lonlat = tweet.coordinates.coordinates;
+//         if(classifyPoint(config.dc_bounding_polygon, lonlat) < 1){
+//             io.emit('tweet', tweet);
+//         }
+//     }
+// });
 
 app.get('/getsubs', function(req, res){
     Instagram.getInstagramSubs(function(sub_status){

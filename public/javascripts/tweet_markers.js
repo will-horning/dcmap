@@ -1,3 +1,7 @@
+var _ = require('lodash');
+var config = require('./client_config');
+_.str = require('underscore.string');
+
 var addCircleMarker = function(map, latlon){
     var circle_marker = L.marker(
         latlon, 

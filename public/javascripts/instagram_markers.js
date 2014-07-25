@@ -1,3 +1,7 @@
+var _ = require('lodash');
+var config = require('./client_config');
+_.str = require('underscore.string');
+
 var instagramIcon = L.divIcon({
     className: 'markericon',
     iconAnchor: [12, 12],

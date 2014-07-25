@@ -1,4 +1,3 @@
-$ = require('zepto-browserify').$;
 var config = require('./client_config');
 var tweet_markers = require('./tweet_markers');
 var instagram_markers = require('./instagram_markers');
@@ -10,11 +9,63 @@ $(document).ready(function(){
     var markerQueue = [];
     var layers = {};
 
-    var map = L.mapbox.map('map', 'examples.map-0l53fhk2')
+    var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false })
+
     map.setView(config.mapCenter, config.mapZoom);
     // var heat = L.heatLayer(crime_vals.slice(0,10000), {radius: 10, maxZoom: 18}).addTo(map);
 
-    map.on('popupopen', function(e){
+    var sidebar = L.control.sidebar('sidebar', {position:'left'});
+    map.addControl(sidebar);
+
+
+    L.Control.SidebarOpen = L.Control.extend({
+        options: {
+            position: 'topleft'
+        },
+
+        onAdd: function (map) {
+            var controlDiv = L.DomUtil.create('div', 'leaflet-control-sidebar-open');
+            var glyphspan = $('<span></span>');
+            glyphspan.addClass('glyphicon')
+            glyphspan.addClass('glyphicon-cog')
+            L.DomEvent
+                .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
+                .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
+            .addListener(controlDiv, 'click', function(){
+                sidebar.toggle();            
+            })
+
+            var controlUI = L.DomUtil.create('div', 'leaflet-control-sidebar-open-interior', controlDiv);
+            controlUI.title = 'Map Commands';
+            return controlDiv;
+        }
+    });
+
+    var sidebarOpenControl = new L.Control.SidebarOpen();
+
+    // $('.close').toggle();
+
+    sidebar.on('show', function(){
+        sidebarOpenControl.removeFrom(map);    
+    })
+    sidebar.on('hidden', function(){
+        sidebarOpenControl.addTo(map);  
+                    $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>')
+  
+    })
+
+
+    map.addControl(sidebarOpenControl);
+            $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>')
+
+
+
+    L.control.fullscreen({position: 'topright'}).addTo(map);
+
+
+
+    
+        map.on('popupopen', function(e){
         if($(e.popup._content).hasClass('tweetPopup')){
             var tweet_id_str = $(e.popup._content).attr('id');
             $('.leaflet-popup').css('opacity', '0');
@@ -53,18 +104,18 @@ $(document).ready(function(){
         }
     });
 
-        $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){
-            var camera_layer = L.geoJson(data, {
-                pointToLayer: function(feature, latlng){
-                    return L.marker(latlng, {icon: L.icon({
-                        iconUrl: '/images/camera_icon.png',
-                        iconSize: [24, 24],
-                        iconAnchor: [12, 12]
-                    })});
-                }
-            }).bindPopup('Traffic Camera');
-            layers.camera_layer = camera_layer;
-        })
+    $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){
+        var camera_layer = L.geoJson(data, {
+            pointToLayer: function(feature, latlng){
+                return L.marker(latlng, {icon: L.icon({
+                    iconUrl: '/images/camera_icon.png',
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12]
+                })});
+            }
+        }).bindPopup('Traffic Camera');
+        layers.camera_layer = camera_layer;
+    })
 
     //     $.getJSON('/javascripts/geojson/metro_stations.geojson', function(data){
     //         var metro_layer = L.geoJson(data, {
