@@ -10,35 +10,6 @@ var _ = require('lodash');
 _.str =require('underscore.string');
 
 var instagram_links = [];
-// var Instagram.deleteInstagramSubs = function(callback){
-//     var url = _.str.sprintf(
-//         config.instagram.DELETE_SUBS,
-//         config.instagram.CLIENT_SECRET,
-//         config.instagram.CLIENT_ID
-//     );
-//     request.del(url, function(err, res, body){
-//         callback();
-//     });
-// };
-
-// var Instagram.getInstagramSubs = function(callback){
-//     var sub_data = {};
-//     var url = _.str.sprintf(
-//         config.instagram.GET_SUBS_URL,
-//         config.instagram.CLIENT_SECRET,
-//         config.instagram.CLIENT_ID
-//     );
-//     request(url, function(err, res, body){
-//         callback(JSON.parse(body));
-//     });
-// };
-
-// Instagram.set('client_id', config.instagram.CLIENT_ID);
-// Instagram.set('client_secret', config.instagram.CLIENT_SECRET);
-// console.log(config.instagram.CLIENT_ID);
-// console.log(config.instagram.CLIENT_SECRET);
-// Instagram.set('callback_url', config.instagram.CALLBACK_URL);
-
 
 // Instagram.getInstagramSubs(function(sub_status){
 //     console.log('setting up subscriptions');
@@ -77,10 +48,6 @@ app.get('/', function(req, res){
 	res.render('index.jade');
 });
 
-app.get('/test', function(req, res){
-    res.render('test.jade');
-})
-
 Instagram.startGeoSub(function(){
     console.log('started instagram subscription');
 });
@@ -88,7 +55,6 @@ Instagram.startGeoSub(function(){
 app.get('/instagram_callback', function(req, res){
     console.log('challenge received.');
     console.log(req.query['hub.challenge']);
-    io.emit('console', req.query['hub challenge']);
     res.send(req.query['hub.challenge']);
 });
 
@@ -97,9 +63,8 @@ app.post('/instagram_callback', function(req, res){
     var url = _.str.sprintf(
         config.instagram.PHOTO_POST_URL, 
         req.body[0].object_id,
-        config.instagram.client_id
+        config.instagram.CLIENT_ID
     );
-    console.log(req.body);
     io.emit('igres', req.body);
     request(url, function(err, res, body){
         var results = _.map(JSON.parse(body).data, function(ig_post){
