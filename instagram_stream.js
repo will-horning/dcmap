@@ -38,6 +38,7 @@ var startGeoSub = function(callback){
     getInstagramSubs(function(sub_status){
         console.log('setting up subscriptions');
         deleteInstagramSubs(function(){
+            console.log('starting new sub');
             Instagram.media.subscribe({
                 lat: config.instagram.CENTER_LAT, 
                 lng: config.instagram.CENTER_LON, 
