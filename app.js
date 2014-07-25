@@ -3,7 +3,6 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var bodyParser = require('body-parser');
-var classifyPoint = require('robust-point-in-polygon');
 var config = require('./config');
 var request = require('request');
 var Instagram = require('./instagram_stream')
@@ -13,9 +12,9 @@ _.str =require('underscore.string');
 var instagram_links = [];
 // var Instagram.deleteInstagramSubs = function(callback){
 //     var url = _.str.sprintf(
-//         config.instagram.delete_subs,
-//         config.instagram.client_secret,
-//         config.instagram.client_id
+//         config.instagram.DELETE_SUBS,
+//         config.instagram.CLIENT_SECRET,
+//         config.instagram.CLIENT_ID
 //     );
 //     request.del(url, function(err, res, body){
 //         callback();
@@ -38,16 +37,16 @@ var instagram_links = [];
 // Instagram.set('client_secret', config.instagram.CLIENT_SECRET);
 // console.log(config.instagram.CLIENT_ID);
 // console.log(config.instagram.CLIENT_SECRET);
-// Instagram.set('callback_url', 'http://dcmap.herokuapp.com/callback');
+// Instagram.set('callback_url', config.instagram.CALLBACK_URL);
 
 
 // Instagram.getInstagramSubs(function(sub_status){
 //     console.log('setting up subscriptions');
 //     Instagram.deleteInstagramSubs(function(){
 //         Instagram.media.subscribe({
-//             lat: 38.99537317916349, 
-//             lng: -77.0409607887268, 
-//             radius: 5000
+//             lat: config.instagram.CENTER_LAT, 
+//             lng: config.instagram.CENTER_LON, 
+//             radius: config.instagram.RADIUS
 //         });
 //     });
 // });
