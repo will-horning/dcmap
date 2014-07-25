@@ -5,17 +5,17 @@ var _ = require('lodash');
 _.str =require('underscore.string');
 
 
-Instagram.set('client_id', config.instagram.client_id);
-Instagram.set('client_secret', config.instagram.client_secret);
-console.log(config.instagram.client_id);
-console.log(config.instagram.client_secret);
-Instagram.set('callback_url', 'http://dcmap.herokuapp.com/instagram_callback');
+Instagram.set('client_id', config.instagram.CLIENT_ID);
+Instagram.set('client_secret', config.instagram.CLIENT_SECRET);
+console.log(config.instagram.CLIENT_ID);
+console.log(config.instagram.CLIENT_SECRET);
+Instagram.set('callback_url', config.instagram.CALLBACK_URL);
 
 var deleteInstagramSubs = function(callback){
     var url = _.str.sprintf(
-        config.instagram.delete_subs,
-        config.instagram.client_secret,
-        config.instagram.client_id
+        config.instagram.DELETE_SUBS_URL,
+        config.instagram.CLIENT_SECRET,
+        config.instagram.CLIENT_ID
     );
     request.del(url, function(err, res, body){
         callback();
@@ -25,9 +25,9 @@ var deleteInstagramSubs = function(callback){
 var getInstagramSubs = function(callback){
     var sub_data = {};
     var url = _.str.sprintf(
-        config.instagram.get_subs,
-        config.instagram.client_secret,
-        config.instagram.client_id
+        config.instagram.GET_SUBS_URL,
+        config.instagram.CLIENT_SECRET,
+        config.instagram.CLIENT_ID
     );
     request(url, function(err, res, body){
         callback(JSON.parse(body));
@@ -39,9 +39,9 @@ var startGeoSub = function(callback){
         console.log('setting up subscriptions');
         deleteInstagramSubs(function(){
             Instagram.media.subscribe({
-                lat: 38.90538244174961, 
-                lng: -77.0416259765625, 
-                radius: 5000
+                lat: config.instagram.CENTER_LAT, 
+                lng: config.instagram.CENTER_LON, 
+                radius: config.instagram.RADIUS
             });
         });
     });    
