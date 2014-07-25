@@ -19,7 +19,7 @@ var tweetIcon = L.divIcon({
     html: _.str.sprintf('<img style="width:24px;" src="%s">', config.twitter.iconPath)
 });
 
-var addTweetMarker = function(tweet, map, markerQueue){
+var addMarker = function(tweet, map, markerQueue){
     var latlon = [
         tweet.coordinates.coordinates[1],
         tweet.coordinates.coordinates[0]
@@ -29,7 +29,7 @@ var addTweetMarker = function(tweet, map, markerQueue){
         maxWidth: 600,
         maxHeight: 300,
         className: 'myPopup'
-    }).setContent('<div class="tweetPopup" style="width:500px;" id="' + tweet.id_str + '"></div>');
+    }).setContent('<div class="tweetPopup" style="width:530px;" id="' + tweet.id_str + '"></div>');
     var marker = L.marker(latlon, {icon: tweetIcon}
         ).bindPopup(mypopup).addTo(map);
     markerQueue.push(marker);
@@ -37,3 +37,8 @@ var addTweetMarker = function(tweet, map, markerQueue){
         map.removeLayer(markerQueue.shift());
     }
 };
+
+module.exports = {
+    addMarker: addMarker,
+    addCircleMarker: addCircleMarker
+}

@@ -43,7 +43,6 @@ $(document).ready(function(){
 
     var sidebarOpenControl = new L.Control.SidebarOpen();
 
-    // $('.close').toggle();
 
     sidebar.on('show', function(){
         sidebarOpenControl.removeFrom(map);    
@@ -54,7 +53,6 @@ $(document).ready(function(){
   
     })
 
-
     map.addControl(sidebarOpenControl);
             $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>')
 
@@ -64,8 +62,8 @@ $(document).ready(function(){
 
 
 
-    
-        map.on('popupopen', function(e){
+
+    map.on('popupopen', function(e){
         if($(e.popup._content).hasClass('tweetPopup')){
             var tweet_id_str = $(e.popup._content).attr('id');
             $('.leaflet-popup').css('opacity', '0');

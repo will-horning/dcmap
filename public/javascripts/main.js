@@ -7540,7 +7540,7 @@ $(document).ready(function(){
 
 
 
-    
+
         map.on('popupopen', function(e){
         if($(e.popup._content).hasClass('tweetPopup')){
             var tweet_id_str = $(e.popup._content).attr('id');
@@ -7632,6 +7632,7 @@ $(document).ready(function(){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
+var addCircleMarker = require('./tweet_markers').addCircleMarker;
 
 var instagramIcon = L.divIcon({
     className: 'markericon',
@@ -7639,7 +7640,7 @@ var instagramIcon = L.divIcon({
     html: _.str.sprintf('<img style="width:24px;" src="%s">', config.instagram.iconPath)
 });
 
-var addInstagramMarker = function(iframe, map, latlon, markerQueue){
+var addMarker = function(iframe, map, latlon, markerQueue){
         addCircleMarker(map, latlon);
         var mypopup = L.popup({
             maxWidth: 600,
@@ -7655,7 +7656,11 @@ var addInstagramMarker = function(iframe, map, latlon, markerQueue){
         ).bindPopup(mypopup).addTo(map);
         markerQueue.push(marker);
 };
-},{"./client_config":3,"lodash":1,"underscore.string":2}],6:[function(require,module,exports){
+
+module.exports = {
+    addMarker: addMarker
+}
+},{"./client_config":3,"./tweet_markers":6,"lodash":1,"underscore.string":2}],6:[function(require,module,exports){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
@@ -7677,7 +7682,7 @@ var tweetIcon = L.divIcon({
     html: _.str.sprintf('<img style="width:24px;" src="%s">', config.twitter.iconPath)
 });
 
-var addTweetMarker = function(tweet, map, markerQueue){
+var addMarker = function(tweet, map, markerQueue){
     var latlon = [
         tweet.coordinates.coordinates[1],
         tweet.coordinates.coordinates[0]
@@ -7687,7 +7692,7 @@ var addTweetMarker = function(tweet, map, markerQueue){
         maxWidth: 600,
         maxHeight: 300,
         className: 'myPopup'
-    }).setContent('<div class="tweetPopup" style="width:500px;" id="' + tweet.id_str + '"></div>');
+    }).setContent('<div class="tweetPopup" style="width:550px;" id="' + tweet.id_str + '"></div>');
     var marker = L.marker(latlon, {icon: tweetIcon}
         ).bindPopup(mypopup).addTo(map);
     markerQueue.push(marker);
@@ -7696,4 +7701,8 @@ var addTweetMarker = function(tweet, map, markerQueue){
     }
 };
 
+module.exports = {
+    addMarker: addMarker,
+    addCircleMarker: addCircleMarker
+}
 },{"./client_config":3,"lodash":1,"underscore.string":2}]},{},[4])

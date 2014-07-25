@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
+var addCircleMarker = require('./tweet_markers').addCircleMarker;
 
 var instagramIcon = L.divIcon({
     className: 'markericon',
@@ -8,7 +9,7 @@ var instagramIcon = L.divIcon({
     html: _.str.sprintf('<img style="width:24px;" src="%s">', config.instagram.iconPath)
 });
 
-var addInstagramMarker = function(iframe, map, latlon, markerQueue){
+var addMarker = function(iframe, map, latlon, markerQueue){
         addCircleMarker(map, latlon);
         var mypopup = L.popup({
             maxWidth: 600,
@@ -24,3 +25,7 @@ var addInstagramMarker = function(iframe, map, latlon, markerQueue){
         ).bindPopup(mypopup).addTo(map);
         markerQueue.push(marker);
 };
+
+module.exports = {
+    addMarker: addMarker
+}

@@ -25,19 +25,19 @@ var instagram_links = [];
 // var Instagram.getInstagramSubs = function(callback){
 //     var sub_data = {};
 //     var url = _.str.sprintf(
-//         config.instagram.get_subs,
-//         config.instagram.client_secret,
-//         config.instagram.client_id
+//         config.instagram.GET_SUBS_URL,
+//         config.instagram.CLIENT_SECRET,
+//         config.instagram.CLIENT_ID
 //     );
 //     request(url, function(err, res, body){
 //         callback(JSON.parse(body));
 //     });
 // };
 
-// Instagram.set('client_id', config.instagram.client_id);
-// Instagram.set('client_secret', config.instagram.client_secret);
-// console.log(config.instagram.client_id);
-// console.log(config.instagram.client_secret);
+// Instagram.set('client_id', config.instagram.CLIENT_ID);
+// Instagram.set('client_secret', config.instagram.CLIENT_SECRET);
+// console.log(config.instagram.CLIENT_ID);
+// console.log(config.instagram.CLIENT_SECRET);
 // Instagram.set('callback_url', 'http://dcmap.herokuapp.com/callback');
 
 
@@ -57,15 +57,8 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 
-// var twitter_stream = require('./twitter_stream.js').createTwitterStream();
-// twitter_stream.on('tweet', function(tweet){
-//     if(tweet.coordinates){
-//         var lonlat = tweet.coordinates.coordinates;
-//         if(classifyPoint(config.dc_bounding_polygon, lonlat) < 1){
-//             io.emit('tweet', tweet);
-//         }
-//     }
-// });
+var twitter_stream = require('./twitter_stream.js').startTwitterStream(io);
+
 
 app.get('/getsubs', function(req, res){
     Instagram.getInstagramSubs(function(sub_status){
@@ -103,7 +96,7 @@ app.get('/instagram_callback', function(req, res){
 app.post('/instagram_callback', function(req, res){
     console.log('callback received.');
     var url = _.str.sprintf(
-        config.instagram.photo_post_url, 
+        config.instagram.PHOTO_POST_URL, 
         req.body[0].object_id,
         config.instagram.client_id
     );
