@@ -9,7 +9,8 @@ $(document).ready(function(){
 
     var markerQueue = [];
     var layers = {};
-
+    layers.tweets = L.layerGroup().addTo(map)
+    layers.instagrams = L.layerGroup().addTo(map)
     var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false });
     map.setView(config.MAP_CENTER, config.MAP_ZOOM);
     var controls = require('./controls')(map);
@@ -31,6 +32,15 @@ $(document).ready(function(){
         }
         else{
             map.addLayer(layers.tweets);
+        }
+    });
+
+    $('#instagrams').click(function(){
+        if(map.hasLayer(layers.instagrams)){
+            map.removeLayer(layers.instagrams);
+        }
+        else{
+            map.addLayer(layers.instagrams);
         }
     });
 
@@ -61,39 +71,40 @@ $(document).ready(function(){
     //     }
     // });
 
-    // $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){   
-    //     layers.camera_layer = L.geoJson(data, {
-    //         pointToLayer: function(feature, latlng){
-    //             return new FadeMarker(latlng, {icon: L.divIcon({
-    //                 className: 'foo',
-    //                 html: '<img style="width:24px;" src="/images/camera_icon.png">',
-    //                 iconSize: [16,16]
-    //             })});
-    //         }
-    //     }).bindPopup('Traffic Camera');
-    // });
+    $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){   
+        layers.camera_layer = L.geoJson(data, {
+            pointToLayer: function(feature, latlng){
+                return new FadeMarker(latlng, {icon: L.divIcon({
+                    className: 'foo',
+                    html: '<img style="width:24px;" src="/images/camera_icon.png">',
+                    iconSize: [16,16]
+                })});
+            }
+        }).bindPopup('Traffic Camera');
+    });
 
     var socket = io();
     socket.on('tweet', function(tweet){
         console.log(tweet);
         var m = tweet_markers.addMarker(tweet, map, markerQueue);
+        layers.tweets.addLayer(m);
     });
 
     socket.on('ig_callback', function(results){
         _.forEach(results, function(post){
             var html = results[0][0];
             var latlon = results[0][1];
-            instagram_markers.addMarker(html, map, latlon, markerQueue);        
+            var marker = addMarker(html, map, latlon, markerQueue);        
+            layers.instagrams.addLayer(marker);
         });
     });
 
 
-    var t = {coordinates: {coordinates: [-77.0409607887268, 38.99537317916349]},
-        id_str: 'Foo'
-    }
-        layers.tweets = L.layerGroup();
-        layers.tweets.addTo(map);
-    var m = tweet_markers.addMarker(t, map, markerQueue);
-    layers.tweets.addLayer(m);
+    // var t = {coordinates: {coordinates: [-77.0409607887268, 38.99537317916349]},
+    //     id_str: 'Foo'
+    // }
+
+    // var m = tweet_markers.addMarker(t, map, markerQueue);
+    // layers.tweets.addLayer(m);
 });
 

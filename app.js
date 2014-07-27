@@ -27,7 +27,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 
-// var twitter_stream = require('./twitter_stream.js').startTwitterStream(io);
+var twitter_stream = require('./twitter_stream.js').startTwitterStream(io);
 
 
 app.get('/getsubs', function(req, res){
