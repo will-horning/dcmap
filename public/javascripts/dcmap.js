@@ -11,6 +11,7 @@ $(document).ready(function(){
     map.setView(config.MAP_CENTER, config.MAP_ZOOM);
     
     var markerQueue = [];
+    var igMarkerQueue = [];
     var layers = {};
     layers.tweets = L.layerGroup().addTo(map)
     layers.instagrams = L.layerGroup().addTo(map)
@@ -48,10 +49,8 @@ $(document).ready(function(){
     });
 
     map.on('popupopen', function(e){
-        console.log('popup');
         if($(e.popup._content).hasClass('tweetPopup')){
             var tweet_id_str = $(e.popup._content).attr('id');
-            console.log(tweet_id_str);
             $('.leaflet-popup').css('opacity', '0');
             twttr.widgets.createTweetEmbed(tweet_id_str, $('#' + tweet_id_str)[0], function(){
                 e.popup._updateLayout(); 
@@ -99,7 +98,7 @@ $(document).ready(function(){
         _.forEach(results, function(post){
             var html = results[0][0];
             var latlon = results[0][1];
-            var marker = addMarker(html, map, latlon, markerQueue);        
+            var marker = addMarker(html, map, latlon, igMarkerQueue);        
             layers.instagrams.addLayer(marker);
         });
     });
