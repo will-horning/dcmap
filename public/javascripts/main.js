@@ -7657,7 +7657,7 @@ $(document).ready(function(){
         _.forEach(results, function(post){
             var html = results[0][0];
             var latlon = results[0][1];
-            var marker = addMarker(html, map, latlon, igMarkerQueue);        
+            var marker = instagram_markers.addMarker(html, map, latlon, igMarkerQueue);        
             layers.instagrams.addLayer(marker);
         });
     });
