@@ -7466,6 +7466,9 @@
 var _ = require('lodash');
 _.str = require('underscore.string');
 
+var oldOnAdd = L.Marker.prototype.onAdd;
+var oldOnRemove = L.Marker.prototype.onRemove;
+
 module.exports = {
     addCircleMarker: function(map, latlon){
         var circle_marker = L.marker(
@@ -7477,9 +7480,9 @@ module.exports = {
         })}).addTo(map);
         setTimeout(function() {map.removeLayer(circle_marker);}, 2000);
     },
+    
     FadeMarker: L.Marker.extend({
         onAdd: function(map){
-            console.log(L);
             L.Marker.prototype.onAdd.call(this, map);
             $(this._icon).removeClass('fadeOut').addClass('fadeIn');
             $(this._icon).css('opacity', 1);
@@ -7487,9 +7490,11 @@ module.exports = {
         onRemove: function(map){
             $(this._icon).removeClass('fadeIn').addClass('fadeOut');
             $(this._icon).css('opacity', 0);
+            console.log(this);
+            var this_marker = this;
             setTimeout(function(){
-                L.Marker.prototype.onRemove.call(this, map);
-            }, 2000);
+                L.Marker.prototype.onRemove.call(this_marker, map)
+            }, 500);
     }})
 }
 },{"lodash":1,"underscore.string":2}],4:[function(require,module,exports){
@@ -7741,11 +7746,6 @@ var addMarker = function(tweet, map, markerQueue){
     var marker = new base_markers.FadeMarker(latlon, {icon: tweetIcon}).bindPopup(popup);
     markerQueue.push(marker);
     return marker;
-    // setTimeout(function(){
-    //     map.removeLayer(marker);
-    // }, 3000);
-    // var marker = L.marker(latlon, {icon: tweetIcon}
-    //     ).bindPopup(mypopup).addTo(map);
 };
 
 module.exports = {

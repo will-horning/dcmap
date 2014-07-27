@@ -29,11 +29,6 @@ var addMarker = function(tweet, map, markerQueue){
     var marker = new base_markers.FadeMarker(latlon, {icon: tweetIcon}).bindPopup(popup);
     markerQueue.push(marker);
     return marker;
-    // setTimeout(function(){
-    //     map.removeLayer(marker);
-    // }, 3000);
-    // var marker = L.marker(latlon, {icon: tweetIcon}
-    //     ).bindPopup(mypopup).addTo(map);
 };
 
 module.exports = {
