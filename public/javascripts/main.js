@@ -7562,12 +7562,15 @@ var FadeMarker = require('./base_markers').FadeMarker;
 _.str =require('underscore.string');
 $(document).ready(function(){
 
+    var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false });
+    map.setView(config.MAP_CENTER, config.MAP_ZOOM);
+    
     var markerQueue = [];
     var layers = {};
     layers.tweets = L.layerGroup().addTo(map)
     layers.instagrams = L.layerGroup().addTo(map)
-    var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false });
-    map.setView(config.MAP_CENTER, config.MAP_ZOOM);
+    
+
     var controls = require('./controls')(map);
 
     // var heat = L.heatLayer(crime_vals.slice(0,10000), {radius: 10, maxZoom: 18}).addTo(map);
