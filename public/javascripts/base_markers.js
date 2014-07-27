@@ -25,7 +25,6 @@ module.exports = {
         onRemove: function(map){
             $(this._icon).removeClass('fadeIn').addClass('fadeOut');
             $(this._icon).css('opacity', 0);
-            console.log(this);
             var this_marker = this;
             setTimeout(function(){
                 L.Marker.prototype.onRemove.call(this_marker, map)
