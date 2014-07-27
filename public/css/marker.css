@@ -17,7 +17,12 @@
 {
     background-color: #F4F4F4;
 }
-
+.leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
+    -webkit-transition: -webkit-transform 1.0s ease-out, opacity 1.0s ease-in;
+    -moz-transition: -moz-transform 1.0s ease-out, opacity 1.0s ease-in;
+    -o-transition: -o-transform 1.0s ease-out, opacity 1.0s ease-in;
+    transition: transform 1.0s ease-out, opacity 1.0s ease-in;
+    }
 
 .metroicon {
     width: 16px;
@@ -42,6 +47,8 @@
     -webkit-animation: fadeout 2s;
 }
 
+
+
 @keyframes fadeout {
     from {opacity: 1;}
     to {opacity: 0;}
@@ -54,13 +61,28 @@
     border:solid 2px #fff; 
     width:80px;
     height:80px;  
-    opacity:0;
+    opacity:1;
 
-    -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -moz-animation: fadein 2s; /* Firefox */
-    -ms-animation: fadein 2s; /* Internet Explorer */
-    -o-animation: fadein 2s; /* Opera */
-    animation: fadein 2s;
+    -webkit-animation: fadeout 2s; /* Safari and Chrome */
+    -moz-animation: fadeout 2s; /* Firefox */
+    -ms-animation: fadeout 2s; /* Internet Explorer */
+    -o-animation: fadeout 2s; /* Opera */
+    animation: fadeout 2s;
+}
+
+.fadeIn {
+    animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s; /* Firefox */
+    -webkit-animation: fadein 0.5s; /* Safari and Chrome */
+    -o-animation: fadein 0.5s; /* Opera */
+}
+
+
+.fadeOut {   
+    animation: fadeout 0.5s;
+    -moz-animation: fadeout 0.5s; /* Firefox */
+    -webkit-animation: fadeout 0.5s; /* Safari and Chrome */
+    -o-animation: fadeout 0.5s; /* Opera */
 }
 
 
@@ -77,8 +99,8 @@
 
 /* Safari and Chrome */
 @-webkit-keyframes fadein {
-    from { opacity: 1; }
-    to   { opacity: 0;  }
+    from { opacity: 0; }
+    to   { opacity: 1;  }
 }
 
 /* Internet Explorer */
@@ -91,4 +113,34 @@
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}​
+
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Firefox */
+@-moz-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0;  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}​
+
+/* Opera */
+@-o-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
 }​

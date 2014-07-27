@@ -7463,53 +7463,70 @@
 }(this, String);
 
 },{}],3:[function(require,module,exports){
+var _ = require('lodash');
+_.str = require('underscore.string');
+
+module.exports = {
+    addCircleMarker: function(map, latlon){
+        var circle_marker = L.marker(
+            latlon, 
+            {icon: L.divIcon({
+                className: 'circleMarker',
+                iconAnchor: [24, 24],
+                iconSize: [48,48]
+        })}).addTo(map);
+        setTimeout(function() {map.removeLayer(circle_marker);}, 2000);
+    },
+    FadeMarker: L.Marker.extend({
+        onAdd: function(map){
+            console.log(L);
+            L.Marker.prototype.onAdd.call(this, map);
+            $(this._icon).removeClass('fadeOut').addClass('fadeIn');
+            $(this._icon).css('opacity', 1);
+        },
+        onRemove: function(map){
+            $(this._icon).removeClass('fadeIn').addClass('fadeOut');
+            $(this._icon).css('opacity', 0);
+            setTimeout(function(){
+                L.Marker.prototype.onRemove.call(this, map);
+            }, 2000);
+    }})
+}
+},{"lodash":1,"underscore.string":2}],4:[function(require,module,exports){
 var config = {};
-config.markerQueueSize = 30;
-config.mapCenter = [38.907, -77.0368];
-config.mapZoom = 11;
+config.MARKER_QUEUE_SIZE = 30;
+config.MAP_CENTER = [38.907, -77.0368];
+config.MAP_ZOOM = 11;
 config.instagram = {}
 config.twitter = {}
-config.instagram.iconPath = "/images/mascoticons/32x32/instagram-32x32.png";
-config.twitter.iconPath = "/images/mascoticons/32x32/twitter-32x32.png";
+config.instagram.ICON_PATH = "/images/mascoticons/32x32/instagram-32x32.png";
+config.twitter.ICON_PATH = "/images/mascoticons/32x32/twitter-32x32.png";
+config.SIDEBAR_WIDTH = '250px';
 
 module.exports = config;
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var config = require('./client_config');
-var tweet_markers = require('./tweet_markers');
-var instagram_markers = require('./instagram_markers');
-var _ = require('lodash');
 
-_.str =require('underscore.string');
-$(document).ready(function(){
+module.exports = function(map){
+    L.control.fullscreen({position: 'topright'}).addTo(map);
 
-    var markerQueue = [];
-    var layers = {};
-
-    var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false })
-
-    map.setView(config.mapCenter, config.mapZoom);
-    // var heat = L.heatLayer(crime_vals.slice(0,10000), {radius: 10, maxZoom: 18}).addTo(map);
-
-    var sidebar = L.control.sidebar('sidebar', {position:'left'});
+    sidebar = L.control.sidebar('sidebar', {position:'left', autoPan: false});
     map.addControl(sidebar);
-
+    $('.leaflet-sidebar').css('width', config.SIDEBAR_WIDTH);
 
     L.Control.SidebarOpen = L.Control.extend({
-        options: {
-            position: 'topleft'
-        },
-
+        options: {position: 'topleft'},
         onAdd: function (map) {
             var controlDiv = L.DomUtil.create('div', 'leaflet-control-sidebar-open');
             var glyphspan = $('<span></span>');
-            glyphspan.addClass('glyphicon')
-            glyphspan.addClass('glyphicon-cog')
+            glyphspan.addClass('glyphicon');
+            glyphspan.addClass('glyphicon-cog');
             L.DomEvent
                 .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
                 .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
             .addListener(controlDiv, 'click', function(){
                 sidebar.toggle();            
-            })
+            });
 
             var controlUI = L.DomUtil.create('div', 'leaflet-control-sidebar-open-interior', controlDiv);
             controlUI.title = 'Map Commands';
@@ -7517,31 +7534,62 @@ $(document).ready(function(){
         }
     });
 
-    var sidebarOpenControl = new L.Control.SidebarOpen();
+    sidebarOpenControl = new L.Control.SidebarOpen();
 
-    // $('.close').toggle();
 
     sidebar.on('show', function(){
         sidebarOpenControl.removeFrom(map);    
-    })
+    });
     sidebar.on('hidden', function(){
         sidebarOpenControl.addTo(map);  
-                    $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>')
+                    $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>');
   
-    })
-
+    });
 
     map.addControl(sidebarOpenControl);
-            $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>')
+            $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>');
 
+    module.sidebar = sidebar;
+    module.sidebarOpenControl = sidebarOpenControl;
+}
+},{"./client_config":4}],6:[function(require,module,exports){
+var config = require('./client_config');
+var tweet_markers = require('./tweet_markers');
+var instagram_markers = require('./instagram_markers');
+var _ = require('lodash');
+var FadeMarker = require('./base_markers').FadeMarker;
 
+_.str =require('underscore.string');
+$(document).ready(function(){
 
-    L.control.fullscreen({position: 'topright'}).addTo(map);
+    var markerQueue = [];
+    var layers = {};
 
+    var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false });
+    map.setView(config.MAP_CENTER, config.MAP_ZOOM);
+    var controls = require('./controls')(map);
 
+    // var heat = L.heatLayer(crime_vals.slice(0,10000), {radius: 10, maxZoom: 18}).addTo(map);
 
+    $('#cameras').click(function(){
+        if(map.hasLayer(layers.camera_layer)){
+            map.removeLayer(layers.camera_layer);
+        }
+        else{
+            map.addLayer(layers.camera_layer);
+        }
+    });
 
-        map.on('popupopen', function(e){
+    $('#tweets').click(function(){
+        if(map.hasLayer(layers.tweets)){
+            map.removeLayer(layers.tweets);
+        }
+        else{
+            map.addLayer(layers.tweets);
+        }
+    });
+
+    map.on('popupopen', function(e){
         if($(e.popup._content).hasClass('tweetPopup')){
             var tweet_id_str = $(e.popup._content).attr('id');
             $('.leaflet-popup').css('opacity', '0');
@@ -7549,160 +7597,141 @@ $(document).ready(function(){
                 e.popup._updateLayout(); 
                 e.popup._updatePosition();
                 $('.leaflet-popup').css('opacity', '1');
+                $('.leaflet-popup').css('align', 'center');
             });  
         }
     });
-
-    var addMetroLines = function(map){
-        $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
-            L.geoJson(data, {
-                style: function(feature) {
-                    switch (feature.properties.NAME) {
-                        case 'blue': return {color: "#0000ff"};
-                        case 'red':   return {color: "#ff0000"};
-                        case 'orange': return {color: "#ff6600"};
-                        case 'yellow': return {color: "#ffff00"};
-                        case 'green': return {color: "#006600"};
-                        default: return {color: "#ffffff"};
-                    }
-                }
-            }).addTo(map);
-        })
-    }
     
-    map.on('zoomend', function() {
-        console.log(layers);
-        if (map.getZoom() > 14) {
-            console.log(layers.camera_layer);
-            map.addLayer(layers.camera_layer);
-        } else {
-            map.removeLayer(layers.camera_layer);
-        }
-    });
+    // map.on('zoomend', function(){
+    //     console.log('zoooo');
+    // });
 
-    $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){
-        var camera_layer = L.geoJson(data, {
-            pointToLayer: function(feature, latlng){
-                return L.marker(latlng, {icon: L.icon({
-                    iconUrl: '/images/camera_icon.png',
-                    iconSize: [24, 24],
-                    iconAnchor: [12, 12]
-                })});
-            }
-        }).bindPopup('Traffic Camera');
-        layers.camera_layer = camera_layer;
-    })
+    // map.on('zoomend', function() {
+    //     console.log(layers);
+    //     if (map.getZoom() > 14) {
+    //         console.log(layers.camera_layer);
+    //         map.addLayer(layers.camera_layer);
+    //     } else {
+    //         map.removeLayer(layers.camera_layer);
+    //     }
+    // });
 
-    //     $.getJSON('/javascripts/geojson/metro_stations.geojson', function(data){
-    //         var metro_layer = L.geoJson(data, {
-    //             pointToLayer: function(feature, latlng){
-    //                 return L.marker(latlng, {icon: L.icon({
-    //                     iconUrl: '/images/metro_icon.gif',
-    //                     iconSize: [16, 16],
-    //                     iconAnchor: [8, 8]
-    //                 })}).bindPopup(feature['properties']['NAME']);
-    //             }
-    //         }).addTo(map);
-    //     })
-    
-
+    // $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){   
+    //     layers.camera_layer = L.geoJson(data, {
+    //         pointToLayer: function(feature, latlng){
+    //             return new FadeMarker(latlng, {icon: L.divIcon({
+    //                 className: 'foo',
+    //                 html: '<img style="width:24px;" src="/images/camera_icon.png">',
+    //                 iconSize: [16,16]
+    //             })});
+    //         }
+    //     }).bindPopup('Traffic Camera');
+    // });
 
     var socket = io();
     socket.on('tweet', function(tweet){
         console.log(tweet);
-        tweet_markers.addMarker(tweet, map, markerQueue);
+        var m = tweet_markers.addMarker(tweet, map, markerQueue);
     });
 
     socket.on('ig_callback', function(results){
-        // console.log('ig post received.');
-        // console.log(results);
         _.forEach(results, function(post){
             var html = results[0][0];
             var latlon = results[0][1];
-            // console.log(post);
             instagram_markers.addMarker(html, map, latlon, markerQueue);        
-        })
+        });
     });
 
 
-
+    var t = {coordinates: {coordinates: [-77.0409607887268, 38.99537317916349]},
+        id_str: 'Foo'
+    }
+        layers.tweets = L.layerGroup();
+        layers.tweets.addTo(map);
+    var m = tweet_markers.addMarker(t, map, markerQueue);
+    layers.tweets.addLayer(m);
 });
 
-},{"./client_config":3,"./instagram_markers":5,"./tweet_markers":6,"lodash":1,"underscore.string":2}],5:[function(require,module,exports){
+
+},{"./base_markers":3,"./client_config":4,"./controls":5,"./instagram_markers":7,"./tweet_markers":8,"lodash":1,"underscore.string":2}],7:[function(require,module,exports){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
-var addCircleMarker = require('./tweet_markers').addCircleMarker;
+var base_markers = require('./base_markers');
 
 var instagramIcon = L.divIcon({
     className: 'markericon',
     iconAnchor: [12, 12],
-    html: _.str.sprintf('<img style="width:24px;" src="%s">', config.instagram.iconPath)
+    html: _.str.sprintf('<img style="width:24px;" src="%s">', config.instagram.ICON_PATH)
 });
 
-var addMarker = function(iframe, map, latlon, markerQueue){
-        addCircleMarker(map, latlon);
+var popupContent = '<div class="instagramPopup" style="width:px;">' + 
+    '<iframe style="width:500px;height:630px;" src="%s"></iframe></div>';
+
+var addMarker = function(iframe_src, map, latlon, markerQueue){
+        base_markers.addCircleMarker(map, latlon);
         var mypopup = L.popup({
             maxWidth: 600,
             maxHeight: 800,
             className: 'myPopup'
-        }).setContent('<div class="instagramPopup" style="width:500px;"><iframe style="width:500px;height:630px;" src="' + iframe + '"></iframe></div>');
-        if(markerQueue.length > config.markerQueueSize){
+        }).setContent(_.str.sprintf(popupContent, iframe_src));
+        if(markerQueue.length > config.MARKER_QUEUE_SIDE){
             map.removeLayer(markerQueue.shift());
         }
-        var marker = L.marker(
-            latlon, 
-            {icon: instagramIcon}
-        ).bindPopup(mypopup).addTo(map);
+        var marker = new base_markers.FadeMarker(
+            latlon,
+            {icon: instagramIcon
+        }).bindPopup(mypopup).addTo(map);
+        // var marker = L.marker(
+        //     latlon, 
+        //     {icon: instagramIcon}
+        // ).bindPopup(mypopup).addTo(map);
         markerQueue.push(marker);
 };
 
 module.exports = {
     addMarker: addMarker
 }
-},{"./client_config":3,"./tweet_markers":6,"lodash":1,"underscore.string":2}],6:[function(require,module,exports){
+},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}],8:[function(require,module,exports){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
-
-var addCircleMarker = function(map, latlon){
-    var circle_marker = L.marker(
-        latlon, 
-        {icon: L.divIcon({
-            className: 'circleMarker',
-            iconAnchor: [24, 24],
-            iconSize: [48,48]
-    })}).addTo(map);
-    setInterval(function() {map.removeLayer(circle_marker);}, 2000);
-};
+var base_markers = require('./base_markers');
 
 var tweetIcon = L.divIcon({
     className: 'markericon',
     iconAnchor: [12, 12],
-    html: _.str.sprintf('<img style="width:24px;" src="%s">', config.twitter.iconPath)
+    html: _.str.sprintf('<img style="width:24px;" src="%s">', config.twitter.ICON_PATH)
 });
 
+var tweetPopupContent = '<div class="tweetPopup" ' +
+    'style="width:510px;align=center;" id="%s"></div>';
+
 var addMarker = function(tweet, map, markerQueue){
+    if(markerQueue.length > 30){
+        map.removeLayer(markerQueue.shift());
+    }
     var latlon = [
         tweet.coordinates.coordinates[1],
         tweet.coordinates.coordinates[0]
     ];
-    addCircleMarker(map, latlon);
+    base_markers.addCircleMarker(map, latlon);
     var mypopup = L.popup({
         maxWidth: 600,
         maxHeight: 300,
         className: 'myPopup'
-    }).setContent('<div class="tweetPopup" style="width:550px;" id="' + tweet.id_str + '"></div>');
-    var marker = L.marker(latlon, {icon: tweetIcon}
-        ).bindPopup(mypopup).addTo(map);
+    }).setContent(_.str.sprintf(tweetPopupContent, tweet.id_str));
+    var marker = new base_markers.FadeMarker(latlon, {icon: tweetIcon});
     markerQueue.push(marker);
-    if(markerQueue.length > 30){
-        map.removeLayer(markerQueue.shift());
-    }
+    return marker;
+    // setTimeout(function(){
+    //     map.removeLayer(marker);
+    // }, 3000);
+    // var marker = L.marker(latlon, {icon: tweetIcon}
+    //     ).bindPopup(mypopup).addTo(map);
 };
 
 module.exports = {
-    addMarker: addMarker,
-    addCircleMarker: addCircleMarker
-}
-},{"./client_config":3,"lodash":1,"underscore.string":2}]},{},[4])
+    addMarker: addMarker
+};
+},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}]},{},[6])

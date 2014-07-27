@@ -2,17 +2,25 @@ doctype html
 html
   head
     title= title
+    link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
+    link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css")
+
     link(rel='stylesheet', href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css')
-    link(rel='stylesheet', href='/css/marker.css')
     link(rel='stylesheet', href='/css/L.Control.Sidebar.css')
     link(rel='stylesheet', href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/leaflet.fullscreen.css')
+    link(rel='stylesheet', href='/css/marker.css')
   body
     script(src='//platform.twitter.com/widgets.js')
     script(src='/socket.io/socket.io.js')
     #sidebar
+        #cameras
+            | Cameras.
+        #tweets
+            | Tweets.
     div(id='map', style="position:absolute;top:0;bottom:0;width:100%;")
-    script(src=src="//code.jquery.com/jquery-1.11.0.min.js")
+    script(src="//code.jquery.com/jquery-1.11.0.min.js")
 
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js')
     script(src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.0/leaflet-heat.js')
     script(src='/javascripts/L.Control.Sidebar.js')

@@ -5,7 +5,7 @@ var io = require('socket.io')(http);
 var bodyParser = require('body-parser');
 var config = require('./config');
 var request = require('request');
-var Instagram = require('./instagram_stream')
+var Instagram = require('./instagram_stream');
 var _ = require('lodash');
 _.str =require('underscore.string');
 
@@ -27,7 +27,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 
-var twitter_stream = require('./twitter_stream.js').startTwitterStream(io);
+// var twitter_stream = require('./twitter_stream.js').startTwitterStream(io);
 
 
 app.get('/getsubs', function(req, res){
@@ -48,9 +48,9 @@ app.get('/', function(req, res){
 	res.render('index.jade');
 });
 
-Instagram.startGeoSub(function(){
-    console.log('started instagram subscription');
-});
+// Instagram.startGeoSub(function(){
+//     console.log('started instagram subscription');
+// });
 
 app.get('/instagram_callback', function(req, res){
     console.log('challenge received.');
@@ -81,10 +81,14 @@ app.post('/instagram_callback', function(req, res){
                 instagram_links.push(result[0]);
                 return true;
             }
-        })
+        });
         console.log('sending callback');
         io.emit('ig_callback', results);
     });
+});
+
+app.get('/test', function(req, res){
+    res.render('test.jade');
 });
 
 http.listen(process.env.PORT || 5000, function(){
