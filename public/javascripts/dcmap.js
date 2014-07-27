@@ -48,8 +48,10 @@ $(document).ready(function(){
     });
 
     map.on('popupopen', function(e){
+        console.log('popup');
         if($(e.popup._content).hasClass('tweetPopup')){
             var tweet_id_str = $(e.popup._content).attr('id');
+            console.log(tweet_id_str);
             $('.leaflet-popup').css('opacity', '0');
             twttr.widgets.createTweetEmbed(tweet_id_str, $('#' + tweet_id_str)[0], function(){
                 e.popup._updateLayout(); 

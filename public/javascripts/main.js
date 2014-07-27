@@ -7603,8 +7603,10 @@ $(document).ready(function(){
     });
 
     map.on('popupopen', function(e){
+        console.log('popup');
         if($(e.popup._content).hasClass('tweetPopup')){
             var tweet_id_str = $(e.popup._content).attr('id');
+            console.log(tweet_id_str);
             $('.leaflet-popup').css('opacity', '0');
             twttr.widgets.createTweetEmbed(tweet_id_str, $('#' + tweet_id_str)[0], function(){
                 e.popup._updateLayout(); 
@@ -7684,7 +7686,7 @@ var popupContent = '<div class="instagramPopup" style="width:px;">' +
 
 var addMarker = function(iframe_src, map, latlon, markerQueue){
         base_markers.addCircleMarker(map, latlon);
-        var mypopup = L.popup({
+        var popup = L.popup({
             maxWidth: 600,
             maxHeight: 800,
             className: 'myPopup'
@@ -7695,7 +7697,7 @@ var addMarker = function(iframe_src, map, latlon, markerQueue){
         var marker = new base_markers.FadeMarker(
             latlon,
             {icon: instagramIcon
-        }).bindPopup(mypopup).addTo(map);
+        }).bindPopup(popup);
         // var marker = L.marker(
         //     latlon, 
         //     {icon: instagramIcon}
@@ -7731,12 +7733,12 @@ var addMarker = function(tweet, map, markerQueue){
         tweet.coordinates.coordinates[0]
     ];
     base_markers.addCircleMarker(map, latlon);
-    var mypopup = L.popup({
+    var popup = L.popup({
         maxWidth: 600,
         maxHeight: 300,
         className: 'myPopup'
     }).setContent(_.str.sprintf(tweetPopupContent, tweet.id_str));
-    var marker = new base_markers.FadeMarker(latlon, {icon: tweetIcon});
+    var marker = new base_markers.FadeMarker(latlon, {icon: tweetIcon}).bindPopup(popup);
     markerQueue.push(marker);
     return marker;
     // setTimeout(function(){

@@ -14,7 +14,7 @@ var popupContent = '<div class="instagramPopup" style="width:px;">' +
 
 var addMarker = function(iframe_src, map, latlon, markerQueue){
         base_markers.addCircleMarker(map, latlon);
-        var mypopup = L.popup({
+        var popup = L.popup({
             maxWidth: 600,
             maxHeight: 800,
             className: 'myPopup'
@@ -25,12 +25,13 @@ var addMarker = function(iframe_src, map, latlon, markerQueue){
         var marker = new base_markers.FadeMarker(
             latlon,
             {icon: instagramIcon
-        }).bindPopup(mypopup).addTo(map);
+        }).bindPopup(popup);
         // var marker = L.marker(
         //     latlon, 
         //     {icon: instagramIcon}
         // ).bindPopup(mypopup).addTo(map);
         markerQueue.push(marker);
+        return marker;
 };
 
 module.exports = {

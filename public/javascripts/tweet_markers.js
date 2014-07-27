@@ -21,12 +21,12 @@ var addMarker = function(tweet, map, markerQueue){
         tweet.coordinates.coordinates[0]
     ];
     base_markers.addCircleMarker(map, latlon);
-    var mypopup = L.popup({
+    var popup = L.popup({
         maxWidth: 600,
         maxHeight: 300,
         className: 'myPopup'
     }).setContent(_.str.sprintf(tweetPopupContent, tweet.id_str));
-    var marker = new base_markers.FadeMarker(latlon, {icon: tweetIcon});
+    var marker = new base_markers.FadeMarker(latlon, {icon: tweetIcon}).bindPopup(popup);
     markerQueue.push(marker);
     return marker;
     // setTimeout(function(){
