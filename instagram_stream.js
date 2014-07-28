@@ -9,6 +9,20 @@ Instagram.set('client_id', config.instagram.CLIENT_ID);
 Instagram.set('client_secret', config.instagram.CLIENT_SECRET);
 Instagram.set('callback_url', config.instagram.CALLBACK_URL);
 
+var addToQueue = function(db, new_instagram){
+    var queue = db.get('instagram_queue');
+    queue.insert(new_instagram, function(err, doc){
+        queue.find({}, function(err, instagrams){
+            if(instagrams.length > config.mongo.QUEUE_SIZE){
+                var sorted_instagrams = _.sortBy(instagrams, function(ig){
+                    return ig.created_time
+                });
+                queue.remove(sorted_tweets[0]);
+            }
+        })
+    });
+};
+
 var deleteInstagramSubs = function(callback){
     var url = _.str.sprintf(
         config.instagram.DELETE_SUBS_URL,
@@ -52,6 +66,7 @@ module.exports = function(app, io, db){
     app.get('/instagram_callback', function(req, res){
         res.send(req.query['hub.challenge']);
     });
+    var instagram_links = [];
 
     app.post('/instagram_callback', function(req, res){
         var url = _.str.sprintf(
