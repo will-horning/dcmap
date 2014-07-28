@@ -35,7 +35,7 @@ io.on('connection', function(socket){
 });
 
 // var twitter_stream = require('./twitter_stream.js')(io, db);
-// var instagram_stream = require('./instagram_stream')(app, io, db);
+var instagram_stream = require('./instagram_stream')(app, io, db);
 
 http.listen(process.env.PORT || 5000, function(){
 	console.log('Listening on *:' + process.env.PORT || 5000);
