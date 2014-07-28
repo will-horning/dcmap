@@ -1,8 +1,23 @@
 var Twitter = require('twit');
 var config = require('./config');
 var classifyPoint = require('robust-point-in-polygon');
+var _ = require('lodash');
 
-module.exports = function(io){
+var addToQueue = function(db, new_tweet){
+    var queue = db.get('tweet_queue');
+    queue.insert(new_tweet, function(err, doc){
+        queue.find({}, function(err, tweets){
+            if(tweets.length > config.mongo.QUEUE_SIZE){
+                var sorted_tweets = _.sortBy(tweets, function(t){
+                    return t.created_at
+                });
+                queue.remove(sorted_tweets[0]);
+            }
+        })
+    });
+};
+
+module.exports = function(io, db){
     var T = new Twitter({
         consumer_key: config.twitter.CONSUMER_KEY,
         consumer_secret: config.twitter.CONSUMER_SECRET,
@@ -27,6 +42,7 @@ module.exports = function(io){
             var lonlat = tweet.coordinates.coordinates;
             if(classifyPoint(config.DC_BOUNDING_POLYGON, lonlat) < 1){
                 io.emit('tweet', tweet);
+                addToQueue(db, tweet);
             }
         }
     });

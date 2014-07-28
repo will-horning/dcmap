@@ -1,7 +1,8 @@
 var config = {};
 
-
-
+config.mongo = {};
+config.mongo.MONGOHQ_URL = process.env['MONGOHQ_URL'];
+config.mongo.QUEUE_SIZE = 5;
 
 config.instagram = {};
 config.instagram.CLIENT_ID = process.env['INSTAGRAM_CLIENT_ID'];

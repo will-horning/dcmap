@@ -7562,22 +7562,51 @@ var tweet_markers = require('./tweet_markers');
 var instagram_markers = require('./instagram_markers');
 var _ = require('lodash');
 var FadeMarker = require('./base_markers').FadeMarker;
-
 _.str =require('underscore.string');
 $(document).ready(function(){
+
+
 
     var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false });
     map.setView(config.MAP_CENTER, config.MAP_ZOOM);
     
-    var markerQueue = [];
+    var tweetMarkerQueue = [];
     var igMarkerQueue = [];
     var layers = {};
-    layers.tweets = L.layerGroup().addTo(map)
-    layers.instagrams = L.layerGroup().addTo(map)
+    layers.tweets = L.layerGroup().addTo(map);
+    layers.instagrams = L.layerGroup().addTo(map);
     
+    $.get('/sidebar', function(data){
+        $('#sidebar').html(data);
+        $('#cameras').click(function(){
+            if(map.hasLayer(layers.camera_layer)){
+                map.removeLayer(layers.camera_layer);
+            }
+            else{
+                map.addLayer(layers.camera_layer);
+            }
+        });
+
+        $('#tweets').click(function(){
+            if(map.hasLayer(layers.tweets)){
+                map.removeLayer(layers.tweets);
+            }
+            else{
+                map.addLayer(layers.tweets);
+            }
+        });
+
+        $('#instagrams').click(function(){
+            if(map.hasLayer(layers.instagrams)){
+                map.removeLayer(layers.instagrams);
+            }
+            else{
+                map.addLayer(layers.instagrams);
+            }
+        });
+    });
 
     var controls = require('./controls')(map);
-
     // var heat = L.heatLayer(crime_vals.slice(0,10000), {radius: 10, maxZoom: 18}).addTo(map);
 
     $('#cameras').click(function(){
@@ -7647,13 +7676,22 @@ $(document).ready(function(){
     });
 
     var socket = io();
+
     socket.on('tweet', function(tweet){
         console.log(tweet);
-        var m = tweet_markers.addMarker(tweet, map, markerQueue);
+        var m = tweet_markers.addMarker(tweet, map, tweetMarkerQueue);
         layers.tweets.addLayer(m);
     });
 
-    socket.on('ig_callback', function(results){
+    socket.on('tweet_queue', function(tweet_queue){
+        _.forEach(tweet_queue, function(tweet){
+            var m = tweet_markers.addMarker(tweet, map, tweetMarkerQueue);
+            layers.tweets.addLayer(m);
+        });
+    });
+
+    socket.on('instagram', function(results){
+            console.log(results);
         _.forEach(results, function(post){
             var html = results[0][0];
             var latlon = results[0][1];
@@ -7662,6 +7700,14 @@ $(document).ready(function(){
         });
     });
 
+    // socket.on('instagram_queue', function(instagram_queue){
+    //     _.forEach(instagram_queue, function(instagram){
+    //         var html = results[0][0];
+    //         var latlon = results[0][1];
+    //         var m = instagram_markers.addMarker(instagram, map, instagramMarkerQueue);
+    //         layers.instagrams.addLayer(m);
+    //     });
+    // });
 
     // var t = {coordinates: {coordinates: [-77.0409607887268, 38.99537317916349]},
     //     id_str: 'Foo'

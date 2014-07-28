@@ -7,8 +7,10 @@ var config = require('./config');
 var request = require('request');
 var _ = require('lodash');
 _.str =require('underscore.string');
+var db = require('monk')(config.mongo.MONGOHQ_URL);
 
 app.set('view engine', 'jade');
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
@@ -20,8 +22,20 @@ app.get('/sidebar', function(req, res){
     res.render('sidebar.jade');
 });
 
-var twitter_stream = require('./twitter_stream.js')(io);
-var instagram_stream = require('./instagram_stream')(app, io);
+
+io.on('connection', function(socket){
+    var tweet_queue = db.get('tweet_queue');
+    tweet_queue.find({}, function(err, tweets){
+        socket.emit('tweet_queue', tweets);
+    });
+    // var instagram_queue = db.get('instagram_queue');
+    // instagrams_queue.find({}, function(instagrams){
+    //     socket.emit('instagrams', instagrams);
+    // });    
+});
+
+// var twitter_stream = require('./twitter_stream.js')(io, db);
+// var instagram_stream = require('./instagram_stream')(app, io, db);
 
 http.listen(process.env.PORT || 5000, function(){
 	console.log('Listening on *:' + process.env.PORT || 5000);
