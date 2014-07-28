@@ -7,8 +7,6 @@ _.str =require('underscore.string');
 
 Instagram.set('client_id', config.instagram.CLIENT_ID);
 Instagram.set('client_secret', config.instagram.CLIENT_SECRET);
-console.log(config.instagram.CLIENT_ID);
-console.log(config.instagram.CLIENT_SECRET);
 Instagram.set('callback_url', config.instagram.CALLBACK_URL);
 
 var deleteInstagramSubs = function(callback){
@@ -46,11 +44,38 @@ var startGeoSub = function(callback){
             });
         });
     });    
-}
+};
 
-module.exports = {
-    instagramStream: Instagram,
-    startGeoSub: startGeoSub,
-    deleteInstagramSubs: deleteInstagramSubs,
-    getInstagramSubs: getInstagramSubs
+module.exports = function(app, io){
+    startGeoSub('/instagram_callback');
+
+    app.get('/instagram_callback', function(req, res){
+        res.send(req.query['hub.challenge']);
+    });
+
+    app.post('/instagram_callback', function(req, res){
+        var url = _.str.sprintf(
+            config.instagram.PHOTO_POST_URL, 
+            req.body[0].object_id,
+            config.instagram.CLIENT_ID
+        );
+        request(url, function(err, res, body){
+            var results = _.map(JSON.parse(body).data, function(ig_post){
+                var lat = ig_post.location.latitude;
+                var lon = ig_post.location.longitude;
+                var post_url = ig_post.link.substring(5) + 'embed';        
+                return [post_url, [lat, lon]];    
+            });
+            results = _.filter(results, function(result){
+                if(_.contains(instagram_links, result[0])){
+                    return false;
+                }
+                else{
+                    instagram_links.push(result[0]);
+                    return true;
+                }
+            });
+            io.emit('ig_callback', results);
+        });
+    });
 };
