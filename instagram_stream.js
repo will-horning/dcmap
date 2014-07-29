@@ -17,7 +17,7 @@ var addToQueue = function(db, new_instagram){
                 var sorted_instagrams = _.sortBy(instagrams, function(ig){
                     return ig.created_time;
                 });
-                queue.remove(sorted_tweets[0]);
+                queue.remove(sorted_instagrams[0]);
             }
         });
     });
