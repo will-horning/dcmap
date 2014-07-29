@@ -79,15 +79,15 @@ module.exports = function(app, io, db){
                 var lat = ig_post.location.latitude;
                 var lon = ig_post.location.longitude;
                 var date = ig_post.created_time;
-                var post_url = ig_post.link.substring(5) + 'embed';        
-                return {post_url: post_url, latlon: [lat, lon], date: date};    
+                var embed_url = ig_post.link.substring(5) + 'embed';        
+                return {embed_url: embed_url, latlon: [lat, lon], date: date};    
             });
             results = _.filter(results, function(result){
-                if(_.contains(instagram_links, result.post_url)){
+                if(_.contains(instagram_links, result.embed_url)){
                     return false;
                 }
                 else{
-                    instagram_links.push(result.post_url);
+                    instagram_links.push(result.embed_url);
                     return true;
                 }
             });
