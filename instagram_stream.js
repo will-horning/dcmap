@@ -92,7 +92,7 @@ module.exports = function(app, io, db){
                 }
             });
             _.forEach(results, function(result){
-                addToQueue(result);
+                addToQueue(db, result);
             });
             if(results.length > 0){
                 io.emit('instagram', results);
