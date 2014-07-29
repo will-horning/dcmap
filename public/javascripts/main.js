@@ -7690,12 +7690,10 @@ $(document).ready(function(){
         });
     });
 
-    socket.on('instagram', function(results){
-            console.log(results);
-        _.forEach(results, function(post){
-            var html = results[0][0];
-            var latlon = results[0][1];
-            var marker = instagram_markers.addMarker(html, map, latlon, igMarkerQueue);        
+    socket.on('instagram', function(instagrams){
+            console.log(instagrams);
+        _.forEach(instagrams, function(ig_post){
+            var marker = instagram_markers.addMarker(ig_post, map, igMarkerQueue);        
             layers.instagrams.addLayer(marker);
         });
     });
@@ -7733,18 +7731,18 @@ var instagramIcon = L.divIcon({
 var popupContent = '<div class="instagramPopup" style="width:px;">' + 
     '<iframe style="width:500px;height:630px;" src="%s"></iframe></div>';
 
-var addMarker = function(iframe_src, map, latlon, markerQueue){
-        base_markers.addCircleMarker(map, latlon);
+var addMarker = function(ig_post, map, markerQueue){
+        base_markers.addCircleMarker(map, ig_post.latlon);
         var popup = L.popup({
             maxWidth: 600,
             maxHeight: 800,
             className: 'myPopup'
-        }).setContent(_.str.sprintf(popupContent, iframe_src));
+        }).setContent(_.str.sprintf(popupContent, ig_post.url));
         if(markerQueue.length > config.MARKER_QUEUE_SIDE){
             map.removeLayer(markerQueue.shift());
         }
         var marker = new base_markers.FadeMarker(
-            latlon,
+            ig_post.latlon,
             {icon: instagramIcon
         }).bindPopup(popup);
         // var marker = L.marker(

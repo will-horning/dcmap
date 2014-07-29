@@ -131,12 +131,10 @@ $(document).ready(function(){
         });
     });
 
-    socket.on('instagram', function(results){
-            console.log(results);
-        _.forEach(results, function(post){
-            var html = results[0][0];
-            var latlon = results[0][1];
-            var marker = instagram_markers.addMarker(html, map, latlon, igMarkerQueue);        
+    socket.on('instagram', function(instagrams){
+            console.log(instagrams);
+        _.forEach(instagrams, function(ig_post){
+            var marker = instagram_markers.addMarker(ig_post, map, igMarkerQueue);        
             layers.instagrams.addLayer(marker);
         });
     });

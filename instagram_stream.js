@@ -78,20 +78,22 @@ module.exports = function(app, io, db){
             var results = _.map(JSON.parse(body).data, function(ig_post){
                 var lat = ig_post.location.latitude;
                 var lon = ig_post.location.longitude;
+                var date = ig_post.created_time;
                 var post_url = ig_post.link.substring(5) + 'embed';        
-                return [post_url, [lat, lon]];    
+                return {post_url: post_url, latlon: [lat, lon], date: date};    
             });
             results = _.filter(results, function(result){
-                if(_.contains(instagram_links, result[0])){
+                if(_.contains(instagram_links, result.post_url)){
                     return false;
                 }
                 else{
-                    instagram_links.push(result[0]);
+                    instagram_links.push(result.post_url);
                     return true;
                 }
             });
-
-            io.emit('instagram', results);
+            if(results.length > 0){
+                io.emit('instagram', results);
+            }
         });
     });
 };
