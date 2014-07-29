@@ -28,13 +28,13 @@ io.on('connection', function(socket){
     tweet_queue.find({}, function(err, tweets){
         socket.emit('tweet_queue', tweets);
     });
-    // var instagram_queue = db.get('instagram_queue');
-    // instagrams_queue.find({}, function(instagrams){
-    //     socket.emit('instagrams', instagrams);
-    // });    
+    var instagram_queue = db.get('instagram_queue');
+    instagram_queue.find({}, function(err, instagrams){
+        socket.emit('instagram_queue', instagrams);
+    });    
 });
 
-// var twitter_stream = require('./twitter_stream.js')(io, db);
+var twitter_stream = require('./twitter_stream.js')(io, db);
 var instagram_stream = require('./instagram_stream')(app, io, db);
 
 http.listen(process.env.PORT || 5000, function(){

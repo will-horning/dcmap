@@ -2,12 +2,24 @@ var config = require('./client_config');
 var tweet_markers = require('./tweet_markers');
 var instagram_markers = require('./instagram_markers');
 var _ = require('lodash');
+
 var FadeMarker = require('./base_markers').FadeMarker;
 _.str =require('underscore.string');
 $(document).ready(function(){
+    // var tileLayer = new L.mapbox.TileLayer('examples.map-0l53fhk2');
+    // var map = L.mapbox.map('map');
+    // tileLayer.addTo(map);
+    // map.setView(config.MAP_CENTER, config.MAP_ZOOM);
+    // console.log(tileLayer);
+    // tileLayer.on('loading', function(){
+       
+    //     map.spin(false, {color: '#ffffff'});
+    //     map.spin(true, {color: '#ffffff'});
 
-
-
+    // });
+    // tileLayer.on('load', function(){
+    //     map.spin(false, {color: '#ffffff'});
+    // });
     var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false });
     map.setView(config.MAP_CENTER, config.MAP_ZOOM);
     
@@ -17,6 +29,7 @@ $(document).ready(function(){
     layers.tweets = L.layerGroup().addTo(map);
     layers.instagrams = L.layerGroup().addTo(map);
     
+
     $.get('/sidebar', function(data){
         $('#sidebar').html(data);
         $('#cameras').click(function(){
@@ -45,6 +58,7 @@ $(document).ready(function(){
                 map.addLayer(layers.instagrams);
             }
         });
+        $('#sidebar').ready(function(){$('#sidebar').show();});
     });
 
     var controls = require('./controls')(map);
@@ -139,14 +153,12 @@ $(document).ready(function(){
         });
     });
 
-    // socket.on('instagram_queue', function(instagram_queue){
-    //     _.forEach(instagram_queue, function(instagram){
-    //         var html = results[0][0];
-    //         var latlon = results[0][1];
-    //         var m = instagram_markers.addMarker(instagram, map, instagramMarkerQueue);
-    //         layers.instagrams.addLayer(m);
-    //     });
-    // });
+    socket.on('instagram_queue', function(instagram_queue){
+        _.forEach(instagram_queue, function(ig_post){
+            var marker = instagram_markers.addMarker(ig_post, map, igMarkerQueue);        
+            layers.instagrams.addLayer(marker);
+        });
+    });
 
     // var t = {coordinates: {coordinates: [-77.0409607887268, 38.99537317916349]},
     //     id_str: 'Foo'

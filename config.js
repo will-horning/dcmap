@@ -11,8 +11,8 @@ config.instagram.DELETE_SUBS_URL = 'https://api.instagram.com/v1/subscriptions?c
 config.instagram.GET_SUBS_URL = 'https://api.instagram.com/v1/subscriptions?client_secret=%s&client_id=%s';
 config.instagram.PHOTO_POST_URL = 'https://api.instagram.com/v1/geographies/%s/media/recent?client_id=%s';
 config.instagram.CALLBACK_URL = 'http://dcmap.herokuapp.com/instagram_callback';
-config.instagram.CENTER_LAT = 38.99537317916349;
-config.instagram.CENTER_LON = -77.0409607887268;
+config.instagram.CENTER_LAT = 38.93003656944161;
+config.instagram.CENTER_LON = -77.02566146850586;
 config.instagram.RADIUS = 5000;
 
 config.twitter = {};
