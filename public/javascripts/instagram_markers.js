@@ -12,18 +12,18 @@ var instagramIcon = L.divIcon({
 var popupContent = '<div class="instagramPopup" style="width:px;">' + 
     '<iframe style="width:500px;height:630px;" src="%s"></iframe></div>';
 
-var addMarker = function(iframe_src, map, latlon, markerQueue){
-        base_markers.addCircleMarker(map, latlon);
+var addMarker = function(ig_post, map, markerQueue){
+        base_markers.addCircleMarker(map, ig_post.latlon);
         var popup = L.popup({
             maxWidth: 600,
             maxHeight: 800,
             className: 'myPopup'
-        }).setContent(_.str.sprintf(popupContent, iframe_src));
+        }).setContent(_.str.sprintf(popupContent, ig_post.embed_url));
         if(markerQueue.length > config.MARKER_QUEUE_SIDE){
             map.removeLayer(markerQueue.shift());
         }
         var marker = new base_markers.FadeMarker(
-            latlon,
+            ig_post.latlon,
             {icon: instagramIcon
         }).bindPopup(popup);
         // var marker = L.marker(
