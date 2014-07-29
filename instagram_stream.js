@@ -15,11 +15,11 @@ var addToQueue = function(db, new_instagram){
         queue.find({}, function(err, instagrams){
             if(instagrams.length > config.mongo.QUEUE_SIZE){
                 var sorted_instagrams = _.sortBy(instagrams, function(ig){
-                    return ig.created_time
+                    return ig.created_time;
                 });
                 queue.remove(sorted_tweets[0]);
             }
-        })
+        });
     });
 };
 
@@ -90,6 +90,9 @@ module.exports = function(app, io, db){
                     instagram_links.push(result.embed_url);
                     return true;
                 }
+            });
+            _.forEach(results, function(result){
+                addToQueue(result);
             });
             if(results.length > 0){
                 io.emit('instagram', results);
