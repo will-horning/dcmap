@@ -7737,7 +7737,7 @@ var addMarker = function(ig_post, map, markerQueue){
             maxWidth: 600,
             maxHeight: 800,
             className: 'myPopup'
-        }).setContent(_.str.sprintf(popupContent, ig_post.url));
+        }).setContent(_.str.sprintf(popupContent, ig_post.embed_url));
         if(markerQueue.length > config.MARKER_QUEUE_SIDE){
             map.removeLayer(markerQueue.shift());
         }
