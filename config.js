@@ -1,5 +1,12 @@
 var config = {};
 
+config.CRIME_FEED_URL = 'http://data.octo.dc.gov/feeds/crime_incidents/crime_incidents_current.xml';
+
+var CONV_HOST = 'http://citizenatlas.dc.gov/';
+var SPS_CONV_URL = CONV_HOST + 'usng/getusng.asmx/MD_SPCStoLL?SPCSXYSTR=%s,%s';
+
+config.SCS_TO_GPS_URL = 'http://citizenatlas.dc.gov/usng/getusng.asmx/MD_SPCStoLL?SPCSXYSTR=%s,%s';
+
 config.mongo = {};
 config.mongo.MONGOHQ_URL = process.env['MONGOHQ_URL'];
 config.mongo.QUEUE_SIZE = 5;
