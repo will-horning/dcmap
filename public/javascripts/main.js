@@ -7506,8 +7506,8 @@ config.twitter = {};
 config.instagram.ICON_PATH = "/images/mascoticons/32x32/instagram-32x32.png";
 config.twitter.ICON_PATH = "/images/mascoticons/32x32/twitter-32x32.png";
 config.SIDEBAR_WIDTH = '250px';
-config.CAMERA_ICON_URL = '/images/mapicons.nicolasmollet.com/road-transportation-c72222/car.png'
-// config.crime = {};
+config.CAMERA_ICON_URL = '/images/mapicons.nicolasmollet.com/road-transportation-c72222/trafficcamera.png'
+config.WIFI_ICON_URL = '/images/mapicons.nicolasmollet.com/interior/wifi.png';
 config.CRIME_ICON_URLS = {
         'THEFT F/AUTO': '/images/mapicons.nicolasmollet.com/crime/theft.png',
         'HOMICIDE': '/images/mapicons.nicolasmollet.com/crime/crimescene.png',
@@ -7571,27 +7571,269 @@ module.exports = function(map){
     module.sidebarOpenControl = sidebarOpenControl;
 }
 },{"./client_config":4}],6:[function(require,module,exports){
+module.exports = {
+  "Canada": "CA", 
+  "Sao Tome and Principe": "ST", 
+  "Venezuela": "VE", 
+  "Guinea-Bissau": "GW", 
+  "Montenegro": "ME", 
+  "Lithuania": "LT", 
+  "Cambodia": "KH", 
+  "St. Kitts and Nevis": "KN", 
+  "Switzerland": "CH", 
+  "Ethiopia": "ET", 
+  "Aruba": "AW", 
+  "Saint Martin (French part)": "MF", 
+  "Argentina": "AR", 
+  "Cameroon": "CM", 
+  "Burkina Faso": "BF", 
+  "Turkmenistan": "TM", 
+  "Ghana": "GH", 
+  "Saudi Arabia": "SA", 
+  "Rwanda": "RW", 
+  "Togo": "TG", 
+  "Japan": "JP", 
+  "American Samoa": "AS", 
+  "Montserrat": "MS", 
+  "United States Minor Outlying Islands": "UM", 
+  "Cocos (Keeling) Islands": "CC", 
+  "Pitcairn": "PN", 
+  "Guatemala": "GT", 
+  "Bosnia and Herzegovina": "BA", 
+  "Kuwait": "KW", 
+  "Russian Federation": "RU", 
+  "Jordan": "JO", 
+  "Bonaire, Sint Eustatius and Saba": "BQ", 
+  "Virgin Islands, British": "VG", 
+  "Dominica": "DM", 
+  "Liberia": "LR", 
+  "Korea": "KR", 
+  "European Union": "europeanunion",
+  "Micronesia": "FM", 
+  "Jamaica": "JM", 
+  "Oman": "OM", 
+  "Martinique": "MQ", 
+  "Macedonia": "MK", 
+  "Christmas Island": "CX", 
+  "French Guiana": "GF", 
+  "Niue": "NU", 
+  "Monaco": "MC", 
+  "Wallis and Futuna": "WF", 
+  "New Zealand": "NZ", 
+  "Virgin Islands, U.S.": "VI", 
+  "Jersey": "JE", 
+  "Andorra": "AD", 
+  "Yemen": "YE", 
+  "Albania": "AL", 
+  "Samoa": "WS", 
+  "Norfolk Island": "NF", 
+  "United Arab Emirates": "AE", 
+  "Guam": "GU", 
+  "India": "IN", 
+  "Azerbaijan": "AZ", 
+  "Lesotho": "LS", 
+  "Saint Vincent/Grenadines": "VC", 
+  "Kenya": "KE", 
+  "Macao": "MO", 
+  "Turkey": "TR", 
+  "Afghanistan": "AF", 
+  "Bangladesh": "BD", 
+  "Mauritania": "MR", 
+  "Solomon Islands": "SB", 
+  "Turks and Caicos Islands": "TC", 
+  "Saint Lucia": "LC", 
+  "San Marino": "SM", 
+  "French Polynesia": "PF", 
+  "France": "FR", 
+  "Syrian": "SY", 
+  "Bermuda": "BM", 
+  "Slovak Republic": "SK", 
+  "Somalia": "SO", 
+  "Peru": "PE", 
+  "Swaziland": "SZ", 
+  "Nauru": "NR", 
+  "Seychelles": "SC", 
+  "Norway": "NO", 
+  "Malawi": "MW", 
+  "Cook Islands": "CK", 
+  "Benin": "BJ", 
+  "Western Sahara": "EH", 
+  "Cuba": "CU", 
+  "Iran": "IR", 
+  "Falkland Islands (Malvinas)": "FK", 
+  "Mayotte": "YT", 
+  "Heard Island and McDonald Islands": "HM", 
+  "China": "CN", 
+  "Armenia": "AM", 
+  "East Timor": "TL", 
+  "Dominican Republic": "DO", 
+  "Ukraine": "UA", 
+  "Bahrain": "BH", 
+  "Tonga": "TO", 
+  "Finland": "FI", 
+  "Libya": "LY", 
+  "Cayman Islands": "KY", 
+  "Central African Republic": "CF", 
+  "New Caledonia": "NC", 
+  "Mauritius": "MU", 
+  "Tajikistan": "TJ", 
+  "Liechtenstein": "LI", 
+  "Australia": "AU", 
+  "Mali": "ML", 
+  "Sweden": "SE", 
+  "Bulgaria": "BG", 
+  "Palestine, State of": "PS", 
+  "United States": "US", 
+  "Romania": "RO", 
+  "Angola": "AO", 
+  "French Southern Territories": "TF", 
+  "Chad": "TD", 
+  "South Africa": "ZA", 
+  "Tokelau": "TK", 
+  "Cyprus": "CY", 
+  "South Georgia and the South Sandwich Islands": "GS", 
+  "Brunei Darussalam": "BN", 
+  "Qatar": "QA", 
+  "Saint Helena, Ascension and Tristan Da Cunha": "SH", 
+  "Malaysia": "MY", 
+  "Austria": "AT", 
+  "Mozambique": "MZ", 
+  "Slovenia": "SI", 
+  "Uganda": "UG", 
+  "Hungary": "HU", 
+  "Niger": "NE", 
+  "Isle of Man": "IM", 
+  "Brazil": "BR", 
+  "Netherlands": "NL", 
+  "Faroe Islands": "FO", 
+  "Guinea": "GN", 
+  "Panama": "PA", 
+  "Guyana": "GY", 
+  "Costa Rica": "CR", 
+  "Luxembourg": "LU", 
+  "Cape Verde": "CV", 
+  "Bahamas": "BS", 
+  "Gibraltar": "GI", 
+  "Ireland": "IE", 
+  "Pakistan": "PK", 
+  "Palau": "PW", 
+  "Nigeria": "NG", 
+  "Ecuador": "EC", 
+  "Czech Republic": "CZ", 
+  "Vietnam": "VN", 
+  "Belarus": "BY", 
+  "Vanuatu": "VU", 
+  "Algeria": "DZ", 
+  "Kosovo": "KS",
+  "Korea, Democratic People's Republic of": "KP", 
+  "El Salvador": "SV", 
+  "Tuvalu": "TV", 
+  "Saint Pierre and Miquelon": "PM", 
+  "Marshall Islands": "MH", 
+  "Chile": "CL", 
+  "Puerto Rico": "PR", 
+  "Belgium": "BE", 
+  "Kiribati": "KI", 
+  "Haiti": "HT", 
+  "Belize": "BZ", 
+  "Hong Kong": "HK", 
+  "Sierra Leone": "SL", 
+  "Georgia": "GE", 
+  "Gambia (The)": "GM", 
+  "Philippines": "PH", 
+  "Morocco": "MA", 
+  "Croatia": "HR", 
+  "Mongolia": "MN", 
+  "Guernsey": "GG", 
+  "Thailand": "TH", 
+  "Namibia": "NA", 
+  "Grenada": "GD", 
+  "Taiwan": "TW", 
+  "Laos": "LA",
+  "\u00c5land Islands": "AX", 
+  "Iraq": "IQ", 
+  "Tanzania": "TZ", 
+  "Portugal": "PT", 
+  "Estonia": "EE", 
+  "Uruguay": "UY", 
+  "Equatorial Guinea": "GQ", 
+  "Lebanon": "LB", 
+  "Svalbard and Jan Mayen": "SJ", 
+  "Uzbekistan": "UZ", 
+  "Tunisia": "TN", 
+  "Djibouti": "DJ", 
+  "Greenland": "GL", 
+  "Antigua & Barbuda": "AG", 
+  "Spain": "ES", 
+  "Colombia": "CO", 
+  "Burundi": "BI", 
+  "Fiji": "FJ", 
+  "Barbados": "BB", 
+  "Madagascar": "MG", 
+  "Italy": "IT", 
+  "Bhutan": "BT", 
+  "Sudan": "SD", 
+  "Bolivia": "BO", 
+  "Nepal": "NP", 
+  "Malta": "MT", 
+  "Maldives": "MV", 
+  "Northern Mariana Islands": "MP", 
+  "Suriname": "SR", 
+  "Anguilla": "AI", 
+  "Israel": "IL", 
+  "R\u00e9union": "RE", 
+  "Indonesia": "ID", 
+  "Iceland": "IS", 
+  "Zambia": "ZM", 
+  "Senegal": "SN", 
+  "Papua New Guinea": "PG", 
+  "Trinidad and Tobago": "TT", 
+  "Zimbabwe": "ZW", 
+  "Germany": "DE", 
+  "Denmark": "DK", 
+  "Kazakhstan": "KZ", 
+  "Poland": "PL", 
+  "Moldova": "MD", 
+  "Eritrea": "ER", 
+  "Kyrgyzstan": "KG", 
+  "Congo, Democratic Republic.": "CD", 
+  "Saint Barth\u00e9lemy": "BL", 
+  "British Indian Ocean Territory": "IO", 
+  "Holy See (The)": "VA", 
+  "Mexico": "MX", 
+  "Sri Lanka": "LK", 
+  "Latvia": "LV", 
+  "South Sudan": "SS", 
+  "Cura\u00e7ao": "CW", 
+  "Guadeloupe": "GP", 
+  "Cote D'Ivoire": "CI", 
+  "Honduras": "HN", 
+  "Myanmar": "MM", 
+  "Bouvet Island": "BV", 
+  "Egypt": "EG", 
+  "Nicaragua": "NI", 
+  "Singapore": "SG", 
+  "Serbia": "RS", 
+  "Botswana": "BW", 
+  "United Kingdom": "GB", 
+  "Antarctica": "AQ", 
+  "Congo (Republic)": "CG", 
+  "Sint Maarten (Dutch part)": "SX", 
+  "Greece": "GR", 
+  "Paraguay": "PY", 
+  "Gabon": "GA", 
+  "Comoros": "KM"
+};
+},{}],7:[function(require,module,exports){
 var config = require('./client_config');
 var tweet_markers = require('./tweet_markers');
 var instagram_markers = require('./instagram_markers');
 var _ = require('lodash');
 var FadeMarker = require('./base_markers').FadeMarker;
 _.str =require('underscore.string');
-$(document).ready(function(){
-    // var tileLayer = new L.mapbox.TileLayer('examples.map-0l53fhk2');
-    // var map = L.mapbox.map('map');
-    // tileLayer.addTo(map);
-    // map.setView(config.MAP_CENTER, config.MAP_ZOOM);
-    // console.log(tileLayer);
-    // tileLayer.on('loading', function(){
-       
-    //     map.spin(false, {color: '#ffffff'});
-    //     map.spin(true, {color: '#ffffff'});
 
-    // });
-    // tileLayer.on('load', function(){
-    //     map.spin(false, {color: '#ffffff'});
-    // });
+var country_codes = require('./country-codes');
+$(document).ready(function(){
     var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false });
     map.setView(config.MAP_CENTER, config.MAP_ZOOM);
     
@@ -7600,47 +7842,39 @@ $(document).ready(function(){
     var layers = {};
     layers.tweets = L.layerGroup().addTo(map);
     layers.instagrams = L.layerGroup().addTo(map);
-    layers.crimes = L.layerGroup().addTo(map);
+    layers.crimes = L.layerGroup();
+    layers.cameras = L.layerGroup();
+    layers.embassies = L.layerGroup().addTo(map);
+    layers.metroLines = L.layerGroup();
+    layers.metroStations = L.layerGroup();
+    layers.wifi = L.layerGroup();
     
+    var addLayerToggle = function(layer, button_id){
+        $('#' + button_id).click(function(){
+            if(map.hasLayer(layer)){
+                map.removeLayer(layer);
+            }
+            else{
+                map.addLayer(layers);
+            }
+        });
+    }
+
 
     $.get('/sidebar', function(data){
         $('#sidebar').html(data);
-        $('#cameras').click(function(){
-            if(map.hasLayer(layers.camera_layer)){
-                map.removeLayer(layers.camera_layer);
+        console.log('foo?');
+        console.log($('.layerToggle'));
+        $('.layerToggle').click(function(){
+            var layer = layers[$(this).attr('id')];
+            if(map.hasLayer(layer)){
+                map.removeLayer(layer);
             }
             else{
-                map.addLayer(layers.camera_layer);
+                map.addLayer(layer);
             }
-        });
-
-        $('#tweets').click(function(){
-            if(map.hasLayer(layers.tweets)){
-                map.removeLayer(layers.tweets);
-            }
-            else{
-                map.addLayer(layers.tweets);
-            }
-        });
-
-        $('#instagrams').click(function(){
-            if(map.hasLayer(layers.instagrams)){
-                map.removeLayer(layers.instagrams);
-            }
-            else{
-                map.addLayer(layers.instagrams);
-            }
-        });
-
-        $('#crimes').click(function(){
-            console.log('clicked');
-            if(map.hasLayer(layers.crimes)){
-                map.removeLayer(layers.crimes);
-            }
-            else{
-                map.addLayer(layers.crimes);
-            }
-    });
+        })
+        
         $('#sidebar').ready(function(){$('#sidebar').show();});
     });
 
@@ -7675,16 +7909,69 @@ $(document).ready(function(){
     //     }
     // });
 
+    $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
+        layers.metroLines.addLayer(L.geoJson(data, {
+            style: function(feature) {
+                switch (feature.properties.NAME) {
+                    case 'blue': return {color: "#0000ff"};
+                    case 'red':   return {color: "#ff0000"};
+                    case 'orange': return {color: "#ff6600"};
+                    case 'yellow': return {color: "#ffff00"};
+                    case 'green': return {color: "#006600"};
+                    default: return {color: "#ffffff"};
+                }
+            }
+        }));
+    });
+
+    $.getJSON('/javascripts/geojson/wifi.geojson', function(data){
+        layers.wifi.addLayer(L.geoJson(data, {
+            pointToLayer: function(feature, latlng){
+                return new FadeMarker(latlng, {icon: L.icon({
+                    iconUrl: config.WIFI_ICON_URL,
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12]
+                })}).bindPopup(feature['properties']['NAME']);
+            }
+        }));
+    });
+
+
+    $.getJSON('/javascripts/geojson/metro_stations.geojson', function(data){
+        layers.metroStations.addLayer(L.geoJson(data, {
+            pointToLayer: function(feature, latlng){
+                return new FadeMarker(latlng, {icon: L.icon({
+                    iconUrl: '/images/metro_icon.gif',
+                    iconSize: [16, 16],
+                    iconAnchor: [8, 8]
+                })}).bindPopup(feature['properties']['NAME']);
+            }
+        }));
+    });
+
+    $.getJSON('/javascripts/geojson/embassies.geojson', function(data){
+        layers.embassies.addLayer(L.geoJson(data, {
+            pointToLayer: function(feature, latlng){
+                var code = country_codes[feature.properties.COUNTRY] || 'ks';
+                return new FadeMarker(latlng, {icon: L.icon({
+                    iconUrl: '/images/flags/png/' + code.toLowerCase() + '.png',
+                    iconSize: [24, 16],
+                    iconAnchor: [12, 8]
+                })}).bindPopup(feature.properties.COUNTRY);
+            }
+        }))
+    })
+
     $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){   
-        layers.camera_layer = L.geoJson(data, {
+        layers.cameras.addLayer(L.geoJson(data, {
             pointToLayer: function(feature, latlng){
                 return new FadeMarker(latlng, {icon: L.divIcon({
                     className: 'foo',
                     html: '<img style="width:24px;" src="' + config.CAMERA_ICON_URL + '">',
                     iconSize: [16,16]
-                })});
+                })}).bindPopup('Traffic Camera');
             }
-        }).bindPopup('Traffic Camera');
+        }));
     });
 
     var socket = io();
@@ -7718,7 +8005,6 @@ $(document).ready(function(){
     });
 
     socket.on('crime', function(crime){     
-        console.log(crime);
         var crimeIcon = L.divIcon({
             className: 'markericon',
             iconAnchor: [12, 12],
@@ -7730,7 +8016,7 @@ $(document).ready(function(){
 });
 
 
-},{"./base_markers":3,"./client_config":4,"./controls":5,"./instagram_markers":7,"./tweet_markers":8,"lodash":1,"underscore.string":2}],7:[function(require,module,exports){
+},{"./base_markers":3,"./client_config":4,"./controls":5,"./country-codes":6,"./instagram_markers":8,"./tweet_markers":9,"lodash":1,"underscore.string":2}],8:[function(require,module,exports){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
@@ -7770,7 +8056,7 @@ var addMarker = function(ig_post, map, markerQueue){
 module.exports = {
     addMarker: addMarker
 }
-},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}],8:[function(require,module,exports){
+},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}],9:[function(require,module,exports){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
@@ -7807,4 +8093,4 @@ var addMarker = function(tweet, map, markerQueue){
 module.exports = {
     addMarker: addMarker
 };
-},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}]},{},[6])
+},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}]},{},[7])

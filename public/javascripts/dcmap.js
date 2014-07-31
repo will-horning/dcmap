@@ -4,21 +4,9 @@ var instagram_markers = require('./instagram_markers');
 var _ = require('lodash');
 var FadeMarker = require('./base_markers').FadeMarker;
 _.str =require('underscore.string');
-$(document).ready(function(){
-    // var tileLayer = new L.mapbox.TileLayer('examples.map-0l53fhk2');
-    // var map = L.mapbox.map('map');
-    // tileLayer.addTo(map);
-    // map.setView(config.MAP_CENTER, config.MAP_ZOOM);
-    // console.log(tileLayer);
-    // tileLayer.on('loading', function(){
-       
-    //     map.spin(false, {color: '#ffffff'});
-    //     map.spin(true, {color: '#ffffff'});
 
-    // });
-    // tileLayer.on('load', function(){
-    //     map.spin(false, {color: '#ffffff'});
-    // });
+var country_codes = require('./country-codes');
+$(document).ready(function(){
     var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false });
     map.setView(config.MAP_CENTER, config.MAP_ZOOM);
     
@@ -27,47 +15,39 @@ $(document).ready(function(){
     var layers = {};
     layers.tweets = L.layerGroup().addTo(map);
     layers.instagrams = L.layerGroup().addTo(map);
-    layers.crimes = L.layerGroup().addTo(map);
+    layers.crimes = L.layerGroup();
+    layers.cameras = L.layerGroup();
+    layers.embassies = L.layerGroup().addTo(map);
+    layers.metroLines = L.layerGroup();
+    layers.metroStations = L.layerGroup();
+    layers.wifi = L.layerGroup();
     
+    var addLayerToggle = function(layer, button_id){
+        $('#' + button_id).click(function(){
+            if(map.hasLayer(layer)){
+                map.removeLayer(layer);
+            }
+            else{
+                map.addLayer(layers);
+            }
+        });
+    }
+
 
     $.get('/sidebar', function(data){
         $('#sidebar').html(data);
-        $('#cameras').click(function(){
-            if(map.hasLayer(layers.camera_layer)){
-                map.removeLayer(layers.camera_layer);
+        console.log('foo?');
+        console.log($('.layerToggle'));
+        $('.layerToggle').click(function(){
+            var layer = layers[$(this).attr('id')];
+            if(map.hasLayer(layer)){
+                map.removeLayer(layer);
             }
             else{
-                map.addLayer(layers.camera_layer);
+                map.addLayer(layer);
             }
-        });
-
-        $('#tweets').click(function(){
-            if(map.hasLayer(layers.tweets)){
-                map.removeLayer(layers.tweets);
-            }
-            else{
-                map.addLayer(layers.tweets);
-            }
-        });
-
-        $('#instagrams').click(function(){
-            if(map.hasLayer(layers.instagrams)){
-                map.removeLayer(layers.instagrams);
-            }
-            else{
-                map.addLayer(layers.instagrams);
-            }
-        });
-
-        $('#crimes').click(function(){
-            console.log('clicked');
-            if(map.hasLayer(layers.crimes)){
-                map.removeLayer(layers.crimes);
-            }
-            else{
-                map.addLayer(layers.crimes);
-            }
-    });
+        })
+        
         $('#sidebar').ready(function(){$('#sidebar').show();});
     });
 
@@ -102,16 +82,69 @@ $(document).ready(function(){
     //     }
     // });
 
+    $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
+        layers.metroLines.addLayer(L.geoJson(data, {
+            style: function(feature) {
+                switch (feature.properties.NAME) {
+                    case 'blue': return {color: "#0000ff"};
+                    case 'red':   return {color: "#ff0000"};
+                    case 'orange': return {color: "#ff6600"};
+                    case 'yellow': return {color: "#ffff00"};
+                    case 'green': return {color: "#006600"};
+                    default: return {color: "#ffffff"};
+                }
+            }
+        }));
+    });
+
+    $.getJSON('/javascripts/geojson/wifi.geojson', function(data){
+        layers.wifi.addLayer(L.geoJson(data, {
+            pointToLayer: function(feature, latlng){
+                return new FadeMarker(latlng, {icon: L.icon({
+                    iconUrl: config.WIFI_ICON_URL,
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12]
+                })}).bindPopup(feature['properties']['NAME']);
+            }
+        }));
+    });
+
+
+    $.getJSON('/javascripts/geojson/metro_stations.geojson', function(data){
+        layers.metroStations.addLayer(L.geoJson(data, {
+            pointToLayer: function(feature, latlng){
+                return new FadeMarker(latlng, {icon: L.icon({
+                    iconUrl: '/images/metro_icon.gif',
+                    iconSize: [16, 16],
+                    iconAnchor: [8, 8]
+                })}).bindPopup(feature['properties']['NAME']);
+            }
+        }));
+    });
+
+    $.getJSON('/javascripts/geojson/embassies.geojson', function(data){
+        layers.embassies.addLayer(L.geoJson(data, {
+            pointToLayer: function(feature, latlng){
+                var code = country_codes[feature.properties.COUNTRY] || 'ks';
+                return new FadeMarker(latlng, {icon: L.icon({
+                    iconUrl: '/images/flags/png/' + code.toLowerCase() + '.png',
+                    iconSize: [24, 16],
+                    iconAnchor: [12, 8]
+                })}).bindPopup(feature.properties.COUNTRY);
+            }
+        }))
+    })
+
     $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){   
-        layers.camera_layer = L.geoJson(data, {
+        layers.cameras.addLayer(L.geoJson(data, {
             pointToLayer: function(feature, latlng){
                 return new FadeMarker(latlng, {icon: L.divIcon({
                     className: 'foo',
                     html: '<img style="width:24px;" src="' + config.CAMERA_ICON_URL + '">',
                     iconSize: [16,16]
-                })});
+                })}).bindPopup('Traffic Camera');
             }
-        }).bindPopup('Traffic Camera');
+        }));
     });
 
     var socket = io();
@@ -145,7 +178,6 @@ $(document).ready(function(){
     });
 
     socket.on('crime', function(crime){     
-        console.log(crime);
         var crimeIcon = L.divIcon({
             className: 'markericon',
             iconAnchor: [12, 12],
