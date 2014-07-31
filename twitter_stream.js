@@ -4,7 +4,7 @@ var classifyPoint = require('robust-point-in-polygon');
 var _ = require('lodash');
 
 var addToQueue = function(db, new_tweet){
-    var queue = db.get('tweet_queue');
+    var queue = db.collection('tweet_queue');
     queue.insert(new_tweet, function(err, doc){
         queue.find({}, function(err, tweets){
             if(tweets.length > config.mongo.QUEUE_SIZE){

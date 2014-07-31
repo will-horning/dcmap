@@ -10,7 +10,7 @@ Instagram.set('client_secret', config.instagram.CLIENT_SECRET);
 Instagram.set('callback_url', config.instagram.CALLBACK_URL);
 
 var addToQueue = function(db, new_instagram){
-    var queue = db.get('instagram_queue');
+    var queue = db.collection('instagram_queue');
     queue.insert(new_instagram, function(err, doc){
         queue.find({}, function(err, instagrams){
             if(instagrams.length > config.mongo.QUEUE_SIZE){
