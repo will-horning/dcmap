@@ -62,7 +62,6 @@ var startGeoSub = function(callback){
 
 module.exports = function(app, io, db){
     startGeoSub('/instagram_callback');
-    var queue = db.get('instagram_queue');
     app.get('/instagram_callback', function(req, res){
         res.send(req.query['hub.challenge']);
     });
