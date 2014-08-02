@@ -2,9 +2,11 @@ var Twitter = require('twit');
 var config = require('./config');
 var classifyPoint = require('robust-point-in-polygon');
 var _ = require('lodash');
+var moment = require('moment');
 
 var addToQueue = function(db, new_tweet){
     var queue = db.collection('tweet_queue');
+    new_tweet.created_at = moment(new_tweet.created_at).unix();
     queue.insert(new_tweet, function(err, doc){
         queue.find({}, function(err, tweets){
             if(tweets.length > config.mongo.QUEUE_SIZE){

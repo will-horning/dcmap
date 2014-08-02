@@ -52,7 +52,6 @@ fs.readFile('views/crime_popup.jade', function(err, data){
 // };
 
 
-
 app.set('view engine', 'jade');
 
 app.use(express.static('public'));
@@ -68,13 +67,20 @@ app.get('/sidebar', function(req, res){
 
 io.on('connection', function(socket){
     MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
+        if(err) console.log(err);
         var tweet_queue = db.collection('tweet_queue');
-        tweet_queue.find({}, {limit: 10, sort: {date: -1}}).toArray(function(err, tweets){
-            socket.emit('tweet_queue', tweets);
+        tweet_queue.find({}, {limit: 10, sort: {created_at: -1}}).toArray(function(err, tweets){
+            console.log(tweets.length);
+            _.forEach(tweets, function(tweet){
+                socket.emit('tweet', tweet);
+            })
+            // socket.emit('tweet_queue', tweets);
         });
         var instagram_queue = db.collection('instagram_queue');
         instagram_queue.find({}, {limit: 10, sort: {date: -1}}).toArray(function(err, instagrams){
-            socket.emit('instagram_queue', instagrams);    
+            console.log(instagrams.length);
+            socket.emit('instagram', instagrams);
+            // socket.emit('instagram_queue', instagrams);    
         });
         var crime_queue = db.collection('crimes');
         crime_queue.find({}, {limit:30, sort: {start_date: -1}}).toArray(function(err, crimes){
@@ -87,12 +93,9 @@ io.on('connection', function(socket){
 });
 
 
-
-
-
 MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
-    var twitter_stream = require('./twitter_stream.js')(io, db);
-    var instagram_stream = require('./instagram_stream')(app, io, db);
+    // var twitter_stream = require('./twitter_stream.js')(io, db);
+    // var instagram_stream = require('./instagram_stream')(app, io, db);
 })
 
 http.listen(process.env.PORT || 5000, function(){

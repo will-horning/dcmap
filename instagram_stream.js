@@ -4,7 +4,6 @@ var request = require('request');
 var _ = require('lodash');
 _.str =require('underscore.string');
 
-
 Instagram.set('client_id', config.instagram.CLIENT_ID);
 Instagram.set('client_secret', config.instagram.CLIENT_SECRET);
 Instagram.set('callback_url', config.instagram.CALLBACK_URL);
