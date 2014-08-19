@@ -9004,7 +9004,7 @@ $(document).ready(function(){
     layers.tweets = L.layerGroup();
     layers.instagrams = L.layerGroup();
     layers.crimes = L.layerGroup();
-    layers.cameras = new L.MarkerClusterGroup({disableClusteringAtZoom: 14});
+    // layers.cameras = new L.MarkerClusterGroup({disableClusteringAtZoom: 14});
     layers.embassies = L.layerGroup();
     layers.metroLines = L.layerGroup().addTo(map);
     layers.metroStations = L.layerGroup().addTo(map);

@@ -125,10 +125,10 @@ io.on('connection', function(socket){
 //     });
 // }, 5000);
 
-// MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
-    // var twitter_stream = require('./twitter_stream.js')(io, db);
-    // var instagram_stream = require('./instagram_stream')(app, io, db);
-// })
+MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
+    var twitter_stream = require('./twitter_stream.js')(io, db);
+    var instagram_stream = require('./instagram_stream')(app, io, db);
+})
 
 http.listen(process.env.PORT || 5000, function(){
 	console.log('Listening on *:' + process.env.PORT || 5000);
