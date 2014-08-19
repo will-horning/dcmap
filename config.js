@@ -2,6 +2,17 @@ var config = {};
 
 config.CRIME_FEED_URL = 'http://data.octo.dc.gov/feeds/crime_incidents/crime_incidents_current.xml';
 
+config.foursquare = {};
+config.foursquare.CLIENT_ID = process.env['FOURSQUARE_CLIENT_ID'];
+config.foursquare.CLIENT_SECRET = process.env['FOURSQUARE_CLIENT_SECRET'];
+
+config.metro = {};
+config.metro.API_KEY = process.env['METRO_KEY'];
+config.metro.LINE_CODES = ['RD', 'BL', 'YL', 'OR', 'GR', 'SV'];
+config.metro.ALL_STATIONS_URL = 'http://api.wmata.com/Rail.svc/json/JStations?api_key=%s';
+config.metro.ALL_UPDATES_URL = 'http://api.wmata.com/StationPrediction.svc/json/GetPrediction/All?api_key=%s';
+config.metro.LINE_PATHS_URL = 'http://api.wmata.com/Rail.svc/json/JPath?FromStationCode=%s&ToStationCode=%s&api_key=%s'
+config.metro.LINE_INFO_URL = 'http://api.wmata.com/Rail.svc/json/JLines?api_key=%s';
 var CONV_HOST = 'http://citizenatlas.dc.gov/';
 var SPS_CONV_URL = CONV_HOST + 'usng/getusng.asmx/MD_SPCStoLL?SPCSXYSTR=%s,%s';
 
@@ -9,6 +20,7 @@ config.SCS_TO_GPS_URL = 'http://citizenatlas.dc.gov/usng/getusng.asmx/MD_SPCStoL
 
 config.mongo = {};
 config.mongo.MONGOHQ_URL = process.env['MONGOHQ_URL'];
+config.mongo.MONGOHQ_METRO_URL = process.env['MONGOHQ_METRO_URL'];
 config.mongo.QUEUE_SIZE = 5;
 
 config.instagram = {};

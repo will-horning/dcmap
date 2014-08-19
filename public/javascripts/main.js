@@ -7506,7 +7506,7 @@ config.twitter = {};
 config.instagram.ICON_PATH = "/images/mascoticons/32x32/instagram-32x32.png";
 config.twitter.ICON_PATH = "/images/mascoticons/32x32/twitter-32x32.png";
 config.SIDEBAR_WIDTH = '250px';
-config.CAMERA_ICON_URL = '/images/mapicons.nicolasmollet.com/road-transportation-c72222/trafficcamera.png'
+config.CAMERA_ICON_URL = '/images/mapicons.nicolasmollet.com/road-transportation-78005c/trafficcamera.png';
 config.WIFI_ICON_URL = '/images/mapicons.nicolasmollet.com/interior/wifi.png';
 config.CRIME_ICON_URLS = {
         'THEFT F/AUTO': '/images/mapicons.nicolasmollet.com/crime/theft.png',
@@ -7520,13 +7520,27 @@ config.CRIME_ICON_URLS = {
         'ARSON': '/images/mapicons.nicolasmollet.com/crime/fire.png'
 };
 
+config.metro = {};
+config.metro.UPDATES_URL =  'http://www.wmata.com/rider_tools/pids/showpid.cfm?station_id=%s';
+
 
 module.exports = config;
 },{}],5:[function(require,module,exports){
 var config = require('./client_config');
 
-module.exports = function(map){
+module.exports = function(map, layers){
     L.control.fullscreen({position: 'topright'}).addTo(map);
+
+    $.get('/sidebar', function(data){
+        $('#sidebar').html(data);
+        $('.layerToggle').click(function(){
+            var layer = layers[$(this).attr('id')];
+            if(map.hasLayer(layer)) map.removeLayer(layer);
+            else map.addLayer(layer);
+        });
+        $('.btn-group-vertical').css('margin-left', '25px');
+        $('#sidebar').ready(function(){$('#sidebar').show();});
+    });
 
     sidebar = L.control.sidebar('sidebar', {position:'left', autoPan: false});
     map.addControl(sidebar);
@@ -7571,7 +7585,7 @@ module.exports = function(map){
     module.sidebarOpenControl = sidebarOpenControl;
 }
 },{"./client_config":4}],6:[function(require,module,exports){
-module.exports = {
+module.exports={
   "Canada": "CA", 
   "Sao Tome and Principe": "ST", 
   "Venezuela": "VE", 
@@ -7825,62 +7839,1203 @@ module.exports = {
   "Comoros": "KM"
 };
 },{}],7:[function(require,module,exports){
+module.exports={
+    "G03": 92,
+    "F06": 85,
+    "F02": 81,
+    "C06": 42,
+    "K04": 99,
+    "G01": 90,
+    "A09": 12,
+    "C12": 47,
+    "F11": 89,
+    "B05": 27,
+    "G02": 91,
+    "D05": 59,
+    "D11": 66,
+    "K02": 97,
+    "A05": 8,
+    "E09": 79,
+    "E04": 75,
+    "F07": 86,
+    "K01": 96,
+    "C09": 45,
+    "D10": 65,
+    "K07": 102,
+    "A03": 6,
+    "K05": 100,
+    "D06": 60,
+    "C14": 49,
+    "A02": 4,
+    "C03": 38,
+    "D04": 58,
+    "D01": 53,
+    "C04": 40,
+    "B09": 32,
+    "E06": 28,
+    "B06": 28,
+    "J03": 95,
+    "A08": 11,
+    "B01": 21,
+    "F01": 21,
+    "E05": 76,
+    "B11": 34,
+    "E10": 80,
+    "N03": 113,
+    "A11": 14,
+    "C15": 50,
+    "B02": 23,
+    "C13": 48,
+    "D03": 82,
+    "D12": 67,
+    "G05": 109,
+    "N01": 111,
+    "C02": 36,
+    "A10": 13,
+    "A01": 1,
+    "C01": 1,
+    "D09": 64,
+    "G04": 110,
+    "E01": 70,
+    "F05": 84,
+    "F09": 87,
+    "D13": 68,
+    "C08": 44,
+    "C07": 43,
+    "D07": 61,
+    "E08": 78,
+    "B04": 26,
+    "A14": 17,
+    "C10": 93,
+    "C05": 41,
+    "A15": 18,
+    "E02": 72,
+    "B08": 31,
+    "D02": 54,
+    "F08": 107,
+    "N04": 114,
+    "D08": 63,
+    "F10": 88,
+    "B07": 29,
+    "A07": 10,
+    "A13": 16,
+    "N02": 112,
+    "E03": 73,
+    "B03": 25,
+    "J02": 94,
+    "A06": 9,
+    "K08": 103,
+    "K03": 98,
+    "F04": 83,
+    "K06": 101,    
+    "E07": 77,
+    "B10": 33,
+    "A12": 15,
+    "N06": 115,
+    "A04": 7
+}
+
+},{}],8:[function(require,module,exports){
+module.exports={
+    "Stations": [{
+        "Code": "A03",
+        "Lat": 38.9095980575,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0434143597,
+        "Name": "Dupont Circle",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A02",
+        "Lat": 38.9032019462,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0397008272,
+        "Name": "Farragut North",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A01",
+        "Lat": 38.8983144732,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0280779971,
+        "Name": "Metro Center",
+        "StationTogether1": "C01",
+        "StationTogether2": ""
+    }, {
+        "Code": "D08",
+        "Lat": 38.8867090898,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -76.9770889014,
+        "Name": "Stadium Armory",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A07",
+        "Lat": 38.9488514351,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0795873255,
+        "Name": "Tenleytown",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A06",
+        "Lat": 38.9432652883,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0629861805,
+        "Name": "Van Ness UDC",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A05",
+        "Lat": 38.9347628908,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0580425191,
+        "Name": "Cleveland Park",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A04",
+        "Lat": 38.9250851371,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0524180207,
+        "Name": "Woodley Park Zoo",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C10",
+        "Lat": 38.8534163859,
+        "LineCode1": "BL",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0440422943,
+        "Name": "National Arpt",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "E10",
+        "Lat": 39.0111458605,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9110575731,
+        "Name": "Greenbelt",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C12",
+        "Lat": 38.8141436672,
+        "LineCode1": "BL",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.053667574,
+        "Name": "Braddock Road",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "B08",
+        "Lat": 38.9939493747,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0310178268,
+        "Name": "Silver Spring",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "B09",
+        "Lat": 39.0149542752,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0429165548,
+        "Name": "Forest Glen",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D09",
+        "Lat": 38.899191223,
+        "LineCode1": "OR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9467477336,
+        "Name": "Minnesota Avenue",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D06",
+        "Lat": 38.8846222608,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -76.9960011267,
+        "Name": "Eastern Market",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D07",
+        "Lat": 38.8812632736,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -76.9854953196,
+        "Name": "Potomac Avenue",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D04",
+        "Lat": 38.8850723551,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -77.0158682169,
+        "Name": "Federal Center SW",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D05",
+        "Lat": 38.8850625009,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -77.0051394199,
+        "Name": "Capitol South",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D02",
+        "Lat": 38.888018702,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -77.0280662342,
+        "Name": "Smithsonian",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D03",
+        "Lat": 38.8848377279,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -77.021908484,
+        "Name": "L'Enfant Plaza",
+        "StationTogether1": "F03",
+        "StationTogether2": ""
+    }, {
+        "Code": "B01",
+        "Lat": 38.8983168097,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0219153904,
+        "Name": "Gallery Place",
+        "StationTogether1": "F01",
+        "StationTogether2": ""
+    }, {
+        "Code": "B02",
+        "Lat": 38.8960903176,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0166389566,
+        "Name": "Judiciary Square",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "B03",
+        "Lat": 38.8977660392,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0074142921,
+        "Name": "Union Station",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "B04",
+        "Lat": 38.9210596891,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9959369166,
+        "Name": "Rhode Island Avenue",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "B05",
+        "Lat": 38.9332109913,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9945342851,
+        "Name": "Brookland",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "B06",
+        "Lat": 38.9518467675,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0022030768,
+        "Name": "Fort Totten",
+        "StationTogether1": "E06",
+        "StationTogether2": ""
+    }, {
+        "Code": "B07",
+        "Lat": 38.976078531,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0181766987,
+        "Name": "Takoma",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D12",
+        "Lat": 38.9335062344,
+        "LineCode1": "OR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.8911979676,
+        "Name": "Landover",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C13",
+        "Lat": 38.8065861172,
+        "LineCode1": "BL",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0608112085,
+        "Name": "King Street",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "K02",
+        "Lat": 38.886704839,
+        "LineCode1": "OR",
+        "LineCode2": "SV",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0953940983,
+        "Name": "Clarendon",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D10",
+        "Lat": 38.9081784965,
+        "LineCode1": "OR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.935256783,
+        "Name": "Deanwood",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "E09",
+        "Lat": 38.9786336339,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9281249818,
+        "Name": "College Park",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C15",
+        "Lat": 38.7939158529,
+        "LineCode1": "YL",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0752057891,
+        "Name": "Huntington",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "K04",
+        "Lat": 38.8821828738,
+        "LineCode1": "OR",
+        "LineCode2": "SV",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.113168835,
+        "Name": "Ballston",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "G05",
+        "Lat": 38.9050688072,
+        "LineCode1": "BL",
+        "LineCode2": "SV",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.8420375202,
+        "Name": "Largo Town Center",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "G04",
+        "Lat": 38.8938349282,
+        "LineCode1": "BL",
+        "LineCode2": "SV",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.8680747681,
+        "Name": "Morgan Blvd",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "K01",
+        "Lat": 38.8901755312,
+        "LineCode1": "OR",
+        "LineCode2": "SV",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.087131231,
+        "Name": "Court House",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "G01",
+        "Lat": 38.890975676,
+        "LineCode1": "BL",
+        "LineCode2": "SV",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9383648681,
+        "Name": "Benning Road",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "F11",
+        "Lat": 38.8264463483,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9114642177,
+        "Name": "Branch Avenue",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "G03",
+        "Lat": 38.8867478168,
+        "LineCode1": "BL",
+        "LineCode2": "SV",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.89410791,
+        "Name": "Addison Road",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "G02",
+        "Lat": 38.8894658568,
+        "LineCode1": "BL",
+        "LineCode2": "SV",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9118081145,
+        "Name": "Capitol Heights",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "K07",
+        "Lat": 38.8836251359,
+        "LineCode1": "OR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.2271606721,
+        "Name": "Dunn Loring",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "K06",
+        "Lat": 38.900780551,
+        "LineCode1": "OR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.1890948225,
+        "Name": "W Falls Church",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D11",
+        "Lat": 38.9166318546,
+        "LineCode1": "OR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.916628044,
+        "Name": "Cheverly",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "K08",
+        "Lat": 38.8776011238,
+        "LineCode1": "OR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.2726222569,
+        "Name": "Vienna",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A13",
+        "Lat": 39.0624676517,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.1208179517,
+        "Name": "Twinbrook",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A12",
+        "Lat": 39.0481513573,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.112829859,
+        "Name": "White Flint",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A11",
+        "Lat": 39.02926895,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.10384972,
+        "Name": "Grosvenor",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A10",
+        "Lat": 39.0000564843,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0969522905,
+        "Name": "Medical Center",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A15",
+        "Lat": 39.1199273249,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.1646273343,
+        "Name": "Shady Grove",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A14",
+        "Lat": 39.0843216075,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.1461253392,
+        "Name": "Rockville",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "N04",
+        "Lat": 38.928872,
+        "LineCode1": "SV",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.241472,
+        "Name": "Spring Hill",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "N06",
+        "Lat": 38.94778,
+        "LineCode1": "SV",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.34027,
+        "Name": "Wiehle-Reston East",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "N01",
+        "Lat": 38.924432,
+        "LineCode1": "SV",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.210295,
+        "Name": "McLean",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "N02",
+        "Lat": 38.920496,
+        "LineCode1": "SV",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.222262,
+        "Name": "Tysons Corner",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "N03",
+        "Lat": 38.921732,
+        "LineCode1": "SV",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.234607,
+        "Name": "Greensboro",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "B35",
+        "Lat": 38.9070162121,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0030204472,
+        "Name": "New York Avenue",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "E02",
+        "Lat": 38.9134768711,
+        "LineCode1": "GR",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0219117007,
+        "Name": "Shaw",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C09",
+        "Lat": 38.8579043204,
+        "LineCode1": "BL",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0502898097,
+        "Name": "Crystal City",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C08",
+        "Lat": 38.8618823867,
+        "LineCode1": "BL",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0595389215,
+        "Name": "Pentagon City",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "E08",
+        "Lat": 38.9653854458,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9558815078,
+        "Name": "Prince Georges Plaza",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "E07",
+        "Lat": 38.9550401707,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9695766751,
+        "Name": "West Hyattsville",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "E06",
+        "Lat": 38.9518467675,
+        "LineCode1": "GR",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0022030768,
+        "Name": "Fort Totten",
+        "StationTogether1": "B06",
+        "StationTogether2": ""
+    }, {
+        "Code": "E05",
+        "Lat": 38.9374346301,
+        "LineCode1": "GR",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.023460904,
+        "Name": "Georgia Avenue",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "E04",
+        "Lat": 38.9278379675,
+        "LineCode1": "GR",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0325521177,
+        "Name": "Columbia Heights",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "E03",
+        "Lat": 38.9170023992,
+        "LineCode1": "GR",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0274958929,
+        "Name": "U Street",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C01",
+        "Lat": 38.8983144732,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -77.0280779971,
+        "Name": "Metro Center",
+        "StationTogether1": "A01",
+        "StationTogether2": ""
+    }, {
+        "Code": "E01",
+        "Lat": 38.9064368149,
+        "LineCode1": "GR",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0219143803,
+        "Name": "Mt Vernon Sq",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C03",
+        "Lat": 38.9013128941,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -77.0406954151,
+        "Name": "Farragut West",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C02",
+        "Lat": 38.9013327968,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -77.0336341721,
+        "Name": "McPherson Square",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C05",
+        "Lat": 38.8959790962,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -77.0709086853,
+        "Name": "Rosslyn",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D01",
+        "Lat": 38.8931808718,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -77.0281319984,
+        "Name": "Federal Triangle",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C07",
+        "Lat": 38.8694627012,
+        "LineCode1": "BL",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0537156734,
+        "Name": "Pentagon",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C06",
+        "Lat": 38.8846868585,
+        "LineCode1": "BL",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0628101291,
+        "Name": "Arlington Cemetery",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C04",
+        "Lat": 38.9006980092,
+        "LineCode1": "BL",
+        "LineCode2": "OR",
+        "LineCode3": "SV",
+        "LineCode4": null,
+        "Lon": -77.050277739,
+        "Name": "Foggy Bottom",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "K03",
+        "Lat": 38.8833661518,
+        "LineCode1": "OR",
+        "LineCode2": "SV",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.1029772942,
+        "Name": "Virginia Square",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "J03",
+        "Lat": 38.7665218926,
+        "LineCode1": "BL",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.1679701804,
+        "Name": "Franconia-Springf'ld",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "D13",
+        "Lat": 38.9477848558,
+        "LineCode1": "OR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.8718412865,
+        "Name": "New Carrollton",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "B11",
+        "Lat": 39.0617837655,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0535573593,
+        "Name": "Glenmont",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "K05",
+        "Lat": 38.8859531663,
+        "LineCode1": "OR",
+        "LineCode2": "SV",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.1568830199,
+        "Name": "E Falls Church",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "F08",
+        "Lat": 38.8410857803,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9750541388,
+        "Name": "Southern Ave",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "F09",
+        "Lat": 38.8513013835,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9562627094,
+        "Name": "Naylor Road",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "C14",
+        "Lat": 38.8004254497,
+        "LineCode1": "YL",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0708743893,
+        "Name": "Eisenhower Avenue",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "F04",
+        "Lat": 38.8764618668,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0175052088,
+        "Name": "Waterfront",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "F05",
+        "Lat": 38.8764810849,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0050856513,
+        "Name": "Navy Yard",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "F06",
+        "Lat": 38.8629631168,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9953707387,
+        "Name": "Anacostia",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "F07",
+        "Lat": 38.8456577028,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9885119326,
+        "Name": "Congress Height",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "J02",
+        "Lat": 38.799307672,
+        "LineCode1": "BL",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.1291115237,
+        "Name": "Van Dorn St",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "F01",
+        "Lat": 38.8983168097,
+        "LineCode1": "GR",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0219153904,
+        "Name": "Gallery Place",
+        "StationTogether1": "B01",
+        "StationTogether2": ""
+    }, {
+        "Code": "F02",
+        "Lat": 38.8936652235,
+        "LineCode1": "GR",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0219143879,
+        "Name": "Archives",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "F03",
+        "Lat": 38.8848377279,
+        "LineCode1": "GR",
+        "LineCode2": "YL",
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.021908484,
+        "Name": "L'Enfant Plaza",
+        "StationTogether1": "D03",
+        "StationTogether2": ""
+    }, {
+        "Code": "B10",
+        "Lat": 39.0375271436,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0501070535,
+        "Name": "Wheaton",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "F10",
+        "Lat": 38.8439645544,
+        "LineCode1": "GR",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -76.9318701589,
+        "Name": "Suitland",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A09",
+        "Lat": 38.9843936603,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.0941291922,
+        "Name": "Bethesda",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }, {
+        "Code": "A08",
+        "Lat": 38.9594838736,
+        "LineCode1": "RD",
+        "LineCode2": null,
+        "LineCode3": null,
+        "LineCode4": null,
+        "Lon": -77.084995805,
+        "Name": "Friendship Heights",
+        "StationTogether1": "",
+        "StationTogether2": ""
+    }]
+}
+},{}],9:[function(require,module,exports){
 var config = require('./client_config');
 var tweet_markers = require('./tweet_markers');
 var instagram_markers = require('./instagram_markers');
 var _ = require('lodash');
 var FadeMarker = require('./base_markers').FadeMarker;
 _.str =require('underscore.string');
+var lineSequences = require('./line_sequences.json');
 
-var country_codes = require('./country-codes');
+
 $(document).ready(function(){
     var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false });
-    map.setView(config.MAP_CENTER, config.MAP_ZOOM);
+    map.setView(config.MAP_CENTER, 11);
     
     var tweetMarkerQueue = [];
     var igMarkerQueue = [];
     var layers = {};
-    layers.tweets = L.layerGroup().addTo(map);
-    layers.instagrams = L.layerGroup().addTo(map);
+    layers.tweets = L.layerGroup();
+    layers.instagrams = L.layerGroup();
     layers.crimes = L.layerGroup();
-    layers.cameras = L.layerGroup();
-    layers.embassies = L.layerGroup().addTo(map);
-    layers.metroLines = L.layerGroup();
-    layers.metroStations = L.layerGroup();
+    layers.cameras = new L.MarkerClusterGroup({disableClusteringAtZoom: 14});
+    layers.embassies = L.layerGroup();
+    layers.metroLines = L.layerGroup().addTo(map);
+    layers.metroStations = L.layerGroup().addTo(map);
     layers.wifi = L.layerGroup();
     
-    var addLayerToggle = function(layer, button_id){
-        $('#' + button_id).click(function(){
-            if(map.hasLayer(layer)){
-                map.removeLayer(layer);
-            }
-            else{
-                map.addLayer(layers);
-            }
-        });
-    }
+    var geoLayers = require('./geojson_layers')(layers);
+    var control = require('./controls')(map, layers);
+    // layers.test = new L.MarkerClusterGroup().addTo(map);
 
+    // _.forEach(['GR'], function(line){
+    //     _.forEach(linePoint[line], function(p){
+    //         var m = L.marker([p[1], p[0]]).bindPopup('<iframe src="http://http://www.wmata.com/rider_tools/pids/showpid.cfm?station_id=36"></iframe>');
+    //         layers.test.addLayer(m);
+    //     })  
+    // })
 
-    $.get('/sidebar', function(data){
-        $('#sidebar').html(data);
-        console.log('foo?');
-        console.log($('.layerToggle'));
-        $('.layerToggle').click(function(){
-            var layer = layers[$(this).attr('id')];
-            if(map.hasLayer(layer)){
-                map.removeLayer(layer);
-            }
-            else{
-                map.addLayer(layer);
-            }
-        })
-        
-        $('#sidebar').ready(function(){$('#sidebar').show();});
-    });
+    // var wifiGeojson = require('./data/wifi.json');
+    // layers.wifi = L.geoJson(wifiGeojson, {
+    //     pointToLayer: function(feature, latlng){
+    //         var ll = feature.geometry.coordinates;
+    //         // if(ll[0].isNaN() || ll[1].isNaN()) console.log(ll);
+    //         return L.circle([ll[1], ll[0]], 100, {stroke: false, fillColor: '#009999', fillOpacity: 0.6});
+    //     }
+    // });
 
-    var controls = require('./controls')(map);
+    // var wifiPoints = _.map(wifiGeojson.features, function(feature){
+    //     var lonlat = feature.geometry.coordinates;
+    //     return [lonlat[1], lonlat[0]];
+    // })
+    // var heat = L.heatLayer(wifiPoints, {radius: 55, maxZoom: 18}).addTo(map);
     // var heat = L.heatLayer(crime_vals.slice(0,10000), {radius: 10, maxZoom: 18}).addTo(map);
-
 
     map.on('popupopen', function(e){
         if($(e.popup._content).hasClass('tweetPopup')){
@@ -7891,23 +9046,116 @@ $(document).ready(function(){
                 e.popup._updatePosition();
                 $('.leaflet-popup').css('opacity', '1');
                 $('.leaflet-popup').css('align', 'center');
+                $('iframe').attr(frameBorder, 0);            
             });  
         }
+        if($(e.popup._content).hasClass('metroUpdates')){
+            $('.leaflet-popup').css('opacity', '0');
+            setTimeout(function(){
+                e.popup._updateLayout(); 
+                e.popup._updatePosition();
+                $('.leaflet-popup-content').removeClass('leaflet-popup-scrolled');
+                $('.leaflet-popup').css('opacity', '1');
+                $('.leaflet-popup').css('align', 'center');
+            }, 100);
+        }
     });
-    
-    // map.on('zoomend', function(){
-    //     console.log('zoooo');
+
+    var socket = io();
+
+    // var trainMarkers = [];
+    // socket.on('locs', function(locs){
+    //     _.forEach(locs, function(loc){
+    //         var m = L.marker([loc[0], loc[1]]).addTo(map);
+    //         setTimeout(function(){map.removeLayer(m);}, 5000);
+    //     });
     // });
 
-    // map.on('zoomend', function() {
-    //     console.log(layers);
-    //     if (map.getZoom() > 14) {
-    //         console.log(layers.camera_layer);
-    //         map.addLayer(layers.camera_layer);
-    //     } else {
-    //         map.removeLayer(layers.camera_layer);
-    //     }
+    // socket.on('trains', function(trains){
+    //     _.forEach(trainMarkers, function(m){
+    //         map.removeLayer(m);
+    //     });
+    //     _.forEach(trains, function(train){
+    //         if(train.LocationCode == 'A01'){
+    //             console.log(train);
+    //         }
+    //         var pcontent = train.DestinationName + ', ' + train.LocationCode + ', ' + 
+    //         (train.secondsToNext / 60) + ', ' + train.nextStation; 
+    //         var latlon = [train.lonlat[1], train.lonlat[0]];
+    //         trainMarkers.push(
+    //             L.circleMarker(
+    //                 latlon, 
+    //                 {fillOpacity: 0.6, opacity: 0.7, radius: 11, fillColor: '#00ff00'}
+    //         ).bindPopup(pcontent).addTo(map));
+    //     });
     // });
+
+    var stationUpdateCodes = require('./data/station-update-codes.json');
+    var stations = require('./data/stations.json').Stations;
+    _.forEach(stations, function(station){
+        var updateCode = stationUpdateCodes[station.Code];
+        var popup = L.popup({
+            maxWidth: 500,
+            maxHeight: 500,
+            className: 'metroPopup'
+        }).setContent('<div class="metroUpdates">' + 
+            '<iframe style="width:350px;height:390px" frameBorder=0 src="' + 
+            _.str.sprintf(config.metro.UPDATES_URL, updateCode) + '""></iframe></div>');
+        var m = new FadeMarker([station.Lat, station.Lon], {icon: L.icon({
+                    iconUrl: '/images/metro_icon.gif',
+                    iconSize: [16, 16],
+                    iconAnchor: [8, 8]
+                })}).bindPopup(popup);
+        layers.metroStations.addLayer(m);    
+    });
+
+    socket.on('tweet', function(tweet){
+        if(tweetMarkerQueue.length > config.MARKER_QUEUE_SIZE){
+            layers.tweets.removeLayer(markerQueue.shift());
+        }
+        var m = tweet_markers.addMarker(tweet, map);
+        tweetMarkerQueue.push(m);
+        layers.tweets.addLayer(m);
+    });
+
+    socket.on('instagram', function(instagrams){
+        _.forEach(instagrams, function(ig_post){
+            if(igMarkerQueue.length > config.MARKER_QUEUE_SIZE){
+                layers.instagrams.removeLayer(igMarkerQueue.shift());
+            }
+            var marker = instagram_markers.addMarker(
+                ig_post, 
+                map, 
+                igMarkerQueue
+            );
+            igMarkerQueue.push(marker);        
+            layers.instagrams.addLayer(marker);
+        });
+    });
+
+    socket.on('crime', function(crime){     
+        var crimeIcon = L.divIcon({
+            className: 'markericon',
+            iconAnchor: [12, 12],
+            html: _.str.sprintf(
+                '<img style="width:24px;" src="%s">', 
+                config.CRIME_ICON_URLS[crime.offense])
+        });
+        var marker = new FadeMarker(
+            [crime.lat, crime.lon], 
+            {icon: crimeIcon}
+        ).bindPopup(crime.popupContent);
+        layers.crimes.addLayer(marker);
+    });
+});
+
+
+},{"./base_markers":3,"./client_config":4,"./controls":5,"./data/station-update-codes.json":7,"./data/stations.json":8,"./geojson_layers":10,"./instagram_markers":11,"./line_sequences.json":12,"./tweet_markers":13,"lodash":1,"underscore.string":2}],10:[function(require,module,exports){
+var FadeMarker = require('./base_markers').FadeMarker;
+var config = require('./client_config');
+var country_codes = require('./data/country-codes.json');
+
+module.exports = function(layers){
 
     $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
         layers.metroLines.addLayer(L.geoJson(data, {
@@ -7937,30 +9185,30 @@ $(document).ready(function(){
     });
 
 
-    $.getJSON('/javascripts/geojson/metro_stations.geojson', function(data){
-        layers.metroStations.addLayer(L.geoJson(data, {
-            pointToLayer: function(feature, latlng){
-                return new FadeMarker(latlng, {icon: L.icon({
-                    iconUrl: '/images/metro_icon.gif',
-                    iconSize: [16, 16],
-                    iconAnchor: [8, 8]
-                })}).bindPopup(feature['properties']['NAME']);
-            }
-        }));
-    });
+    // $.getJSON('/javascripts/geojson/metro_stations.geojson', function(data){
+    //     layers.metroStations.addLayer(L.geoJson(data, {
+    //         pointToLayer: function(feature, latlng){
+    //             return new FadeMarker(latlng, {icon: L.icon({
+    //                 iconUrl: '/images/metro_icon.gif',
+    //                 iconSize: [16, 16],
+    //                 iconAnchor: [8, 8]
+    //             })}).bindPopup(feature['properties']['NAME'] + '    ' + latlng);
+    //         }
+    //     }));
+    // });
 
-    $.getJSON('/javascripts/geojson/embassies.geojson', function(data){
-        layers.embassies.addLayer(L.geoJson(data, {
-            pointToLayer: function(feature, latlng){
-                var code = country_codes[feature.properties.COUNTRY] || 'ks';
-                return new FadeMarker(latlng, {icon: L.icon({
-                    iconUrl: '/images/flags/png/' + code.toLowerCase() + '.png',
-                    iconSize: [24, 16],
-                    iconAnchor: [12, 8]
-                })}).bindPopup(feature.properties.COUNTRY);
-            }
-        }))
-    })
+    // $.getJSON('/javascripts/geojson/embassies.geojson', function(data){
+    //     layers.embassies.addLayer(L.geoJson(data, {
+    //         pointToLayer: function(feature, latlng){
+    //             var code = country_codes[feature.properties.COUNTRY] || 'ks';
+    //             return new FadeMarker(latlng, {icon: L.icon({
+    //                 iconUrl: '/images/flags/png/' + code.toLowerCase() + '.png',
+    //                 iconSize: [24, 16],
+    //                 iconAnchor: [12, 8]
+    //             })}).bindPopup(feature.properties.COUNTRY);
+    //         }
+    //     }))
+    // })
 
     $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){   
         layers.cameras.addLayer(L.geoJson(data, {
@@ -7973,50 +9221,9 @@ $(document).ready(function(){
             }
         }));
     });
-
-    var socket = io();
-
-    socket.on('tweet', function(tweet){
-        console.log(tweet);
-        var m = tweet_markers.addMarker(tweet, map, tweetMarkerQueue);
-        layers.tweets.addLayer(m);
-    });
-
-    socket.on('tweet_queue', function(tweet_queue){
-        _.forEach(tweet_queue, function(tweet){
-            var m = tweet_markers.addMarker(tweet, map, tweetMarkerQueue);
-            layers.tweets.addLayer(m);
-        });
-    });
-
-    socket.on('instagram', function(instagrams){
-            console.log(instagrams);
-        _.forEach(instagrams, function(ig_post){
-            var marker = instagram_markers.addMarker(ig_post, map, igMarkerQueue);        
-            layers.instagrams.addLayer(marker);
-        });
-    });
-
-    socket.on('instagram_queue', function(instagram_queue){
-        _.forEach(instagram_queue, function(ig_post){
-            var marker = instagram_markers.addMarker(ig_post, map, igMarkerQueue);        
-            layers.instagrams.addLayer(marker);
-        });
-    });
-
-    socket.on('crime', function(crime){     
-        var crimeIcon = L.divIcon({
-            className: 'markericon',
-            iconAnchor: [12, 12],
-            html: _.str.sprintf('<img style="width:24px;" src="%s">', config.CRIME_ICON_URLS[crime.offense])
-        });
-        var marker = new FadeMarker([crime.lat, crime.lon], {icon: crimeIcon}).bindPopup(crime.popupContent);
-        layers.crimes.addLayer(marker);
-    });
-});
-
-
-},{"./base_markers":3,"./client_config":4,"./controls":5,"./country-codes":6,"./instagram_markers":8,"./tweet_markers":9,"lodash":1,"underscore.string":2}],8:[function(require,module,exports){
+    return layers;
+};
+},{"./base_markers":3,"./client_config":4,"./data/country-codes.json":6}],11:[function(require,module,exports){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
@@ -8029,7 +9236,7 @@ var instagramIcon = L.divIcon({
 });
 
 var popupContent = '<div class="instagramPopup" style="width:px;">' + 
-    '<iframe style="width:500px;height:630px;" src="%s"></iframe></div>';
+    '<iframe style="width:500px;height:630px;" frameBorder=0 src="%s"></iframe></div>';
 
 var addMarker = function(ig_post, map, markerQueue){
         base_markers.addCircleMarker(map, ig_post.latlon);
@@ -8038,25 +9245,1053 @@ var addMarker = function(ig_post, map, markerQueue){
             maxHeight: 800,
             className: 'myPopup'
         }).setContent(_.str.sprintf(popupContent, ig_post.embed_url));
-        if(markerQueue.length > config.MARKER_QUEUE_SIDE){
-            map.removeLayer(markerQueue.shift());
-        }
-        var marker = new base_markers.FadeMarker(
+        return new base_markers.FadeMarker(
             ig_post.latlon,
             {icon: instagramIcon
         }).bindPopup(popup);
-        // var marker = L.marker(
-        //     latlon, 
-        //     {icon: instagramIcon}
-        // ).bindPopup(mypopup).addTo(map);
-        markerQueue.push(marker);
-        return marker;
 };
 
 module.exports = {
     addMarker: addMarker
 }
-},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}],9:[function(require,module,exports){
+},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}],12:[function(require,module,exports){
+module.exports={
+    "GR": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "GR",
+            "SeqNum": 1,
+            "StationCode": "F11",
+            "StationName": "Branch Avenue"
+        },
+        {
+            "DistanceToPrev": 9144,
+            "LineCode": "GR",
+            "SeqNum": 2,
+            "StationCode": "F10",
+            "StationName": "Suitland"
+        },
+        {
+            "DistanceToPrev": 7658,
+            "LineCode": "GR",
+            "SeqNum": 3,
+            "StationCode": "F09",
+            "StationName": "Naylor Road"
+        },
+        {
+            "DistanceToPrev": 6612,
+            "LineCode": "GR",
+            "SeqNum": 4,
+            "StationCode": "F08",
+            "StationName": "Southern Ave"
+        },
+        {
+            "DistanceToPrev": 5508,
+            "LineCode": "GR",
+            "SeqNum": 5,
+            "StationCode": "F07",
+            "StationName": "Congress Height"
+        },
+        {
+            "DistanceToPrev": 6851,
+            "LineCode": "GR",
+            "SeqNum": 6,
+            "StationCode": "F06",
+            "StationName": "Anacostia"
+        },
+        {
+            "DistanceToPrev": 6254,
+            "LineCode": "GR",
+            "SeqNum": 7,
+            "StationCode": "F05",
+            "StationName": "Navy Yard"
+        },
+        {
+            "DistanceToPrev": 3326,
+            "LineCode": "GR",
+            "SeqNum": 8,
+            "StationCode": "F04",
+            "StationName": "Waterfront"
+        },
+        {
+            "DistanceToPrev": 4158,
+            "LineCode": "GR",
+            "SeqNum": 9,
+            "StationCode": "F03",
+            "StationName": "L'Enfant Plaza"
+        },
+        {
+            "DistanceToPrev": 2950,
+            "LineCode": "GR",
+            "SeqNum": 10,
+            "StationCode": "F02",
+            "StationName": "Archives"
+        },
+        {
+            "DistanceToPrev": 1879,
+            "LineCode": "GR",
+            "SeqNum": 11,
+            "StationCode": "F01",
+            "StationName": "Gallery Place"
+        },
+        {
+            "DistanceToPrev": 2985,
+            "LineCode": "GR",
+            "SeqNum": 12,
+            "StationCode": "E01",
+            "StationName": "Mt Vernon Sq"
+        },
+        {
+            "DistanceToPrev": 2527,
+            "LineCode": "GR",
+            "SeqNum": 13,
+            "StationCode": "E02",
+            "StationName": "Shaw"
+        },
+        {
+            "DistanceToPrev": 2555,
+            "LineCode": "GR",
+            "SeqNum": 14,
+            "StationCode": "E03",
+            "StationName": "U Street"
+        },
+        {
+            "DistanceToPrev": 4715,
+            "LineCode": "GR",
+            "SeqNum": 15,
+            "StationCode": "E04",
+            "StationName": "Columbia Heights"
+        },
+        {
+            "DistanceToPrev": 4717,
+            "LineCode": "GR",
+            "SeqNum": 16,
+            "StationCode": "E05",
+            "StationName": "Georgia Avenue"
+        },
+        {
+            "DistanceToPrev": 8348,
+            "LineCode": "GR",
+            "SeqNum": 17,
+            "StationCode": "E06",
+            "StationName": "Fort Totten"
+        },
+        {
+            "DistanceToPrev": 10406,
+            "LineCode": "GR",
+            "SeqNum": 18,
+            "StationCode": "E07",
+            "StationName": "West Hyattsville"
+        },
+        {
+            "DistanceToPrev": 6670,
+            "LineCode": "GR",
+            "SeqNum": 19,
+            "StationCode": "E08",
+            "StationName": "Prince Georges Plaza"
+        },
+        {
+            "DistanceToPrev": 10368,
+            "LineCode": "GR",
+            "SeqNum": 20,
+            "StationCode": "E09",
+            "StationName": "College Park"
+        },
+        {
+            "DistanceToPrev": 12981,
+            "LineCode": "GR",
+            "SeqNum": 21,
+            "StationCode": "E10",
+            "StationName": "Greenbelt"
+        }
+    ],
+    "BL": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "BL",
+            "SeqNum": 1,
+            "StationCode": "J03",
+            "StationName": "Franconia-Springf'ld"
+        },
+        {
+            "DistanceToPrev": 18695,
+            "LineCode": "BL",
+            "SeqNum": 2,
+            "StationCode": "J02",
+            "StationName": "Van Dorn St"
+        },
+        {
+            "DistanceToPrev": 20158,
+            "LineCode": "BL",
+            "SeqNum": 3,
+            "StationCode": "C13",
+            "StationName": "King Street"
+        },
+        {
+            "DistanceToPrev": 3453,
+            "LineCode": "BL",
+            "SeqNum": 4,
+            "StationCode": "C12",
+            "StationName": "Braddock Road"
+        },
+        {
+            "DistanceToPrev": 16108,
+            "LineCode": "BL",
+            "SeqNum": 5,
+            "StationCode": "C10",
+            "StationName": "National Arpt"
+        },
+        {
+            "DistanceToPrev": 2939,
+            "LineCode": "BL",
+            "SeqNum": 6,
+            "StationCode": "C09",
+            "StationName": "Crystal City"
+        },
+        {
+            "DistanceToPrev": 4068,
+            "LineCode": "BL",
+            "SeqNum": 7,
+            "StationCode": "C08",
+            "StationName": "Pentagon City"
+        },
+        {
+            "DistanceToPrev": 3216,
+            "LineCode": "BL",
+            "SeqNum": 8,
+            "StationCode": "C07",
+            "StationName": "Pentagon"
+        },
+        {
+            "DistanceToPrev": 7036,
+            "LineCode": "BL",
+            "SeqNum": 9,
+            "StationCode": "C06",
+            "StationName": "Arlington Cemetery"
+        },
+        {
+            "DistanceToPrev": 4936,
+            "LineCode": "BL",
+            "SeqNum": 10,
+            "StationCode": "C05",
+            "StationName": "Rosslyn"
+        },
+        {
+            "DistanceToPrev": 6993,
+            "LineCode": "BL",
+            "SeqNum": 11,
+            "StationCode": "C04",
+            "StationName": "Foggy Bottom"
+        },
+        {
+            "DistanceToPrev": 2783,
+            "LineCode": "BL",
+            "SeqNum": 12,
+            "StationCode": "C03",
+            "StationName": "Farragut West"
+        },
+        {
+            "DistanceToPrev": 2001,
+            "LineCode": "BL",
+            "SeqNum": 13,
+            "StationCode": "C02",
+            "StationName": "McPherson Square"
+        },
+        {
+            "DistanceToPrev": 2359,
+            "LineCode": "BL",
+            "SeqNum": 14,
+            "StationCode": "C01",
+            "StationName": "Metro Center"
+        },
+        {
+            "DistanceToPrev": 1561,
+            "LineCode": "BL",
+            "SeqNum": 15,
+            "StationCode": "D01",
+            "StationName": "Federal Triangle"
+        },
+        {
+            "DistanceToPrev": 2016,
+            "LineCode": "BL",
+            "SeqNum": 16,
+            "StationCode": "D02",
+            "StationName": "Smithsonian"
+        },
+        {
+            "DistanceToPrev": 2643,
+            "LineCode": "BL",
+            "SeqNum": 17,
+            "StationCode": "D03",
+            "StationName": "L'Enfant Plaza"
+        },
+        {
+            "DistanceToPrev": 1757,
+            "LineCode": "BL",
+            "SeqNum": 18,
+            "StationCode": "D04",
+            "StationName": "Federal Center SW"
+        },
+        {
+            "DistanceToPrev": 3052,
+            "LineCode": "BL",
+            "SeqNum": 19,
+            "StationCode": "D05",
+            "StationName": "Capitol South"
+        },
+        {
+            "DistanceToPrev": 2703,
+            "LineCode": "BL",
+            "SeqNum": 20,
+            "StationCode": "D06",
+            "StationName": "Eastern Market"
+        },
+        {
+            "DistanceToPrev": 3289,
+            "LineCode": "BL",
+            "SeqNum": 21,
+            "StationCode": "D07",
+            "StationName": "Potomac Avenue"
+        },
+        {
+            "DistanceToPrev": 3750,
+            "LineCode": "BL",
+            "SeqNum": 22,
+            "StationCode": "D08",
+            "StationName": "Stadium Armory"
+        },
+        {
+            "DistanceToPrev": 12162,
+            "LineCode": "BL",
+            "SeqNum": 23,
+            "StationCode": "G01",
+            "StationName": "Benning Road"
+        },
+        {
+            "DistanceToPrev": 7779,
+            "LineCode": "BL",
+            "SeqNum": 24,
+            "StationCode": "G02",
+            "StationName": "Capitol Heights"
+        },
+        {
+            "DistanceToPrev": 5215,
+            "LineCode": "BL",
+            "SeqNum": 25,
+            "StationCode": "G03",
+            "StationName": "Addison Road"
+        },
+        {
+            "DistanceToPrev": 7960,
+            "LineCode": "BL",
+            "SeqNum": 26,
+            "StationCode": "G04",
+            "StationName": "Morgan Blvd"
+        },
+        {
+            "DistanceToPrev": 7256,
+            "LineCode": "BL",
+            "SeqNum": 27,
+            "StationCode": "G05",
+            "StationName": "Largo Town Center"
+        }
+    ],
+    "OR": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "OR",
+            "SeqNum": 1,
+            "StationCode": "K08",
+            "StationName": "Vienna"
+        },
+        {
+            "DistanceToPrev": 13165,
+            "LineCode": "OR",
+            "SeqNum": 2,
+            "StationCode": "K07",
+            "StationName": "Dunn Loring"
+        },
+        {
+            "DistanceToPrev": 12638,
+            "LineCode": "OR",
+            "SeqNum": 3,
+            "StationCode": "K06",
+            "StationName": "W Falls Church"
+        },
+        {
+            "DistanceToPrev": 10918,
+            "LineCode": "OR",
+            "SeqNum": 4,
+            "StationCode": "K05",
+            "StationName": "E Falls Church"
+        },
+        {
+            "DistanceToPrev": 13156,
+            "LineCode": "OR",
+            "SeqNum": 5,
+            "StationCode": "K04",
+            "StationName": "Ballston"
+        },
+        {
+            "DistanceToPrev": 2980,
+            "LineCode": "OR",
+            "SeqNum": 6,
+            "StationCode": "K03",
+            "StationName": "Virginia Square"
+        },
+        {
+            "DistanceToPrev": 2473,
+            "LineCode": "OR",
+            "SeqNum": 7,
+            "StationCode": "K02",
+            "StationName": "Clarendon"
+        },
+        {
+            "DistanceToPrev": 2687,
+            "LineCode": "OR",
+            "SeqNum": 8,
+            "StationCode": "K01",
+            "StationName": "Court House"
+        },
+        {
+            "DistanceToPrev": 5807,
+            "LineCode": "OR",
+            "SeqNum": 9,
+            "StationCode": "C05",
+            "StationName": "Rosslyn"
+        },
+        {
+            "DistanceToPrev": 6993,
+            "LineCode": "OR",
+            "SeqNum": 10,
+            "StationCode": "C04",
+            "StationName": "Foggy Bottom"
+        },
+        {
+            "DistanceToPrev": 2783,
+            "LineCode": "OR",
+            "SeqNum": 11,
+            "StationCode": "C03",
+            "StationName": "Farragut West"
+        },
+        {
+            "DistanceToPrev": 2001,
+            "LineCode": "OR",
+            "SeqNum": 12,
+            "StationCode": "C02",
+            "StationName": "McPherson Square"
+        },
+        {
+            "DistanceToPrev": 2359,
+            "LineCode": "OR",
+            "SeqNum": 13,
+            "StationCode": "C01",
+            "StationName": "Metro Center"
+        },
+        {
+            "DistanceToPrev": 1561,
+            "LineCode": "OR",
+            "SeqNum": 14,
+            "StationCode": "D01",
+            "StationName": "Federal Triangle"
+        },
+        {
+            "DistanceToPrev": 2016,
+            "LineCode": "OR",
+            "SeqNum": 15,
+            "StationCode": "D02",
+            "StationName": "Smithsonian"
+        },
+        {
+            "DistanceToPrev": 2643,
+            "LineCode": "OR",
+            "SeqNum": 16,
+            "StationCode": "D03",
+            "StationName": "L'Enfant Plaza"
+        },
+        {
+            "DistanceToPrev": 1757,
+            "LineCode": "OR",
+            "SeqNum": 17,
+            "StationCode": "D04",
+            "StationName": "Federal Center SW"
+        },
+        {
+            "DistanceToPrev": 3052,
+            "LineCode": "OR",
+            "SeqNum": 18,
+            "StationCode": "D05",
+            "StationName": "Capitol South"
+        },
+        {
+            "DistanceToPrev": 2703,
+            "LineCode": "OR",
+            "SeqNum": 19,
+            "StationCode": "D06",
+            "StationName": "Eastern Market"
+        },
+        {
+            "DistanceToPrev": 3289,
+            "LineCode": "OR",
+            "SeqNum": 20,
+            "StationCode": "D07",
+            "StationName": "Potomac Avenue"
+        },
+        {
+            "DistanceToPrev": 3750,
+            "LineCode": "OR",
+            "SeqNum": 21,
+            "StationCode": "D08",
+            "StationName": "Stadium Armory"
+        },
+        {
+            "DistanceToPrev": 11080,
+            "LineCode": "OR",
+            "SeqNum": 22,
+            "StationCode": "D09",
+            "StationName": "Minnesota Avenue"
+        },
+        {
+            "DistanceToPrev": 4723,
+            "LineCode": "OR",
+            "SeqNum": 23,
+            "StationCode": "D10",
+            "StationName": "Deanwood"
+        },
+        {
+            "DistanceToPrev": 6149,
+            "LineCode": "OR",
+            "SeqNum": 24,
+            "StationCode": "D11",
+            "StationName": "Cheverly"
+        },
+        {
+            "DistanceToPrev": 9665,
+            "LineCode": "OR",
+            "SeqNum": 25,
+            "StationCode": "D12",
+            "StationName": "Landover"
+        },
+        {
+            "DistanceToPrev": 7655,
+            "LineCode": "OR",
+            "SeqNum": 26,
+            "StationCode": "D13",
+            "StationName": "New Carrollton"
+        }
+    ],
+    "SV": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "SV",
+            "SeqNum": 1,
+            "StationCode": "N06",
+            "StationName": "Wiehle-Reston East"
+        },
+        {
+            "DistanceToPrev": 30867,
+            "LineCode": "SV",
+            "SeqNum": 2,
+            "StationCode": "N04",
+            "StationName": "Spring Hill"
+        },
+        {
+            "DistanceToPrev": 3634,
+            "LineCode": "SV",
+            "SeqNum": 3,
+            "StationCode": "N03",
+            "StationName": "Greensboro"
+        },
+        {
+            "DistanceToPrev": 3902,
+            "LineCode": "SV",
+            "SeqNum": 4,
+            "StationCode": "N02",
+            "StationName": "Tysons Corner"
+        },
+        {
+            "DistanceToPrev": 3440,
+            "LineCode": "SV",
+            "SeqNum": 5,
+            "StationCode": "N01",
+            "StationName": "McLean"
+        },
+        {
+            "DistanceToPrev": 24745,
+            "LineCode": "SV",
+            "SeqNum": 6,
+            "StationCode": "K05",
+            "StationName": "E Falls Church"
+        },
+        {
+            "DistanceToPrev": 13156,
+            "LineCode": "SV",
+            "SeqNum": 7,
+            "StationCode": "K04",
+            "StationName": "Ballston"
+        },
+        {
+            "DistanceToPrev": 2980,
+            "LineCode": "SV",
+            "SeqNum": 8,
+            "StationCode": "K03",
+            "StationName": "Virginia Square"
+        },
+        {
+            "DistanceToPrev": 2473,
+            "LineCode": "SV",
+            "SeqNum": 9,
+            "StationCode": "K02",
+            "StationName": "Clarendon"
+        },
+        {
+            "DistanceToPrev": 2687,
+            "LineCode": "SV",
+            "SeqNum": 10,
+            "StationCode": "K01",
+            "StationName": "Court House"
+        },
+        {
+            "DistanceToPrev": 4936,
+            "LineCode": "SV",
+            "SeqNum": 11,
+            "StationCode": "C05",
+            "StationName": "Rosslyn"
+        },
+        {
+            "DistanceToPrev": 6993,
+            "LineCode": "SV",
+            "SeqNum": 12,
+            "StationCode": "C04",
+            "StationName": "Foggy Bottom"
+        },
+        {
+            "DistanceToPrev": 2783,
+            "LineCode": "SV",
+            "SeqNum": 13,
+            "StationCode": "C03",
+            "StationName": "Farragut West"
+        },
+        {
+            "DistanceToPrev": 2001,
+            "LineCode": "SV",
+            "SeqNum": 14,
+            "StationCode": "C02",
+            "StationName": "McPherson Square"
+        },
+        {
+            "DistanceToPrev": 2359,
+            "LineCode": "SV",
+            "SeqNum": 15,
+            "StationCode": "C01",
+            "StationName": "Metro Center"
+        },
+        {
+            "DistanceToPrev": 1561,
+            "LineCode": "SV",
+            "SeqNum": 16,
+            "StationCode": "D01",
+            "StationName": "Federal Triangle"
+        },
+        {
+            "DistanceToPrev": 2016,
+            "LineCode": "SV",
+            "SeqNum": 17,
+            "StationCode": "D02",
+            "StationName": "Smithsonian"
+        },
+        {
+            "DistanceToPrev": 2643,
+            "LineCode": "SV",
+            "SeqNum": 18,
+            "StationCode": "D03",
+            "StationName": "L'Enfant Plaza"
+        },
+        {
+            "DistanceToPrev": 1757,
+            "LineCode": "SV",
+            "SeqNum": 19,
+            "StationCode": "D04",
+            "StationName": "Federal Center SW"
+        },
+        {
+            "DistanceToPrev": 3052,
+            "LineCode": "SV",
+            "SeqNum": 20,
+            "StationCode": "D05",
+            "StationName": "Capitol South"
+        },
+        {
+            "DistanceToPrev": 2703,
+            "LineCode": "SV",
+            "SeqNum": 21,
+            "StationCode": "D06",
+            "StationName": "Eastern Market"
+        },
+        {
+            "DistanceToPrev": 3289,
+            "LineCode": "SV",
+            "SeqNum": 22,
+            "StationCode": "D07",
+            "StationName": "Potomac Avenue"
+        },
+        {
+            "DistanceToPrev": 3750,
+            "LineCode": "SV",
+            "SeqNum": 23,
+            "StationCode": "D08",
+            "StationName": "Stadium Armory"
+        },
+        {
+            "DistanceToPrev": 12162,
+            "LineCode": "SV",
+            "SeqNum": 24,
+            "StationCode": "G01",
+            "StationName": "Benning Road"
+        },
+        {
+            "DistanceToPrev": 7779,
+            "LineCode": "SV",
+            "SeqNum": 25,
+            "StationCode": "G02",
+            "StationName": "Capitol Heights"
+        },
+        {
+            "DistanceToPrev": 5215,
+            "LineCode": "SV",
+            "SeqNum": 26,
+            "StationCode": "G03",
+            "StationName": "Addison Road"
+        },
+        {
+            "DistanceToPrev": 7960,
+            "LineCode": "SV",
+            "SeqNum": 27,
+            "StationCode": "G04",
+            "StationName": "Morgan Blvd"
+        },
+        {
+            "DistanceToPrev": 7256,
+            "LineCode": "SV",
+            "SeqNum": 28,
+            "StationCode": "G05",
+            "StationName": "Largo Town Center"
+        }
+    ],
+    "RD": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "RD",
+            "SeqNum": 1,
+            "StationCode": "A15",
+            "StationName": "Shady Grove"
+        },
+        {
+            "DistanceToPrev": 14151,
+            "LineCode": "RD",
+            "SeqNum": 2,
+            "StationCode": "A14",
+            "StationName": "Rockville"
+        },
+        {
+            "DistanceToPrev": 10586,
+            "LineCode": "RD",
+            "SeqNum": 3,
+            "StationCode": "A13",
+            "StationName": "Twinbrook"
+        },
+        {
+            "DistanceToPrev": 5895,
+            "LineCode": "RD",
+            "SeqNum": 4,
+            "StationCode": "A12",
+            "StationName": "White Flint"
+        },
+        {
+            "DistanceToPrev": 7309,
+            "LineCode": "RD",
+            "SeqNum": 5,
+            "StationCode": "A11",
+            "StationName": "Grosvenor"
+        },
+        {
+            "DistanceToPrev": 11821,
+            "LineCode": "RD",
+            "SeqNum": 6,
+            "StationCode": "A10",
+            "StationName": "Medical Center"
+        },
+        {
+            "DistanceToPrev": 5530,
+            "LineCode": "RD",
+            "SeqNum": 7,
+            "StationCode": "A09",
+            "StationName": "Bethesda"
+        },
+        {
+            "DistanceToPrev": 9095,
+            "LineCode": "RD",
+            "SeqNum": 8,
+            "StationCode": "A08",
+            "StationName": "Friendship Heights"
+        },
+        {
+            "DistanceToPrev": 4135,
+            "LineCode": "RD",
+            "SeqNum": 9,
+            "StationCode": "A07",
+            "StationName": "Tenleytown"
+        },
+        {
+            "DistanceToPrev": 5841,
+            "LineCode": "RD",
+            "SeqNum": 10,
+            "StationCode": "A06",
+            "StationName": "Van Ness UDC"
+        },
+        {
+            "DistanceToPrev": 3320,
+            "LineCode": "RD",
+            "SeqNum": 11,
+            "StationCode": "A05",
+            "StationName": "Cleveland Park"
+        },
+        {
+            "DistanceToPrev": 3740,
+            "LineCode": "RD",
+            "SeqNum": 12,
+            "StationCode": "A04",
+            "StationName": "Woodley Park Zoo"
+        },
+        {
+            "DistanceToPrev": 6304,
+            "LineCode": "RD",
+            "SeqNum": 13,
+            "StationCode": "A03",
+            "StationName": "Dupont Circle"
+        },
+        {
+            "DistanceToPrev": 2487,
+            "LineCode": "RD",
+            "SeqNum": 14,
+            "StationCode": "A02",
+            "StationName": "Farragut North"
+        },
+        {
+            "DistanceToPrev": 4178,
+            "LineCode": "RD",
+            "SeqNum": 15,
+            "StationCode": "A01",
+            "StationName": "Metro Center"
+        },
+        {
+            "DistanceToPrev": 1505,
+            "LineCode": "RD",
+            "SeqNum": 16,
+            "StationCode": "B01",
+            "StationName": "Gallery Place"
+        },
+        {
+            "DistanceToPrev": 1967,
+            "LineCode": "RD",
+            "SeqNum": 17,
+            "StationCode": "B02",
+            "StationName": "Judiciary Square"
+        },
+        {
+            "DistanceToPrev": 3446,
+            "LineCode": "RD",
+            "SeqNum": 18,
+            "StationCode": "B03",
+            "StationName": "Union Station"
+        },
+        {
+            "DistanceToPrev": 3548,
+            "LineCode": "RD",
+            "SeqNum": 19,
+            "StationCode": "B35",
+            "StationName": "New York Avenue"
+        },
+        {
+            "DistanceToPrev": 5771,
+            "LineCode": "RD",
+            "SeqNum": 20,
+            "StationCode": "B04",
+            "StationName": "Rhode Island Avenue"
+        },
+        {
+            "DistanceToPrev": 4553,
+            "LineCode": "RD",
+            "SeqNum": 21,
+            "StationCode": "B05",
+            "StationName": "Brookland"
+        },
+        {
+            "DistanceToPrev": 7378,
+            "LineCode": "RD",
+            "SeqNum": 22,
+            "StationCode": "B06",
+            "StationName": "Fort Totten"
+        },
+        {
+            "DistanceToPrev": 10026,
+            "LineCode": "RD",
+            "SeqNum": 23,
+            "StationCode": "B07",
+            "StationName": "Takoma"
+        },
+        {
+            "DistanceToPrev": 7484,
+            "LineCode": "RD",
+            "SeqNum": 24,
+            "StationCode": "B08",
+            "StationName": "Silver Spring"
+        },
+        {
+            "DistanceToPrev": 8871,
+            "LineCode": "RD",
+            "SeqNum": 25,
+            "StationCode": "B09",
+            "StationName": "Forest Glen"
+        },
+        {
+            "DistanceToPrev": 8484,
+            "LineCode": "RD",
+            "SeqNum": 26,
+            "StationCode": "B10",
+            "StationName": "Wheaton"
+        },
+        {
+            "DistanceToPrev": 9334,
+            "LineCode": "RD",
+            "SeqNum": 27,
+            "StationCode": "B11",
+            "StationName": "Glenmont"
+        }
+    ],
+    "YL": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "YL",
+            "SeqNum": 1,
+            "StationCode": "C15",
+            "StationName": "Huntington"
+        },
+        {
+            "DistanceToPrev": 2770,
+            "LineCode": "YL",
+            "SeqNum": 2,
+            "StationCode": "C14",
+            "StationName": "Eisenhower Avenue"
+        },
+        {
+            "DistanceToPrev": 3734,
+            "LineCode": "YL",
+            "SeqNum": 3,
+            "StationCode": "C13",
+            "StationName": "King Street"
+        },
+        {
+            "DistanceToPrev": 3453,
+            "LineCode": "YL",
+            "SeqNum": 4,
+            "StationCode": "C12",
+            "StationName": "Braddock Road"
+        },
+        {
+            "DistanceToPrev": 16108,
+            "LineCode": "YL",
+            "SeqNum": 5,
+            "StationCode": "C10",
+            "StationName": "National Arpt"
+        },
+        {
+            "DistanceToPrev": 2939,
+            "LineCode": "YL",
+            "SeqNum": 6,
+            "StationCode": "C09",
+            "StationName": "Crystal City"
+        },
+        {
+            "DistanceToPrev": 4068,
+            "LineCode": "YL",
+            "SeqNum": 7,
+            "StationCode": "C08",
+            "StationName": "Pentagon City"
+        },
+        {
+            "DistanceToPrev": 3216,
+            "LineCode": "YL",
+            "SeqNum": 8,
+            "StationCode": "C07",
+            "StationName": "Pentagon"
+        },
+        {
+            "DistanceToPrev": 12524,
+            "LineCode": "YL",
+            "SeqNum": 9,
+            "StationCode": "F03",
+            "StationName": "L'Enfant Plaza"
+        },
+        {
+            "DistanceToPrev": 2950,
+            "LineCode": "YL",
+            "SeqNum": 10,
+            "StationCode": "F02",
+            "StationName": "Archives"
+        },
+        {
+            "DistanceToPrev": 1879,
+            "LineCode": "YL",
+            "SeqNum": 11,
+            "StationCode": "F01",
+            "StationName": "Gallery Place"
+        },
+        {
+            "DistanceToPrev": 2985,
+            "LineCode": "YL",
+            "SeqNum": 12,
+            "StationCode": "E01",
+            "StationName": "Mt Vernon Sq"
+        },
+        {
+            "DistanceToPrev": 2527,
+            "LineCode": "YL",
+            "SeqNum": 13,
+            "StationCode": "E02",
+            "StationName": "Shaw"
+        },
+        {
+            "DistanceToPrev": 2555,
+            "LineCode": "YL",
+            "SeqNum": 14,
+            "StationCode": "E03",
+            "StationName": "U Street"
+        },
+        {
+            "DistanceToPrev": 4715,
+            "LineCode": "YL",
+            "SeqNum": 15,
+            "StationCode": "E04",
+            "StationName": "Columbia Heights"
+        },
+        {
+            "DistanceToPrev": 4717,
+            "LineCode": "YL",
+            "SeqNum": 16,
+            "StationCode": "E05",
+            "StationName": "Georgia Avenue"
+        },
+        {
+            "DistanceToPrev": 8348,
+            "LineCode": "YL",
+            "SeqNum": 17,
+            "StationCode": "E06",
+            "StationName": "Fort Totten"
+        }
+    ]
+}
+},{}],13:[function(require,module,exports){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
@@ -8071,10 +10306,7 @@ var tweetIcon = L.divIcon({
 var tweetPopupContent = '<div class="tweetPopup" ' +
     'style="width:510px;align=center;" id="%s"></div>';
 
-var addMarker = function(tweet, map, markerQueue){
-    if(markerQueue.length > 30){
-        map.removeLayer(markerQueue.shift());
-    }
+var addMarker = function(tweet, map){
     var latlon = [
         tweet.coordinates.coordinates[1],
         tweet.coordinates.coordinates[0]
@@ -8085,12 +10317,12 @@ var addMarker = function(tweet, map, markerQueue){
         maxHeight: 300,
         className: 'myPopup'
     }).setContent(_.str.sprintf(tweetPopupContent, tweet.id_str));
-    var marker = new base_markers.FadeMarker(latlon, {icon: tweetIcon}).bindPopup(popup);
-    markerQueue.push(marker);
-    return marker;
+    return new base_markers.FadeMarker(latlon, {icon: tweetIcon}).bindPopup(popup);
 };
 
 module.exports = {
     addMarker: addMarker
 };
-},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}]},{},[7])
+
+
+},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}]},{},[9])

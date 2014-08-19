@@ -6,10 +6,14 @@ var bodyParser = require('body-parser');
 var config = require('./config');
 var request = require('request');
 var _ = require('lodash');
-_.str =require('underscore.string');
+_.str = require('underscore.string');
 var fs = require('fs');
 var jade = require('jade');
 var MongoClient = require('mongodb').MongoClient;
+var trainpath = require('./trainpath');
+var lineSequences = require('./data/line_sequences.json');
+var linepoints = require('./data/linepoints.json');
+var moment = require('moment');
 
 var crime_template;
 fs.readFile('views/crime_popup.jade', function(err, data){
@@ -52,6 +56,7 @@ fs.readFile('views/crime_popup.jade', function(err, data){
 // };
 
 
+
 app.set('view engine', 'jade');
 
 app.use(express.static('public'));
@@ -70,33 +75,60 @@ io.on('connection', function(socket){
         if(err) console.log(err);
         var tweet_queue = db.collection('tweet_queue');
         tweet_queue.find({}, {limit: 10, sort: {created_at: -1}}).toArray(function(err, tweets){
-            console.log(tweets.length);
             _.forEach(tweets, function(tweet){
                 socket.emit('tweet', tweet);
-            })
-            // socket.emit('tweet_queue', tweets);
+            });
         });
         var instagram_queue = db.collection('instagram_queue');
         instagram_queue.find({}, {limit: 10, sort: {date: -1}}).toArray(function(err, instagrams){
-            console.log(instagrams.length);
             socket.emit('instagram', instagrams);
-            // socket.emit('instagram_queue', instagrams);    
         });
         var crime_queue = db.collection('crimes');
         crime_queue.find({}, {limit:30, sort: {start_date: -1}}).toArray(function(err, crimes){
             _.forEach(crimes, function(crime){
                 crime.popupContent = crime_template({crime: crime});
                 socket.emit('crime', crime);
-            })
-        })
-    })
+            });
+        });
+
+        // var params = {
+        //     "ll": "38.89325255235421, -77.03738125506788",
+        //     'radius': 5000e
+        // };
+
+        // foursquare.getVenues(params, function(error, res) {
+        //     if (!error) {
+        //         console.log('foo');
+        //         socket.emit('venues', res.response.venues);
+        //     }
+        //     else{
+        //         console.log(error);
+        //     }
+        // });
+
+    });
 });
 
+// setTimeout(function(){
+//     MongoClient.connect(config.mongo.MONGOHQ_METRO_URL, function(err, db){
+//         // var now = moment().subtract('months', 1).unix()
+//         var t1 = moment().subtract('months', 1).subtract('days', 10).unix()
+//         var t2 = moment().subtract('months', 1).unix()
+//         t1 = parseInt(t1);
+//         t2 = parseInt(t2);
+//         console.log(t1, t2);
+//         // var now = moment().hours() * 3600 + moment().minutes() * 60 + moment().seconds();
+//         db.collection('train_locs').find({time: {$gt: t1}}).toArray(function(err, locs){
+//             io.emit('locs', locs);
+//             console.log(locs.length);
+//         });
+//     });
+// }, 5000);
 
-MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
+// MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
     // var twitter_stream = require('./twitter_stream.js')(io, db);
     // var instagram_stream = require('./instagram_stream')(app, io, db);
-})
+// })
 
 http.listen(process.env.PORT || 5000, function(){
 	console.log('Listening on *:' + process.env.PORT || 5000);

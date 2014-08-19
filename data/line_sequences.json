@@ -1,0 +1,1036 @@
+{
+    "GR": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "GR",
+            "SeqNum": 1,
+            "StationCode": "F11",
+            "StationName": "Branch Avenue"
+        },
+        {
+            "DistanceToPrev": 9144,
+            "LineCode": "GR",
+            "SeqNum": 2,
+            "StationCode": "F10",
+            "StationName": "Suitland"
+        },
+        {
+            "DistanceToPrev": 7658,
+            "LineCode": "GR",
+            "SeqNum": 3,
+            "StationCode": "F09",
+            "StationName": "Naylor Road"
+        },
+        {
+            "DistanceToPrev": 6612,
+            "LineCode": "GR",
+            "SeqNum": 4,
+            "StationCode": "F08",
+            "StationName": "Southern Ave"
+        },
+        {
+            "DistanceToPrev": 5508,
+            "LineCode": "GR",
+            "SeqNum": 5,
+            "StationCode": "F07",
+            "StationName": "Congress Height"
+        },
+        {
+            "DistanceToPrev": 6851,
+            "LineCode": "GR",
+            "SeqNum": 6,
+            "StationCode": "F06",
+            "StationName": "Anacostia"
+        },
+        {
+            "DistanceToPrev": 6254,
+            "LineCode": "GR",
+            "SeqNum": 7,
+            "StationCode": "F05",
+            "StationName": "Navy Yard"
+        },
+        {
+            "DistanceToPrev": 3326,
+            "LineCode": "GR",
+            "SeqNum": 8,
+            "StationCode": "F04",
+            "StationName": "Waterfront"
+        },
+        {
+            "DistanceToPrev": 4158,
+            "LineCode": "GR",
+            "SeqNum": 9,
+            "StationCode": "F03",
+            "StationName": "L'Enfant Plaza"
+        },
+        {
+            "DistanceToPrev": 2950,
+            "LineCode": "GR",
+            "SeqNum": 10,
+            "StationCode": "F02",
+            "StationName": "Archives"
+        },
+        {
+            "DistanceToPrev": 1879,
+            "LineCode": "GR",
+            "SeqNum": 11,
+            "StationCode": "F01",
+            "StationName": "Gallery Place"
+        },
+        {
+            "DistanceToPrev": 2985,
+            "LineCode": "GR",
+            "SeqNum": 12,
+            "StationCode": "E01",
+            "StationName": "Mt Vernon Sq"
+        },
+        {
+            "DistanceToPrev": 2527,
+            "LineCode": "GR",
+            "SeqNum": 13,
+            "StationCode": "E02",
+            "StationName": "Shaw"
+        },
+        {
+            "DistanceToPrev": 2555,
+            "LineCode": "GR",
+            "SeqNum": 14,
+            "StationCode": "E03",
+            "StationName": "U Street"
+        },
+        {
+            "DistanceToPrev": 4715,
+            "LineCode": "GR",
+            "SeqNum": 15,
+            "StationCode": "E04",
+            "StationName": "Columbia Heights"
+        },
+        {
+            "DistanceToPrev": 4717,
+            "LineCode": "GR",
+            "SeqNum": 16,
+            "StationCode": "E05",
+            "StationName": "Georgia Avenue"
+        },
+        {
+            "DistanceToPrev": 8348,
+            "LineCode": "GR",
+            "SeqNum": 17,
+            "StationCode": "E06",
+            "StationName": "Fort Totten"
+        },
+        {
+            "DistanceToPrev": 10406,
+            "LineCode": "GR",
+            "SeqNum": 18,
+            "StationCode": "E07",
+            "StationName": "West Hyattsville"
+        },
+        {
+            "DistanceToPrev": 6670,
+            "LineCode": "GR",
+            "SeqNum": 19,
+            "StationCode": "E08",
+            "StationName": "Prince Georges Plaza"
+        },
+        {
+            "DistanceToPrev": 10368,
+            "LineCode": "GR",
+            "SeqNum": 20,
+            "StationCode": "E09",
+            "StationName": "College Park"
+        },
+        {
+            "DistanceToPrev": 12981,
+            "LineCode": "GR",
+            "SeqNum": 21,
+            "StationCode": "E10",
+            "StationName": "Greenbelt"
+        }
+    ],
+    "BL": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "BL",
+            "SeqNum": 1,
+            "StationCode": "J03",
+            "StationName": "Franconia-Springf'ld"
+        },
+        {
+            "DistanceToPrev": 18695,
+            "LineCode": "BL",
+            "SeqNum": 2,
+            "StationCode": "J02",
+            "StationName": "Van Dorn St"
+        },
+        {
+            "DistanceToPrev": 20158,
+            "LineCode": "BL",
+            "SeqNum": 3,
+            "StationCode": "C13",
+            "StationName": "King Street"
+        },
+        {
+            "DistanceToPrev": 3453,
+            "LineCode": "BL",
+            "SeqNum": 4,
+            "StationCode": "C12",
+            "StationName": "Braddock Road"
+        },
+        {
+            "DistanceToPrev": 16108,
+            "LineCode": "BL",
+            "SeqNum": 5,
+            "StationCode": "C10",
+            "StationName": "National Arpt"
+        },
+        {
+            "DistanceToPrev": 2939,
+            "LineCode": "BL",
+            "SeqNum": 6,
+            "StationCode": "C09",
+            "StationName": "Crystal City"
+        },
+        {
+            "DistanceToPrev": 4068,
+            "LineCode": "BL",
+            "SeqNum": 7,
+            "StationCode": "C08",
+            "StationName": "Pentagon City"
+        },
+        {
+            "DistanceToPrev": 3216,
+            "LineCode": "BL",
+            "SeqNum": 8,
+            "StationCode": "C07",
+            "StationName": "Pentagon"
+        },
+        {
+            "DistanceToPrev": 7036,
+            "LineCode": "BL",
+            "SeqNum": 9,
+            "StationCode": "C06",
+            "StationName": "Arlington Cemetery"
+        },
+        {
+            "DistanceToPrev": 4936,
+            "LineCode": "BL",
+            "SeqNum": 10,
+            "StationCode": "C05",
+            "StationName": "Rosslyn"
+        },
+        {
+            "DistanceToPrev": 6993,
+            "LineCode": "BL",
+            "SeqNum": 11,
+            "StationCode": "C04",
+            "StationName": "Foggy Bottom"
+        },
+        {
+            "DistanceToPrev": 2783,
+            "LineCode": "BL",
+            "SeqNum": 12,
+            "StationCode": "C03",
+            "StationName": "Farragut West"
+        },
+        {
+            "DistanceToPrev": 2001,
+            "LineCode": "BL",
+            "SeqNum": 13,
+            "StationCode": "C02",
+            "StationName": "McPherson Square"
+        },
+        {
+            "DistanceToPrev": 2359,
+            "LineCode": "BL",
+            "SeqNum": 14,
+            "StationCode": "C01",
+            "StationName": "Metro Center"
+        },
+        {
+            "DistanceToPrev": 1561,
+            "LineCode": "BL",
+            "SeqNum": 15,
+            "StationCode": "D01",
+            "StationName": "Federal Triangle"
+        },
+        {
+            "DistanceToPrev": 2016,
+            "LineCode": "BL",
+            "SeqNum": 16,
+            "StationCode": "D02",
+            "StationName": "Smithsonian"
+        },
+        {
+            "DistanceToPrev": 2643,
+            "LineCode": "BL",
+            "SeqNum": 17,
+            "StationCode": "D03",
+            "StationName": "L'Enfant Plaza"
+        },
+        {
+            "DistanceToPrev": 1757,
+            "LineCode": "BL",
+            "SeqNum": 18,
+            "StationCode": "D04",
+            "StationName": "Federal Center SW"
+        },
+        {
+            "DistanceToPrev": 3052,
+            "LineCode": "BL",
+            "SeqNum": 19,
+            "StationCode": "D05",
+            "StationName": "Capitol South"
+        },
+        {
+            "DistanceToPrev": 2703,
+            "LineCode": "BL",
+            "SeqNum": 20,
+            "StationCode": "D06",
+            "StationName": "Eastern Market"
+        },
+        {
+            "DistanceToPrev": 3289,
+            "LineCode": "BL",
+            "SeqNum": 21,
+            "StationCode": "D07",
+            "StationName": "Potomac Avenue"
+        },
+        {
+            "DistanceToPrev": 3750,
+            "LineCode": "BL",
+            "SeqNum": 22,
+            "StationCode": "D08",
+            "StationName": "Stadium Armory"
+        },
+        {
+            "DistanceToPrev": 12162,
+            "LineCode": "BL",
+            "SeqNum": 23,
+            "StationCode": "G01",
+            "StationName": "Benning Road"
+        },
+        {
+            "DistanceToPrev": 7779,
+            "LineCode": "BL",
+            "SeqNum": 24,
+            "StationCode": "G02",
+            "StationName": "Capitol Heights"
+        },
+        {
+            "DistanceToPrev": 5215,
+            "LineCode": "BL",
+            "SeqNum": 25,
+            "StationCode": "G03",
+            "StationName": "Addison Road"
+        },
+        {
+            "DistanceToPrev": 7960,
+            "LineCode": "BL",
+            "SeqNum": 26,
+            "StationCode": "G04",
+            "StationName": "Morgan Blvd"
+        },
+        {
+            "DistanceToPrev": 7256,
+            "LineCode": "BL",
+            "SeqNum": 27,
+            "StationCode": "G05",
+            "StationName": "Largo Town Center"
+        }
+    ],
+    "OR": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "OR",
+            "SeqNum": 1,
+            "StationCode": "K08",
+            "StationName": "Vienna"
+        },
+        {
+            "DistanceToPrev": 13165,
+            "LineCode": "OR",
+            "SeqNum": 2,
+            "StationCode": "K07",
+            "StationName": "Dunn Loring"
+        },
+        {
+            "DistanceToPrev": 12638,
+            "LineCode": "OR",
+            "SeqNum": 3,
+            "StationCode": "K06",
+            "StationName": "W Falls Church"
+        },
+        {
+            "DistanceToPrev": 10918,
+            "LineCode": "OR",
+            "SeqNum": 4,
+            "StationCode": "K05",
+            "StationName": "E Falls Church"
+        },
+        {
+            "DistanceToPrev": 13156,
+            "LineCode": "OR",
+            "SeqNum": 5,
+            "StationCode": "K04",
+            "StationName": "Ballston"
+        },
+        {
+            "DistanceToPrev": 2980,
+            "LineCode": "OR",
+            "SeqNum": 6,
+            "StationCode": "K03",
+            "StationName": "Virginia Square"
+        },
+        {
+            "DistanceToPrev": 2473,
+            "LineCode": "OR",
+            "SeqNum": 7,
+            "StationCode": "K02",
+            "StationName": "Clarendon"
+        },
+        {
+            "DistanceToPrev": 2687,
+            "LineCode": "OR",
+            "SeqNum": 8,
+            "StationCode": "K01",
+            "StationName": "Court House"
+        },
+        {
+            "DistanceToPrev": 5807,
+            "LineCode": "OR",
+            "SeqNum": 9,
+            "StationCode": "C05",
+            "StationName": "Rosslyn"
+        },
+        {
+            "DistanceToPrev": 6993,
+            "LineCode": "OR",
+            "SeqNum": 10,
+            "StationCode": "C04",
+            "StationName": "Foggy Bottom"
+        },
+        {
+            "DistanceToPrev": 2783,
+            "LineCode": "OR",
+            "SeqNum": 11,
+            "StationCode": "C03",
+            "StationName": "Farragut West"
+        },
+        {
+            "DistanceToPrev": 2001,
+            "LineCode": "OR",
+            "SeqNum": 12,
+            "StationCode": "C02",
+            "StationName": "McPherson Square"
+        },
+        {
+            "DistanceToPrev": 2359,
+            "LineCode": "OR",
+            "SeqNum": 13,
+            "StationCode": "C01",
+            "StationName": "Metro Center"
+        },
+        {
+            "DistanceToPrev": 1561,
+            "LineCode": "OR",
+            "SeqNum": 14,
+            "StationCode": "D01",
+            "StationName": "Federal Triangle"
+        },
+        {
+            "DistanceToPrev": 2016,
+            "LineCode": "OR",
+            "SeqNum": 15,
+            "StationCode": "D02",
+            "StationName": "Smithsonian"
+        },
+        {
+            "DistanceToPrev": 2643,
+            "LineCode": "OR",
+            "SeqNum": 16,
+            "StationCode": "D03",
+            "StationName": "L'Enfant Plaza"
+        },
+        {
+            "DistanceToPrev": 1757,
+            "LineCode": "OR",
+            "SeqNum": 17,
+            "StationCode": "D04",
+            "StationName": "Federal Center SW"
+        },
+        {
+            "DistanceToPrev": 3052,
+            "LineCode": "OR",
+            "SeqNum": 18,
+            "StationCode": "D05",
+            "StationName": "Capitol South"
+        },
+        {
+            "DistanceToPrev": 2703,
+            "LineCode": "OR",
+            "SeqNum": 19,
+            "StationCode": "D06",
+            "StationName": "Eastern Market"
+        },
+        {
+            "DistanceToPrev": 3289,
+            "LineCode": "OR",
+            "SeqNum": 20,
+            "StationCode": "D07",
+            "StationName": "Potomac Avenue"
+        },
+        {
+            "DistanceToPrev": 3750,
+            "LineCode": "OR",
+            "SeqNum": 21,
+            "StationCode": "D08",
+            "StationName": "Stadium Armory"
+        },
+        {
+            "DistanceToPrev": 11080,
+            "LineCode": "OR",
+            "SeqNum": 22,
+            "StationCode": "D09",
+            "StationName": "Minnesota Avenue"
+        },
+        {
+            "DistanceToPrev": 4723,
+            "LineCode": "OR",
+            "SeqNum": 23,
+            "StationCode": "D10",
+            "StationName": "Deanwood"
+        },
+        {
+            "DistanceToPrev": 6149,
+            "LineCode": "OR",
+            "SeqNum": 24,
+            "StationCode": "D11",
+            "StationName": "Cheverly"
+        },
+        {
+            "DistanceToPrev": 9665,
+            "LineCode": "OR",
+            "SeqNum": 25,
+            "StationCode": "D12",
+            "StationName": "Landover"
+        },
+        {
+            "DistanceToPrev": 7655,
+            "LineCode": "OR",
+            "SeqNum": 26,
+            "StationCode": "D13",
+            "StationName": "New Carrollton"
+        }
+    ],
+    "SV": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "SV",
+            "SeqNum": 1,
+            "StationCode": "N06",
+            "StationName": "Wiehle-Reston East"
+        },
+        {
+            "DistanceToPrev": 30867,
+            "LineCode": "SV",
+            "SeqNum": 2,
+            "StationCode": "N04",
+            "StationName": "Spring Hill"
+        },
+        {
+            "DistanceToPrev": 3634,
+            "LineCode": "SV",
+            "SeqNum": 3,
+            "StationCode": "N03",
+            "StationName": "Greensboro"
+        },
+        {
+            "DistanceToPrev": 3902,
+            "LineCode": "SV",
+            "SeqNum": 4,
+            "StationCode": "N02",
+            "StationName": "Tysons Corner"
+        },
+        {
+            "DistanceToPrev": 3440,
+            "LineCode": "SV",
+            "SeqNum": 5,
+            "StationCode": "N01",
+            "StationName": "McLean"
+        },
+        {
+            "DistanceToPrev": 24745,
+            "LineCode": "SV",
+            "SeqNum": 6,
+            "StationCode": "K05",
+            "StationName": "E Falls Church"
+        },
+        {
+            "DistanceToPrev": 13156,
+            "LineCode": "SV",
+            "SeqNum": 7,
+            "StationCode": "K04",
+            "StationName": "Ballston"
+        },
+        {
+            "DistanceToPrev": 2980,
+            "LineCode": "SV",
+            "SeqNum": 8,
+            "StationCode": "K03",
+            "StationName": "Virginia Square"
+        },
+        {
+            "DistanceToPrev": 2473,
+            "LineCode": "SV",
+            "SeqNum": 9,
+            "StationCode": "K02",
+            "StationName": "Clarendon"
+        },
+        {
+            "DistanceToPrev": 2687,
+            "LineCode": "SV",
+            "SeqNum": 10,
+            "StationCode": "K01",
+            "StationName": "Court House"
+        },
+        {
+            "DistanceToPrev": 4936,
+            "LineCode": "SV",
+            "SeqNum": 11,
+            "StationCode": "C05",
+            "StationName": "Rosslyn"
+        },
+        {
+            "DistanceToPrev": 6993,
+            "LineCode": "SV",
+            "SeqNum": 12,
+            "StationCode": "C04",
+            "StationName": "Foggy Bottom"
+        },
+        {
+            "DistanceToPrev": 2783,
+            "LineCode": "SV",
+            "SeqNum": 13,
+            "StationCode": "C03",
+            "StationName": "Farragut West"
+        },
+        {
+            "DistanceToPrev": 2001,
+            "LineCode": "SV",
+            "SeqNum": 14,
+            "StationCode": "C02",
+            "StationName": "McPherson Square"
+        },
+        {
+            "DistanceToPrev": 2359,
+            "LineCode": "SV",
+            "SeqNum": 15,
+            "StationCode": "C01",
+            "StationName": "Metro Center"
+        },
+        {
+            "DistanceToPrev": 1561,
+            "LineCode": "SV",
+            "SeqNum": 16,
+            "StationCode": "D01",
+            "StationName": "Federal Triangle"
+        },
+        {
+            "DistanceToPrev": 2016,
+            "LineCode": "SV",
+            "SeqNum": 17,
+            "StationCode": "D02",
+            "StationName": "Smithsonian"
+        },
+        {
+            "DistanceToPrev": 2643,
+            "LineCode": "SV",
+            "SeqNum": 18,
+            "StationCode": "D03",
+            "StationName": "L'Enfant Plaza"
+        },
+        {
+            "DistanceToPrev": 1757,
+            "LineCode": "SV",
+            "SeqNum": 19,
+            "StationCode": "D04",
+            "StationName": "Federal Center SW"
+        },
+        {
+            "DistanceToPrev": 3052,
+            "LineCode": "SV",
+            "SeqNum": 20,
+            "StationCode": "D05",
+            "StationName": "Capitol South"
+        },
+        {
+            "DistanceToPrev": 2703,
+            "LineCode": "SV",
+            "SeqNum": 21,
+            "StationCode": "D06",
+            "StationName": "Eastern Market"
+        },
+        {
+            "DistanceToPrev": 3289,
+            "LineCode": "SV",
+            "SeqNum": 22,
+            "StationCode": "D07",
+            "StationName": "Potomac Avenue"
+        },
+        {
+            "DistanceToPrev": 3750,
+            "LineCode": "SV",
+            "SeqNum": 23,
+            "StationCode": "D08",
+            "StationName": "Stadium Armory"
+        },
+        {
+            "DistanceToPrev": 12162,
+            "LineCode": "SV",
+            "SeqNum": 24,
+            "StationCode": "G01",
+            "StationName": "Benning Road"
+        },
+        {
+            "DistanceToPrev": 7779,
+            "LineCode": "SV",
+            "SeqNum": 25,
+            "StationCode": "G02",
+            "StationName": "Capitol Heights"
+        },
+        {
+            "DistanceToPrev": 5215,
+            "LineCode": "SV",
+            "SeqNum": 26,
+            "StationCode": "G03",
+            "StationName": "Addison Road"
+        },
+        {
+            "DistanceToPrev": 7960,
+            "LineCode": "SV",
+            "SeqNum": 27,
+            "StationCode": "G04",
+            "StationName": "Morgan Blvd"
+        },
+        {
+            "DistanceToPrev": 7256,
+            "LineCode": "SV",
+            "SeqNum": 28,
+            "StationCode": "G05",
+            "StationName": "Largo Town Center"
+        }
+    ],
+    "RD": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "RD",
+            "SeqNum": 1,
+            "StationCode": "A15",
+            "StationName": "Shady Grove"
+        },
+        {
+            "DistanceToPrev": 14151,
+            "LineCode": "RD",
+            "SeqNum": 2,
+            "StationCode": "A14",
+            "StationName": "Rockville"
+        },
+        {
+            "DistanceToPrev": 10586,
+            "LineCode": "RD",
+            "SeqNum": 3,
+            "StationCode": "A13",
+            "StationName": "Twinbrook"
+        },
+        {
+            "DistanceToPrev": 5895,
+            "LineCode": "RD",
+            "SeqNum": 4,
+            "StationCode": "A12",
+            "StationName": "White Flint"
+        },
+        {
+            "DistanceToPrev": 7309,
+            "LineCode": "RD",
+            "SeqNum": 5,
+            "StationCode": "A11",
+            "StationName": "Grosvenor"
+        },
+        {
+            "DistanceToPrev": 11821,
+            "LineCode": "RD",
+            "SeqNum": 6,
+            "StationCode": "A10",
+            "StationName": "Medical Center"
+        },
+        {
+            "DistanceToPrev": 5530,
+            "LineCode": "RD",
+            "SeqNum": 7,
+            "StationCode": "A09",
+            "StationName": "Bethesda"
+        },
+        {
+            "DistanceToPrev": 9095,
+            "LineCode": "RD",
+            "SeqNum": 8,
+            "StationCode": "A08",
+            "StationName": "Friendship Heights"
+        },
+        {
+            "DistanceToPrev": 4135,
+            "LineCode": "RD",
+            "SeqNum": 9,
+            "StationCode": "A07",
+            "StationName": "Tenleytown"
+        },
+        {
+            "DistanceToPrev": 5841,
+            "LineCode": "RD",
+            "SeqNum": 10,
+            "StationCode": "A06",
+            "StationName": "Van Ness UDC"
+        },
+        {
+            "DistanceToPrev": 3320,
+            "LineCode": "RD",
+            "SeqNum": 11,
+            "StationCode": "A05",
+            "StationName": "Cleveland Park"
+        },
+        {
+            "DistanceToPrev": 3740,
+            "LineCode": "RD",
+            "SeqNum": 12,
+            "StationCode": "A04",
+            "StationName": "Woodley Park Zoo"
+        },
+        {
+            "DistanceToPrev": 6304,
+            "LineCode": "RD",
+            "SeqNum": 13,
+            "StationCode": "A03",
+            "StationName": "Dupont Circle"
+        },
+        {
+            "DistanceToPrev": 2487,
+            "LineCode": "RD",
+            "SeqNum": 14,
+            "StationCode": "A02",
+            "StationName": "Farragut North"
+        },
+        {
+            "DistanceToPrev": 4178,
+            "LineCode": "RD",
+            "SeqNum": 15,
+            "StationCode": "A01",
+            "StationName": "Metro Center"
+        },
+        {
+            "DistanceToPrev": 1505,
+            "LineCode": "RD",
+            "SeqNum": 16,
+            "StationCode": "B01",
+            "StationName": "Gallery Place"
+        },
+        {
+            "DistanceToPrev": 1967,
+            "LineCode": "RD",
+            "SeqNum": 17,
+            "StationCode": "B02",
+            "StationName": "Judiciary Square"
+        },
+        {
+            "DistanceToPrev": 3446,
+            "LineCode": "RD",
+            "SeqNum": 18,
+            "StationCode": "B03",
+            "StationName": "Union Station"
+        },
+        {
+            "DistanceToPrev": 3548,
+            "LineCode": "RD",
+            "SeqNum": 19,
+            "StationCode": "B35",
+            "StationName": "New York Avenue"
+        },
+        {
+            "DistanceToPrev": 5771,
+            "LineCode": "RD",
+            "SeqNum": 20,
+            "StationCode": "B04",
+            "StationName": "Rhode Island Avenue"
+        },
+        {
+            "DistanceToPrev": 4553,
+            "LineCode": "RD",
+            "SeqNum": 21,
+            "StationCode": "B05",
+            "StationName": "Brookland"
+        },
+        {
+            "DistanceToPrev": 7378,
+            "LineCode": "RD",
+            "SeqNum": 22,
+            "StationCode": "B06",
+            "StationName": "Fort Totten"
+        },
+        {
+            "DistanceToPrev": 10026,
+            "LineCode": "RD",
+            "SeqNum": 23,
+            "StationCode": "B07",
+            "StationName": "Takoma"
+        },
+        {
+            "DistanceToPrev": 7484,
+            "LineCode": "RD",
+            "SeqNum": 24,
+            "StationCode": "B08",
+            "StationName": "Silver Spring"
+        },
+        {
+            "DistanceToPrev": 8871,
+            "LineCode": "RD",
+            "SeqNum": 25,
+            "StationCode": "B09",
+            "StationName": "Forest Glen"
+        },
+        {
+            "DistanceToPrev": 8484,
+            "LineCode": "RD",
+            "SeqNum": 26,
+            "StationCode": "B10",
+            "StationName": "Wheaton"
+        },
+        {
+            "DistanceToPrev": 9334,
+            "LineCode": "RD",
+            "SeqNum": 27,
+            "StationCode": "B11",
+            "StationName": "Glenmont"
+        }
+    ],
+    "YL": [
+        {
+            "DistanceToPrev": 0,
+            "LineCode": "YL",
+            "SeqNum": 1,
+            "StationCode": "C15",
+            "StationName": "Huntington"
+        },
+        {
+            "DistanceToPrev": 2770,
+            "LineCode": "YL",
+            "SeqNum": 2,
+            "StationCode": "C14",
+            "StationName": "Eisenhower Avenue"
+        },
+        {
+            "DistanceToPrev": 3734,
+            "LineCode": "YL",
+            "SeqNum": 3,
+            "StationCode": "C13",
+            "StationName": "King Street"
+        },
+        {
+            "DistanceToPrev": 3453,
+            "LineCode": "YL",
+            "SeqNum": 4,
+            "StationCode": "C12",
+            "StationName": "Braddock Road"
+        },
+        {
+            "DistanceToPrev": 16108,
+            "LineCode": "YL",
+            "SeqNum": 5,
+            "StationCode": "C10",
+            "StationName": "National Arpt"
+        },
+        {
+            "DistanceToPrev": 2939,
+            "LineCode": "YL",
+            "SeqNum": 6,
+            "StationCode": "C09",
+            "StationName": "Crystal City"
+        },
+        {
+            "DistanceToPrev": 4068,
+            "LineCode": "YL",
+            "SeqNum": 7,
+            "StationCode": "C08",
+            "StationName": "Pentagon City"
+        },
+        {
+            "DistanceToPrev": 3216,
+            "LineCode": "YL",
+            "SeqNum": 8,
+            "StationCode": "C07",
+            "StationName": "Pentagon"
+        },
+        {
+            "DistanceToPrev": 12524,
+            "LineCode": "YL",
+            "SeqNum": 9,
+            "StationCode": "F03",
+            "StationName": "L'Enfant Plaza"
+        },
+        {
+            "DistanceToPrev": 2950,
+            "LineCode": "YL",
+            "SeqNum": 10,
+            "StationCode": "F02",
+            "StationName": "Archives"
+        },
+        {
+            "DistanceToPrev": 1879,
+            "LineCode": "YL",
+            "SeqNum": 11,
+            "StationCode": "F01",
+            "StationName": "Gallery Place"
+        },
+        {
+            "DistanceToPrev": 2985,
+            "LineCode": "YL",
+            "SeqNum": 12,
+            "StationCode": "E01",
+            "StationName": "Mt Vernon Sq"
+        },
+        {
+            "DistanceToPrev": 2527,
+            "LineCode": "YL",
+            "SeqNum": 13,
+            "StationCode": "E02",
+            "StationName": "Shaw"
+        },
+        {
+            "DistanceToPrev": 2555,
+            "LineCode": "YL",
+            "SeqNum": 14,
+            "StationCode": "E03",
+            "StationName": "U Street"
+        },
+        {
+            "DistanceToPrev": 4715,
+            "LineCode": "YL",
+            "SeqNum": 15,
+            "StationCode": "E04",
+            "StationName": "Columbia Heights"
+        },
+        {
+            "DistanceToPrev": 4717,
+            "LineCode": "YL",
+            "SeqNum": 16,
+            "StationCode": "E05",
+            "StationName": "Georgia Avenue"
+        },
+        {
+            "DistanceToPrev": 8348,
+            "LineCode": "YL",
+            "SeqNum": 17,
+            "StationCode": "E06",
+            "StationName": "Fort Totten"
+        }
+    ]
+}

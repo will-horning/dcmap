@@ -12,10 +12,7 @@ var tweetIcon = L.divIcon({
 var tweetPopupContent = '<div class="tweetPopup" ' +
     'style="width:510px;align=center;" id="%s"></div>';
 
-var addMarker = function(tweet, map, markerQueue){
-    if(markerQueue.length > 30){
-        map.removeLayer(markerQueue.shift());
-    }
+var addMarker = function(tweet, map){
     var latlon = [
         tweet.coordinates.coordinates[1],
         tweet.coordinates.coordinates[0]
@@ -26,11 +23,10 @@ var addMarker = function(tweet, map, markerQueue){
         maxHeight: 300,
         className: 'myPopup'
     }).setContent(_.str.sprintf(tweetPopupContent, tweet.id_str));
-    var marker = new base_markers.FadeMarker(latlon, {icon: tweetIcon}).bindPopup(popup);
-    markerQueue.push(marker);
-    return marker;
+    return new base_markers.FadeMarker(latlon, {icon: tweetIcon}).bindPopup(popup);
 };
 
 module.exports = {
     addMarker: addMarker
 };
+

@@ -70,6 +70,7 @@
     animation: fadeout 2s;
 }
 
+
 .fadeIn {
     animation: fadein 0.5s;
     -moz-animation: fadein 0.5s; /* Firefox */

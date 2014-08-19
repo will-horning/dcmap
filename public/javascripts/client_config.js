@@ -7,7 +7,7 @@ config.twitter = {};
 config.instagram.ICON_PATH = "/images/mascoticons/32x32/instagram-32x32.png";
 config.twitter.ICON_PATH = "/images/mascoticons/32x32/twitter-32x32.png";
 config.SIDEBAR_WIDTH = '250px';
-config.CAMERA_ICON_URL = '/images/mapicons.nicolasmollet.com/road-transportation-c72222/trafficcamera.png'
+config.CAMERA_ICON_URL = '/images/mapicons.nicolasmollet.com/road-transportation-78005c/trafficcamera.png';
 config.WIFI_ICON_URL = '/images/mapicons.nicolasmollet.com/interior/wifi.png';
 config.CRIME_ICON_URLS = {
         'THEFT F/AUTO': '/images/mapicons.nicolasmollet.com/crime/theft.png',
@@ -20,6 +20,9 @@ config.CRIME_ICON_URLS = {
         'SEX ABUSE': '/images/mapicons.nicolasmollet.com/crime/rape.png',
         'ARSON': '/images/mapicons.nicolasmollet.com/crime/fire.png'
 };
+
+config.metro = {};
+config.metro.UPDATES_URL =  'http://www.wmata.com/rider_tools/pids/showpid.cfm?station_id=%s';
 
 
 module.exports = config;

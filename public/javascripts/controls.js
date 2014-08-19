@@ -1,7 +1,18 @@
 var config = require('./client_config');
 
-module.exports = function(map){
+module.exports = function(map, layers){
     L.control.fullscreen({position: 'topright'}).addTo(map);
+
+    $.get('/sidebar', function(data){
+        $('#sidebar').html(data);
+        $('.layerToggle').click(function(){
+            var layer = layers[$(this).attr('id')];
+            if(map.hasLayer(layer)) map.removeLayer(layer);
+            else map.addLayer(layer);
+        });
+        $('.btn-group-vertical').css('margin-left', '25px');
+        $('#sidebar').ready(function(){$('#sidebar').show();});
+    });
 
     sidebar = L.control.sidebar('sidebar', {position:'left', autoPan: false});
     map.addControl(sidebar);
