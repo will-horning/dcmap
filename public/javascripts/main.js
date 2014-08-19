@@ -9210,17 +9210,17 @@ module.exports = function(layers){
     //     }))
     // })
 
-    $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){   
-        layers.cameras.addLayer(L.geoJson(data, {
-            pointToLayer: function(feature, latlng){
-                return new FadeMarker(latlng, {icon: L.divIcon({
-                    className: 'foo',
-                    html: '<img style="width:24px;" src="' + config.CAMERA_ICON_URL + '">',
-                    iconSize: [16,16]
-                })}).bindPopup('Traffic Camera');
-            }
-        }));
-    });
+    // $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){   
+    //     layers.cameras.addLayer(L.geoJson(data, {
+    //         pointToLayer: function(feature, latlng){
+    //             return new FadeMarker(latlng, {icon: L.divIcon({
+    //                 className: 'foo',
+    //                 html: '<img style="width:24px;" src="' + config.CAMERA_ICON_URL + '">',
+    //                 iconSize: [16,16]
+    //             })}).bindPopup('Traffic Camera');
+    //         }
+    //     }));
+    // });
     return layers;
 };
 },{"./base_markers":3,"./client_config":4,"./data/country-codes.json":6}],11:[function(require,module,exports){
