@@ -9001,8 +9001,8 @@ $(document).ready(function(){
     var tweetMarkerQueue = [];
     var igMarkerQueue = [];
     var layers = {};
-    layers.tweets = L.layerGroup();
-    layers.instagrams = L.layerGroup();
+    layers.tweets = L.layerGroup().addTo(map);
+    layers.instagrams = L.layerGroup().addTo(map);
     layers.crimes = L.layerGroup();
     // layers.cameras = new L.MarkerClusterGroup({disableClusteringAtZoom: 14});
     layers.embassies = L.layerGroup();
