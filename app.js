@@ -56,6 +56,8 @@ fs.readFile('views/crime_popup.jade', function(err, data){
 //     });
 // };
 
+// var Geocodio = require('geocodio');
+// var geocodio = new Geocodio({'api_key': config.geocodio.API_KEY});
 
 
 app.set('view engine', 'jade');
@@ -71,7 +73,29 @@ app.get('/sidebar', function(req, res){
     res.render('sidebar.jade');
 });
 
+// setTimeout(function(){
+//  var url = _.str.sprintf(config.sunlight.EVENTS_URL, '2014-08-01', config.sunlight.API_KEY);
+//     console.log(url);
+//     request({url: url, json: true}, function(err, res, body){
+//         var events = _.filter(body.objects, function(e){
+//             return _.contains(['DC', 'MD', 'VA'], e.venue.state);
+//         });
+//         var addresses = _.map(events, function(e){
+//             return e.venue.address1 + ' Washington DC';
+//         });
+//         geocodio.geocode(addresses, function(err, response){
+//             if(err) throw err;
+//             console.log(response);
+//             io.emit('events', response);
+//         })
+//         // socket.emit('events', events);
+//     });
+   
+// }, 6000)
+ 
 io.on('connection', function(socket){
+   
+
     MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
         if(err) console.log(err);
         var tweet_queue = db.collection('tweet_queue');
@@ -110,14 +134,14 @@ io.on('connection', function(socket){
     });
 });
 
-var trains = require('./trains.js');
-setInterval(function(){trains.moveEnrouteTrains(io);}, config.metro.ANIM_INTERVAL);
-setInterval(trains.updateTrains, config.metro.PREDICTION_INTERVAL);
+// var trains = require('./trains.js');
+// setInterval(function(){trains.moveEnrouteTrains(io);}, config.metro.ANIM_INTERVAL);
+// setInterval(trains.updateTrains, config.metro.PREDICTION_INTERVAL);
 
-MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
-    var twitter_stream = require('./twitter_stream.js')(io, db);
-    var instagram_stream = require('./instagram_stream')(app, io, db);
-})
+// MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
+//     var twitter_stream = require('./twitter_stream.js')(io, db);
+//     var instagram_stream = require('./instagram_stream')(app, io, db);
+// })
 
 http.listen(process.env.PORT || 5000, function(){
 	console.log('Listening on *:' + process.env.PORT || 5000);
