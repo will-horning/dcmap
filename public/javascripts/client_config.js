@@ -1,7 +1,7 @@
 var config = {};
 config.MARKER_QUEUE_SIZE = 30;
-config.MAP_CENTER = [38.907, -77.0368];
-config.MAP_ZOOM = 11;
+config.MAP_CENTER = [  38.896149, -77.036617];
+config.MAP_ZOOM = 12;
 config.instagram = {};
 config.twitter = {};
 config.instagram.ICON_PATH = "/images/mascoticons/32x32/instagram-32x32.png";
@@ -15,7 +15,7 @@ config.CRIME_ICON_URLS = {
         'ASSAULT W/DANGEROUS WEAPON': '/images/mapicons.nicolasmollet.com/crime/shooting.png',
         'ROBBERY': '/images/mapicons.nicolasmollet.com/crime/theft.png',
         'BURGLARY': '/images/mapicons.nicolasmollet.com/crime/theft.png',
-        'MOTOR VEHICLE THEFT': '/images/mapicons.nicolasmollet.com/road-transportation-78005c/car.png',
+        'MOTOR VEHICLE THEFT': '/images/mapicons.nicolasmollet.com/road-transportation-c72222/car.png',
         'THEFT/OTHER': '/images/mapicons.nicolasmollet.com/crime/theft.png',
         'SEX ABUSE': '/images/mapicons.nicolasmollet.com/crime/rape.png',
         'ARSON': '/images/mapicons.nicolasmollet.com/crime/fire.png'

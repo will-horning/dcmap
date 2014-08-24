@@ -5,11 +5,17 @@ var _ = require('lodash');
 var FadeMarker = require('./base_markers').FadeMarker;
 _.str =require('underscore.string');
 var lineSequences = require('./line_sequences.json');
-
+var metroLines = require('./data/straight_metro_lines.json');
 
 $(document).ready(function(){
-    var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false });
-    map.setView(config.MAP_CENTER, 11);
+
+// var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+// var map = new L.Map('map', { zoomControl:false });
+//     var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+//     var osm = new L.TileLayer(osmUrl, {minZoom: 15, maxZoom: 19, attribution: osmAttrib});       
+    // map.addLayer(osm);
+    var map = L.mapbox.map('map', 'willhorning.ja8hjdhd', { zoomControl:false });
+    map.setView(config.MAP_CENTER, config.MAP_ZOOM);
     
     var tweetMarkerQueue = [];
     var igMarkerQueue = [];
@@ -17,12 +23,52 @@ $(document).ready(function(){
     layers.tweets = L.layerGroup().addTo(map);
     layers.instagrams = L.layerGroup().addTo(map);
     layers.crimes = L.layerGroup();
+    layers.trains = L.layerGroup();
     // layers.cameras = new L.MarkerClusterGroup({disableClusteringAtZoom: 14});
     layers.embassies = L.layerGroup();
     layers.metroLines = L.layerGroup().addTo(map);
     layers.metroStations = L.layerGroup().addTo(map);
     layers.wifi = L.layerGroup();
+
+    var lineStyle = function(line){
+        switch (line) {
+            case 'BL': return "#0000B0";
+            case 'RD':   return "#9E0003";
+            case 'OR': return "#C97600";
+            case 'YL': return "#DBD800";
+            case 'GR': return "#059600";
+            default: return "#aaaaaa";
+        }
+    }
     
+    var parallelLine = function(latlngs, dist, n_lines, colors, options){
+        var lines = [];
+        for(var i = 0; i < n_lines; i++){
+            var newLatlngs = [latlngs[0]];
+            for(var j = 1; j < latlngs.length - 1; j++){
+                newLatlngs.push([latlngs[j][0] + dist * i, latlngs[j][1] + dist * i]);
+            }   
+            newLatlngs.push(latlngs[latlngs.length - 1]);
+            // console.log(newLatlngs);
+            lines.push(L.polyline(newLatlngs, {color: colors[i], weight:3}));
+        }
+        return lines;
+    }
+
+    _.forOwn(metroLines, function(latlngs, line){
+        // if(line == 'BL'){
+        //     var lines = parallelLine(latlngs, 0.0001, 2, ['#0000ff', '#00ff00'], [{},{}]);
+        //     console.log(lines);
+        //     _.forEach(lines, function(l){layers.metroLines.addLayer(l);});
+        // }
+        // else{
+            var color = lineStyle(line);
+            layers.metroLines.addLayer(L.polyline(latlngs, {color: color, opacity: 0.6, weight: 2}));
+        // }
+    });
+
+
+
     var geoLayers = require('./geojson_layers')(layers);
     var control = require('./controls')(map, layers);
     // layers.test = new L.MarkerClusterGroup().addTo(map);
@@ -76,36 +122,9 @@ $(document).ready(function(){
 
     var socket = io();
 
-    // var trainMarkers = [];
-    // socket.on('locs', function(locs){
-    //     _.forEach(locs, function(loc){
-    //         var m = L.marker([loc[0], loc[1]]).addTo(map);
-    //         setTimeout(function(){map.removeLayer(m);}, 5000);
-    //     });
-    // });
-
-    // socket.on('trains', function(trains){
-    //     _.forEach(trainMarkers, function(m){
-    //         map.removeLayer(m);
-    //     });
-    //     _.forEach(trains, function(train){
-    //         if(train.LocationCode == 'A01'){
-    //             console.log(train);
-    //         }
-    //         var pcontent = train.DestinationName + ', ' + train.LocationCode + ', ' + 
-    //         (train.secondsToNext / 60) + ', ' + train.nextStation; 
-    //         var latlon = [train.lonlat[1], train.lonlat[0]];
-    //         trainMarkers.push(
-    //             L.circleMarker(
-    //                 latlon, 
-    //                 {fillOpacity: 0.6, opacity: 0.7, radius: 11, fillColor: '#00ff00'}
-    //         ).bindPopup(pcontent).addTo(map));
-    //     });
-    // });
-
     var stationUpdateCodes = require('./data/station-update-codes.json');
-    var stations = require('./data/stations.json').Stations;
-    _.forEach(stations, function(station){
+    var stations = require('./data/stations.json');
+    _.forEach(_.values(stations), function(station){
         var updateCode = stationUpdateCodes[station.Code];
         var popup = L.popup({
             maxWidth: 500,
@@ -121,6 +140,18 @@ $(document).ready(function(){
                 })}).bindPopup(popup);
         layers.metroStations.addLayer(m);    
     });
+
+    var trainMarkers = [];
+    socket.on('train_updates', function(updates){
+        layers.trains.clearLayers();
+        trainMarkers = [];
+        _.forEach(updates, function(update){
+            console.log(update.line);
+            var color = lineStyle(update.line);
+            var m = L.circleMarker(update.latlon, {radius: 6, stroke: false, fillColor: color, fillOpacity: 0.6});
+            layers.trains.addLayer(m);
+        });
+    })
 
     socket.on('tweet', function(tweet){
         if(tweetMarkerQueue.length > config.MARKER_QUEUE_SIZE){

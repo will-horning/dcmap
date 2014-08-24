@@ -13,8 +13,9 @@ var MongoClient = require('mongodb').MongoClient;
 // var trainpath = require('./trainpath');
 var lineSequences = require('./data/line_sequences.json');
 var linepoints = require('./data/linepoints.json');
+var stations = require('./public/javascripts/data/stations.json');
 var moment = require('moment');
-
+var triptimes = require('./public/javascripts/data/triptimes.json');
 var crime_template;
 fs.readFile('views/crime_popup.jade', function(err, data){
     if(err) throw err;
@@ -109,21 +110,9 @@ io.on('connection', function(socket){
     });
 });
 
-// setTimeout(function(){
-//     MongoClient.connect(config.mongo.MONGOHQ_METRO_URL, function(err, db){
-//         // var now = moment().subtract('months', 1).unix()
-//         var t1 = moment().subtract('months', 1).subtract('days', 10).unix()
-//         var t2 = moment().subtract('months', 1).unix()
-//         t1 = parseInt(t1);
-//         t2 = parseInt(t2);
-//         console.log(t1, t2);
-//         // var now = moment().hours() * 3600 + moment().minutes() * 60 + moment().seconds();
-//         db.collection('train_locs').find({time: {$gt: t1}}).toArray(function(err, locs){
-//             io.emit('locs', locs);
-//             console.log(locs.length);
-//         });
-//     });
-// }, 5000);
+var trains = require('./trains.js');
+setInterval(function(){trains.moveEnrouteTrains(io);}, config.metro.ANIM_INTERVAL);
+setInterval(trains.updateTrains, config.metro.PREDICTION_INTERVAL);
 
 MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
     var twitter_stream = require('./twitter_stream.js')(io, db);

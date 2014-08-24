@@ -7499,8 +7499,8 @@ module.exports = {
 },{"lodash":1,"underscore.string":2}],4:[function(require,module,exports){
 var config = {};
 config.MARKER_QUEUE_SIZE = 30;
-config.MAP_CENTER = [38.907, -77.0368];
-config.MAP_ZOOM = 11;
+config.MAP_CENTER = [  38.896149, -77.036617];
+config.MAP_ZOOM = 12;
 config.instagram = {};
 config.twitter = {};
 config.instagram.ICON_PATH = "/images/mascoticons/32x32/instagram-32x32.png";
@@ -7514,7 +7514,7 @@ config.CRIME_ICON_URLS = {
         'ASSAULT W/DANGEROUS WEAPON': '/images/mapicons.nicolasmollet.com/crime/shooting.png',
         'ROBBERY': '/images/mapicons.nicolasmollet.com/crime/theft.png',
         'BURGLARY': '/images/mapicons.nicolasmollet.com/crime/theft.png',
-        'MOTOR VEHICLE THEFT': '/images/mapicons.nicolasmollet.com/road-transportation-78005c/car.png',
+        'MOTOR VEHICLE THEFT': '/images/mapicons.nicolasmollet.com/road-transportation-c72222/car.png',
         'THEFT/OTHER': '/images/mapicons.nicolasmollet.com/crime/theft.png',
         'SEX ABUSE': '/images/mapicons.nicolasmollet.com/crime/rape.png',
         'ARSON': '/images/mapicons.nicolasmollet.com/crime/fire.png'
@@ -7864,6 +7864,7 @@ module.exports={
     "K07": 102,
     "A03": 6,
     "K05": 100,
+    "F03": 82,
     "D06": 60,
     "C14": 49,
     "A02": 4,
@@ -7871,6 +7872,7 @@ module.exports={
     "D04": 58,
     "D01": 53,
     "C04": 40,
+    "B35": 108,
     "B09": 32,
     "E06": 28,
     "B06": 28,
@@ -7937,1054 +7939,1747 @@ module.exports={
 
 },{}],8:[function(require,module,exports){
 module.exports={
-    "Stations": [{
-        "Code": "A03",
-        "Lat": 38.9095980575,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0434143597,
-        "Name": "Dupont Circle",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A02",
-        "Lat": 38.9032019462,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0397008272,
-        "Name": "Farragut North",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A01",
-        "Lat": 38.8983144732,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0280779971,
-        "Name": "Metro Center",
-        "StationTogether1": "C01",
-        "StationTogether2": ""
-    }, {
-        "Code": "D08",
-        "Lat": 38.8867090898,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -76.9770889014,
-        "Name": "Stadium Armory",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A07",
-        "Lat": 38.9488514351,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0795873255,
-        "Name": "Tenleytown",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A06",
-        "Lat": 38.9432652883,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0629861805,
-        "Name": "Van Ness UDC",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A05",
-        "Lat": 38.9347628908,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0580425191,
-        "Name": "Cleveland Park",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A04",
-        "Lat": 38.9250851371,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0524180207,
-        "Name": "Woodley Park Zoo",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C10",
-        "Lat": 38.8534163859,
-        "LineCode1": "BL",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0440422943,
-        "Name": "National Arpt",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "E10",
-        "Lat": 39.0111458605,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9110575731,
-        "Name": "Greenbelt",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C12",
-        "Lat": 38.8141436672,
-        "LineCode1": "BL",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.053667574,
-        "Name": "Braddock Road",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "B08",
-        "Lat": 38.9939493747,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0310178268,
-        "Name": "Silver Spring",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "B09",
-        "Lat": 39.0149542752,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0429165548,
-        "Name": "Forest Glen",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D09",
-        "Lat": 38.899191223,
-        "LineCode1": "OR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9467477336,
-        "Name": "Minnesota Avenue",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D06",
-        "Lat": 38.8846222608,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -76.9960011267,
-        "Name": "Eastern Market",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D07",
-        "Lat": 38.8812632736,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -76.9854953196,
-        "Name": "Potomac Avenue",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D04",
-        "Lat": 38.8850723551,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -77.0158682169,
-        "Name": "Federal Center SW",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D05",
-        "Lat": 38.8850625009,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -77.0051394199,
-        "Name": "Capitol South",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D02",
-        "Lat": 38.888018702,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -77.0280662342,
-        "Name": "Smithsonian",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D03",
-        "Lat": 38.8848377279,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -77.021908484,
-        "Name": "L'Enfant Plaza",
-        "StationTogether1": "F03",
-        "StationTogether2": ""
-    }, {
-        "Code": "B01",
-        "Lat": 38.8983168097,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0219153904,
-        "Name": "Gallery Place",
-        "StationTogether1": "F01",
-        "StationTogether2": ""
-    }, {
-        "Code": "B02",
-        "Lat": 38.8960903176,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0166389566,
-        "Name": "Judiciary Square",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "B03",
-        "Lat": 38.8977660392,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0074142921,
-        "Name": "Union Station",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "B04",
-        "Lat": 38.9210596891,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9959369166,
-        "Name": "Rhode Island Avenue",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "B05",
-        "Lat": 38.9332109913,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9945342851,
-        "Name": "Brookland",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "B06",
-        "Lat": 38.9518467675,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0022030768,
-        "Name": "Fort Totten",
-        "StationTogether1": "E06",
-        "StationTogether2": ""
-    }, {
-        "Code": "B07",
-        "Lat": 38.976078531,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0181766987,
-        "Name": "Takoma",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D12",
-        "Lat": 38.9335062344,
-        "LineCode1": "OR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.8911979676,
-        "Name": "Landover",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C13",
-        "Lat": 38.8065861172,
-        "LineCode1": "BL",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0608112085,
-        "Name": "King Street",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "K02",
-        "Lat": 38.886704839,
-        "LineCode1": "OR",
-        "LineCode2": "SV",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0953940983,
-        "Name": "Clarendon",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D10",
-        "Lat": 38.9081784965,
-        "LineCode1": "OR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.935256783,
-        "Name": "Deanwood",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "E09",
-        "Lat": 38.9786336339,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9281249818,
-        "Name": "College Park",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C15",
-        "Lat": 38.7939158529,
-        "LineCode1": "YL",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0752057891,
-        "Name": "Huntington",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "K04",
-        "Lat": 38.8821828738,
-        "LineCode1": "OR",
-        "LineCode2": "SV",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.113168835,
-        "Name": "Ballston",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "G05",
-        "Lat": 38.9050688072,
-        "LineCode1": "BL",
-        "LineCode2": "SV",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.8420375202,
-        "Name": "Largo Town Center",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "G04",
-        "Lat": 38.8938349282,
-        "LineCode1": "BL",
-        "LineCode2": "SV",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.8680747681,
-        "Name": "Morgan Blvd",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "K01",
-        "Lat": 38.8901755312,
-        "LineCode1": "OR",
-        "LineCode2": "SV",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.087131231,
-        "Name": "Court House",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "G01",
-        "Lat": 38.890975676,
-        "LineCode1": "BL",
-        "LineCode2": "SV",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9383648681,
-        "Name": "Benning Road",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "F11",
-        "Lat": 38.8264463483,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9114642177,
-        "Name": "Branch Avenue",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "G03",
-        "Lat": 38.8867478168,
-        "LineCode1": "BL",
-        "LineCode2": "SV",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.89410791,
-        "Name": "Addison Road",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "G02",
-        "Lat": 38.8894658568,
-        "LineCode1": "BL",
-        "LineCode2": "SV",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9118081145,
-        "Name": "Capitol Heights",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "K07",
-        "Lat": 38.8836251359,
-        "LineCode1": "OR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.2271606721,
-        "Name": "Dunn Loring",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "K06",
-        "Lat": 38.900780551,
-        "LineCode1": "OR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.1890948225,
-        "Name": "W Falls Church",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D11",
-        "Lat": 38.9166318546,
-        "LineCode1": "OR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.916628044,
-        "Name": "Cheverly",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "K08",
-        "Lat": 38.8776011238,
-        "LineCode1": "OR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.2726222569,
-        "Name": "Vienna",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A13",
-        "Lat": 39.0624676517,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.1208179517,
-        "Name": "Twinbrook",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A12",
-        "Lat": 39.0481513573,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.112829859,
-        "Name": "White Flint",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A11",
-        "Lat": 39.02926895,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.10384972,
-        "Name": "Grosvenor",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A10",
-        "Lat": 39.0000564843,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0969522905,
-        "Name": "Medical Center",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A15",
-        "Lat": 39.1199273249,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.1646273343,
-        "Name": "Shady Grove",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A14",
-        "Lat": 39.0843216075,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.1461253392,
-        "Name": "Rockville",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "N04",
-        "Lat": 38.928872,
-        "LineCode1": "SV",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.241472,
-        "Name": "Spring Hill",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "N06",
-        "Lat": 38.94778,
-        "LineCode1": "SV",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.34027,
-        "Name": "Wiehle-Reston East",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "N01",
-        "Lat": 38.924432,
-        "LineCode1": "SV",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.210295,
-        "Name": "McLean",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "N02",
-        "Lat": 38.920496,
-        "LineCode1": "SV",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.222262,
-        "Name": "Tysons Corner",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "N03",
-        "Lat": 38.921732,
-        "LineCode1": "SV",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.234607,
-        "Name": "Greensboro",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "B35",
-        "Lat": 38.9070162121,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0030204472,
-        "Name": "New York Avenue",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "E02",
-        "Lat": 38.9134768711,
-        "LineCode1": "GR",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0219117007,
-        "Name": "Shaw",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C09",
-        "Lat": 38.8579043204,
-        "LineCode1": "BL",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0502898097,
-        "Name": "Crystal City",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C08",
-        "Lat": 38.8618823867,
-        "LineCode1": "BL",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0595389215,
-        "Name": "Pentagon City",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "E08",
-        "Lat": 38.9653854458,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9558815078,
-        "Name": "Prince Georges Plaza",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "E07",
-        "Lat": 38.9550401707,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9695766751,
-        "Name": "West Hyattsville",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "E06",
-        "Lat": 38.9518467675,
-        "LineCode1": "GR",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0022030768,
-        "Name": "Fort Totten",
-        "StationTogether1": "B06",
-        "StationTogether2": ""
-    }, {
-        "Code": "E05",
-        "Lat": 38.9374346301,
-        "LineCode1": "GR",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.023460904,
-        "Name": "Georgia Avenue",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "E04",
-        "Lat": 38.9278379675,
-        "LineCode1": "GR",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0325521177,
-        "Name": "Columbia Heights",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "E03",
-        "Lat": 38.9170023992,
-        "LineCode1": "GR",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0274958929,
-        "Name": "U Street",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C01",
-        "Lat": 38.8983144732,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -77.0280779971,
-        "Name": "Metro Center",
-        "StationTogether1": "A01",
-        "StationTogether2": ""
-    }, {
-        "Code": "E01",
-        "Lat": 38.9064368149,
-        "LineCode1": "GR",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0219143803,
-        "Name": "Mt Vernon Sq",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C03",
-        "Lat": 38.9013128941,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -77.0406954151,
-        "Name": "Farragut West",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C02",
-        "Lat": 38.9013327968,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -77.0336341721,
-        "Name": "McPherson Square",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C05",
-        "Lat": 38.8959790962,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -77.0709086853,
-        "Name": "Rosslyn",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D01",
-        "Lat": 38.8931808718,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -77.0281319984,
-        "Name": "Federal Triangle",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C07",
-        "Lat": 38.8694627012,
-        "LineCode1": "BL",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0537156734,
-        "Name": "Pentagon",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C06",
-        "Lat": 38.8846868585,
-        "LineCode1": "BL",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0628101291,
-        "Name": "Arlington Cemetery",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C04",
-        "Lat": 38.9006980092,
-        "LineCode1": "BL",
-        "LineCode2": "OR",
-        "LineCode3": "SV",
-        "LineCode4": null,
-        "Lon": -77.050277739,
-        "Name": "Foggy Bottom",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "K03",
-        "Lat": 38.8833661518,
-        "LineCode1": "OR",
-        "LineCode2": "SV",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.1029772942,
-        "Name": "Virginia Square",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "J03",
-        "Lat": 38.7665218926,
-        "LineCode1": "BL",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.1679701804,
-        "Name": "Franconia-Springf'ld",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "D13",
-        "Lat": 38.9477848558,
-        "LineCode1": "OR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.8718412865,
-        "Name": "New Carrollton",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "B11",
-        "Lat": 39.0617837655,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0535573593,
-        "Name": "Glenmont",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "K05",
-        "Lat": 38.8859531663,
-        "LineCode1": "OR",
-        "LineCode2": "SV",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.1568830199,
-        "Name": "E Falls Church",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "F08",
-        "Lat": 38.8410857803,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9750541388,
-        "Name": "Southern Ave",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "F09",
-        "Lat": 38.8513013835,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9562627094,
-        "Name": "Naylor Road",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "C14",
-        "Lat": 38.8004254497,
-        "LineCode1": "YL",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0708743893,
-        "Name": "Eisenhower Avenue",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "F04",
-        "Lat": 38.8764618668,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0175052088,
-        "Name": "Waterfront",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "F05",
-        "Lat": 38.8764810849,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0050856513,
-        "Name": "Navy Yard",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "F06",
-        "Lat": 38.8629631168,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9953707387,
-        "Name": "Anacostia",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "F07",
-        "Lat": 38.8456577028,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9885119326,
-        "Name": "Congress Height",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "J02",
-        "Lat": 38.799307672,
-        "LineCode1": "BL",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.1291115237,
-        "Name": "Van Dorn St",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "F01",
-        "Lat": 38.8983168097,
-        "LineCode1": "GR",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0219153904,
-        "Name": "Gallery Place",
-        "StationTogether1": "B01",
-        "StationTogether2": ""
-    }, {
-        "Code": "F02",
-        "Lat": 38.8936652235,
-        "LineCode1": "GR",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0219143879,
-        "Name": "Archives",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "F03",
-        "Lat": 38.8848377279,
-        "LineCode1": "GR",
-        "LineCode2": "YL",
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.021908484,
-        "Name": "L'Enfant Plaza",
-        "StationTogether1": "D03",
-        "StationTogether2": ""
-    }, {
-        "Code": "B10",
-        "Lat": 39.0375271436,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0501070535,
-        "Name": "Wheaton",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "F10",
-        "Lat": 38.8439645544,
-        "LineCode1": "GR",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -76.9318701589,
-        "Name": "Suitland",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A09",
-        "Lat": 38.9843936603,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.0941291922,
-        "Name": "Bethesda",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }, {
-        "Code": "A08",
-        "Lat": 38.9594838736,
-        "LineCode1": "RD",
-        "LineCode2": null,
-        "LineCode3": null,
-        "LineCode4": null,
-        "Lon": -77.084995805,
-        "Name": "Friendship Heights",
-        "StationTogether1": "",
-        "StationTogether2": ""
-    }]
+    "F05": {
+        "Code": "F05", 
+        "Name": "Navy Yard", 
+        "Lon": -77.0050856513, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.8764810849, 
+        "StationTogether1": ""
+    }, 
+    "F04": {
+        "Code": "F04", 
+        "Name": "Waterfront", 
+        "Lon": -77.0175052088, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.8764618668, 
+        "StationTogether1": ""
+    }, 
+    "F07": {
+        "Code": "F07", 
+        "Name": "Congress Height", 
+        "Lon": -76.9885119326, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.8456577028, 
+        "StationTogether1": ""
+    }, 
+    "F06": {
+        "Code": "F06", 
+        "Name": "Anacostia", 
+        "Lon": -76.9953707387, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.8629631168, 
+        "StationTogether1": ""
+    }, 
+    "F01": {
+        "Code": "F01", 
+        "Name": "Gallery Place", 
+        "Lon": -77.0219153904, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.8983168097, 
+        "StationTogether1": "B01"
+    }, 
+    "F03": {
+        "Code": "F03", 
+        "Name": "L'Enfant Plaza", 
+        "Lon": -77.021908484, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.8848377279, 
+        "StationTogether1": "D03"
+    }, 
+    "F02": {
+        "Code": "F02", 
+        "Name": "Archives", 
+        "Lon": -77.0219143879, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.8936652235, 
+        "StationTogether1": ""
+    }, 
+    "F09": {
+        "Code": "F09", 
+        "Name": "Naylor Road", 
+        "Lon": -76.9562627094, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.8513013835, 
+        "StationTogether1": ""
+    }, 
+    "F08": {
+        "Code": "F08", 
+        "Name": "Southern Ave", 
+        "Lon": -76.9750541388, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.8410857803, 
+        "StationTogether1": ""
+    }, 
+    "B35": {
+        "Code": "B35", 
+        "Name": "New York Avenue", 
+        "Lon": -77.0030204472, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9070162121, 
+        "StationTogether1": ""
+    }, 
+    "N04": {
+        "Code": "N04", 
+        "Name": "Spring Hill", 
+        "Lon": -77.241472, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "SV", 
+        "StationTogether2": "", 
+        "Lat": 38.928872, 
+        "StationTogether1": ""
+    }, 
+    "N06": {
+        "Code": "N06", 
+        "Name": "Wiehle-Reston East", 
+        "Lon": -77.34027, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "SV", 
+        "StationTogether2": "", 
+        "Lat": 38.94778, 
+        "StationTogether1": ""
+    }, 
+    "N01": {
+        "Code": "N01", 
+        "Name": "McLean", 
+        "Lon": -77.210295, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "SV", 
+        "StationTogether2": "", 
+        "Lat": 38.924432, 
+        "StationTogether1": ""
+    }, 
+    "N03": {
+        "Code": "N03", 
+        "Name": "Greensboro", 
+        "Lon": -77.234607, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "SV", 
+        "StationTogether2": "", 
+        "Lat": 38.921732, 
+        "StationTogether1": ""
+    }, 
+    "N02": {
+        "Code": "N02", 
+        "Name": "Tysons Corner", 
+        "Lon": -77.222262, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "SV", 
+        "StationTogether2": "", 
+        "Lat": 38.920496, 
+        "StationTogether1": ""
+    }, 
+    "D07": {
+        "Code": "D07", 
+        "Name": "Potomac Avenue", 
+        "Lon": -76.9854953196, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8812632736, 
+        "StationTogether1": ""
+    }, 
+    "D06": {
+        "Code": "D06", 
+        "Name": "Eastern Market", 
+        "Lon": -76.9960011267, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8846222608, 
+        "StationTogether1": ""
+    }, 
+    "D05": {
+        "Code": "D05", 
+        "Name": "Capitol South", 
+        "Lon": -77.0051394199, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8850625009, 
+        "StationTogether1": ""
+    }, 
+    "D04": {
+        "Code": "D04", 
+        "Name": "Federal Center SW", 
+        "Lon": -77.0158682169, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8850723551, 
+        "StationTogether1": ""
+    }, 
+    "D03": {
+        "Code": "D03", 
+        "Name": "L'Enfant Plaza", 
+        "Lon": -77.021908484, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8848377279, 
+        "StationTogether1": "F03"
+    }, 
+    "D02": {
+        "Code": "D02", 
+        "Name": "Smithsonian", 
+        "Lon": -77.0280662342, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.888018702, 
+        "StationTogether1": ""
+    }, 
+    "D01": {
+        "Code": "D01", 
+        "Name": "Federal Triangle", 
+        "Lon": -77.0281319984, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8931808718, 
+        "StationTogether1": ""
+    }, 
+    "D09": {
+        "Code": "D09", 
+        "Name": "Minnesota Avenue", 
+        "Lon": -76.9467477336, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.899191223, 
+        "StationTogether1": ""
+    }, 
+    "D08": {
+        "Code": "D08", 
+        "Name": "Stadium Armory", 
+        "Lon": -76.9770889014, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8867090898, 
+        "StationTogether1": ""
+    }, 
+    "B01": {
+        "Code": "B01", 
+        "Name": "Gallery Place", 
+        "Lon": -77.0219153904, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.8983168097, 
+        "StationTogether1": "F01"
+    }, 
+    "B03": {
+        "Code": "B03", 
+        "Name": "Union Station", 
+        "Lon": -77.0074142921, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.8977660392, 
+        "StationTogether1": ""
+    }, 
+    "B02": {
+        "Code": "B02", 
+        "Name": "Judiciary Square", 
+        "Lon": -77.0166389566, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.8960903176, 
+        "StationTogether1": ""
+    }, 
+    "B05": {
+        "Code": "B05", 
+        "Name": "Brookland", 
+        "Lon": -76.9945342851, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9332109913, 
+        "StationTogether1": ""
+    }, 
+    "B04": {
+        "Code": "B04", 
+        "Name": "Rhode Island Avenue", 
+        "Lon": -76.9959369166, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9210596891, 
+        "StationTogether1": ""
+    }, 
+    "B07": {
+        "Code": "B07", 
+        "Name": "Takoma", 
+        "Lon": -77.0181766987, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.976078531, 
+        "StationTogether1": ""
+    }, 
+    "B06": {
+        "Code": "B06", 
+        "Name": "Fort Totten", 
+        "Lon": -77.0022030768, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9518467675, 
+        "StationTogether1": "E06"
+    }, 
+    "B09": {
+        "Code": "B09", 
+        "Name": "Forest Glen", 
+        "Lon": -77.0429165548, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 39.0149542752, 
+        "StationTogether1": ""
+    }, 
+    "B08": {
+        "Code": "B08", 
+        "Name": "Silver Spring", 
+        "Lon": -77.0310178268, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9939493747, 
+        "StationTogether1": ""
+    }, 
+    "F10": {
+        "Code": "F10", 
+        "Name": "Suitland", 
+        "Lon": -76.9318701589, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.8439645544, 
+        "StationTogether1": ""
+    }, 
+    "F11": {
+        "Code": "F11", 
+        "Name": "Branch Avenue", 
+        "Lon": -76.9114642177, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.8264463483, 
+        "StationTogether1": ""
+    }, 
+    "J03": {
+        "Code": "J03", 
+        "Name": "Franconia-Springf'ld", 
+        "Lon": -77.1679701804, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.7665218926, 
+        "StationTogether1": ""
+    }, 
+    "J02": {
+        "Code": "J02", 
+        "Name": "Van Dorn St", 
+        "Lon": -77.1291115237, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.799307672, 
+        "StationTogether1": ""
+    }, 
+    "D10": {
+        "Code": "D10", 
+        "Name": "Deanwood", 
+        "Lon": -76.935256783, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.9081784965, 
+        "StationTogether1": ""
+    }, 
+    "D11": {
+        "Code": "D11", 
+        "Name": "Cheverly", 
+        "Lon": -76.916628044, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.9166318546, 
+        "StationTogether1": ""
+    }, 
+    "D12": {
+        "Code": "D12", 
+        "Name": "Landover", 
+        "Lon": -76.8911979676, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.9335062344, 
+        "StationTogether1": ""
+    }, 
+    "D13": {
+        "Code": "D13", 
+        "Name": "New Carrollton", 
+        "Lon": -76.8718412865, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.9477848558, 
+        "StationTogether1": ""
+    }, 
+    "B10": {
+        "Code": "B10", 
+        "Name": "Wheaton", 
+        "Lon": -77.0501070535, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 39.0375271436, 
+        "StationTogether1": ""
+    }, 
+    "B11": {
+        "Code": "B11", 
+        "Name": "Glenmont", 
+        "Lon": -77.0535573593, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 39.0617837655, 
+        "StationTogether1": ""
+    }, 
+    "K01": {
+        "Code": "K01", 
+        "Name": "Court House", 
+        "Lon": -77.087131231, 
+        "LineCode4": null, 
+        "LineCode2": "SV", 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.8901755312, 
+        "StationTogether1": ""
+    }, 
+    "K02": {
+        "Code": "K02", 
+        "Name": "Clarendon", 
+        "Lon": -77.0953940983, 
+        "LineCode4": null, 
+        "LineCode2": "SV", 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.886704839, 
+        "StationTogether1": ""
+    }, 
+    "K03": {
+        "Code": "K03", 
+        "Name": "Virginia Square", 
+        "Lon": -77.1029772942, 
+        "LineCode4": null, 
+        "LineCode2": "SV", 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.8833661518, 
+        "StationTogether1": ""
+    }, 
+    "K04": {
+        "Code": "K04", 
+        "Name": "Ballston", 
+        "Lon": -77.113168835, 
+        "LineCode4": null, 
+        "LineCode2": "SV", 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.8821828738, 
+        "StationTogether1": ""
+    }, 
+    "K05": {
+        "Code": "K05", 
+        "Name": "E Falls Church", 
+        "Lon": -77.1568830199, 
+        "LineCode4": null, 
+        "LineCode2": "SV", 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.8859531663, 
+        "StationTogether1": ""
+    }, 
+    "K06": {
+        "Code": "K06", 
+        "Name": "W Falls Church", 
+        "Lon": -77.1890948225, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.900780551, 
+        "StationTogether1": ""
+    }, 
+    "K07": {
+        "Code": "K07", 
+        "Name": "Dunn Loring", 
+        "Lon": -77.2271606721, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.8836251359, 
+        "StationTogether1": ""
+    }, 
+    "K08": {
+        "Code": "K08", 
+        "Name": "Vienna", 
+        "Lon": -77.2726222569, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "OR", 
+        "StationTogether2": "", 
+        "Lat": 38.8776011238, 
+        "StationTogether1": ""
+    }, 
+    "E10": {
+        "Code": "E10", 
+        "Name": "Greenbelt", 
+        "Lon": -76.9110575731, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 39.0111458605, 
+        "StationTogether1": ""
+    }, 
+    "C13": {
+        "Code": "C13", 
+        "Name": "King Street", 
+        "Lon": -77.0608112085, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8065861172, 
+        "StationTogether1": ""
+    }, 
+    "C12": {
+        "Code": "C12", 
+        "Name": "Braddock Road", 
+        "Lon": -77.053667574, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8141436672, 
+        "StationTogether1": ""
+    }, 
+    "G04": {
+        "Code": "G04", 
+        "Name": "Morgan Blvd", 
+        "Lon": -76.8680747681, 
+        "LineCode4": null, 
+        "LineCode2": "SV", 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8938349282, 
+        "StationTogether1": ""
+    }, 
+    "G05": {
+        "Code": "G05", 
+        "Name": "Largo Town Center", 
+        "Lon": -76.8420375202, 
+        "LineCode4": null, 
+        "LineCode2": "SV", 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.9050688072, 
+        "StationTogether1": ""
+    }, 
+    "C10": {
+        "Code": "C10", 
+        "Name": "National Arpt", 
+        "Lon": -77.0440422943, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8534163859, 
+        "StationTogether1": ""
+    }, 
+    "G01": {
+        "Code": "G01", 
+        "Name": "Benning Road", 
+        "Lon": -76.9383648681, 
+        "LineCode4": null, 
+        "LineCode2": "SV", 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.890975676, 
+        "StationTogether1": ""
+    }, 
+    "C15": {
+        "Code": "C15", 
+        "Name": "Huntington", 
+        "Lon": -77.0752057891, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "YL", 
+        "StationTogether2": "", 
+        "Lat": 38.7939158529, 
+        "StationTogether1": ""
+    }, 
+    "C14": {
+        "Code": "C14", 
+        "Name": "Eisenhower Avenue", 
+        "Lon": -77.0708743893, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "YL", 
+        "StationTogether2": "", 
+        "Lat": 38.8004254497, 
+        "StationTogether1": ""
+    }, 
+    "A15": {
+        "Code": "A15", 
+        "Name": "Shady Grove", 
+        "Lon": -77.1646273343, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 39.1199273249, 
+        "StationTogether1": ""
+    }, 
+    "A14": {
+        "Code": "A14", 
+        "Name": "Rockville", 
+        "Lon": -77.1461253392, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 39.0843216075, 
+        "StationTogether1": ""
+    }, 
+    "A11": {
+        "Code": "A11", 
+        "Name": "Grosvenor", 
+        "Lon": -77.10384972, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 39.02926895, 
+        "StationTogether1": ""
+    }, 
+    "A10": {
+        "Code": "A10", 
+        "Name": "Medical Center", 
+        "Lon": -77.0969522905, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 39.0000564843, 
+        "StationTogether1": ""
+    }, 
+    "A13": {
+        "Code": "A13", 
+        "Name": "Twinbrook", 
+        "Lon": -77.1208179517, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 39.0624676517, 
+        "StationTogether1": ""
+    }, 
+    "A12": {
+        "Code": "A12", 
+        "Name": "White Flint", 
+        "Lon": -77.112829859, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 39.0481513573, 
+        "StationTogether1": ""
+    }, 
+    "G02": {
+        "Code": "G02", 
+        "Name": "Capitol Heights", 
+        "Lon": -76.9118081145, 
+        "LineCode4": null, 
+        "LineCode2": "SV", 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8894658568, 
+        "StationTogether1": ""
+    }, 
+    "G03": {
+        "Code": "G03", 
+        "Name": "Addison Road", 
+        "Lon": -76.89410791, 
+        "LineCode4": null, 
+        "LineCode2": "SV", 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8867478168, 
+        "StationTogether1": ""
+    }, 
+    "E08": {
+        "Code": "E08", 
+        "Name": "Prince Georges Plaza", 
+        "Lon": -76.9558815078, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.9653854458, 
+        "StationTogether1": ""
+    }, 
+    "E09": {
+        "Code": "E09", 
+        "Name": "College Park", 
+        "Lon": -76.9281249818, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.9786336339, 
+        "StationTogether1": ""
+    }, 
+    "E06": {
+        "Code": "E06", 
+        "Name": "Fort Totten", 
+        "Lon": -77.0022030768, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.9518467675, 
+        "StationTogether1": "B06"
+    }, 
+    "E07": {
+        "Code": "E07", 
+        "Name": "West Hyattsville", 
+        "Lon": -76.9695766751, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.9550401707, 
+        "StationTogether1": ""
+    }, 
+    "E04": {
+        "Code": "E04", 
+        "Name": "Columbia Heights", 
+        "Lon": -77.0325521177, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.9278379675, 
+        "StationTogether1": ""
+    }, 
+    "E05": {
+        "Code": "E05", 
+        "Name": "Georgia Avenue", 
+        "Lon": -77.023460904, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.9374346301, 
+        "StationTogether1": ""
+    }, 
+    "E02": {
+        "Code": "E02", 
+        "Name": "Shaw", 
+        "Lon": -77.0219117007, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.9134768711, 
+        "StationTogether1": ""
+    }, 
+    "E03": {
+        "Code": "E03", 
+        "Name": "U Street", 
+        "Lon": -77.0274958929, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.9170023992, 
+        "StationTogether1": ""
+    }, 
+    "E01": {
+        "Code": "E01", 
+        "Name": "Mt Vernon Sq", 
+        "Lon": -77.0219143803, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "GR", 
+        "StationTogether2": "", 
+        "Lat": 38.9064368149, 
+        "StationTogether1": ""
+    }, 
+    "C08": {
+        "Code": "C08", 
+        "Name": "Pentagon City", 
+        "Lon": -77.0595389215, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8618823867, 
+        "StationTogether1": ""
+    }, 
+    "C09": {
+        "Code": "C09", 
+        "Name": "Crystal City", 
+        "Lon": -77.0502898097, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8579043204, 
+        "StationTogether1": ""
+    }, 
+    "C01": {
+        "Code": "C01", 
+        "Name": "Metro Center", 
+        "Lon": -77.0280779971, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8983144732, 
+        "StationTogether1": "A01"
+    }, 
+    "C02": {
+        "Code": "C02", 
+        "Name": "McPherson Square", 
+        "Lon": -77.0336341721, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.9013327968, 
+        "StationTogether1": ""
+    }, 
+    "C03": {
+        "Code": "C03", 
+        "Name": "Farragut West", 
+        "Lon": -77.0406954151, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.9013128941, 
+        "StationTogether1": ""
+    }, 
+    "C04": {
+        "Code": "C04", 
+        "Name": "Foggy Bottom", 
+        "Lon": -77.050277739, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.9006980092, 
+        "StationTogether1": ""
+    }, 
+    "C05": {
+        "Code": "C05", 
+        "Name": "Rosslyn", 
+        "Lon": -77.0709086853, 
+        "LineCode4": null, 
+        "LineCode2": "OR", 
+        "LineCode3": "SV", 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8959790962, 
+        "StationTogether1": ""
+    }, 
+    "C06": {
+        "Code": "C06", 
+        "Name": "Arlington Cemetery", 
+        "Lon": -77.0628101291, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8846868585, 
+        "StationTogether1": ""
+    }, 
+    "C07": {
+        "Code": "C07", 
+        "Name": "Pentagon", 
+        "Lon": -77.0537156734, 
+        "LineCode4": null, 
+        "LineCode2": "YL", 
+        "LineCode3": null, 
+        "LineCode1": "BL", 
+        "StationTogether2": "", 
+        "Lat": 38.8694627012, 
+        "StationTogether1": ""
+    }, 
+    "A08": {
+        "Code": "A08", 
+        "Name": "Friendship Heights", 
+        "Lon": -77.084995805, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9594838736, 
+        "StationTogether1": ""
+    }, 
+    "A09": {
+        "Code": "A09", 
+        "Name": "Bethesda", 
+        "Lon": -77.0941291922, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9843936603, 
+        "StationTogether1": ""
+    }, 
+    "A02": {
+        "Code": "A02", 
+        "Name": "Farragut North", 
+        "Lon": -77.0397008272, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9032019462, 
+        "StationTogether1": ""
+    }, 
+    "A03": {
+        "Code": "A03", 
+        "Name": "Dupont Circle", 
+        "Lon": -77.0434143597, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9095980575, 
+        "StationTogether1": ""
+    }, 
+    "A01": {
+        "Code": "A01", 
+        "Name": "Metro Center", 
+        "Lon": -77.0280779971, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.8983144732, 
+        "StationTogether1": "C01"
+    }, 
+    "A06": {
+        "Code": "A06", 
+        "Name": "Van Ness UDC", 
+        "Lon": -77.0629861805, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9432652883, 
+        "StationTogether1": ""
+    }, 
+    "A07": {
+        "Code": "A07", 
+        "Name": "Tenleytown", 
+        "Lon": -77.0795873255, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9488514351, 
+        "StationTogether1": ""
+    }, 
+    "A04": {
+        "Code": "A04", 
+        "Name": "Woodley Park Zoo", 
+        "Lon": -77.0524180207, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9250851371, 
+        "StationTogether1": ""
+    }, 
+    "A05": {
+        "Code": "A05", 
+        "Name": "Cleveland Park", 
+        "Lon": -77.0580425191, 
+        "LineCode4": null, 
+        "LineCode2": null, 
+        "LineCode3": null, 
+        "LineCode1": "RD", 
+        "StationTogether2": "", 
+        "Lat": 38.9347628908, 
+        "StationTogether1": ""
+    }
 }
 },{}],9:[function(require,module,exports){
+module.exports={
+    "GR": [
+        [
+            38.8264463483, 
+            -76.9114642177
+        ], 
+        [
+            38.8439645544, 
+            -76.9318701589
+        ], 
+        [
+            38.8513013835, 
+            -76.9562627094
+        ], 
+        [
+            38.8410857803, 
+            -76.9750541388
+        ], 
+        [
+            38.8456577028, 
+            -76.9885119326
+        ], 
+        [
+            38.8629631168, 
+            -76.9953707387
+        ], 
+        [
+            38.8764810849, 
+            -77.0050856513
+        ], 
+        [
+            38.8764618668, 
+            -77.0175052088
+        ], 
+        [
+            38.8848377279, 
+            -77.021908484
+        ], 
+        [
+            38.8936652235, 
+            -77.0219143879
+        ], 
+        [
+            38.8983168097, 
+            -77.0219153904
+        ], 
+        [
+            38.9064368149, 
+            -77.0219143803
+        ], 
+        [
+            38.9134768711, 
+            -77.0219117007
+        ], 
+        [
+            38.9170023992, 
+            -77.0274958929
+        ], 
+        [
+            38.9278379675, 
+            -77.0325521177
+        ], 
+        [
+            38.9374346301, 
+            -77.023460904
+        ], 
+        [
+            38.9518467675, 
+            -77.0022030768
+        ], 
+        [
+            38.9550401707, 
+            -76.9695766751
+        ], 
+        [
+            38.9653854458, 
+            -76.9558815078
+        ], 
+        [
+            38.9786336339, 
+            -76.9281249818
+        ], 
+        [
+            39.0111458605, 
+            -76.9110575731
+        ]
+    ], 
+    "BL": [
+        [
+            38.7665218926, 
+            -77.1679701804
+        ], 
+        [
+            38.799307672, 
+            -77.1291115237
+        ], 
+        [
+            38.8065861172, 
+            -77.0608112085
+        ], 
+        [
+            38.8141436672, 
+            -77.053667574
+        ], 
+        [
+            38.8534163859, 
+            -77.0440422943
+        ], 
+        [
+            38.8579043204, 
+            -77.0502898097
+        ], 
+        [
+            38.8618823867, 
+            -77.0595389215
+        ], 
+        [
+            38.8694627012, 
+            -77.0537156734
+        ], 
+        [
+            38.8846868585, 
+            -77.0628101291
+        ], 
+        [
+            38.8959790962, 
+            -77.0709086853
+        ], 
+        [
+            38.9006980092, 
+            -77.050277739
+        ], 
+        [
+            38.9013128941, 
+            -77.0406954151
+        ], 
+        [
+            38.9013327968, 
+            -77.0336341721
+        ], 
+        [
+            38.8983144732, 
+            -77.0280779971
+        ], 
+        [
+            38.8931808718, 
+            -77.0281319984
+        ], 
+        [
+            38.888018702, 
+            -77.0280662342
+        ], 
+        [
+            38.8848377279, 
+            -77.021908484
+        ], 
+        [
+            38.8850723551, 
+            -77.0158682169
+        ], 
+        [
+            38.8850625009, 
+            -77.0051394199
+        ], 
+        [
+            38.8846222608, 
+            -76.9960011267
+        ], 
+        [
+            38.8812632736, 
+            -76.9854953196
+        ], 
+        [
+            38.8867090898, 
+            -76.9770889014
+        ], 
+        [
+            38.890975676, 
+            -76.9383648681
+        ], 
+        [
+            38.8894658568, 
+            -76.9118081145
+        ], 
+        [
+            38.8867478168, 
+            -76.89410791
+        ], 
+        [
+            38.8938349282, 
+            -76.8680747681
+        ], 
+        [
+            38.9050688072, 
+            -76.8420375202
+        ]
+    ], 
+    "SV": [
+        [
+            38.94778, 
+            -77.34027
+        ], 
+        [
+            38.928872, 
+            -77.241472
+        ], 
+        [
+            38.921732, 
+            -77.234607
+        ], 
+        [
+            38.920496, 
+            -77.222262
+        ], 
+        [
+            38.924432, 
+            -77.210295
+        ], 
+        [
+            38.8859531663, 
+            -77.1568830199
+        ], 
+        [
+            38.8821828738, 
+            -77.113168835
+        ], 
+        [
+            38.8833661518, 
+            -77.1029772942
+        ], 
+        [
+            38.886704839, 
+            -77.0953940983
+        ], 
+        [
+            38.8901755312, 
+            -77.087131231
+        ], 
+        [
+            38.8959790962, 
+            -77.0709086853
+        ], 
+        [
+            38.9006980092, 
+            -77.050277739
+        ], 
+        [
+            38.9013128941, 
+            -77.0406954151
+        ], 
+        [
+            38.9013327968, 
+            -77.0336341721
+        ], 
+        [
+            38.8983144732, 
+            -77.0280779971
+        ], 
+        [
+            38.8931808718, 
+            -77.0281319984
+        ], 
+        [
+            38.888018702, 
+            -77.0280662342
+        ], 
+        [
+            38.8848377279, 
+            -77.021908484
+        ], 
+        [
+            38.8850723551, 
+            -77.0158682169
+        ], 
+        [
+            38.8850625009, 
+            -77.0051394199
+        ], 
+        [
+            38.8846222608, 
+            -76.9960011267
+        ], 
+        [
+            38.8812632736, 
+            -76.9854953196
+        ], 
+        [
+            38.8867090898, 
+            -76.9770889014
+        ], 
+        [
+            38.890975676, 
+            -76.9383648681
+        ], 
+        [
+            38.8894658568, 
+            -76.9118081145
+        ], 
+        [
+            38.8867478168, 
+            -76.89410791
+        ], 
+        [
+            38.8938349282, 
+            -76.8680747681
+        ], 
+        [
+            38.9050688072, 
+            -76.8420375202
+        ]
+    ], 
+    "RD": [
+        [
+            39.1199273249, 
+            -77.1646273343
+        ], 
+        [
+            39.0843216075, 
+            -77.1461253392
+        ], 
+        [
+            39.0624676517, 
+            -77.1208179517
+        ], 
+        [
+            39.0481513573, 
+            -77.112829859
+        ], 
+        [
+            39.02926895, 
+            -77.10384972
+        ], 
+        [
+            39.0000564843, 
+            -77.0969522905
+        ], 
+        [
+            38.9843936603, 
+            -77.0941291922
+        ], 
+        [
+            38.9594838736, 
+            -77.084995805
+        ], 
+        [
+            38.9488514351, 
+            -77.0795873255
+        ], 
+        [
+            38.9432652883, 
+            -77.0629861805
+        ], 
+        [
+            38.9347628908, 
+            -77.0580425191
+        ], 
+        [
+            38.9250851371, 
+            -77.0524180207
+        ], 
+        [
+            38.9095980575, 
+            -77.0434143597
+        ], 
+        [
+            38.9032019462, 
+            -77.0397008272
+        ], 
+        [
+            38.8983144732, 
+            -77.0280779971
+        ], 
+        [
+            38.8983168097, 
+            -77.0219153904
+        ], 
+        [
+            38.8960903176, 
+            -77.0166389566
+        ], 
+        [
+            38.8977660392, 
+            -77.0074142921
+        ], 
+        [
+            38.9070162121, 
+            -77.0030204472
+        ], 
+        [
+            38.9210596891, 
+            -76.9959369166
+        ], 
+        [
+            38.9332109913, 
+            -76.9945342851
+        ], 
+        [
+            38.9518467675, 
+            -77.0022030768
+        ], 
+        [
+            38.976078531, 
+            -77.0181766987
+        ], 
+        [
+            38.9939493747, 
+            -77.0310178268
+        ], 
+        [
+            39.0149542752, 
+            -77.0429165548
+        ], 
+        [
+            39.0375271436, 
+            -77.0501070535
+        ], 
+        [
+            39.0617837655, 
+            -77.0535573593
+        ]
+    ], 
+    "OR": [
+        [
+            38.8776011238, 
+            -77.2726222569
+        ], 
+        [
+            38.8836251359, 
+            -77.2271606721
+        ], 
+        [
+            38.900780551, 
+            -77.1890948225
+        ], 
+        [
+            38.8859531663, 
+            -77.1568830199
+        ], 
+        [
+            38.8821828738, 
+            -77.113168835
+        ], 
+        [
+            38.8833661518, 
+            -77.1029772942
+        ], 
+        [
+            38.886704839, 
+            -77.0953940983
+        ], 
+        [
+            38.8901755312, 
+            -77.087131231
+        ], 
+        [
+            38.8959790962, 
+            -77.0709086853
+        ], 
+        [
+            38.9006980092, 
+            -77.050277739
+        ], 
+        [
+            38.9013128941, 
+            -77.0406954151
+        ], 
+        [
+            38.9013327968, 
+            -77.0336341721
+        ], 
+        [
+            38.8983144732, 
+            -77.0280779971
+        ], 
+        [
+            38.8931808718, 
+            -77.0281319984
+        ], 
+        [
+            38.888018702, 
+            -77.0280662342
+        ], 
+        [
+            38.8848377279, 
+            -77.021908484
+        ], 
+        [
+            38.8850723551, 
+            -77.0158682169
+        ], 
+        [
+            38.8850625009, 
+            -77.0051394199
+        ], 
+        [
+            38.8846222608, 
+            -76.9960011267
+        ], 
+        [
+            38.8812632736, 
+            -76.9854953196
+        ], 
+        [
+            38.8867090898, 
+            -76.9770889014
+        ], 
+        [
+            38.899191223, 
+            -76.9467477336
+        ], 
+        [
+            38.9081784965, 
+            -76.935256783
+        ], 
+        [
+            38.9166318546, 
+            -76.916628044
+        ], 
+        [
+            38.9335062344, 
+            -76.8911979676
+        ], 
+        [
+            38.9477848558, 
+            -76.8718412865
+        ]
+    ], 
+    "YL": [
+        [
+            38.7939158529, 
+            -77.0752057891
+        ], 
+        [
+            38.8004254497, 
+            -77.0708743893
+        ], 
+        [
+            38.8065861172, 
+            -77.0608112085
+        ], 
+        [
+            38.8141436672, 
+            -77.053667574
+        ], 
+        [
+            38.8534163859, 
+            -77.0440422943
+        ], 
+        [
+            38.8579043204, 
+            -77.0502898097
+        ], 
+        [
+            38.8618823867, 
+            -77.0595389215
+        ], 
+        [
+            38.8694627012, 
+            -77.0537156734
+        ], 
+        [
+            38.8848377279, 
+            -77.021908484
+        ], 
+        [
+            38.8936652235, 
+            -77.0219143879
+        ], 
+        [
+            38.8983168097, 
+            -77.0219153904
+        ], 
+        [
+            38.9064368149, 
+            -77.0219143803
+        ], 
+        [
+            38.9134768711, 
+            -77.0219117007
+        ], 
+        [
+            38.9170023992, 
+            -77.0274958929
+        ], 
+        [
+            38.9278379675, 
+            -77.0325521177
+        ], 
+        [
+            38.9374346301, 
+            -77.023460904
+        ], 
+        [
+            38.9518467675, 
+            -77.0022030768
+        ]
+    ]
+}
+},{}],10:[function(require,module,exports){
 var config = require('./client_config');
 var tweet_markers = require('./tweet_markers');
 var instagram_markers = require('./instagram_markers');
@@ -8992,11 +9687,17 @@ var _ = require('lodash');
 var FadeMarker = require('./base_markers').FadeMarker;
 _.str =require('underscore.string');
 var lineSequences = require('./line_sequences.json');
-
+var metroLines = require('./data/straight_metro_lines.json');
 
 $(document).ready(function(){
-    var map = L.mapbox.map('map', 'examples.map-0l53fhk2', { zoomControl:false });
-    map.setView(config.MAP_CENTER, 11);
+
+// var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+// var map = new L.Map('map', { zoomControl:false });
+//     var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+//     var osm = new L.TileLayer(osmUrl, {minZoom: 15, maxZoom: 19, attribution: osmAttrib});       
+    // map.addLayer(osm);
+    var map = L.mapbox.map('map', 'willhorning.ja8hjdhd', { zoomControl:false });
+    map.setView(config.MAP_CENTER, config.MAP_ZOOM);
     
     var tweetMarkerQueue = [];
     var igMarkerQueue = [];
@@ -9004,12 +9705,52 @@ $(document).ready(function(){
     layers.tweets = L.layerGroup().addTo(map);
     layers.instagrams = L.layerGroup().addTo(map);
     layers.crimes = L.layerGroup();
+    layers.trains = L.layerGroup();
     // layers.cameras = new L.MarkerClusterGroup({disableClusteringAtZoom: 14});
     layers.embassies = L.layerGroup();
     layers.metroLines = L.layerGroup().addTo(map);
     layers.metroStations = L.layerGroup().addTo(map);
     layers.wifi = L.layerGroup();
+
+    var lineStyle = function(line){
+        switch (line) {
+            case 'BL': return "#0000B0";
+            case 'RD':   return "#9E0003";
+            case 'OR': return "#C97600";
+            case 'YL': return "#DBD800";
+            case 'GR': return "#059600";
+            default: return "#aaaaaa";
+        }
+    }
     
+    var parallelLine = function(latlngs, dist, n_lines, colors, options){
+        var lines = [];
+        for(var i = 0; i < n_lines; i++){
+            var newLatlngs = [latlngs[0]];
+            for(var j = 1; j < latlngs.length - 1; j++){
+                newLatlngs.push([latlngs[j][0] + dist * i, latlngs[j][1] + dist * i]);
+            }   
+            newLatlngs.push(latlngs[latlngs.length - 1]);
+            // console.log(newLatlngs);
+            lines.push(L.polyline(newLatlngs, {color: colors[i], weight:3}));
+        }
+        return lines;
+    }
+
+    _.forOwn(metroLines, function(latlngs, line){
+        // if(line == 'BL'){
+        //     var lines = parallelLine(latlngs, 0.0001, 2, ['#0000ff', '#00ff00'], [{},{}]);
+        //     console.log(lines);
+        //     _.forEach(lines, function(l){layers.metroLines.addLayer(l);});
+        // }
+        // else{
+            var color = lineStyle(line);
+            layers.metroLines.addLayer(L.polyline(latlngs, {color: color, opacity: 0.6, weight: 2}));
+        // }
+    });
+
+
+
     var geoLayers = require('./geojson_layers')(layers);
     var control = require('./controls')(map, layers);
     // layers.test = new L.MarkerClusterGroup().addTo(map);
@@ -9063,36 +9804,9 @@ $(document).ready(function(){
 
     var socket = io();
 
-    // var trainMarkers = [];
-    // socket.on('locs', function(locs){
-    //     _.forEach(locs, function(loc){
-    //         var m = L.marker([loc[0], loc[1]]).addTo(map);
-    //         setTimeout(function(){map.removeLayer(m);}, 5000);
-    //     });
-    // });
-
-    // socket.on('trains', function(trains){
-    //     _.forEach(trainMarkers, function(m){
-    //         map.removeLayer(m);
-    //     });
-    //     _.forEach(trains, function(train){
-    //         if(train.LocationCode == 'A01'){
-    //             console.log(train);
-    //         }
-    //         var pcontent = train.DestinationName + ', ' + train.LocationCode + ', ' + 
-    //         (train.secondsToNext / 60) + ', ' + train.nextStation; 
-    //         var latlon = [train.lonlat[1], train.lonlat[0]];
-    //         trainMarkers.push(
-    //             L.circleMarker(
-    //                 latlon, 
-    //                 {fillOpacity: 0.6, opacity: 0.7, radius: 11, fillColor: '#00ff00'}
-    //         ).bindPopup(pcontent).addTo(map));
-    //     });
-    // });
-
     var stationUpdateCodes = require('./data/station-update-codes.json');
-    var stations = require('./data/stations.json').Stations;
-    _.forEach(stations, function(station){
+    var stations = require('./data/stations.json');
+    _.forEach(_.values(stations), function(station){
         var updateCode = stationUpdateCodes[station.Code];
         var popup = L.popup({
             maxWidth: 500,
@@ -9108,6 +9822,18 @@ $(document).ready(function(){
                 })}).bindPopup(popup);
         layers.metroStations.addLayer(m);    
     });
+
+    var trainMarkers = [];
+    socket.on('train_updates', function(updates){
+        layers.trains.clearLayers();
+        trainMarkers = [];
+        _.forEach(updates, function(update){
+            console.log(update.line);
+            var color = lineStyle(update.line);
+            var m = L.circleMarker(update.latlon, {radius: 6, stroke: false, fillColor: color, fillOpacity: 0.6});
+            layers.trains.addLayer(m);
+        });
+    })
 
     socket.on('tweet', function(tweet){
         if(tweetMarkerQueue.length > config.MARKER_QUEUE_SIZE){
@@ -9150,27 +9876,29 @@ $(document).ready(function(){
 });
 
 
-},{"./base_markers":3,"./client_config":4,"./controls":5,"./data/station-update-codes.json":7,"./data/stations.json":8,"./geojson_layers":10,"./instagram_markers":11,"./line_sequences.json":12,"./tweet_markers":13,"lodash":1,"underscore.string":2}],10:[function(require,module,exports){
+},{"./base_markers":3,"./client_config":4,"./controls":5,"./data/station-update-codes.json":7,"./data/stations.json":8,"./data/straight_metro_lines.json":9,"./geojson_layers":11,"./instagram_markers":12,"./line_sequences.json":13,"./tweet_markers":14,"lodash":1,"underscore.string":2}],11:[function(require,module,exports){
 var FadeMarker = require('./base_markers').FadeMarker;
 var config = require('./client_config');
 var country_codes = require('./data/country-codes.json');
 
 module.exports = function(layers){
 
-    $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
-        layers.metroLines.addLayer(L.geoJson(data, {
-            style: function(feature) {
-                switch (feature.properties.NAME) {
-                    case 'blue': return {color: "#0000ff"};
-                    case 'red':   return {color: "#ff0000"};
-                    case 'orange': return {color: "#ff6600"};
-                    case 'yellow': return {color: "#ffff00"};
-                    case 'green': return {color: "#006600"};
-                    default: return {color: "#ffffff"};
-                }
-            }
-        }));
-    });
+    // $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
+    //     layers.metroLines.addLayer(L.geoJson(data, {
+    //         style: function(feature) {
+    //             switch (feature.properties.NAME) {
+    //                 case 'blue': return {color: "#0000ff"};
+    //                 case 'red':   return {color: "#ff0000"};
+    //                 case 'orange': return {color: "#ff6600"};
+    //                 case 'yellow': return {color: "#ffff00"};
+    //                 case 'green': return {color: "#006600"};
+    //                 default: return {color: "#ffffff"};
+    //             }
+    //         }
+    //     }));
+    // });
+
+
 
     $.getJSON('/javascripts/geojson/wifi.geojson', function(data){
         layers.wifi.addLayer(L.geoJson(data, {
@@ -9223,7 +9951,7 @@ module.exports = function(layers){
     // });
     return layers;
 };
-},{"./base_markers":3,"./client_config":4,"./data/country-codes.json":6}],11:[function(require,module,exports){
+},{"./base_markers":3,"./client_config":4,"./data/country-codes.json":6}],12:[function(require,module,exports){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
@@ -9254,7 +9982,7 @@ var addMarker = function(ig_post, map, markerQueue){
 module.exports = {
     addMarker: addMarker
 }
-},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}],12:[function(require,module,exports){
+},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}],13:[function(require,module,exports){
 module.exports={
     "GR": [
         {
@@ -10291,7 +11019,7 @@ module.exports={
         }
     ]
 }
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
@@ -10325,4 +11053,4 @@ module.exports = {
 };
 
 
-},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}]},{},[9])
+},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}]},{},[10])

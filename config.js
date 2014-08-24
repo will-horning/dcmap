@@ -7,6 +7,8 @@ config.foursquare.CLIENT_ID = process.env['FOURSQUARE_CLIENT_ID'];
 config.foursquare.CLIENT_SECRET = process.env['FOURSQUARE_CLIENT_SECRET'];
 
 config.metro = {};
+config.metro.PREDICTION_INTERVAL = 5000;
+config.metro.ANIM_INTERVAL = 501;
 config.metro.API_KEY = process.env['METRO_KEY'];
 config.metro.LINE_CODES = ['RD', 'BL', 'YL', 'OR', 'GR', 'SV'];
 config.metro.ALL_STATIONS_URL = 'http://api.wmata.com/Rail.svc/json/JStations?api_key=%s';

@@ -4,20 +4,22 @@ var country_codes = require('./data/country-codes.json');
 
 module.exports = function(layers){
 
-    $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
-        layers.metroLines.addLayer(L.geoJson(data, {
-            style: function(feature) {
-                switch (feature.properties.NAME) {
-                    case 'blue': return {color: "#0000ff"};
-                    case 'red':   return {color: "#ff0000"};
-                    case 'orange': return {color: "#ff6600"};
-                    case 'yellow': return {color: "#ffff00"};
-                    case 'green': return {color: "#006600"};
-                    default: return {color: "#ffffff"};
-                }
-            }
-        }));
-    });
+    // $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
+    //     layers.metroLines.addLayer(L.geoJson(data, {
+    //         style: function(feature) {
+    //             switch (feature.properties.NAME) {
+    //                 case 'blue': return {color: "#0000ff"};
+    //                 case 'red':   return {color: "#ff0000"};
+    //                 case 'orange': return {color: "#ff6600"};
+    //                 case 'yellow': return {color: "#ffff00"};
+    //                 case 'green': return {color: "#006600"};
+    //                 default: return {color: "#ffffff"};
+    //             }
+    //         }
+    //     }));
+    // });
+
+
 
     $.getJSON('/javascripts/geojson/wifi.geojson', function(data){
         layers.wifi.addLayer(L.geoJson(data, {
