@@ -46,12 +46,12 @@ module.exports = function(map, layers){
     });
     sidebar.on('hidden', function(){
         sidebarOpenControl.addTo(map);  
-                    $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>');
+            $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>');
   
     });
 
     map.addControl(sidebarOpenControl);
-            $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>');
+        $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>');
 
     module.sidebar = sidebar;
     module.sidebarOpenControl = sidebarOpenControl;

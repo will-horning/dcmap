@@ -21,8 +21,22 @@ config.CRIME_ICON_URLS = {
         'ARSON': '/images/mapicons.nicolasmollet.com/crime/fire.png'
 };
 
+config.NOMINATIM_URL = 'http://nominatim.openstreetmap.org/';
+
+config.DNC_ICON = '/images/democrat.png';
+config.GOP_ICON = '/images/republican.png';
+config.NO_PARTY_ICON = '/images/nonparty.png';
+
 config.metro = {};
 config.metro.UPDATES_URL =  'http://www.wmata.com/rider_tools/pids/showpid.cfm?station_id=%s';
 
+config.metro.LINE_COLOR = {
+    BL: '#0000B0',
+    RD: '#9E0003',
+    OR: '#C97600',
+    YL: '#DBD800',
+    GR: '#059600',
+    SV: '#AAAAAA'
+};
 
 module.exports = config;

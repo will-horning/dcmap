@@ -43,7 +43,7 @@ module.exports = function(io, db){
         if(tweet.coordinates){
             var lonlat = tweet.coordinates.coordinates;
             if(classifyPoint(config.DC_BOUNDING_POLYGON, lonlat) < 1){
-                io.emit('tweet', tweet);
+                io.emit('tweet', {coordinates: tweet.coordinates, id_str: tweet.id_str});
                 addToQueue(db, tweet);
             }
         }

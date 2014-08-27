@@ -7520,9 +7520,23 @@ config.CRIME_ICON_URLS = {
         'ARSON': '/images/mapicons.nicolasmollet.com/crime/fire.png'
 };
 
+config.NOMINATIM_URL = 'http://nominatim.openstreetmap.org/';
+
+config.DNC_ICON = '/images/democrat.png';
+config.GOP_ICON = '/images/republican.png';
+config.NO_PARTY_ICON = '/images/nonparty.png';
+
 config.metro = {};
 config.metro.UPDATES_URL =  'http://www.wmata.com/rider_tools/pids/showpid.cfm?station_id=%s';
 
+config.metro.LINE_COLOR = {
+    BL: '#0000B0',
+    RD: '#9E0003',
+    OR: '#C97600',
+    YL: '#DBD800',
+    GR: '#059600',
+    SV: '#AAAAAA'
+};
 
 module.exports = config;
 },{}],5:[function(require,module,exports){
@@ -7574,270 +7588,18 @@ module.exports = function(map, layers){
     });
     sidebar.on('hidden', function(){
         sidebarOpenControl.addTo(map);  
-                    $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>');
+            $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>');
   
     });
 
     map.addControl(sidebarOpenControl);
-            $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>');
+        $('.leaflet-control-sidebar-open-interior').append('<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> </button>');
 
     module.sidebar = sidebar;
     module.sidebarOpenControl = sidebarOpenControl;
 }
 },{"./client_config":4}],6:[function(require,module,exports){
-module.exports={
-  "Canada": "CA", 
-  "Sao Tome and Principe": "ST", 
-  "Venezuela": "VE", 
-  "Guinea-Bissau": "GW", 
-  "Montenegro": "ME", 
-  "Lithuania": "LT", 
-  "Cambodia": "KH", 
-  "St. Kitts and Nevis": "KN", 
-  "Switzerland": "CH", 
-  "Ethiopia": "ET", 
-  "Aruba": "AW", 
-  "Saint Martin (French part)": "MF", 
-  "Argentina": "AR", 
-  "Cameroon": "CM", 
-  "Burkina Faso": "BF", 
-  "Turkmenistan": "TM", 
-  "Ghana": "GH", 
-  "Saudi Arabia": "SA", 
-  "Rwanda": "RW", 
-  "Togo": "TG", 
-  "Japan": "JP", 
-  "American Samoa": "AS", 
-  "Montserrat": "MS", 
-  "United States Minor Outlying Islands": "UM", 
-  "Cocos (Keeling) Islands": "CC", 
-  "Pitcairn": "PN", 
-  "Guatemala": "GT", 
-  "Bosnia and Herzegovina": "BA", 
-  "Kuwait": "KW", 
-  "Russian Federation": "RU", 
-  "Jordan": "JO", 
-  "Bonaire, Sint Eustatius and Saba": "BQ", 
-  "Virgin Islands, British": "VG", 
-  "Dominica": "DM", 
-  "Liberia": "LR", 
-  "Korea": "KR", 
-  "European Union": "europeanunion",
-  "Micronesia": "FM", 
-  "Jamaica": "JM", 
-  "Oman": "OM", 
-  "Martinique": "MQ", 
-  "Macedonia": "MK", 
-  "Christmas Island": "CX", 
-  "French Guiana": "GF", 
-  "Niue": "NU", 
-  "Monaco": "MC", 
-  "Wallis and Futuna": "WF", 
-  "New Zealand": "NZ", 
-  "Virgin Islands, U.S.": "VI", 
-  "Jersey": "JE", 
-  "Andorra": "AD", 
-  "Yemen": "YE", 
-  "Albania": "AL", 
-  "Samoa": "WS", 
-  "Norfolk Island": "NF", 
-  "United Arab Emirates": "AE", 
-  "Guam": "GU", 
-  "India": "IN", 
-  "Azerbaijan": "AZ", 
-  "Lesotho": "LS", 
-  "Saint Vincent/Grenadines": "VC", 
-  "Kenya": "KE", 
-  "Macao": "MO", 
-  "Turkey": "TR", 
-  "Afghanistan": "AF", 
-  "Bangladesh": "BD", 
-  "Mauritania": "MR", 
-  "Solomon Islands": "SB", 
-  "Turks and Caicos Islands": "TC", 
-  "Saint Lucia": "LC", 
-  "San Marino": "SM", 
-  "French Polynesia": "PF", 
-  "France": "FR", 
-  "Syrian": "SY", 
-  "Bermuda": "BM", 
-  "Slovak Republic": "SK", 
-  "Somalia": "SO", 
-  "Peru": "PE", 
-  "Swaziland": "SZ", 
-  "Nauru": "NR", 
-  "Seychelles": "SC", 
-  "Norway": "NO", 
-  "Malawi": "MW", 
-  "Cook Islands": "CK", 
-  "Benin": "BJ", 
-  "Western Sahara": "EH", 
-  "Cuba": "CU", 
-  "Iran": "IR", 
-  "Falkland Islands (Malvinas)": "FK", 
-  "Mayotte": "YT", 
-  "Heard Island and McDonald Islands": "HM", 
-  "China": "CN", 
-  "Armenia": "AM", 
-  "East Timor": "TL", 
-  "Dominican Republic": "DO", 
-  "Ukraine": "UA", 
-  "Bahrain": "BH", 
-  "Tonga": "TO", 
-  "Finland": "FI", 
-  "Libya": "LY", 
-  "Cayman Islands": "KY", 
-  "Central African Republic": "CF", 
-  "New Caledonia": "NC", 
-  "Mauritius": "MU", 
-  "Tajikistan": "TJ", 
-  "Liechtenstein": "LI", 
-  "Australia": "AU", 
-  "Mali": "ML", 
-  "Sweden": "SE", 
-  "Bulgaria": "BG", 
-  "Palestine, State of": "PS", 
-  "United States": "US", 
-  "Romania": "RO", 
-  "Angola": "AO", 
-  "French Southern Territories": "TF", 
-  "Chad": "TD", 
-  "South Africa": "ZA", 
-  "Tokelau": "TK", 
-  "Cyprus": "CY", 
-  "South Georgia and the South Sandwich Islands": "GS", 
-  "Brunei Darussalam": "BN", 
-  "Qatar": "QA", 
-  "Saint Helena, Ascension and Tristan Da Cunha": "SH", 
-  "Malaysia": "MY", 
-  "Austria": "AT", 
-  "Mozambique": "MZ", 
-  "Slovenia": "SI", 
-  "Uganda": "UG", 
-  "Hungary": "HU", 
-  "Niger": "NE", 
-  "Isle of Man": "IM", 
-  "Brazil": "BR", 
-  "Netherlands": "NL", 
-  "Faroe Islands": "FO", 
-  "Guinea": "GN", 
-  "Panama": "PA", 
-  "Guyana": "GY", 
-  "Costa Rica": "CR", 
-  "Luxembourg": "LU", 
-  "Cape Verde": "CV", 
-  "Bahamas": "BS", 
-  "Gibraltar": "GI", 
-  "Ireland": "IE", 
-  "Pakistan": "PK", 
-  "Palau": "PW", 
-  "Nigeria": "NG", 
-  "Ecuador": "EC", 
-  "Czech Republic": "CZ", 
-  "Vietnam": "VN", 
-  "Belarus": "BY", 
-  "Vanuatu": "VU", 
-  "Algeria": "DZ", 
-  "Kosovo": "KS",
-  "Korea, Democratic People's Republic of": "KP", 
-  "El Salvador": "SV", 
-  "Tuvalu": "TV", 
-  "Saint Pierre and Miquelon": "PM", 
-  "Marshall Islands": "MH", 
-  "Chile": "CL", 
-  "Puerto Rico": "PR", 
-  "Belgium": "BE", 
-  "Kiribati": "KI", 
-  "Haiti": "HT", 
-  "Belize": "BZ", 
-  "Hong Kong": "HK", 
-  "Sierra Leone": "SL", 
-  "Georgia": "GE", 
-  "Gambia (The)": "GM", 
-  "Philippines": "PH", 
-  "Morocco": "MA", 
-  "Croatia": "HR", 
-  "Mongolia": "MN", 
-  "Guernsey": "GG", 
-  "Thailand": "TH", 
-  "Namibia": "NA", 
-  "Grenada": "GD", 
-  "Taiwan": "TW", 
-  "Laos": "LA",
-  "\u00c5land Islands": "AX", 
-  "Iraq": "IQ", 
-  "Tanzania": "TZ", 
-  "Portugal": "PT", 
-  "Estonia": "EE", 
-  "Uruguay": "UY", 
-  "Equatorial Guinea": "GQ", 
-  "Lebanon": "LB", 
-  "Svalbard and Jan Mayen": "SJ", 
-  "Uzbekistan": "UZ", 
-  "Tunisia": "TN", 
-  "Djibouti": "DJ", 
-  "Greenland": "GL", 
-  "Antigua & Barbuda": "AG", 
-  "Spain": "ES", 
-  "Colombia": "CO", 
-  "Burundi": "BI", 
-  "Fiji": "FJ", 
-  "Barbados": "BB", 
-  "Madagascar": "MG", 
-  "Italy": "IT", 
-  "Bhutan": "BT", 
-  "Sudan": "SD", 
-  "Bolivia": "BO", 
-  "Nepal": "NP", 
-  "Malta": "MT", 
-  "Maldives": "MV", 
-  "Northern Mariana Islands": "MP", 
-  "Suriname": "SR", 
-  "Anguilla": "AI", 
-  "Israel": "IL", 
-  "R\u00e9union": "RE", 
-  "Indonesia": "ID", 
-  "Iceland": "IS", 
-  "Zambia": "ZM", 
-  "Senegal": "SN", 
-  "Papua New Guinea": "PG", 
-  "Trinidad and Tobago": "TT", 
-  "Zimbabwe": "ZW", 
-  "Germany": "DE", 
-  "Denmark": "DK", 
-  "Kazakhstan": "KZ", 
-  "Poland": "PL", 
-  "Moldova": "MD", 
-  "Eritrea": "ER", 
-  "Kyrgyzstan": "KG", 
-  "Congo, Democratic Republic.": "CD", 
-  "Saint Barth\u00e9lemy": "BL", 
-  "British Indian Ocean Territory": "IO", 
-  "Holy See (The)": "VA", 
-  "Mexico": "MX", 
-  "Sri Lanka": "LK", 
-  "Latvia": "LV", 
-  "South Sudan": "SS", 
-  "Cura\u00e7ao": "CW", 
-  "Guadeloupe": "GP", 
-  "Cote D'Ivoire": "CI", 
-  "Honduras": "HN", 
-  "Myanmar": "MM", 
-  "Bouvet Island": "BV", 
-  "Egypt": "EG", 
-  "Nicaragua": "NI", 
-  "Singapore": "SG", 
-  "Serbia": "RS", 
-  "Botswana": "BW", 
-  "United Kingdom": "GB", 
-  "Antarctica": "AQ", 
-  "Congo (Republic)": "CG", 
-  "Sint Maarten (Dutch part)": "SX", 
-  "Greece": "GR", 
-  "Paraguay": "PY", 
-  "Gabon": "GA", 
-  "Comoros": "KM"
-};
+module.exports=[{"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Barbara Comstock", "district": "", "title": "Candidate", "image_available": null, "state": "", "affiliate": "", "crp_id": "", "party": "R", "id": 19027, "resource_uri": "/api/v1/lawmaker/19027/"}], "id": 37490, "entertainment": "Fundraiser", "lon": -78.4927721, "party": "R", "start_date": "2014-09-30", "rsvp_info": "", "checks_payable_to_address": "", "end_date": null, "start_time": null, "lat": 37.1232245, "is_presidential": false, "more_details": "", "contributions_info": "", "venue": {"city": "McLean", "venue_name": "Home of Bobbie & Bill Kilberg", "address1": "", "address2": "", "zipcode": "", "state": "VA", "id": 6251, "resource_uri": "/api/v1/venue/6251/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [{"resource_uri": "/api/v1/host/5310/", "crp_id": "N00006424", "name": "Bobbie Kilberg", "id": 5310}, {"resource_uri": "/api/v1/host/5311/", "crp_id": "Y00000405991", "name": "Bill Kilberg", "id": 5311}], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37490/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S000320", "name": "Richard Shelby", "district": "", "title": "Sen.", "image_available": true, "state": "AL", "affiliate": "", "crp_id": "N00009920", "party": "R", "id": 680, "resource_uri": "/api/v1/lawmaker/680/"}], "id": 37683, "entertainment": "Lunch", "lon": -77.002217, "party": "R", "start_date": "2014-09-25", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "12:00:00", "lat": 38.8934047, "is_presidential": false, "more_details": "", "contributions_info": "$2,000", "venue": {"city": "Washington", "venue_name": "The 116 Club", "address1": "234 3rd Street NE", "address2": "", "zipcode": "20002", "state": "DC", "id": 5122, "resource_uri": "/api/v1/venue/5122/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37683/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S000320", "name": "Richard Shelby", "district": "", "title": "Sen.", "image_available": true, "state": "AL", "affiliate": "", "crp_id": "N00009920", "party": "R", "id": 680, "resource_uri": "/api/v1/lawmaker/680/"}], "id": 37775, "entertainment": "Lunch", "lon": -77.002217, "party": "R", "start_date": "2014-09-24", "rsvp_info": "Jon Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "12:00:00", "lat": 38.8934047, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $1,000 PAC: $2,000", "venue": {"city": "Washington", "venue_name": "116 Club", "address1": "234 3rd St Ne", "address2": "", "zipcode": "20002", "state": "DC", "id": 233, "resource_uri": "/api/v1/venue/233/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37775/"}, {"canceled": false, "beneficiaries": [{"bioguide": "B001261", "name": "John Barrasso", "district": "", "title": "Sen.", "image_available": true, "state": "WY", "affiliate": "", "crp_id": "N00006236", "party": "R", "id": 157, "resource_uri": "/api/v1/lawmaker/157/"}], "id": 37573, "entertainment": "Annual Italian Night!!", "lon": -77.0057709, "party": "R", "start_date": "2014-09-23", "rsvp_info": "Amy Bradley", "checks_payable_to_address": "", "end_date": null, "start_time": "18:00:00", "lat": 38.8809437, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,000", "venue": {"city": "Washington", "venue_name": "UPS Townhouse", "address1": "421 New Jersey Ave SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 412, "resource_uri": "/api/v1/venue/412/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37573/"}, {"canceled": false, "beneficiaries": [{"bioguide": "I000024", "name": "Jim Inhofe", "district": "", "title": "Sen.", "image_available": true, "state": "OK", "affiliate": "", "crp_id": "N00005582", "party": "R", "id": 59, "resource_uri": "/api/v1/lawmaker/59/"}], "id": 37658, "entertainment": "Lunch Patio Cookout", "lon": -77.0034034096495, "party": "R", "start_date": "2014-09-18", "rsvp_info": "Direct Connect Consulting Group", "checks_payable_to_address": "", "end_date": null, "start_time": "13:00:00", "lat": 38.8954928220203, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$5,000/$2,500/$1,000 Individual: $2,600/$1,000/$250", "venue": {"city": "Washington", "venue_name": "National Republican Senatorial Committee", "address1": "425 2nd Street NE", "address2": "", "zipcode": "20002", "state": "DC", "id": 27, "resource_uri": "/api/v1/venue/27/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37658/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S000320", "name": "Richard Shelby", "district": "", "title": "Sen.", "image_available": true, "state": "AL", "affiliate": "", "crp_id": "N00009920", "party": "R", "id": 680, "resource_uri": "/api/v1/lawmaker/680/"}], "id": 37681, "entertainment": "Agriculture Industry Lunch", "lon": -77.002217, "party": "R", "start_date": "2014-09-18", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "12:00:00", "lat": 38.8934047, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,000 Individual:$1,000", "venue": {"city": "Washington", "venue_name": "116 Club", "address1": "234 3rd St Ne", "address2": "", "zipcode": "20002", "state": "DC", "id": 233, "resource_uri": "/api/v1/venue/233/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37681/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "More Conservatives PAC", "district": "", "title": "", "image_available": null, "state": "", "affiliate": "Patrick McHenry", "crp_id": "C00540187", "party": "R", "id": 19088, "resource_uri": "/api/v1/lawmaker/19088/"}], "id": 36779, "entertainment": "North Carolina Brew Tasting Series", "lon": -77.0068813793103, "party": "R", "start_date": "2014-09-17", "rsvp_info": "Bill Oorbeek", "checks_payable_to_address": "", "end_date": null, "start_time": "16:00:00", "lat": 38.8849845862069, "is_presidential": false, "more_details": "", "contributions_info": "$1,000/$2,000", "venue": {"city": "Washington", "venue_name": "Associated General Contractors (AGC) of America Townhouse", "address1": "53 D Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 594, "resource_uri": "/api/v1/venue/594/"}, "make_checks_payable_to": "McPAC", "distribution_paid_for_by": "McPAC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/36779/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S001184", "name": "Tim Scott", "district": "", "title": "Sen.", "image_available": true, "state": "SC", "affiliate": "", "crp_id": "N00031782", "party": "R", "id": 18588, "resource_uri": "/api/v1/lawmaker/18588/"}], "id": 37680, "entertainment": "Financial Services Dinner", "lon": -77.0282154, "party": "R", "start_date": "2014-09-16", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "18:00:00", "lat": 38.8973427, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500/$1,500 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "NoPa Kitchen & Bar", "address1": "800 F Street NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 6320, "resource_uri": "/api/v1/venue/6320/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37680/"}, {"canceled": false, "beneficiaries": [{"bioguide": "F000444", "name": "Jeff Flake", "district": "", "title": "Sen.", "image_available": true, "state": "AZ", "affiliate": "", "crp_id": "N00009573", "party": "R", "id": 18581, "resource_uri": "/api/v1/lawmaker/18581/"}], "id": 37602, "entertainment": "Cold Stone Creamery Reception Honoring Senator Jeff Flake", "lon": -77.0057709, "party": "R", "start_date": "2014-09-16", "rsvp_info": "Meredith Mino Bonyun", "checks_payable_to_address": "", "end_date": null, "start_time": "17:30:00", "lat": 38.8809437, "is_presidential": false, "more_details": "", "contributions_info": "$500/$1,000/$2,500", "venue": {"city": "Washington", "venue_name": "419 New Jersey Avenue SE", "address1": "419 New Jersey Avenue SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 5116, "resource_uri": "/api/v1/venue/5116/"}, "make_checks_payable_to": "Jeff Flake for US Senate", "distribution_paid_for_by": "", "hosts": [], "end_time": "19:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37602/"}, {"canceled": false, "beneficiaries": [{"bioguide": "J000293", "name": "Ron Johnson", "district": "", "title": "Sen.", "image_available": true, "state": "WI", "affiliate": "", "crp_id": "N00032546", "party": "R", "id": 18093, "resource_uri": "/api/v1/lawmaker/18093/"}], "id": 37663, "entertainment": "Lunch", "lon": -77.0158755, "party": "R", "start_date": "2014-09-15", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "13:00:00", "lat": 38.8920838, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,000 Individual: $1,000/$500", "venue": {"city": "Washington", "venue_name": "Charlie Palmer Steak", "address1": "101 Constitution Ave NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 22, "resource_uri": "/api/v1/venue/22/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37663/"}, {"canceled": false, "beneficiaries": [{"bioguide": "L000577", "name": "Mike Lee", "district": "", "title": "Sen.", "image_available": true, "state": "UT", "affiliate": "", "crp_id": "N00031696", "party": "R", "id": 17946, "resource_uri": "/api/v1/lawmaker/17946/"}], "id": 37668, "entertainment": "Dinner", "lon": -77.5708067, "party": "R", "start_date": "2014-09-15", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "18:00:00", "lat": 39.6566765, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,000 Individual:$1,000", "venue": {"city": "Washington", "venue_name": "The Capital Grille - Downtown", "address1": "601 Pennsylvania Avenue, NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 4881, "resource_uri": "/api/v1/venue/4881/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37668/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S001184", "name": "Tim Scott", "district": "", "title": "Sen.", "image_available": true, "state": "SC", "affiliate": "", "crp_id": "N00031782", "party": "R", "id": 18588, "resource_uri": "/api/v1/lawmaker/18588/"}], "id": 37679, "entertainment": "Breakfast", "lon": -77.0366456, "party": "R", "start_date": "2014-09-11", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "09:00:00", "lat": 38.8949549, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,000 Individual: $1,000/$500", "venue": {"city": "Washington", "venue_name": "TBD", "address1": "", "address2": "", "zipcode": "", "state": "DC", "id": 2421, "resource_uri": "/api/v1/venue/2421/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37679/"}, {"canceled": false, "beneficiaries": [{"bioguide": "A000368", "name": "Kelly A. Ayotte", "district": "", "title": "Sen.", "image_available": true, "state": "NH", "affiliate": "", "crp_id": "N00030980", "party": "R", "id": 17726, "resource_uri": "/api/v1/lawmaker/17726/"}], "id": 37559, "entertainment": "Lunch", "lon": -77.002217, "party": "R", "start_date": "2014-09-11", "rsvp_info": "Jon Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "12:00:00", "lat": 38.8934047, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,500", "venue": {"city": "Washington", "venue_name": "116 Club", "address1": "234 3rd St Ne", "address2": "", "zipcode": "20002", "state": "DC", "id": 233, "resource_uri": "/api/v1/venue/233/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37559/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Barbara Comstock", "district": "", "title": "Candidate", "image_available": null, "state": "", "affiliate": "", "crp_id": "", "party": "R", "id": 19027, "resource_uri": "/api/v1/lawmaker/19027/"}], "id": 37540, "entertainment": "Fundraiser", "lon": -78.4927721, "party": "R", "start_date": "2014-09-10", "rsvp_info": "", "checks_payable_to_address": "", "end_date": null, "start_time": null, "lat": 37.1232245, "is_presidential": false, "more_details": "", "contributions_info": "$150/$2,600", "venue": {"city": "Middleburg", "venue_name": "Home of Kristi & Vito Germinario", "address1": "", "address2": "", "zipcode": "", "state": "VA", "id": 6281, "resource_uri": "/api/v1/venue/6281/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [{"resource_uri": "/api/v1/host/13960/", "crp_id": "", "name": "Vito Germinario", "id": 13960}, {"resource_uri": "/api/v1/host/14857/", "crp_id": "", "name": "Kristi Germinario", "id": 14857}], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37540/"}, {"canceled": false, "beneficiaries": [{"bioguide": "F000444", "name": "Jeff Flake", "district": "", "title": "Sen.", "image_available": true, "state": "AZ", "affiliate": "", "crp_id": "N00009573", "party": "R", "id": 18581, "resource_uri": "/api/v1/lawmaker/18581/"}], "id": 37599, "entertainment": "Washington Nationals vs. Arizona Diamondbacks", "lon": -77.0085268, "party": "R", "start_date": "2014-08-21", "rsvp_info": "Meredith Mino Bonyun", "checks_payable_to_address": "", "end_date": null, "start_time": "16:05:00", "lat": 38.8723594, "is_presidential": false, "more_details": "", "contributions_info": "$1,000 per ticket", "venue": {"city": "Washington", "venue_name": "Nationals Park", "address1": "1500 South Capitol Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 390, "resource_uri": "/api/v1/venue/390/"}, "make_checks_payable_to": "Jeff Flake for US Senate", "distribution_paid_for_by": "", "hosts": [{"resource_uri": "/api/v1/host/3395/", "crp_id": "Y00000184470", "name": "Beth Jafari", "id": 3395}, {"resource_uri": "/api/v1/host/3399/", "crp_id": "", "name": "Glen Chambers", "id": 3399}, {"resource_uri": "/api/v1/host/4013/", "crp_id": "Y00000177800", "name": "Rob Lehman", "id": 4013}, {"resource_uri": "/api/v1/host/4565/", "crp_id": "Y00000306940", "name": "Chris Gahan", "id": 4565}, {"resource_uri": "/api/v1/host/7486/", "crp_id": "", "name": "Todd Novascone", "id": 7486}, {"resource_uri": "/api/v1/host/7490/", "crp_id": "", "name": "Doug Schwartz", "id": 7490}, {"resource_uri": "/api/v1/host/14868/", "crp_id": "Y0000009132L", "name": "Steven Voeller", "id": 14868}, {"resource_uri": "/api/v1/host/14869/", "crp_id": "", "name": "Mac Abrams", "id": 14869}], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37599/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Rip Sullivan", "district": "48", "title": "Candidate", "image_available": null, "state": "VA", "affiliate": "", "crp_id": "", "party": "D", "id": 19326, "resource_uri": "/api/v1/lawmaker/19326/"}], "id": 37373, "entertainment": "Fundraiser", "lon": -82.6581081, "party": "D", "start_date": "2014-08-02", "rsvp_info": "Kate Petersen", "checks_payable_to_address": "", "end_date": null, "start_time": "12:30:00", "lat": 27.8083165, "is_presidential": false, "more_details": "", "contributions_info": "$100/$200/$500", "venue": {"city": "Arlington", "venue_name": "Home of Barbara Favola & Doug Weik", "address1": "2319 18th St. N", "address2": "", "zipcode": "22201", "state": "VA", "id": 6005, "resource_uri": "/api/v1/venue/6005/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "Rip Sullivan for Delegate", "hosts": [], "end_time": "14:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37373/"}, {"canceled": false, "beneficiaries": [{"bioguide": "T000461", "name": "Pat Toomey", "district": "", "title": "Sen.", "image_available": true, "state": "PA", "affiliate": "", "crp_id": "N00001489", "party": "R", "id": 17787, "resource_uri": "/api/v1/lawmaker/17787/"}], "id": 37735, "entertainment": "Breakfast", "lon": -77.0089927, "party": "R", "start_date": "2014-07-31", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37735/"}, {"canceled": false, "beneficiaries": [{"bioguide": "B000575", "name": "Roy Blunt", "district": "", "title": "Sen.", "image_available": true, "state": "MO", "affiliate": "", "crp_id": "N00005195", "party": "R", "id": 18017, "resource_uri": "/api/v1/lawmaker/18017/"}], "id": 37576, "entertainment": "Breakfast", "lon": -76.99951, "party": "R", "start_date": "2014-07-31", "rsvp_info": "Keri Ann Hayes", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.894786, "is_presidential": false, "more_details": "", "contributions_info": "$1,000/$2,000", "venue": {"city": "Washington", "venue_name": "The Monocle Restaurant", "address1": "107 D Street NE", "address2": "", "zipcode": "20002", "state": "DC", "id": 65, "resource_uri": "/api/v1/venue/65/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37576/"}, {"canceled": false, "beneficiaries": [{"bioguide": null, "name": "Dan Coats", "district": "", "title": "Sen.", "image_available": false, "state": "IN", "affiliate": "", "crp_id": "", "party": "R", "id": 17858, "resource_uri": "/api/v1/lawmaker/17858/"}], "id": 37583, "entertainment": "Lunch", "lon": -77.002217, "party": "R", "start_date": "2014-07-31", "rsvp_info": "Jon Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "12:00:00", "lat": 38.8934047, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,500", "venue": {"city": "Washington", "venue_name": "116 Club", "address1": "234 3rd St Ne", "address2": "", "zipcode": "20002", "state": "DC", "id": 233, "resource_uri": "/api/v1/venue/233/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37583/"}, {"canceled": false, "beneficiaries": [{"bioguide": "G000386", "name": "Chuck Grassley", "district": "", "title": "Sen.", "image_available": true, "state": "IA", "affiliate": "", "crp_id": "N00001758", "party": "R", "id": 334, "resource_uri": "/api/v1/lawmaker/334/"}], "id": 37655, "entertainment": "Breakfast", "lon": -76.99951, "party": "R", "start_date": "2014-07-30", "rsvp_info": "", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.894786, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,000", "venue": {"city": "Washington", "venue_name": "The Monocle Restaurant", "address1": "107 D Street NE", "address2": "", "zipcode": "20002", "state": "DC", "id": 65, "resource_uri": "/api/v1/venue/65/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37655/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Walt Havenstein", "district": "", "title": "Candidate", "image_available": null, "state": "NH", "affiliate": "", "crp_id": "", "party": "R", "id": 19239, "resource_uri": "/api/v1/lawmaker/19239/"}], "id": 37413, "entertainment": "Fundraiser", "lon": -77.0691780778441, "party": "R", "start_date": "2014-07-30", "rsvp_info": "", "checks_payable_to_address": "", "end_date": null, "start_time": null, "lat": 38.859694859688, "is_presidential": false, "more_details": "", "contributions_info": "$250/$2,000", "venue": {"city": "Arlington", "venue_name": "Army Navy Golf Club", "address1": "1700 Army Navy Drive", "address2": "", "zipcode": "22202", "state": "VA", "id": 131, "resource_uri": "/api/v1/venue/131/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37413/"}, {"canceled": false, "beneficiaries": [{"bioguide": "P000595", "name": "Gary Peters", "district": "9", "title": "Rep.", "image_available": true, "state": "MI", "affiliate": "", "crp_id": "N00029277", "party": "D", "id": 562, "resource_uri": "/api/v1/lawmaker/562/"}], "id": 37364, "entertainment": "Luncheon", "lon": -77.0089927, "party": "D", "start_date": "2014-07-30", "rsvp_info": "Jennifer Frost", "checks_payable_to_address": "", "end_date": null, "start_time": "12:00:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "$500/$1,000/$2,500/$5,000", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "Peters for Michigan", "distribution_paid_for_by": "Peters for Michigan", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37364/"}, {"canceled": false, "beneficiaries": [{"bioguide": "J000293", "name": "Ron Johnson", "district": "", "title": "Sen.", "image_available": true, "state": "WI", "affiliate": "", "crp_id": "N00032546", "party": "R", "id": 18093, "resource_uri": "/api/v1/lawmaker/18093/"}], "id": 37662, "entertainment": "Breakfast", "lon": -77.0089927, "party": "R", "start_date": "2014-07-29", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "08:00:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,000/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "Gula Graham", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37662/"}, {"canceled": false, "beneficiaries": [{"bioguide": "K000360", "name": "Mark Kirk", "district": "", "title": "Sen.", "image_available": true, "state": "IL", "affiliate": "", "crp_id": "N00012539", "party": "R", "id": 18090, "resource_uri": "/api/v1/lawmaker/18090/"}], "id": 37665, "entertainment": "Luncheon", "lon": -77.0031162827036, "party": "R", "start_date": "2014-07-29", "rsvp_info": "Endicott Group", "checks_payable_to_address": "", "end_date": null, "start_time": "12:00:00", "lat": 38.8962053816757, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,000 Individual: $1,000/$500", "venue": {"city": "Washington", "venue_name": "", "address1": "220 E Street NE", "address2": "", "zipcode": "20002", "state": "DC", "id": 2128, "resource_uri": "/api/v1/venue/2128/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37665/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S001184", "name": "Tim Scott", "district": "", "title": "Sen.", "image_available": true, "state": "SC", "affiliate": "", "crp_id": "N00031782", "party": "R", "id": 18588, "resource_uri": "/api/v1/lawmaker/18588/"}], "id": 37678, "entertainment": "Lunch", "lon": -77.002217, "party": "R", "start_date": "2014-07-29", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "12:00:00", "lat": 38.8934047, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500 Individual:$1,000", "venue": {"city": "Washington", "venue_name": "The 116 Club", "address1": "234 3rd Street NE", "address2": "", "zipcode": "20002", "state": "DC", "id": 5122, "resource_uri": "/api/v1/venue/5122/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37678/"}, {"canceled": false, "beneficiaries": [{"bioguide": "D000622", "name": "Tammy Duckworth", "district": "08", "title": "Rep.", "image_available": true, "state": "IL", "affiliate": "", "crp_id": "N00027860", "party": "D", "id": 18209, "resource_uri": "/api/v1/lawmaker/18209/"}], "id": 37717, "entertainment": "Breakfast", "lon": -77.0089927, "party": "D", "start_date": "2014-07-29", "rsvp_info": "Duckworth for Congress", "checks_payable_to_address": "PO Box 59568 Schaumburg, IL 60159", "end_date": null, "start_time": "08:30:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$5,000/$2,500/$1,000 Individual: $500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "Duckworth for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37717/"}, {"canceled": false, "beneficiaries": [{"bioguide": "T000461", "name": "Pat Toomey", "district": "", "title": "Sen.", "image_available": true, "state": "PA", "affiliate": "", "crp_id": "N00001489", "party": "R", "id": 17787, "resource_uri": "/api/v1/lawmaker/17787/"}], "id": 37734, "entertainment": "Dinner", "lon": -77.0213706, "party": "R", "start_date": "2014-07-29", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "18:30:00", "lat": 38.894978, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500/$1,500 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "Rasika", "address1": "633 D Street NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 792, "resource_uri": "/api/v1/venue/792/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37734/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "More Conservatives PAC", "district": "", "title": "", "image_available": null, "state": "", "affiliate": "Patrick McHenry", "crp_id": "C00540187", "party": "R", "id": 19088, "resource_uri": "/api/v1/lawmaker/19088/"}], "id": 36784, "entertainment": "North Carolina Brew Tasting Series", "lon": -77.0068813793103, "party": "R", "start_date": "2014-07-29", "rsvp_info": "Bill Oorbeek", "checks_payable_to_address": "", "end_date": null, "start_time": "16:00:00", "lat": 38.8849845862069, "is_presidential": false, "more_details": "", "contributions_info": "$1,000/$2,000", "venue": {"city": "Washington", "venue_name": "Associated General Contractors (AGC) of America Townhouse", "address1": "53 D Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 594, "resource_uri": "/api/v1/venue/594/"}, "make_checks_payable_to": "McPAC", "distribution_paid_for_by": "McPAC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/36784/"}, {"canceled": false, "beneficiaries": [{"bioguide": "A000368", "name": "Kelly A. Ayotte", "district": "", "title": "Sen.", "image_available": true, "state": "NH", "affiliate": "", "crp_id": "N00030980", "party": "R", "id": 17726, "resource_uri": "/api/v1/lawmaker/17726/"}], "id": 37558, "entertainment": "Breakfast", "lon": -77.022829, "party": "R", "start_date": "2014-07-29", "rsvp_info": "Jon Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "09:00:00", "lat": 38.89858, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,500", "venue": {"city": "Washington", "venue_name": "Mercury Public Affairs", "address1": "701 8th Street NW", "address2": "Suite 650", "zipcode": "20001", "state": "DC", "id": 4182, "resource_uri": "/api/v1/venue/4182/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37558/"}, {"canceled": false, "beneficiaries": [{"bioguide": "C001035", "name": "Susan Collins", "district": "", "title": "Sen.", "image_available": true, "state": "ME", "affiliate": "", "crp_id": "N00000491", "party": "R", "id": 446, "resource_uri": "/api/v1/lawmaker/446/"}], "id": 37588, "entertainment": "Breakfast", "lon": -76.99951, "party": "R", "start_date": "2014-07-29", "rsvp_info": "Magda Patrick or Heather Moore", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.894786, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,500", "venue": {"city": "Washington", "venue_name": "The Monocle Restaurant", "address1": "107 D Street NE", "address2": "", "zipcode": "20002", "state": "DC", "id": 65, "resource_uri": "/api/v1/venue/65/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [{"resource_uri": "/api/v1/host/83/", "crp_id": "Y00000420921", "name": "Smitty Davis", "id": 83}], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37588/"}, {"canceled": false, "beneficiaries": [{"bioguide": "L000577", "name": "Mike Lee", "district": "", "title": "Sen.", "image_available": true, "state": "UT", "affiliate": "", "crp_id": "N00031696", "party": "R", "id": 17946, "resource_uri": "/api/v1/lawmaker/17946/"}], "id": 37667, "entertainment": "Dinner", "lon": -77.5708067, "party": "R", "start_date": "2014-07-28", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "18:00:00", "lat": 39.6566765, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,000 Individual:$1,000", "venue": {"city": "Washington", "venue_name": "The Capital Grille - Downtown", "address1": "601 Pennsylvania Avenue, NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 4881, "resource_uri": "/api/v1/venue/4881/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37667/"}, {"canceled": false, "beneficiaries": [{"bioguide": "N000147", "name": "Eleanor Holmes Norton", "district": "", "title": "Rep.", "image_available": true, "state": "DC", "affiliate": "", "crp_id": "N00001692", "party": "D", "id": 18028, "resource_uri": "/api/v1/lawmaker/18028/"}], "id": 37692, "entertainment": "Luncheon", "lon": -77.0089927, "party": "D", "start_date": "2014-07-28", "rsvp_info": "AB Consulting DC", "checks_payable_to_address": "499 S Capitol Street, SW Suite 422 Washington, DC 20003", "end_date": null, "start_time": "12:00:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "$5,000/$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "Citizens for Eleanor Holmes Norton", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37692/"}, {"canceled": false, "beneficiaries": [{"bioguide": "N000147", "name": "Eleanor Holmes Norton", "district": "", "title": "Rep.", "image_available": true, "state": "DC", "affiliate": "", "crp_id": "N00001692", "party": "D", "id": 18028, "resource_uri": "/api/v1/lawmaker/18028/"}], "id": 37693, "entertainment": "Evening Reception", "lon": -77.0491931, "party": "D", "start_date": "2014-07-28", "rsvp_info": "AB Consulting DC", "checks_payable_to_address": "499 S Capitol Street, SW Suite 422 Washington, DC 20003", "end_date": null, "start_time": "17:00:00", "lat": 38.9024869, "is_presidential": false, "more_details": "", "contributions_info": "$2,500/$1,000/$500/$250", "venue": {"city": "Washington", "venue_name": "PJ Clarke's", "address1": "1600 K Street NW", "address2": "", "zipcode": "20006", "state": "DC", "id": 6317, "resource_uri": "/api/v1/venue/6317/"}, "make_checks_payable_to": "Citizens for Eleanor Holmes Norton", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "18:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37693/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S001175", "name": "Jackie Speier", "district": "12", "title": "Rep.", "image_available": true, "state": "CA", "affiliate": "", "crp_id": "N00029649", "party": "D", "id": 877, "resource_uri": "/api/v1/lawmaker/877/"}], "id": 37699, "entertainment": "Evening Reception", "lon": -77.017216, "party": "D", "start_date": "2014-07-28", "rsvp_info": "Jackie for Congress", "checks_payable_to_address": "PO Box 112 Burlingame, CA 90411", "end_date": null, "start_time": "17:00:00", "lat": 38.912194, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500 Individual:$1,000", "venue": {"city": "Washington", "venue_name": "Art and Soul", "address1": "415 New Jersey Ave NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 2638, "resource_uri": "/api/v1/venue/2638/"}, "make_checks_payable_to": "Jackie for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "19:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37699/"}, {"canceled": false, "beneficiaries": [{"bioguide": "L000557", "name": "John Larson", "district": "1", "title": "Rep.", "image_available": true, "state": "CT", "affiliate": "", "crp_id": "N00000575", "party": "D", "id": 217, "resource_uri": "/api/v1/lawmaker/217/"}], "id": 37702, "entertainment": "Lunch", "lon": -77.0213706, "party": "D", "start_date": "2014-07-28", "rsvp_info": "ymwdc@yahoo.com", "checks_payable_to_address": "236 Massachusetts Ave., NW, Ste. 603, Washington, D.C. 20002", "end_date": null, "start_time": "12:00:00", "lat": 38.894978, "is_presidential": false, "more_details": "", "contributions_info": "$1,500", "venue": {"city": "Washington", "venue_name": "Rasika", "address1": "633 D Street NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 792, "resource_uri": "/api/v1/venue/792/"}, "make_checks_payable_to": "Larson for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37702/"}, {"canceled": false, "beneficiaries": [{"bioguide": null, "name": "Karen Bass", "district": "33", "title": "Rep.", "image_available": false, "state": "CA", "affiliate": "", "crp_id": "", "party": "D", "id": 17917, "resource_uri": "/api/v1/lawmaker/17917/"}], "id": 37704, "entertainment": "Dinner", "lon": -77.0305721, "party": "D", "start_date": "2014-07-28", "rsvp_info": "Karen Bass for Congress", "checks_payable_to_address": "PO Box 34531 Washington, DC 20043", "end_date": null, "start_time": "19:00:00", "lat": 38.897585, "is_presidential": false, "more_details": "", "contributions_info": "$2,500/$2,500/$500", "venue": {"city": "Washington", "venue_name": "Noelia Restaurant", "address1": "1319 F Street NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 6315, "resource_uri": "/api/v1/venue/6315/"}, "make_checks_payable_to": "Karen Bass for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37704/"}, {"canceled": false, "beneficiaries": [{"bioguide": "M001191", "name": "Patrick Murphy", "district": "18", "title": "Rep.", "image_available": true, "state": "FL", "affiliate": "", "crp_id": "N00033091", "party": "D", "id": 18603, "resource_uri": "/api/v1/lawmaker/18603/"}], "id": 37713, "entertainment": "Luncheon", "lon": -77.0434687, "party": "D", "start_date": "2014-07-28", "rsvp_info": "Campaign Finance Group", "checks_payable_to_address": "33 R St. NW, Washington, DC 20001", "end_date": null, "start_time": "12:00:00", "lat": 38.8959623, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $10,000/$2,500 Individual:$250", "venue": {"city": "Washington", "venue_name": "Bistro Bis", "address1": "15 E Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 15, "resource_uri": "/api/v1/venue/15/"}, "make_checks_payable_to": "Friends of Patrick Murphy", "distribution_paid_for_by": "DCCC", "hosts": [{"resource_uri": "/api/v1/host/1928/", "crp_id": "C00033969", "name": "Novartis", "id": 1928}, {"resource_uri": "/api/v1/host/3816/", "crp_id": "C00251876", "name": "Amgen PAC", "id": 3816}], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37713/"}, {"canceled": false, "beneficiaries": [{"bioguide": "C001056", "name": "John Cornyn", "district": "", "title": "Sen.", "image_available": true, "state": "TX", "affiliate": "", "crp_id": "N00024852", "party": "R", "id": 52, "resource_uri": "/api/v1/lawmaker/52/"}], "id": 37592, "entertainment": "Lunch", "lon": -77.0089927, "party": "R", "start_date": "2014-07-28", "rsvp_info": "Magda Patrick or Heather Moore", "checks_payable_to_address": "", "end_date": null, "start_time": "11:30:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": "12:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37592/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S000030", "name": "Loretta Sanchez", "district": "47", "title": "Rep.", "image_available": true, "state": "CA", "affiliate": "", "crp_id": "N00008274", "party": "D", "id": 392, "resource_uri": "/api/v1/lawmaker/392/"}], "id": 37705, "entertainment": "Billy Joel Concert at Nationals Park", "lon": -77.0085268, "party": "D", "start_date": "2014-07-26", "rsvp_info": "Committee to Re-Elect Loretta Sanchez", "checks_payable_to_address": "PO Box 6037 Santa Ana, CA 92706", "end_date": null, "start_time": "20:00:00", "lat": 38.8723594, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500 Individual:$500", "venue": {"city": "Washington", "venue_name": "Nationals Park", "address1": "1500 South Capitol Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 390, "resource_uri": "/api/v1/venue/390/"}, "make_checks_payable_to": "Committee to Re-Elect Loretta Sanchez", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "22:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37705/"}, {"canceled": false, "beneficiaries": [{"bioguide": "B001287", "name": "Ameriash Bera", "district": "03", "title": "", "image_available": true, "state": "CA", "affiliate": "", "crp_id": "N00030717", "party": "D", "id": 16998, "resource_uri": "/api/v1/lawmaker/16998/"}], "id": 37686, "entertainment": "Space Industry Breakfast", "lon": -77.0158755, "party": "D", "start_date": "2014-07-25", "rsvp_info": "Kalik Associates", "checks_payable_to_address": "PO Box 582496 Elk Grove, CA 95758", "end_date": null, "start_time": "08:30:00", "lat": 38.8920838, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,000 Individual: $250/$100", "venue": {"city": "Washington ", "venue_name": "Honeywell International", "address1": "101 Constitution Avenue NW", "address2": "Suite 500 West", "zipcode": "20001", "state": "DC", "id": 4101, "resource_uri": "/api/v1/venue/4101/"}, "make_checks_payable_to": "Bera for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37686/"}, {"canceled": false, "beneficiaries": [{"bioguide": "C001061", "name": "Emanuel Cleaver", "district": "5", "title": "Rep.", "image_available": true, "state": "MO", "affiliate": "", "crp_id": "N00026790", "party": "D", "id": 312, "resource_uri": "/api/v1/lawmaker/312/"}], "id": 37694, "entertainment": "Breakfast", "lon": -77.0089927, "party": "D", "start_date": "2014-07-25", "rsvp_info": "ymwdc@yahoo.com", "checks_payable_to_address": "236 Massachusetts Ave., NW, Ste. 603, Washington, D.C. 20002", "end_date": null, "start_time": "08:30:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$1,500 Individual:$500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "Cleaver for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37694/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S001175", "name": "Jackie Speier", "district": "14", "title": "Rep.", "image_available": null, "state": "CA", "affiliate": "", "crp_id": "N00029649", "party": "D", "id": 19427, "resource_uri": "/api/v1/lawmaker/19427/"}], "id": 37698, "entertainment": "Breakfast Reception", "lon": -77.017216, "party": "D", "start_date": "2014-07-25", "rsvp_info": "Jackie for Congress", "checks_payable_to_address": "PO Box 112 Burlingame, CA 90411", "end_date": null, "start_time": "08:30:00", "lat": 38.912194, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500 Individual:$1,000", "venue": {"city": "Washington", "venue_name": "Art and Soul", "address1": "415 New Jersey Ave NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 2638, "resource_uri": "/api/v1/venue/2638/"}, "make_checks_payable_to": "Jackie for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "10:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37698/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "John Delaney", "district": "6", "title": "Representative", "image_available": null, "state": "MD", "affiliate": "", "crp_id": "N00033897", "party": "D", "id": 18769, "resource_uri": "/api/v1/lawmaker/18769/"}], "id": 37701, "entertainment": "Breakfast", "lon": -77.0434687, "party": "D", "start_date": "2014-07-25", "rsvp_info": "Frost Group", "checks_payable_to_address": "PO Box 60320 Potomac, MD 20859", "end_date": null, "start_time": "09:00:00", "lat": 38.8959623, "is_presidential": false, "more_details": "", "contributions_info": "$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "Bistro Bis", "address1": "15 E Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 15, "resource_uri": "/api/v1/venue/15/"}, "make_checks_payable_to": "Friends of John Delaney", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "10:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37701/"}, {"canceled": false, "beneficiaries": [{"bioguide": "V000130", "name": "Juan Vargas", "district": "51", "title": "Rep.", "image_available": true, "state": "CA", "affiliate": "", "crp_id": "N00007021", "party": "D", "id": 18225, "resource_uri": "/api/v1/lawmaker/18225/"}], "id": 37703, "entertainment": "Breakfast", "lon": -77.0089927, "party": "D", "start_date": "2014-07-25", "rsvp_info": "Fiorello Consulting", "checks_payable_to_address": "PO Box 636 Annandale, VA 22003", "end_date": null, "start_time": "08:30:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "$5,000/$2,500/$1,500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "Juan Vargas for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37703/"}, {"canceled": false, "beneficiaries": [{"bioguide": "K000009", "name": "Marcy Kaptur", "district": "9", "title": "Rep.", "image_available": true, "state": "OH", "affiliate": "", "crp_id": "N00003522", "party": "D", "id": 159, "resource_uri": "/api/v1/lawmaker/159/"}], "id": 37706, "entertainment": "Breakfast", "lon": -77.0079626, "party": "D", "start_date": "2014-07-25", "rsvp_info": "Lori Silverman", "checks_payable_to_address": "2605 S. Kenmore Court Arlington, VA 22206", "end_date": null, "start_time": "08:30:00", "lat": 38.8843778, "is_presidential": false, "more_details": "", "contributions_info": "$5,000 write or raise/$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "National Democratic Club", "address1": "30 Ivy Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 340, "resource_uri": "/api/v1/venue/340/"}, "make_checks_payable_to": "Kaptur for Congrses", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37706/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S001195", "name": "Mark Pocan", "district": "2", "title": "Rep.", "image_available": false, "state": "WI", "affiliate": "", "crp_id": "N00033549", "party": "D", "id": 18481, "resource_uri": "/api/v1/lawmaker/18481/"}], "id": 37707, "entertainment": "Happy Hour", "lon": -77.0081974632043, "party": "D", "start_date": "2014-07-25", "rsvp_info": "AB Consulting", "checks_payable_to_address": "499 S Capitol Street, SW Suite 422 Washington, DC 20003", "end_date": null, "start_time": "15:00:00", "lat": 38.8842570536741, "is_presidential": false, "more_details": "", "contributions_info": "$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "National Democratic Club Townhouse", "address1": "40 Ivy Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 1674, "resource_uri": "/api/v1/venue/1674/"}, "make_checks_payable_to": "Mark Pocan for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "16:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37707/"}, {"canceled": false, "beneficiaries": [{"bioguide": "B001279", "name": "Ron Barber", "district": "08", "title": "Rep.", "image_available": false, "state": "AZ", "affiliate": "", "crp_id": "N00033981", "party": "D", "id": 18213, "resource_uri": "/api/v1/lawmaker/18213/"}], "id": 37714, "entertainment": "Lunch", "lon": -77.0213706, "party": "D", "start_date": "2014-07-25", "rsvp_info": "Molly Allen Associates", "checks_payable_to_address": "PAC: $2,500/$1,000 Individual: $500", "end_date": null, "start_time": "12:00:00", "lat": 38.894978, "is_presidential": false, "more_details": "", "contributions_info": "", "venue": {"city": "Washington", "venue_name": "Rasika", "address1": "633 D Street NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 792, "resource_uri": "/api/v1/venue/792/"}, "make_checks_payable_to": "Ron Barber for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37714/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S001185", "name": "Terrycina Andrea Sewell", "district": "07", "title": "Rep.", "image_available": true, "state": "AL", "affiliate": "", "crp_id": "N00030622", "party": "D", "id": 16976, "resource_uri": "/api/v1/lawmaker/16976/"}], "id": 37718, "entertainment": "Breakfast", "lon": -77.0089927, "party": "D", "start_date": "2014-07-25", "rsvp_info": "AB Consulting", "checks_payable_to_address": "499 South Capitol St. SW Suire 422 Washington, DC 20003", "end_date": null, "start_time": "08:30:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "$5,000/$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "Terri Sewell for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37718/"}, {"canceled": false, "beneficiaries": [{"bioguide": "J000293", "name": "Ron Johnson", "district": "", "title": "Sen.", "image_available": true, "state": "WI", "affiliate": "", "crp_id": "N00032546", "party": "R", "id": 18093, "resource_uri": "/api/v1/lawmaker/18093/"}], "id": 37661, "entertainment": "Lunch", "lon": -77.0089927, "party": "R", "start_date": "2014-07-24", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "11:30:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,000/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37661/"}, {"canceled": false, "beneficiaries": [{"bioguide": "L000579", "name": "Alan Lowenthal", "district": "47", "title": "Rep.", "image_available": true, "state": "CA", "affiliate": "", "crp_id": "N00033274", "party": "D", "id": 18609, "resource_uri": "/api/v1/lawmaker/18609/"}], "id": 37685, "entertainment": "Reception", "lon": -77.0057709, "party": "D", "start_date": "2014-07-24", "rsvp_info": "Kieloch Consulting", "checks_payable_to_address": "Bruchert Development, 4320 Atlantic Ave. Suite 125 Long Beach, CA 90807", "end_date": null, "start_time": "17:30:00", "lat": 38.8809437, "is_presidential": false, "more_details": "", "contributions_info": "$5,000/$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "UPS Townhouse", "address1": "421 New Jersey Ave SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 412, "resource_uri": "/api/v1/venue/412/"}, "make_checks_payable_to": "Alan Lowenthal for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "19:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37685/"}, {"canceled": false, "beneficiaries": [{"bioguide": "F000043", "name": "Chaka Fattah", "district": "2", "title": "Rep.", "image_available": true, "state": "PA", "affiliate": "", "crp_id": "N00001746", "party": "D", "id": 764, "resource_uri": "/api/v1/lawmaker/764/"}], "id": 37689, "entertainment": "Lunch", "lon": -77.0081974632043, "party": "D", "start_date": "2014-07-24", "rsvp_info": "Jeremiah Pope Consulting", "checks_payable_to_address": "PO Box 30743 Philadelphia, PA 19104", "end_date": null, "start_time": "12:00:00", "lat": 38.8842570536741, "is_presidential": false, "more_details": "", "contributions_info": "$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "National Democratic Club Townhouse", "address1": "40 Ivy Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 1674, "resource_uri": "/api/v1/venue/1674/"}, "make_checks_payable_to": "Fattah for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37689/"}, {"canceled": false, "beneficiaries": [{"bioguide": "M001137", "name": "Gregory Meeks", "district": "6", "title": "Rep.", "image_available": true, "state": "NY", "affiliate": "", "crp_id": "N00001171", "party": "D", "id": 195, "resource_uri": "/api/v1/lawmaker/195/"}], "id": 37695, "entertainment": "Dinner", "lon": -77.0213706, "party": "D", "start_date": "2014-07-24", "rsvp_info": "AB Consulting", "checks_payable_to_address": "499 S Capitol Street, SW Suite 422 Washington, DC 20003", "end_date": null, "start_time": "18:30:00", "lat": 38.894978, "is_presidential": false, "more_details": "", "contributions_info": "$5,000/$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "Rasika", "address1": "633 D Street NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 792, "resource_uri": "/api/v1/venue/792/"}, "make_checks_payable_to": "Meeks for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "20:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37695/"}, {"canceled": false, "beneficiaries": [{"bioguide": "J000288", "name": "Hank Johnson", "district": "4", "title": "Rep.", "image_available": true, "state": "GA", "affiliate": "", "crp_id": "N00027848", "party": "D", "id": 696, "resource_uri": "/api/v1/lawmaker/696/"}], "id": 37697, "entertainment": "Lunch", "lon": -77.0213706, "party": "D", "start_date": "2014-07-24", "rsvp_info": "ymwdc@yahoo.com", "checks_payable_to_address": "236 Massachusetts Ave., NW, Ste. 603, Washington, D.C. 20002", "end_date": null, "start_time": "12:00:00", "lat": 38.894978, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,500 Individual:$500", "venue": {"city": "Washington", "venue_name": "Rasika", "address1": "633 D Street NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 792, "resource_uri": "/api/v1/venue/792/"}, "make_checks_payable_to": "Committee to Re-Elect Hank Johnson", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37697/"}, {"canceled": false, "beneficiaries": [{"bioguide": "C001083", "name": "John Carney", "district": "01", "title": "Rep.", "image_available": true, "state": "DE", "affiliate": "", "crp_id": "N00030736", "party": "D", "id": 17091, "resource_uri": "/api/v1/lawmaker/17091/"}], "id": 37700, "entertainment": "Reception", "lon": -77.0205631, "party": "D", "start_date": "2014-07-24", "rsvp_info": "Conrad Group", "checks_payable_to_address": "410 1st Street SE Suite 310 Washington, DC 20003", "end_date": null, "start_time": "18:00:00", "lat": 38.8932649, "is_presidential": false, "more_details": "", "contributions_info": "$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "Offices of Intuit", "address1": "601 Pennsylvania Ave NW", "address2": "Suite 200", "zipcode": "20004", "state": "DC", "id": 685, "resource_uri": "/api/v1/venue/685/"}, "make_checks_payable_to": "John Carney for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "20:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37700/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Mary Rose Wilcox", "district": "07", "title": "Candidate", "image_available": null, "state": "AZ", "affiliate": "", "crp_id": "", "party": "D", "id": 19426, "resource_uri": "/api/v1/lawmaker/19426/"}], "id": 37708, "entertainment": "Fundraiser", "lon": -77.0081974632043, "party": "D", "start_date": "2014-07-24", "rsvp_info": "For The Record, PPA", "checks_payable_to_address": "PO Box 24507 Phoenix, AZ 85704", "end_date": null, "start_time": "17:30:00", "lat": 38.8842570536741, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$1,00 Individual: $500/$250", "venue": {"city": "Washington", "venue_name": "National Democratic Club Townhouse", "address1": "40 Ivy Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 1674, "resource_uri": "/api/v1/venue/1674/"}, "make_checks_payable_to": "Mary Rose Wilcox for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "19:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37708/"}, {"canceled": false, "beneficiaries": [{"bioguide": "H001034", "name": "Mike Honda", "district": "15", "title": "Rep.", "image_available": true, "state": "CA", "affiliate": "", "crp_id": "N00012611", "party": "D", "id": 387, "resource_uri": "/api/v1/lawmaker/387/"}], "id": 37709, "entertainment": "Lunch Reception", "lon": -77.0028597, "party": "D", "start_date": "2014-07-24", "rsvp_info": "Arum Group", "checks_payable_to_address": "625 3rd Street NE, Suite #2 Washington, DC 20002", "end_date": null, "start_time": "12:00:00", "lat": 38.887089, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $5,000/$2,500 Individual: $1,000/$500", "venue": {"city": "Washington", "venue_name": "Hunan Dynasty", "address1": "215 Pennsylvania Ave SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 56, "resource_uri": "/api/v1/venue/56/"}, "make_checks_payable_to": "Mike Honda for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37709/"}, {"canceled": false, "beneficiaries": [{"bioguide": "L000480", "name": "Nita Lowey", "district": "18", "title": "Rep.", "image_available": true, "state": "NY", "affiliate": "", "crp_id": "N00001024", "party": "D", "id": 492, "resource_uri": "/api/v1/lawmaker/492/"}], "id": 37710, "entertainment": "Breakfast", "lon": -77.0434687, "party": "D", "start_date": "2014-07-24", "rsvp_info": "Frost Group", "checks_payable_to_address": "PO Box 271 White Plains, NY 10605", "end_date": null, "start_time": "08:00:00", "lat": 38.8959623, "is_presidential": false, "more_details": "", "contributions_info": "$5,000/$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "Bistro Bis", "address1": "15 E Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 15, "resource_uri": "/api/v1/venue/15/"}, "make_checks_payable_to": "Nita Lowey for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37710/"}, {"canceled": false, "beneficiaries": [{"bioguide": "M001191", "name": "Patrick Murphy", "district": "18", "title": "Rep.", "image_available": true, "state": "FL", "affiliate": "", "crp_id": "N00033091", "party": "D", "id": 18603, "resource_uri": "/api/v1/lawmaker/18603/"}], "id": 37711, "entertainment": "Reception", "lon": -77.021552, "party": "D", "start_date": "2014-07-24", "rsvp_info": "Campaign Finance Group", "checks_payable_to_address": "33 R St. NW, Washington, DC 20001", "end_date": null, "start_time": "17:00:00", "lat": 38.897175, "is_presidential": false, "more_details": "", "contributions_info": "Form", "venue": {"city": "Washington", "venue_name": "Rosa Mexicano", "address1": "575 7th Street NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 283, "resource_uri": "/api/v1/venue/283/"}, "make_checks_payable_to": "Friends of Patrick Murphy", "distribution_paid_for_by": "DCCC", "hosts": [{"resource_uri": "/api/v1/host/14870/", "crp_id": "", "name": "Grant Thornton LLP", "id": 14870}], "end_time": "18:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37711/"}, {"canceled": false, "beneficiaries": [{"bioguide": "D000617", "name": "Suzan DelBene", "district": "08", "title": "", "image_available": true, "state": "WA", "affiliate": "", "crp_id": "N00030693", "party": "D", "id": 17513, "resource_uri": "/api/v1/lawmaker/17513/"}], "id": 37715, "entertainment": "Lunch", "lon": -77.017963, "party": "D", "start_date": "2014-07-24", "rsvp_info": "AB Consulting", "checks_payable_to_address": "499 S Capitol Street, SW Suite 422 Washington, DC 20003", "end_date": null, "start_time": "12:00:00", "lat": 38.862783, "is_presidential": false, "more_details": "", "contributions_info": "$5,000/$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "8 E Street, SE", "address1": "8 E Street, SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 4886, "resource_uri": "/api/v1/venue/4886/"}, "make_checks_payable_to": "Delbene for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37715/"}, {"canceled": false, "beneficiaries": [{"bioguide": "B001278", "name": "Suzanne Bonamici", "district": "1", "title": "Rep.", "image_available": false, "state": "OR", "affiliate": "", "crp_id": "N00033474", "party": "D", "id": 18490, "resource_uri": "/api/v1/lawmaker/18490/"}], "id": 37716, "entertainment": "Summer Luncheon", "lon": -76.9958987, "party": "D", "start_date": "2014-07-24", "rsvp_info": "AB Consulting", "checks_payable_to_address": "499 S Capitol Street, SW Suite 422 Washington, DC 20003", "end_date": null, "start_time": "12:00:00", "lat": 38.8868872, "is_presidential": false, "more_details": "", "contributions_info": "$5,000/$2,500/$1,500/$500", "venue": {"city": "Washington", "venue_name": "Acqua Al 2", "address1": "212 7th Street Southeast", "address2": "", "zipcode": "20003", "state": "DC", "id": 3185, "resource_uri": "/api/v1/venue/3185/"}, "make_checks_payable_to": "Bonamici for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37716/"}, {"canceled": false, "beneficiaries": [{"bioguide": "W000799", "name": "Tim Walz", "district": "1", "title": "Rep.", "image_available": true, "state": "MN", "affiliate": "", "crp_id": "N00027467", "party": "D", "id": 1172, "resource_uri": "/api/v1/lawmaker/1172/"}], "id": 37719, "entertainment": "Summer BBQ", "lon": -77.021916, "party": "D", "start_date": "2014-07-24", "rsvp_info": "Molly Allen Associates", "checks_payable_to_address": "PO Box 938 Mankato, MN 56001", "end_date": null, "start_time": "12:00:00", "lat": 38.909645, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,000 Individual: $500", "venue": {"city": "Washington", "venue_name": "Hill Country BBQ", "address1": "410 7th Street NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 3468, "resource_uri": "/api/v1/venue/3468/"}, "make_checks_payable_to": "Walz for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37719/"}, {"canceled": false, "beneficiaries": [{"bioguide": "T000461", "name": "Pat Toomey", "district": "", "title": "Sen.", "image_available": true, "state": "PA", "affiliate": "", "crp_id": "N00001489", "party": "R", "id": 17787, "resource_uri": "/api/v1/lawmaker/17787/"}], "id": 37733, "entertainment": "Lunch", "lon": -77.0089927, "party": "R", "start_date": "2014-07-24", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "12:30:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NSRC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37733/"}, {"canceled": false, "beneficiaries": [{"bioguide": "A000368", "name": "Kelly A. Ayotte", "district": "", "title": "Sen.", "image_available": true, "state": "NH", "affiliate": "", "crp_id": "N00030980", "party": "R", "id": 17726, "resource_uri": "/api/v1/lawmaker/17726/"}], "id": 37557, "entertainment": "Lunch", "lon": -77.0089927, "party": "R", "start_date": "2014-07-24", "rsvp_info": "Jon Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "12:00:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37557/"}, {"canceled": false, "beneficiaries": [{"bioguide": "I000024", "name": "Jim Inhofe", "district": "", "title": "Sen.", "image_available": true, "state": "OK", "affiliate": "", "crp_id": "N00005582", "party": "R", "id": 59, "resource_uri": "/api/v1/lawmaker/59/"}], "id": 37316, "entertainment": "Fundraiser", "lon": -77.0158755, "party": "R", "start_date": "2014-07-24", "rsvp_info": "Amy Bradley", "checks_payable_to_address": "", "end_date": null, "start_time": "13:00:00", "lat": 38.8920838, "is_presidential": false, "more_details": "", "contributions_info": "$500/$1,000/$2,500", "venue": {"city": "Washington", "venue_name": "Charlie Palmer Steak", "address1": "101 Constitution Ave NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 22, "resource_uri": "/api/v1/venue/22/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [{"resource_uri": "/api/v1/host/7641/", "crp_id": "", "name": "National Marine Manufacturers Association's Boat PAC", "id": 7641}], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37316/"}, {"canceled": false, "beneficiaries": [{"bioguide": "B000575", "name": "Roy Blunt", "district": "", "title": "Sen.", "image_available": true, "state": "MO", "affiliate": "", "crp_id": "N00005195", "party": "R", "id": 18017, "resource_uri": "/api/v1/lawmaker/18017/"}], "id": 37574, "entertainment": "Ag Breakfast", "lon": -77.0282154, "party": "R", "start_date": "2014-07-24", "rsvp_info": "Keri Ann Hayes", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.8973427, "is_presidential": false, "more_details": "", "contributions_info": "$1,000/$2,000", "venue": {"city": "Washington", "venue_name": "The Farm Credit Council", "address1": "50 F Street NW", "address2": "Suite 900", "zipcode": "20001", "state": "DC", "id": 579, "resource_uri": "/api/v1/venue/579/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37574/"}, {"canceled": false, "beneficiaries": [{"bioguide": "C001035", "name": "Susan Collins", "district": "", "title": "Sen.", "image_available": true, "state": "ME", "affiliate": "", "crp_id": "N00000491", "party": "R", "id": 446, "resource_uri": "/api/v1/lawmaker/446/"}], "id": 37587, "entertainment": "Breakfast", "lon": -77.0057709, "party": "R", "start_date": "2014-07-24", "rsvp_info": "Magda Patrick or Heather Moore", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.8809437, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,500", "venue": {"city": "Washington", "venue_name": "", "address1": "419 New Jersey Ave SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 561, "resource_uri": "/api/v1/venue/561/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37587/"}, {"canceled": false, "beneficiaries": [{"bioguide": "L000287", "name": "John Lewis", "district": "5", "title": "Rep.", "image_available": true, "state": "GA", "affiliate": "", "crp_id": "N00002577", "party": "D", "id": 81, "resource_uri": "/api/v1/lawmaker/81/"}], "id": 37340, "entertainment": "Breakfast", "lon": -77.0434687, "party": "D", "start_date": "2014-07-24", "rsvp_info": "Caroline Pratt or Pattie Fiorello", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.8959623, "is_presidential": false, "more_details": "", "contributions_info": "$1,000/$2,500/$5,000", "venue": {"city": "Washington", "venue_name": "Hotel George", "address1": "15 E Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 255, "resource_uri": "/api/v1/venue/255/"}, "make_checks_payable_to": "John Lewis for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37340/"}, {"canceled": false, "beneficiaries": [{"bioguide": null, "name": "Daniel Davis", "district": "07", "title": "Rep.", "image_available": false, "state": "IL", "affiliate": "", "crp_id": "", "party": "D", "id": 1265, "resource_uri": "/api/v1/lawmaker/1265/"}], "id": 37646, "entertainment": "Breakfast", "lon": -77.0026388, "party": "D", "start_date": "2014-07-23", "rsvp_info": "Jeremiah Pope - davisevent@jpopeconsulting.com, 202-701-5757", "checks_payable_to_address": "5956 West Race Avenue, Chicago, IL 60644", "end_date": null, "start_time": "09:00:00", "lat": 38.8870056, "is_presidential": false, "more_details": "", "contributions_info": "$2,500; $1,000; $250", "venue": {"city": "Washington", "venue_name": "Sonoma Restaurant and Wine Bar", "address1": "223 Pennsylvania Ave SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 82, "resource_uri": "/api/v1/venue/82/"}, "make_checks_payable_to": "Davis for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "10:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37646/"}, {"canceled": false, "beneficiaries": [{"bioguide": "E000293", "name": "Elizabeth Esty", "district": "5", "title": "Rep.", "image_available": true, "state": "CT", "affiliate": "", "crp_id": "N00033217", "party": "D", "id": 18480, "resource_uri": "/api/v1/lawmaker/18480/"}], "id": 37647, "entertainment": "Labor Breakfast", "lon": -77.5708067, "party": "D", "start_date": "2014-07-23", "rsvp_info": "Greg Kalik - 202-741-7224, greg@kalikassociates.com", "checks_payable_to_address": "PO Box 61, Cheshire, CT 06410", "end_date": null, "start_time": "08:00:00", "lat": 39.6566765, "is_presidential": false, "more_details": "", "contributions_info": "$5,000; $2,500; $1,000", "venue": {"city": "Washington", "venue_name": "SMART Transportation Division", "address1": "304 Pennsylvania Avenue, SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 6312, "resource_uri": "/api/v1/venue/6312/"}, "make_checks_payable_to": "Friends of Elizabeth Esty", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37647/"}, {"canceled": false, "beneficiaries": [{"bioguide": "P000608", "name": "Scott Peters ", "district": "52", "title": "Rep.", "image_available": true, "state": "CA", "affiliate": "", "crp_id": "N00033591", "party": "D", "id": 18262, "resource_uri": "/api/v1/lawmaker/18262/"}], "id": 37649, "entertainment": "Labor Community Lunch", "lon": -77.0158755, "party": "D", "start_date": "2014-07-23", "rsvp_info": "Molly Allen or Stephanie Mathias, 202-827-8200 or stephanie@mollyallenassociates.com", "checks_payable_to_address": "4715 Viewridge Avenue/Ste 150, San Diego, CA 92123", "end_date": null, "start_time": "12:00:00", "lat": 38.8920838, "is_presidential": false, "more_details": "", "contributions_info": "$5,000; $2,500; $1,000", "venue": {"city": "Washington", "venue_name": "Charlie Palmer Steak", "address1": "101 Constitution Ave NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 22, "resource_uri": "/api/v1/venue/22/"}, "make_checks_payable_to": "Scott Peters for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37649/"}, {"canceled": false, "beneficiaries": [{"bioguide": "R000595", "name": "Marco Rubio", "district": "", "title": "Sen.", "image_available": true, "state": "FL", "affiliate": "", "crp_id": "N00030612", "party": "R", "id": 17659, "resource_uri": "/api/v1/lawmaker/17659/"}], "id": 37674, "entertainment": "Mojitos with Marco Reception", "lon": -77.0084519285714, "party": "R", "start_date": "2014-07-23", "rsvp_info": "Miller Spence", "checks_payable_to_address": "", "end_date": null, "start_time": "19:00:00", "lat": 38.8849840714286, "is_presidential": false, "more_details": "", "contributions_info": "$2,500/$1,000/$250", "venue": {"city": "Washington", "venue_name": "The Townhouse 11 D Street SE", "address1": "11 D Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 3569, "resource_uri": "/api/v1/venue/3569/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "RSCC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37674/"}, {"canceled": false, "beneficiaries": [{"bioguide": "T000461", "name": "Pat Toomey", "district": "", "title": "Sen.", "image_available": true, "state": "PA", "affiliate": "", "crp_id": "N00001489", "party": "R", "id": 17787, "resource_uri": "/api/v1/lawmaker/17787/"}], "id": 37731, "entertainment": "Breakfast", "lon": -77.0491931, "party": "R", "start_date": "2014-07-23", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.9024869, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "1425 K Street NW", "address1": "1425 K Street NW", "address2": "Suite 400", "zipcode": "", "state": "DC", "id": 3024, "resource_uri": "/api/v1/venue/3024/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NSRC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37731/"}, {"canceled": false, "beneficiaries": [{"bioguide": "T000461", "name": "Pat Toomey", "district": "", "title": "Sen.", "image_available": true, "state": "PA", "affiliate": "", "crp_id": "N00001489", "party": "R", "id": 17787, "resource_uri": "/api/v1/lawmaker/17787/"}], "id": 37732, "entertainment": "Dinner", "lon": -76.9958987, "party": "R", "start_date": "2014-07-23", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "18:00:00", "lat": 38.8868872, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "Acqua Al 2", "address1": "212 7th Street Southeast", "address2": "", "zipcode": "20003", "state": "DC", "id": 3185, "resource_uri": "/api/v1/venue/3185/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37732/"}, {"canceled": false, "beneficiaries": [{"bioguide": "P000602", "name": "Michael Richard Pompeo", "district": "04", "title": "", "image_available": true, "state": "KS", "affiliate": "", "crp_id": "N00030744", "party": "R", "id": 17247, "resource_uri": "/api/v1/lawmaker/17247/"}], "id": 37486, "entertainment": "Reception", "lon": -77.0057709, "party": "R", "start_date": "2014-07-23", "rsvp_info": "Jon Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "18:00:00", "lat": 38.8809437, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,500/$2,500", "venue": {"city": "Washington", "venue_name": "419 New Jersey Avenue SE", "address1": "419 New Jersey Avenue SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 5116, "resource_uri": "/api/v1/venue/5116/"}, "make_checks_payable_to": "Pompeo for Congress", "distribution_paid_for_by": "Pompeo for Congress", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37486/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Alma Adams", "district": "", "title": "Candidate", "image_available": false, "state": "NC", "affiliate": "", "crp_id": "", "party": "D", "id": 19417, "resource_uri": "/api/v1/lawmaker/19417/"}], "id": 37635, "entertainment": "Labor Breakfast", "lon": -77.021916, "party": "D", "start_date": "2014-07-22", "rsvp_info": "Nicole - 615-337-5391, nicole@kalikassociates.com", "checks_payable_to_address": "PO Box 20622 Greensboro, NC 27420", "end_date": null, "start_time": "08:30:00", "lat": 38.909645, "is_presidential": false, "more_details": "", "contributions_info": "Host = $2,500; Sponsor = $1,000", "venue": {"city": "Washington", "venue_name": "International Brotherhood of Electrical Workers", "address1": "900 7th Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 2526, "resource_uri": "/api/v1/venue/2526/"}, "make_checks_payable_to": "Alma Adams for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37635/"}, {"canceled": false, "beneficiaries": [{"bioguide": "W000808", "name": "Frederica S Wilson", "district": "17", "title": "", "image_available": true, "state": "FL", "affiliate": "", "crp_id": "N00030650", "party": "D", "id": 17128, "resource_uri": "/api/v1/lawmaker/17128/"}], "id": 37642, "entertainment": "Pre-Primary Soul Food Lunch", "lon": -77.017216, "party": "D", "start_date": "2014-07-22", "rsvp_info": "Brittany Grimm or Randy Broz, 202-403-0606, Brittany@ABConsultingDC.com", "checks_payable_to_address": "499 South Capitol Street, SW, Suite 422, Washington, DC 20003", "end_date": null, "start_time": "12:00:00", "lat": 38.912194, "is_presidential": false, "more_details": "", "contributions_info": "$5,000; $2,500; $1,500; $500", "venue": {"city": "Washington", "venue_name": "Art and Soul", "address1": "415 New Jersey Ave NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 2638, "resource_uri": "/api/v1/venue/2638/"}, "make_checks_payable_to": "Frederica Wilson for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37642/"}, {"canceled": false, "beneficiaries": [{"bioguide": "T000250", "name": "John Thune", "district": "", "title": "Sen.", "image_available": true, "state": "SD", "affiliate": "", "crp_id": "N00004572", "party": "R", "id": 291, "resource_uri": "/api/v1/lawmaker/291/"}], "id": 37684, "entertainment": "Dinner", "lon": -76.9958987, "party": "R", "start_date": "2014-07-22", "rsvp_info": "Rizzo Dukes", "checks_payable_to_address": "", "end_date": null, "start_time": "18:30:00", "lat": 38.8868872, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $1,000 Individual: $500", "venue": {"city": "Washington", "venue_name": "Acqua Al 2", "address1": "212 7th Street Southeast", "address2": "", "zipcode": "20003", "state": "DC", "id": 3185, "resource_uri": "/api/v1/venue/3185/"}, "make_checks_payable_to": "Friends of John Thune", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37684/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Terri Lynn Land", "district": "", "title": "Cand. for Senat", "image_available": null, "state": "MI", "affiliate": "", "crp_id": "", "party": "R", "id": 18900, "resource_uri": "/api/v1/lawmaker/18900/"}], "id": 37721, "entertainment": "Pre-primry reception with special guest Senator Roy Blunt", "lon": -77.0366456, "party": "R", "start_date": "2014-07-22", "rsvp_info": "Aristela Group", "checks_payable_to_address": "", "end_date": null, "start_time": "17:30:00", "lat": 38.8949549, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$5,000/$2,500/$1,000 Individual:$2,600/$1,000/$500", "venue": {"city": "Washington", "venue_name": "TBA", "address1": "", "address2": "", "zipcode": "20002", "state": "DC", "id": 2574, "resource_uri": "/api/v1/venue/2574/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": "18:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37721/"}, {"canceled": false, "beneficiaries": [{"bioguide": "L000575", "name": "James Lankford", "district": "05", "title": "", "image_available": true, "state": "OK", "affiliate": "", "crp_id": "N00031129", "party": "R", "id": 17378, "resource_uri": "/api/v1/lawmaker/17378/"}], "id": 37723, "entertainment": "Reception & Luncheon with special guests", "lon": -77.0158755, "party": "R", "start_date": "2014-07-22", "rsvp_info": "Pearson Associates", "checks_payable_to_address": "", "end_date": null, "start_time": "11:15:00", "lat": 38.8920838, "is_presidential": false, "more_details": "", "contributions_info": "Reception - PAC:$1,000 Individual:$500 Luncheon - $5,000 Individual:$1,000", "venue": {"city": "Washington", "venue_name": "Charlie Palmer Steak", "address1": "101 Constitution Ave NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 22, "resource_uri": "/api/v1/venue/22/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NSRC", "hosts": [], "end_time": "12:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37723/"}, {"canceled": false, "beneficiaries": [{"bioguide": "K000384", "name": "Tim Kaine", "district": "", "title": "Sen.", "image_available": false, "state": "VA", "affiliate": "", "crp_id": "N00033177", "party": "D", "id": 18036, "resource_uri": "/api/v1/lawmaker/18036/"}], "id": 37306, "entertainment": "Smoked 'n' Oaked: A Celebration of Virginia's Best Barbecue, Beer and Bourbon", "lon": -77.017216, "party": "D", "start_date": "2014-07-22", "rsvp_info": "Mary Tabaie", "checks_payable_to_address": "", "end_date": null, "start_time": "18:30:00", "lat": 38.912194, "is_presidential": false, "more_details": "", "contributions_info": "$100/$250/$500/$1,000", "venue": {"city": "Washington", "venue_name": "Jones Day Rooftop", "address1": "300 New Jersey Avenue NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 4425, "resource_uri": "/api/v1/venue/4425/"}, "make_checks_payable_to": "Kaine for Virginia", "distribution_paid_for_by": "Kaine for Virginia", "hosts": [], "end_time": "20:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37306/"}, {"canceled": false, "beneficiaries": [{"bioguide": null, "name": "Dan Coats", "district": "", "title": "Sen.", "image_available": false, "state": "IN", "affiliate": "", "crp_id": "", "party": "R", "id": 17858, "resource_uri": "/api/v1/lawmaker/17858/"}], "id": 37582, "entertainment": "Dinner", "lon": -77.5708067, "party": "R", "start_date": "2014-07-22", "rsvp_info": "Jon Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "18:00:00", "lat": 39.6566765, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $1,000 PAC: $2,000", "venue": {"city": "Washington", "venue_name": "The Capital Grille - Downtown", "address1": "601 Pennsylvania Avenue, NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 4881, "resource_uri": "/api/v1/venue/4881/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37582/"}, {"canceled": false, "beneficiaries": [{"bioguide": "C001036", "name": "Lois Capps", "district": "23", "title": "Rep.", "image_available": true, "state": "CA", "affiliate": "", "crp_id": "N00007232", "party": "D", "id": 471, "resource_uri": "/api/v1/lawmaker/471/"}], "id": 37637, "entertainment": "Health Care Luncheon", "lon": -76.9948694870005, "party": "D", "start_date": "2014-07-21", "rsvp_info": "Shauna Jackson at 202-544-2994, lois.capps@ericksoncompany.com", "checks_payable_to_address": "38 Ivy Street, SE, Washington, DC 20003", "end_date": null, "start_time": "12:00:00", "lat": 38.8824535751705, "is_presidential": false, "more_details": "", "contributions_info": "$2,500 PAC; $1,000; $500", "venue": {"city": "Washington", "venue_name": "Nooshi", "address1": "524 8th Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 6304, "resource_uri": "/api/v1/venue/6304/"}, "make_checks_payable_to": "Friends of Lois Capps", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37637/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Norma Torres", "district": "", "title": "Candidate", "image_available": null, "state": "CA", "affiliate": "", "crp_id": "", "party": "D", "id": 19420, "resource_uri": "/api/v1/lawmaker/19420/"}], "id": 37641, "entertainment": "Labor Event", "lon": -77.036446693908, "party": "D", "start_date": "2014-07-21", "rsvp_info": "Nicole Dorris - 615-337-5391, nicole@kalikassociates.com", "checks_payable_to_address": "728 West Eden Place, Covina, CA 91722", "end_date": null, "start_time": "11:00:00", "lat": 38.9004519970178, "is_presidential": false, "more_details": "", "contributions_info": "$2,500; $1,000", "venue": {"city": "Washington", "venue_name": "AFL-CIO", "address1": "815 16th Street NW", "address2": "George Meany Room", "zipcode": "20006", "state": "DC", "id": 2661, "resource_uri": "/api/v1/venue/2661/"}, "make_checks_payable_to": "Norma Torres for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37641/"}, {"canceled": false, "beneficiaries": [{"bioguide": "G000386", "name": "Chuck Grassley", "district": "", "title": "Sen.", "image_available": true, "state": "IA", "affiliate": "", "crp_id": "N00001758", "party": "R", "id": 334, "resource_uri": "/api/v1/lawmaker/334/"}], "id": 37654, "entertainment": "Dinner", "lon": -76.99951, "party": "R", "start_date": "2014-07-21", "rsvp_info": "", "checks_payable_to_address": "", "end_date": null, "start_time": "18:30:00", "lat": 38.894786, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,500", "venue": {"city": "Washington", "venue_name": "The Monocle Restaurant", "address1": "107 D Street NE", "address2": "", "zipcode": "20002", "state": "DC", "id": 65, "resource_uri": "/api/v1/venue/65/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37654/"}, {"canceled": false, "beneficiaries": [{"bioguide": "L000577", "name": "Mike Lee", "district": "", "title": "Sen.", "image_available": true, "state": "UT", "affiliate": "", "crp_id": "N00031696", "party": "R", "id": 17946, "resource_uri": "/api/v1/lawmaker/17946/"}], "id": 37666, "entertainment": "Breakfast", "lon": -77.0089927, "party": "R", "start_date": "2014-07-17", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,000/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "RSCC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37666/"}, {"canceled": false, "beneficiaries": [{"bioguide": "B001236", "name": "John Boozman", "district": "", "title": "Sen.", "image_available": true, "state": "AR", "affiliate": "", "crp_id": "N00013873", "party": "R", "id": 18479, "resource_uri": "/api/v1/lawmaker/18479/"}], "id": 37578, "entertainment": "Breakfast", "lon": -77.0342499, "party": "R", "start_date": "2014-07-17", "rsvp_info": "Laura Rizzo", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.9029968, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $250/$1,000 PAC: $1,000/$2,500", "venue": {"city": "Washington", "venue_name": "1015 15th St NW", "address1": "1015 15th St NW", "address2": "", "zipcode": "", "state": "DC", "id": 3562, "resource_uri": "/api/v1/venue/3562/"}, "make_checks_payable_to": "Boozman for Arkansas", "distribution_paid_for_by": "", "hosts": [{"resource_uri": "/api/v1/host/3848/", "crp_id": "C00010868", "name": "ACEC PAC", "id": 3848}], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37578/"}, {"canceled": false, "beneficiaries": [{"bioguide": "G000556", "name": "Alan Grayson", "district": "09", "title": "Rep.", "image_available": null, "state": "FL", "affiliate": "", "crp_id": "N00028418", "party": "D", "id": 19421, "resource_uri": "/api/v1/lawmaker/19421/"}], "id": 37603, "entertainment": "Breakfast", "lon": -77.0034118571429, "party": "D", "start_date": "2014-07-17", "rsvp_info": "Jeff Bogacki, 547-1334 or Jeff@Kieloch.com", "checks_payable_to_address": "8419 Oak Park Road, Orlando, FL 32819", "end_date": "2014-07-17", "start_time": "08:30:00", "lat": 38.8871115714286, "is_presidential": false, "more_details": "", "contributions_info": "Chair, $5,000; co-host, $2,500; individual $500", "venue": {"city": "Washington", "venue_name": "Kieloch Consulting Townhouse", "address1": "228 2nd Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 3455, "resource_uri": "/api/v1/venue/3455/"}, "make_checks_payable_to": "Committee to Elect Alan Grayson", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37603/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Donald S. Beyer Jr.", "district": "", "title": "Candidate", "image_available": null, "state": "VA", "affiliate": "", "crp_id": "", "party": "D", "id": 19251, "resource_uri": "/api/v1/lawmaker/19251/"}], "id": 37611, "entertainment": "Breakfast", "lon": -77.0490328967742, "party": "D", "start_date": "2014-07-17", "rsvp_info": "AB Consulting", "checks_payable_to_address": "5834D N. Kings Highway Alexandria, VA 22303", "end_date": null, "start_time": "08:30:00", "lat": 38.8046155, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$5,000/$2,500/$1,000 Individual:$5,200/$2,600/$1,000/$250", "venue": {"city": "Alexandria", "venue_name": "The Morrison House", "address1": "116 S. Alfred Street", "address2": "", "zipcode": "22314", "state": "VA", "id": 6310, "resource_uri": "/api/v1/venue/6310/"}, "make_checks_payable_to": "Don Beyer for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37611/"}, {"canceled": false, "beneficiaries": [{"bioguide": "M001166", "name": "Jerry McNerney", "district": "11", "title": "Rep.", "image_available": true, "state": "CA", "affiliate": "", "crp_id": "N00026926", "party": "D", "id": 711, "resource_uri": "/api/v1/lawmaker/711/"}], "id": 37616, "entertainment": "Lunch", "lon": -77.0081974632043, "party": "D", "start_date": "2014-07-17", "rsvp_info": "Kalik Associates", "checks_payable_to_address": "PO Box 690371 Stockton, CA 95269", "end_date": null, "start_time": "12:00:00", "lat": 38.8842570536741, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,000/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "National Democratic Club Townhouse", "address1": "40 Ivy Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 1674, "resource_uri": "/api/v1/venue/1674/"}, "make_checks_payable_to": "McNerney for Congress Committee", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37616/"}, {"canceled": false, "beneficiaries": [{"bioguide": "M000355", "name": "Mitch McConnell", "district": "", "title": "Sen.", "image_available": true, "state": "KY", "affiliate": "", "crp_id": "N00003389", "party": "R", "id": 7, "resource_uri": "/api/v1/lawmaker/7/"}], "id": 37669, "entertainment": "Breakfast with Sen. Mitch McConnell", "lon": -77.0031162827036, "party": "R", "start_date": "2014-07-16", "rsvp_info": "Laura.Sequeira@teammitch.com", "checks_payable_to_address": "", "end_date": "2014-07-16", "start_time": "08:30:00", "lat": 38.8962053816757, "is_presidential": false, "more_details": "", "contributions_info": "Host: $5,000; Co-Host: $2,600; Attend: $1,000", "venue": {"city": "Washington", "venue_name": "", "address1": "220 E Street NE", "address2": "", "zipcode": "20002", "state": "DC", "id": 2128, "resource_uri": "/api/v1/venue/2128/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37669/"}, {"canceled": false, "beneficiaries": [{"bioguide": "R000584", "name": "Jim Risch", "district": "", "title": "Sen.", "image_available": true, "state": "ID", "affiliate": "", "crp_id": "N00029441", "party": "R", "id": 847, "resource_uri": "/api/v1/lawmaker/847/"}], "id": 37673, "entertainment": "Dinner", "lon": -77.0283357, "party": "R", "start_date": "2014-07-16", "rsvp_info": "Oorbeek Morehouse Strategies", "checks_payable_to_address": "", "end_date": null, "start_time": "18:30:00", "lat": 38.8955933, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$1,000 Individual:$500", "venue": {"city": "Washington", "venue_name": "Del Frisco's", "address1": "1201 Pennsylvania Avenue NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 5205, "resource_uri": "/api/v1/venue/5205/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "RSCC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37673/"}, {"canceled": false, "beneficiaries": [{"bioguide": "L000575", "name": "James Lankford", "district": "05", "title": "", "image_available": true, "state": "OK", "affiliate": "", "crp_id": "N00031129", "party": "R", "id": 17378, "resource_uri": "/api/v1/lawmaker/17378/"}], "id": 37722, "entertainment": "Luncheon", "lon": -77.0034034096495, "party": "R", "start_date": "2014-07-16", "rsvp_info": "Pearson Associates", "checks_payable_to_address": "", "end_date": null, "start_time": "12:30:00", "lat": 38.8954928220203, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "National Republican Senatorial Committee", "address1": "425 2nd Street NE", "address2": "", "zipcode": "20002", "state": "DC", "id": 27, "resource_uri": "/api/v1/venue/27/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NSRC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37722/"}, {"canceled": false, "beneficiaries": [{"bioguide": "E000288", "name": "Keith Ellison", "district": "5", "title": "Rep.", "image_available": true, "state": "MN", "affiliate": "", "crp_id": "N00028257", "party": "D", "id": 1, "resource_uri": "/api/v1/lawmaker/1/"}], "id": 37620, "entertainment": "Breakfast", "lon": -77.0079626, "party": "D", "start_date": "2014-07-16", "rsvp_info": "Mynett Group", "checks_payable_to_address": "PO Box 6072 Minneapolis, MN 55406", "end_date": null, "start_time": "08:30:00", "lat": 38.8843778, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,000 Individual: $500", "venue": {"city": "Washington", "venue_name": "National Democratic Club", "address1": "30 Ivy Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 340, "resource_uri": "/api/v1/venue/340/"}, "make_checks_payable_to": "Ellison for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37620/"}, {"canceled": false, "beneficiaries": [{"bioguide": "M001191", "name": "Patrick Murphy", "district": "18", "title": "Rep.", "image_available": true, "state": "FL", "affiliate": "", "crp_id": "N00033091", "party": "D", "id": 18603, "resource_uri": "/api/v1/lawmaker/18603/"}], "id": 37622, "entertainment": "Reception", "lon": -76.9958987, "party": "D", "start_date": "2014-07-16", "rsvp_info": "Campaign Finance Group", "checks_payable_to_address": "33 R St. NW, Washington, DC 20001", "end_date": null, "start_time": "17:30:00", "lat": 38.8868872, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,000 Individual: $1,000/$250", "venue": {"city": "Washington", "venue_name": "Acqua Al 2", "address1": "212 7th Street Southeast", "address2": "", "zipcode": "20003", "state": "DC", "id": 3185, "resource_uri": "/api/v1/venue/3185/"}, "make_checks_payable_to": "Friends of Patrick Murphy", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "19:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37622/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Pete Gallego", "district": "23", "title": "Representative", "image_available": null, "state": "TX", "affiliate": "", "crp_id": "N00033541", "party": "D", "id": 18672, "resource_uri": "/api/v1/lawmaker/18672/"}], "id": 37624, "entertainment": "Twelve at 12:00 ", "lon": -77.0067735555556, "party": "D", "start_date": "2014-07-16", "rsvp_info": "Davey Consulting", "checks_payable_to_address": "PO Box 1781", "end_date": null, "start_time": "12:00:00", "lat": 38.8840292222222, "is_presidential": false, "more_details": "", "contributions_info": "$5000/$2500/$1000", "venue": {"city": "Washington", "venue_name": "21st Century Townhouse", "address1": "434 New Jersey Ave SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 2629, "resource_uri": "/api/v1/venue/2629/"}, "make_checks_payable_to": "Friends of Pete Gallego", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37624/"}, {"canceled": false, "beneficiaries": [{"bioguide": null, "name": "Richard Neal", "district": "1", "title": "Rep.", "image_available": false, "state": "MA", "affiliate": "", "crp_id": "n00000153", "party": "D", "id": 18602, "resource_uri": "/api/v1/lawmaker/18602/"}], "id": 37626, "entertainment": "Reception Celebrating the Dean of MA Delegation", "lon": -77.4956521, "party": "D", "start_date": "2014-07-16", "rsvp_info": "Allison Griner", "checks_payable_to_address": "410 First Street SE Suite 310 Washington DC 20003", "end_date": null, "start_time": "18:00:00", "lat": 39.7049398, "is_presidential": false, "more_details": "", "contributions_info": "$5,000/$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "Legal Sea Foods", "address1": "704 7th Street, NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 3130, "resource_uri": "/api/v1/venue/3130/"}, "make_checks_payable_to": "Richard E Neal for Congress Committee", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "20:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37626/"}, {"canceled": false, "beneficiaries": [{"bioguide": "H001066", "name": "Steven Horsford", "district": "4", "title": "Rep.", "image_available": true, "state": "NV", "affiliate": "", "crp_id": "N00033638", "party": "D", "id": 18162, "resource_uri": "/api/v1/lawmaker/18162/"}], "id": 37631, "entertainment": "Evening Reception", "lon": -77.5708067, "party": "D", "start_date": "2014-07-16", "rsvp_info": "Anna Valero", "checks_payable_to_address": "499 S Capitol Street, SW Suite 422 Washington, DC 20003", "end_date": null, "start_time": "18:00:00", "lat": 39.6566765, "is_presidential": false, "more_details": "", "contributions_info": "$1,000/$500", "venue": {"city": "Washington", "venue_name": "Hawk & Dove", "address1": "329 Pennsylvania Ave, SE", "address2": "", "zipcode": "", "state": "DC", "id": 3353, "resource_uri": "/api/v1/venue/3353/"}, "make_checks_payable_to": "Horsford for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "20:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37631/"}, {"canceled": false, "beneficiaries": [{"bioguide": "J000293", "name": "Ron Johnson", "district": "", "title": "Sen.", "image_available": true, "state": "WI", "affiliate": "", "crp_id": "N00032546", "party": "R", "id": 18093, "resource_uri": "/api/v1/lawmaker/18093/"}], "id": 37660, "entertainment": "Dinner", "lon": -77.5708067, "party": "R", "start_date": "2014-07-15", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "18:00:00", "lat": 39.6566765, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500 Individual:$1,500", "venue": {"city": "Washington", "venue_name": "The Capital Grille - Downtown", "address1": "601 Pennsylvania Avenue, NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 4881, "resource_uri": "/api/v1/venue/4881/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37660/"}, {"canceled": false, "beneficiaries": [{"bioguide": "K000360", "name": "Mark Kirk", "district": "", "title": "Sen.", "image_available": true, "state": "IL", "affiliate": "", "crp_id": "N00012539", "party": "R", "id": 18090, "resource_uri": "/api/v1/lawmaker/18090/"}], "id": 37664, "entertainment": "Lunch", "lon": -77.0031162827036, "party": "R", "start_date": "2014-07-15", "rsvp_info": "Endicott Group", "checks_payable_to_address": "", "end_date": null, "start_time": "12:00:00", "lat": 38.8962053816757, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,000 Individual: $1,000/$500", "venue": {"city": "Washington", "venue_name": "", "address1": "220 E Street NE", "address2": "", "zipcode": "20002", "state": "DC", "id": 2128, "resource_uri": "/api/v1/venue/2128/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37664/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Ben Sasse", "district": "", "title": "Candidate", "image_available": null, "state": "NE", "affiliate": "", "crp_id": "", "party": "R", "id": 19428, "resource_uri": "/api/v1/lawmaker/19428/"}], "id": 37729, "entertainment": "Agriculture Industry Breakfast", "lon": -77.0158755, "party": "R", "start_date": "2014-07-15", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.8920838, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "Charlie Palmer Steak", "address1": "101 Constitution Ave NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 22, "resource_uri": "/api/v1/venue/22/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NSRC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37729/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Ben Sasse", "district": "", "title": "Candidate", "image_available": null, "state": "NE", "affiliate": "", "crp_id": "", "party": "R", "id": 19428, "resource_uri": "/api/v1/lawmaker/19428/"}], "id": 37730, "entertainment": "Restaurant Industry Lunch", "lon": -77.5708067, "party": "R", "start_date": "2014-07-15", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "12:00:00", "lat": 39.6566765, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "The Capital Grille - Downtown", "address1": "601 Pennsylvania Avenue, NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 4881, "resource_uri": "/api/v1/venue/4881/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NSRC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37730/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Dan Bongino", "district": "6", "title": "Rep. Candidate", "image_available": null, "state": "MD", "affiliate": "", "crp_id": "", "party": "R", "id": 19000, "resource_uri": "/api/v1/lawmaker/19000/"}], "id": 37479, "entertainment": "Fundraiser", "lon": -76.9382069, "party": "R", "start_date": "2014-07-15", "rsvp_info": "", "checks_payable_to_address": "", "end_date": null, "start_time": null, "lat": 39.5162234, "is_presidential": false, "more_details": "", "contributions_info": "$40/$2,000", "venue": {"city": "Silver Spring", "venue_name": "TBD", "address1": "", "address2": "", "zipcode": "", "state": "MD", "id": 6243, "resource_uri": "/api/v1/venue/6243/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37479/"}, {"canceled": false, "beneficiaries": [{"bioguide": "V000127", "name": "David Vitter", "district": "", "title": "Sen.", "image_available": true, "state": "LA", "affiliate": "", "crp_id": "N00009659", "party": "R", "id": 948, "resource_uri": "/api/v1/lawmaker/948/"}], "id": 37736, "entertainment": "Dinner", "lon": -77.0364315268441, "party": "R", "start_date": "2014-07-15", "rsvp_info": "L5 Group", "checks_payable_to_address": "", "end_date": null, "start_time": "18:30:00", "lat": 38.9046987625693, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500 Individual:$1,000", "venue": {"city": "Washington", "venue_name": "University Club of Washington DC", "address1": "1135 16th Street NW", "address2": "", "zipcode": "20036", "state": "DC", "id": 839, "resource_uri": "/api/v1/venue/839/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NSRC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37736/"}, {"canceled": false, "beneficiaries": [{"bioguide": null, "name": "Dan Coats", "district": "", "title": "Sen.", "image_available": false, "state": "IN", "affiliate": "", "crp_id": "", "party": "R", "id": 17858, "resource_uri": "/api/v1/lawmaker/17858/"}], "id": 37581, "entertainment": "Breakfast", "lon": -77.0089927, "party": "R", "start_date": "2014-07-15", "rsvp_info": "Jon Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.9140788, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,500", "venue": {"city": "Washington", "venue_name": "Johnny's Half Shell", "address1": "400 North Capitol Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 990, "resource_uri": "/api/v1/venue/990/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37581/"}, {"canceled": false, "beneficiaries": [{"bioguide": "C001056", "name": "John Cornyn", "district": "", "title": "Sen.", "image_available": true, "state": "TX", "affiliate": "", "crp_id": "N00024852", "party": "R", "id": 52, "resource_uri": "/api/v1/lawmaker/52/"}], "id": 37591, "entertainment": "Breakfast", "lon": -77.0434687, "party": "R", "start_date": "2014-07-15", "rsvp_info": "Magda Patrick or Heather Moore", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.8959623, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $500/$1,000 PAC: $1,000/$2,500", "venue": {"city": "Washington", "venue_name": "Bistro Bis", "address1": "15 E Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 15, "resource_uri": "/api/v1/venue/15/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37591/"}, {"canceled": false, "beneficiaries": [{"bioguide": "E000285", "name": "Mike Enzi", "district": "", "title": "Sen.", "image_available": true, "state": "WY", "affiliate": "", "crp_id": "N00006249", "party": "R", "id": 330, "resource_uri": "/api/v1/lawmaker/330/"}], "id": 37597, "entertainment": "Capitol View Happy Hour", "lon": -77.0158755, "party": "R", "start_date": "2014-07-15", "rsvp_info": "Amy Bradley", "checks_payable_to_address": "", "end_date": null, "start_time": "18:00:00", "lat": 38.8920838, "is_presidential": false, "more_details": "", "contributions_info": "Individual: $250 PAC: $1,000", "venue": {"city": "Washington", "venue_name": "", "address1": "101 Constitution Ave NW", "address2": "Suite 900", "zipcode": "20001", "state": "DC", "id": 2389, "resource_uri": "/api/v1/venue/2389/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "", "hosts": [{"resource_uri": "/api/v1/host/824/", "crp_id": "Y00000101480", "name": "Aaron Cohen", "id": 824}, {"resource_uri": "/api/v1/host/1615/", "crp_id": "Y00000396380", "name": "Steve Carey", "id": 1615}, {"resource_uri": "/api/v1/host/3832/", "crp_id": "", "name": "Rob Wallace", "id": 3832}, {"resource_uri": "/api/v1/host/4915/", "crp_id": "Y00000240330", "name": "Bill Spencer", "id": 4915}], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37597/"}, {"canceled": false, "beneficiaries": [{"bioguide": "K000368", "name": "Ann Kirkpatrick", "district": "1", "title": "Rep.", "image_available": true, "state": "AZ", "affiliate": "", "crp_id": "N00029260", "party": "D", "id": 683, "resource_uri": "/api/v1/lawmaker/683/"}], "id": 37604, "entertainment": "Luncheon", "lon": -77.0080910714286, "party": "D", "start_date": "2014-07-15", "rsvp_info": "Jasmine Zamani, 202-236-1205 or jzamani@gmail.com", "checks_payable_to_address": "PO Box 12011, Casa Grande, AZ 85130", "end_date": "2014-07-15", "start_time": "12:00:00", "lat": 38.8849849285714, "is_presidential": false, "more_details": "", "contributions_info": "Host, $2,500; PAC, $1,000; Individual, $500", "venue": {"city": "Washington", "venue_name": "", "address1": "19 D Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 3926, "resource_uri": "/api/v1/venue/3926/"}, "make_checks_payable_to": "Kirkpatrick for Arizona", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37604/"}, {"canceled": false, "beneficiaries": [{"bioguide": "H001038", "name": "Brian Higgins", "district": "26", "title": "Rep", "image_available": null, "state": "NY", "affiliate": "", "crp_id": "N00027060", "party": "D", "id": 19422, "resource_uri": "/api/v1/lawmaker/19422/"}], "id": 37605, "entertainment": "Dinner", "lon": -77.0282816, "party": "D", "start_date": "2014-07-15", "rsvp_info": "Renee Schaeffer, 202-465-4647 or Higgins@SchaefferStrategies.com", "checks_payable_to_address": "P.O. Box 28, Buffalo, NY 14220", "end_date": "2014-07-15", "start_time": "06:30:00", "lat": 38.9009286, "is_presidential": false, "more_details": "", "contributions_info": "$1,500 per seat", "venue": {"city": "Washington", "venue_name": "Bobby Van's Grill ", "address1": "1201 New York Ave NW", "address2": "", "zipcode": "20005", "state": "DC", "id": 103, "resource_uri": "/api/v1/venue/103/"}, "make_checks_payable_to": "Brian Higgins for Congress", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37605/"}, {"canceled": false, "beneficiaries": [{"bioguide": "R000588", "name": "Cedric Richmond", "district": "02", "title": "Rep.", "image_available": true, "state": "LA", "affiliate": "", "crp_id": "N00030184", "party": "D", "id": 17973, "resource_uri": "/api/v1/lawmaker/17973/"}], "id": 37607, "entertainment": "Cocktail Reception", "lon": -77.0077302142857, "party": "D", "start_date": "2014-07-15", "rsvp_info": "Kelsey Rooney or Lindsay Angerholzer, 202-403-0606 or Kelsey@ABConsultingDC.com", "checks_payable_to_address": "499 S. Capitol St. SW, Suite 422, Washington, DC 20003", "end_date": "2014-07-15", "start_time": "19:00:00", "lat": 38.8849857857143, "is_presidential": false, "more_details": "", "contributions_info": "Host: $2,500; PAC, $1,500; Guest: $500", "venue": {"city": "Washington", "venue_name": "Oracle Townhouse", "address1": "27 D Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 5209, "resource_uri": "/api/v1/venue/5209/"}, "make_checks_payable_to": "Richmond for Congress", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37607/"}, {"canceled": false, "beneficiaries": [{"bioguide": "C001078", "name": "Gerry Connolly", "district": "11", "title": "Rep.", "image_available": true, "state": "VA", "affiliate": "", "crp_id": "N00029891", "party": "D", "id": 939, "resource_uri": "/api/v1/lawmaker/939/"}], "id": 37614, "entertainment": "Luncheon", "lon": -77.0028597, "party": "D", "start_date": "2014-07-15", "rsvp_info": "Pandit Strategic Consulting", "checks_payable_to_address": "PO Box 563 Merrifield, VA 22116", "end_date": null, "start_time": "12:00:00", "lat": 38.887089, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $5,000/$2,500/$1,000 Individual: $500", "venue": {"city": "Washington", "venue_name": "Hunan Dynasty", "address1": "215 Pennsylvania Ave SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 56, "resource_uri": "/api/v1/venue/56/"}, "make_checks_payable_to": "Gerry Connolly for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37614/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Maryland Republican Party", "district": "", "title": "", "image_available": null, "state": "MD", "affiliate": "", "crp_id": "", "party": "R", "id": 19249, "resource_uri": "/api/v1/lawmaker/19249/"}], "id": 37361, "entertainment": "United We Win: A 2014 Unity Event", "lon": -77.0266488007309, "party": "R", "start_date": "2014-07-15", "rsvp_info": "Online", "checks_payable_to_address": "", "end_date": null, "start_time": "19:00:00", "lat": 38.9980184262367, "is_presidential": false, "more_details": "", "contributions_info": "$40/$125/$500/$1,000/$2,000", "venue": {"city": "Silver Spring", "venue_name": "DoubleTree by Hilton", "address1": "8727 Colesville Rd.", "address2": "", "zipcode": "20910", "state": "MD", "id": 6171, "resource_uri": "/api/v1/venue/6171/"}, "make_checks_payable_to": "Maryland Republican Party", "distribution_paid_for_by": "", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37361/"}, {"canceled": false, "beneficiaries": [{"bioguide": "K000379", "name": "Joseph P. Kennedy III", "district": "04", "title": "Rep.", "image_available": true, "state": "MA", "affiliate": "", "crp_id": "N00034044", "party": "D", "id": 18229, "resource_uri": "/api/v1/lawmaker/18229/"}], "id": 37618, "entertainment": "Breakfast", "lon": -77.0237569, "party": "D", "start_date": "2014-07-15", "rsvp_info": "Joe Kennedy for Congress", "checks_payable_to_address": "PO Box #590-464 Newton Center, MA 02459", "end_date": null, "start_time": "08:30:00", "lat": 38.8949845, "is_presidential": false, "more_details": "", "contributions_info": "$2,600/$1,000/$500", "venue": {"city": "Washington ", "venue_name": "Avenue Solutions", "address1": "401 9th Street NW", "address2": "Suite 720", "zipcode": "20004", "state": "DC", "id": 6308, "resource_uri": "/api/v1/venue/6308/"}, "make_checks_payable_to": "Joe Kennedy for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37618/"}, {"canceled": false, "beneficiaries": [{"bioguide": "B001281", "name": "Joyce Beatty", "district": "03", "title": "Rep.", "image_available": true, "state": "OH", "affiliate": "", "crp_id": "N00033904", "party": "D", "id": 18241, "resource_uri": "/api/v1/lawmaker/18241/"}], "id": 37619, "entertainment": "Retail Luncheon: Offices of the International Council of Shopping Centers", "lon": -77.0277937, "party": "D", "start_date": "2014-07-15", "rsvp_info": "Firsthand Fundraising", "checks_payable_to_address": "PO Box 172 Columbus, OH 43216", "end_date": null, "start_time": "12:00:00", "lat": 38.8968588, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,000 Individual: $1,000/$500", "venue": {"city": "Washington ", "venue_name": "Offices of the International Council of Shopping Centers", "address1": "555 12th Street NW", "address2": "Suite 660", "zipcode": "20004", "state": "DC", "id": 6306, "resource_uri": "/api/v1/venue/6306/"}, "make_checks_payable_to": "Joyce Beatty for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37619/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Pete Aguilar", "district": "", "title": "", "image_available": null, "state": "CA", "affiliate": "", "crp_id": "", "party": "D", "id": 19085, "resource_uri": "/api/v1/lawmaker/19085/"}], "id": 37623, "entertainment": "Evening Reception", "lon": -77.0089567913922, "party": "D", "start_date": "2014-07-15", "rsvp_info": "AB Consulting DC", "checks_payable_to_address": "PO Box 10954 San Bernadino, CA 92423", "end_date": null, "start_time": "18:30:00", "lat": 38.884367240655, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $5,000/$2,500/$1,000 Individual: $500", "venue": {"city": "Washington", "venue_name": "Democratic National Headquarters", "address1": "430 South Capitol Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 2288, "resource_uri": "/api/v1/venue/2288/"}, "make_checks_payable_to": "Pete Aguilar for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "19:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37623/"}, {"canceled": false, "beneficiaries": [{"bioguide": "L000263", "name": "Sander Levin", "district": "12", "title": "Rep.", "image_available": true, "state": "MI", "affiliate": "", "crp_id": "N00003950", "party": "D", "id": 12, "resource_uri": "/api/v1/lawmaker/12/"}], "id": 37627, "entertainment": "Breakfast", "lon": -77.0158755, "party": "D", "start_date": "2014-07-15", "rsvp_info": "", "checks_payable_to_address": "PO Box 37, Roseville, MI 48066", "end_date": null, "start_time": "08:00:00", "lat": 38.8920838, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,000 Individual: $1,000/$500", "venue": {"city": "Washington", "venue_name": "Charlie Palmer Steak", "address1": "101 Constitution Ave NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 22, "resource_uri": "/api/v1/venue/22/"}, "make_checks_payable_to": "Levin for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "09:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37627/"}, {"canceled": false, "beneficiaries": [{"bioguide": "C001068", "name": "Steve Cohen", "district": "9", "title": "Rep.", "image_available": true, "state": "TN", "affiliate": "", "crp_id": "N00003225", "party": "D", "id": 338, "resource_uri": "/api/v1/lawmaker/338/"}], "id": 37629, "entertainment": "Luncheon", "lon": -77.002217, "party": "D", "start_date": "2014-07-15", "rsvp_info": "Kieloch Consulting", "checks_payable_to_address": "349 Kenilworth, Memphis, TN 38112", "end_date": null, "start_time": "12:00:00", "lat": 38.8934047, "is_presidential": false, "more_details": "", "contributions_info": "$2,500/$1,000/$500", "venue": {"city": "Washington", "venue_name": "116 Club", "address1": "234 3rd St Ne", "address2": "", "zipcode": "20002", "state": "DC", "id": 233, "resource_uri": "/api/v1/venue/233/"}, "make_checks_payable_to": "Cohen for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37629/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S001184", "name": "Tim Scott", "district": "", "title": "Sen.", "image_available": true, "state": "SC", "affiliate": "", "crp_id": "N00031782", "party": "R", "id": 18588, "resource_uri": "/api/v1/lawmaker/18588/"}], "id": 37675, "entertainment": "Dinner", "lon": -77.0366456, "party": "R", "start_date": "2014-07-14", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "18:00:00", "lat": 38.8949549, "is_presidential": false, "more_details": "", "contributions_info": "PAC: $2,500/$1,000 Individual: $1,000/$500", "venue": {"city": "Washington", "venue_name": "TBD", "address1": "", "address2": "", "zipcode": "", "state": "DC", "id": 2421, "resource_uri": "/api/v1/venue/2421/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NRSC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37675/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Ben Sasse", "district": "", "title": "Candidate", "image_available": null, "state": "NE", "affiliate": "", "crp_id": "", "party": "R", "id": 19428, "resource_uri": "/api/v1/lawmaker/19428/"}], "id": 37727, "entertainment": "Reception", "lon": -79.286676, "party": "R", "start_date": "2014-07-14", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "19:30:00", "lat": 36.579823, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500/$1,000 Individual:$1,000/$500", "venue": {"city": "Alexandria", "venue_name": "", "address1": "576 La Vista Dr", "address2": "", "zipcode": "22310", "state": "VA", "id": 6326, "resource_uri": "/api/v1/venue/6326/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NSRC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37727/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Ben Sasse", "district": "", "title": "Candidate", "image_available": null, "state": "NE", "affiliate": "", "crp_id": "", "party": "R", "id": 19428, "resource_uri": "/api/v1/lawmaker/19428/"}], "id": 37728, "entertainment": "Reception", "lon": -77.0283357, "party": "R", "start_date": "2014-07-14", "rsvp_info": "Gula Graham", "checks_payable_to_address": "", "end_date": null, "start_time": "17:30:00", "lat": 38.8955933, "is_presidential": false, "more_details": "", "contributions_info": "PAC:$2,500/$1,000 Individual:$1,000/$500", "venue": {"city": "Washington", "venue_name": "1201 Pennsylvania Avenue NW", "address1": "1201 Pennsylvania Avenue NW", "address2": "", "zipcode": "20004", "state": "DC", "id": 5233, "resource_uri": "/api/v1/venue/5233/"}, "make_checks_payable_to": "", "distribution_paid_for_by": "NSRC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37728/"}, {"canceled": false, "beneficiaries": [{"bioguide": "S001145", "name": "Jan Schakowsky", "district": "9", "title": "Rep.", "image_available": true, "state": "IL", "affiliate": "", "crp_id": "N00004724", "party": "D", "id": 258, "resource_uri": "/api/v1/lawmaker/258/"}], "id": 37615, "entertainment": "Lunch", "lon": -77.0434687, "party": "D", "start_date": "2014-07-14", "rsvp_info": "Jan Schakowsky for Congress", "checks_payable_to_address": "PO Box 58 Evanston, IL 60204", "end_date": null, "start_time": "12:00:00", "lat": 38.8959623, "is_presidential": false, "more_details": "", "contributions_info": "$5,000/$2,500/$1,000", "venue": {"city": "Washington", "venue_name": "Bistro Bis", "address1": "15 E Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 15, "resource_uri": "/api/v1/venue/15/"}, "make_checks_payable_to": "Progressive Choices PAC", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "14:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37615/"}, {"canceled": false, "beneficiaries": [{"bioguide": "C001069", "name": "Joe Courtney", "district": "2", "title": "Rep.", "image_available": true, "state": "CT", "affiliate": "", "crp_id": "N00024842", "party": "D", "id": 44, "resource_uri": "/api/v1/lawmaker/44/"}], "id": 37617, "entertainment": "Luncheon", "lon": -77.0158755, "party": "D", "start_date": "2014-07-14", "rsvp_info": "Kieloch Consulting", "checks_payable_to_address": "PO Box 1372 Vernon, CT 06066", "end_date": null, "start_time": "12:00:00", "lat": 38.8920838, "is_presidential": false, "more_details": "", "contributions_info": "$5,000/$2,500/$1,000", "venue": {"city": "Washington ", "venue_name": "Honeywell International", "address1": "101 Constitution Avenue NW", "address2": "Suite 500 West", "zipcode": "20001", "state": "DC", "id": 4101, "resource_uri": "/api/v1/venue/4101/"}, "make_checks_payable_to": "Courtney for Congress", "distribution_paid_for_by": "DCCC", "hosts": [], "end_time": "13:00:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37617/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "More Conservatives PAC", "district": "", "title": "", "image_available": null, "state": "", "affiliate": "Patrick McHenry", "crp_id": "C00540187", "party": "R", "id": 19088, "resource_uri": "/api/v1/lawmaker/19088/"}], "id": 36781, "entertainment": "North Carolina Brew Tasting Series", "lon": -77.0068813793103, "party": "R", "start_date": "2014-07-09", "rsvp_info": "Bill Oorbeek", "checks_payable_to_address": "", "end_date": null, "start_time": "16:00:00", "lat": 38.8849845862069, "is_presidential": false, "more_details": "", "contributions_info": "$1,000/$2,000", "venue": {"city": "Washington", "venue_name": "Associated General Contractors (AGC) of America Townhouse", "address1": "53 D Street SE", "address2": "", "zipcode": "20003", "state": "DC", "id": 594, "resource_uri": "/api/v1/venue/594/"}, "make_checks_payable_to": "McPAC", "distribution_paid_for_by": "McPAC", "hosts": [], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/36781/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Ted Lieu", "district": "28", "title": "State Senator", "image_available": null, "state": "CA", "affiliate": "", "crp_id": "", "party": "D", "id": 19286, "resource_uri": "/api/v1/lawmaker/19286/"}], "id": 37293, "entertainment": "Fundraiser", "lon": -77.0434687, "party": "D", "start_date": "2014-07-09", "rsvp_info": "Pattie", "checks_payable_to_address": "PO Box 636, Annandale, VA 22003", "end_date": null, "start_time": "08:30:00", "lat": 38.8959623, "is_presidential": false, "more_details": "", "contributions_info": "$1,000/$2,500/$5,000", "venue": {"city": "Washington", "venue_name": "Hotel George", "address1": "15 E Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 255, "resource_uri": "/api/v1/venue/255/"}, "make_checks_payable_to": "Ted Lieu for Congress", "distribution_paid_for_by": "Democratic Congressional Campaign Committee", "hosts": [{"resource_uri": "/api/v1/host/9992/", "crp_id": "", "name": "Tony Coehlo", "id": 9992}, {"resource_uri": "/api/v1/host/14405/", "crp_id": "", "name": "David A. Herbst", "id": 14405}, {"resource_uri": "/api/v1/host/14406/", "crp_id": "", "name": "Peter D. Kelly ", "id": 14406}], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37293/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Greg Abbott", "district": "", "title": "Attorney Genera", "image_available": null, "state": "TX", "affiliate": "", "crp_id": "", "party": "R", "id": 19299, "resource_uri": "/api/v1/lawmaker/19299/"}], "id": 37326, "entertainment": "Lunch", "lon": -77.0158755, "party": "R", "start_date": "2014-07-09", "rsvp_info": "", "checks_payable_to_address": "", "end_date": null, "start_time": "11:30:00", "lat": 38.8920838, "is_presidential": false, "more_details": "", "contributions_info": "$500/$1,000/$2,500/$5,000, $10,000", "venue": {"city": "Washington", "venue_name": "Altria", "address1": "101 Constitution Ave NW", "address2": "Suite 400 West", "zipcode": "20001", "state": "DC", "id": 111, "resource_uri": "/api/v1/venue/111/"}, "make_checks_payable_to": "Texans for Greg Abbott", "distribution_paid_for_by": "Texans for Greg Abbott", "hosts": [{"resource_uri": "/api/v1/host/1263/", "crp_id": "C00097568", "name": "Raytheon PAC", "id": 1263}, {"resource_uri": "/api/v1/host/1623/", "crp_id": "C00109546", "name": "Valero PAC", "id": 1623}, {"resource_uri": "/api/v1/host/3331/", "crp_id": "C00164145", "name": "USAA Employee PAC", "id": 3331}, {"resource_uri": "/api/v1/host/3534/", "crp_id": "Y00000406160", "name": "Loren Monroe", "id": 3534}, {"resource_uri": "/api/v1/host/3798/", "crp_id": "C00142711", "name": "Boeing PAC", "id": 3798}, {"resource_uri": "/api/v1/host/3960/", "crp_id": "C00008474", "name": "CitiPAC", "id": 3960}, {"resource_uri": "/api/v1/host/4946/", "crp_id": "C00089136", "name": "Altria PAC", "id": 4946}, {"resource_uri": "/api/v1/host/5923/", "crp_id": "Y0000040562L", "name": "Kerry Cammack", "id": 5923}, {"resource_uri": "/api/v1/host/6324/", "crp_id": "", "name": "McGuire Woods Consulting", "id": 6324}, {"resource_uri": "/api/v1/host/14472/", "crp_id": "C00266585", "name": "Greenberg Traurig", "id": 14472}, {"resource_uri": "/api/v1/host/14473/", "crp_id": "C00440453", "name": "HMS PAC", "id": 14473}, {"resource_uri": "/api/v1/host/14474/", "crp_id": "", "name": "Luminant PowerPAC", "id": 14474}, {"resource_uri": "/api/v1/host/14475/", "crp_id": "Y0000031975L", "name": "Demetrius McDaniel", "id": 14475}, {"resource_uri": "/api/v1/host/14476/", "crp_id": "", "name": "Luis Saenz", "id": 14476}], "end_time": null, "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37326/"}, {"canceled": false, "beneficiaries": [{"bioguide": "", "name": "Ted Lieu", "district": "28", "title": "State Senator", "image_available": null, "state": "CA", "affiliate": "", "crp_id": "", "party": "D", "id": 19286, "resource_uri": "/api/v1/lawmaker/19286/"}], "id": 37341, "entertainment": "Breakfast", "lon": -77.0434687, "party": "D", "start_date": "2014-07-09", "rsvp_info": "", "checks_payable_to_address": "", "end_date": null, "start_time": "08:30:00", "lat": 38.8959623, "is_presidential": false, "more_details": "", "contributions_info": "$1,000/$2,500/$5,000", "venue": {"city": "Washington", "venue_name": "Hotel George", "address1": "15 E Street NW", "address2": "", "zipcode": "20001", "state": "DC", "id": 255, "resource_uri": "/api/v1/venue/255/"}, "make_checks_payable_to": "Ted Lieu for Congress", "distribution_paid_for_by": "DCCC", "hosts": [{"resource_uri": "/api/v1/host/14405/", "crp_id": "", "name": "David A. Herbst", "id": 14405}, {"resource_uri": "/api/v1/host/14406/", "crp_id": "", "name": "Peter D. Kelly ", "id": 14406}], "end_time": "09:30:00", "postponed": false, "notes": "", "resource_uri": "/api/v1/event/37341/"}]
 },{}],7:[function(require,module,exports){
 module.exports={
     "G03": 92,
@@ -9680,22 +9442,326 @@ module.exports={
     ]
 }
 },{}],10:[function(require,module,exports){
+module.exports={
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "OBJECTID": 1393, "NAME": "FEMS-Engine Company 30", "ADDRESS": "50 49TH STREET NE", "X": 405778.21, "Y": 135874.49, "ADDR_ID": 156317.0, "LABEL": 117.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.933396362747118, 38.89069508531999 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1394, "NAME": "FEMS-Engine Company 31", "ADDRESS": "4930 CONNECTICUT AVENUE NW", "X": 393940.33, "Y": 142928.75, "ADDR_ID": 294604.0, "LABEL": 118.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.069910208508844, 38.95424021068721 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1395, "NAME": "FEMS-Engine Company 32", "ADDRESS": "2425 IRVING STREET SE", "X": 402485.48, "Y": 131648.37, "ADDR_ID": 47304.0, "LABEL": 119.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.971365917269836, 38.852639970705326 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1396, "NAME": "FEMS-Engine Company 33", "ADDRESS": "101 ATLANTIC STREET SE", "X": 399553.06, "Y": 129234.15, "ADDR_ID": 294471.0, "LABEL": 120.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.005147424003354, 38.83089499410552 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1397, "NAME": "FEMS-Engine Company 4", "ADDRESS": "2531 SHERMAN AVENUE NW", "X": 397829.93, "Y": 139502.81, "ADDR_ID": 232303.0, "LABEL": 121.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.025025193603042, 38.923396559570307 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1398, "NAME": "FEMS-Engine Company 5", "ADDRESS": "3412 DENT PLACE NW", "X": 394064.56, "Y": 138177.23, "ADDR_ID": 294568.0, "LABEL": 122.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.068435876457784, 38.911437935335549 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1399, "NAME": "FEMS-Engine Company 6", "ADDRESS": "1300 NEW JERSEY AVENUE NW", "X": 398605.52, "Y": 137759.14, "ADDR_ID": 294514.0, "LABEL": 123.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.016077567751623, 38.90769057280427 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1400, "NAME": "FEMS-Engine Company 7", "ADDRESS": "1101 HALF STREET SW", "X": 399025.57, "Y": 134344.26, "ADDR_ID": 277735.0, "LABEL": 124.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.011229784995891, 38.876928634217109 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1401, "NAME": "FEMS-Engine Company 8", "ADDRESS": "1520 C STREET SE", "X": 401479.84, "Y": 135300.25, "ADDR_ID": 289723.0, "LABEL": 125.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.9829435764902, 38.885539857825499 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1402, "NAME": "FEMS-Engine Company 9", "ADDRESS": "1617 U STREET NW", "X": 396745.68, "Y": 138826.02, "ADDR_ID": 241846.0, "LABEL": 126.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.037525528378907, 38.917296469333508 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1403, "NAME": "FEMS-Special Operations", "ADDRESS": "1338 PARK ROAD NW", "X": 397308.63, "Y": 140300.67, "ADDR_ID": 307124.0, "LABEL": 127.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.031039940392688, 38.930582490531371 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1404, "NAME": "Ferebee-Hope Elementary School \/ Ferebee-Hope Recreation Center", "ADDRESS": "3999 8TH STREET SE", "X": 400419.94, "Y": 129394.95, "ADDR_ID": 294588.0, "LABEL": 128.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.995163437846315, 38.832343568153426 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1405, "NAME": "Financial Operations and Systems \/ OSSE", "ADDRESS": "810 1ST STREET NE", "X": 399390.57, "Y": 136972.5, "ADDR_ID": 79999.0, "LABEL": 129.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.007025686167481, 38.900605137928082 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1406, "NAME": "Fort Lincoln Recreation Center \/  Marshall Elementary School", "ADDRESS": "3100 FORT LINCOLN DRIVE NE", "X": 403673.61, "Y": 139937.34, "ADDR_ID": 294553.0, "LABEL": 131.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.957633696697528, 38.927305943770008 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1407, "NAME": "Fort Stanton Community Center", "ADDRESS": "1812 ERIE STREET SE", "X": 401830.5, "Y": 132204.92, "ADDR_ID": 296165.0, "LABEL": 132.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.978910161863197, 38.857655218090734 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1408, "NAME": "Francis A. Gregory Neighborhood Library", "ADDRESS": "3660 ALABAMA AVENUE SE", "X": 403974.72, "Y": 133006.74, "ADDR_ID": 290019.0, "LABEL": 133.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.95420121297407, 38.864871271520201 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1601, "NAME": "Francis Middle School", "ADDRESS": "2425 N STREET NW", "X": 395461.95, "Y": 137735.74, "ADDR_ID": 294544.0, "LABEL": 134.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.052320996699365, 38.907469168645243 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1602, "NAME": "Friendship Recreation Center", "ADDRESS": "4500 VAN NESS STREET NW", "X": 392346.4, "Y": 141642.93, "ADDR_ID": 295150.0, "LABEL": 135.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.088284968530473, 38.942644751075385 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1603, "NAME": "Garfield Elementary School", "ADDRESS": "2435 ALABAMA AVENUE SE", "X": 402534.22, "Y": 131547.71, "ADDR_ID": 278160.0, "LABEL": 136.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.97080477684635, 38.851733042867536 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1604, "NAME": "Garrison Elementary School", "ADDRESS": "1200 S STREET NW", "X": 397518.52, "Y": 138448.81, "ADDR_ID": 294509.0, "LABEL": 137.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.028612556157256, 38.913900958243993 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1605, "NAME": "Guy Mason Recreation Center", "ADDRESS": "3600 CALVERT STREET NW", "X": 393825.91, "Y": 139366.57, "ADDR_ID": 295826.0, "LABEL": 139.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.071198215270513, 38.92215025636979 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1606, "NAME": "Hamilton Center", "ADDRESS": "1401 BRENTWOOD PARKWAY NE", "X": 400520.69, "Y": 137952.79, "ADDR_ID": 294521.0, "LABEL": 140.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.993996591148615, 38.90943599068779 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1607, "NAME": "Hardy Middle School", "ADDRESS": "1819 35TH STREET NW", "X": 394049.46, "Y": 138629.13, "ADDR_ID": 274432.0, "LABEL": 141.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.068613896275508, 38.915508699334929 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1608, "NAME": "Hardy Recreation Center", "ADDRESS": "4500 Q STREET NW", "X": 392629.43, "Y": 138009.47, "ADDR_ID": 284929.0, "LABEL": 142.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.084981177328061, 38.90991583321798 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1609, "NAME": "Harry Thomas Recreation Center", "ADDRESS": "1743 LINCOLN ROAD NE", "X": 399317.62, "Y": 138457.86, "ADDR_ID": 296786.0, "LABEL": 143.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.00786815085354, 38.913985721980666 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1610, "NAME": "Hart Middle School", "ADDRESS": "601 MISSISSIPPI AVENUE SE", "X": 400244.94, "Y": 129993.71, "ADDR_ID": 5534.0, "LABEL": 144.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.997178746885027, 38.837737538268946 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1611, "NAME": "HD Cooke Elementary School", "ADDRESS": "2525 17TH STREET NW", "X": 396634.55, "Y": 139563.86, "ADDR_ID": 235863.0, "LABEL": 145.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.03881058416269, 38.923942752419322 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1612, "NAME": "Hearst Elementary School", "ADDRESS": "3950 37TH STREET NW", "X": 393761.89, "Y": 141428.28, "ADDR_ID": 294586.0, "LABEL": 146.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.071955219198728, 38.940722313758485 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1613, "NAME": "Hearst Recreation Center", "ADDRESS": "3600 TILDEN STREET NW", "X": 393822.7, "Y": 141393.64, "ADDR_ID": 221412.0, "LABEL": 147.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.071253477711551, 38.94041069633834 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1614, "NAME": "Hendley Elementary School", "ADDRESS": "425 CHESAPEAKE STREET SE", "X": 400070.78, "Y": 129022.18, "ADDR_ID": 24445.0, "LABEL": 148.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.999184846000688, 38.828985580495747 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1615, "NAME": "Hillcrest Recreation Center", "ADDRESS": "3100 DENVER STREET SE", "X": 403243.37, "Y": 132310.93, "ADDR_ID": 296174.0, "LABEL": 149.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.962631488172065, 38.858606125808478 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1616, "NAME": "Houston Elementary School", "ADDRESS": "1100 50TH PLACE NE", "X": 406076.15, "Y": 137508.74, "ADDR_ID": 156316.0, "LABEL": 150.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.929947646563434, 38.905414987202448 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1617, "NAME": "Hyde Elementary School", "ADDRESS": "3219 O STREET NW", "X": 394402.37, "Y": 137797.48, "ADDR_ID": 294558.0, "LABEL": 151.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.06453781860931, 38.908019234469243 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1618, "NAME": "Janney Elementary School", "ADDRESS": "4130 ALBEMARLE STREET NW", "X": 392978.88, "Y": 142186.88, "ADDR_ID": 285713.0, "LABEL": 152.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.080994825499914, 38.947550087061941 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1619, "NAME": "Jefferson Middle School", "ADDRESS": "801 7TH STREET SW", "X": 398012.08, "Y": 134671.03, "ADDR_ID": 276812.0, "LABEL": 153.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.022910660366634, 38.879870599423633 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1620, "NAME": "Jellef Recreation Center", "ADDRESS": "3265 S STREET NW", "X": 394201.67, "Y": 138652.15, "ADDR_ID": 273636.0, "LABEL": 154.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.066859003348, 38.915717088507236 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1621, "NAME": "Johnson Middle School", "ADDRESS": "1400 BRUCE PLACE SE", "X": 401414.57, "Y": 131503.42, "ADDR_ID": 294520.0, "LABEL": 155.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.983703681228732, 38.85133657249898 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1622, "NAME": "Juanita E. Thornton \/ Shepherd Park Library", "ADDRESS": "7420 GEORGIA AVENUE NW", "X": 397657.48, "Y": 145817.5, "ADDR_ID": 253522.0, "LABEL": 157.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.027035448808974, 38.98028055162731 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1623, "NAME": "Kelly Miller Middle School", "ADDRESS": "301 49TH STREET NE", "X": 405859.65, "Y": 136165.39, "ADDR_ID": 294476.0, "LABEL": 158.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.932455148441278, 38.893315080772943 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1624, "NAME": "Kenilworth Elementary School \/ Kenilworth-Parkside Recreation Center", "ADDRESS": "1300 44TH STREET NE", "X": 405161.97, "Y": 137820.44, "ADDR_ID": 294516.0, "LABEL": 159.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.940484944901058, 38.908228732601593 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1625, "NAME": "Ketcham Elementary School", "ADDRESS": "1919 15TH STREET SE", "X": 401421.44, "Y": 133135.87, "ADDR_ID": 286537.0, "LABEL": 160.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.983621162327566, 38.866042360901112 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1626, "NAME": "Key Elementary School", "ADDRESS": "5001 DANA PLACE NW", "X": 391283.15, "Y": 139885.29, "ADDR_ID": 294605.0, "LABEL": 161.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.100527317771608, 38.926801504583679 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1627, "NAME": "Kimball Elementary School", "ADDRESS": "3375 MINNESOTA AVENUE SE", "X": 403681.18, "Y": 135028.21, "ADDR_ID": 294565.0, "LABEL": 162.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.957572707317752, 38.883082756506035 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1628, "NAME": "King Greenleaf Recreation Center", "ADDRESS": "201 N STREET SW", "X": 398889.94, "Y": 134131.94, "ADDR_ID": 52917.0, "LABEL": 163.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.012792505356273, 38.875015810744451 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1629, "NAME": "Kramer Middle School", "ADDRESS": "1700 Q STREET SE", "X": 401720.71, "Y": 133718.02, "ADDR_ID": 289467.0, "LABEL": 164.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.980171304658199, 38.871286070680689 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1630, "NAME": "Lafayette Elementary School", "ADDRESS": "5701 BROAD BRANCH ROAD NW", "X": 394103.71, "Y": 144303.7, "ADDR_ID": 294611.0, "LABEL": 165.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.068037122136474, 38.966627220644931 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1631, "NAME": "Lafayette Recreation Center", "ADDRESS": "5900 33RD STREET NW", "X": 394187.44, "Y": 144427.06, "ADDR_ID": 308530.0, "LABEL": 166.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.067072010248168, 38.967739035466167 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1632, "NAME": "Lamond-Riggs Neighborhood Library", "ADDRESS": "5401 SOUTH DAKOTA AVENUE NE", "X": 400036.03, "Y": 143024.96, "ADDR_ID": 288645.0, "LABEL": 167.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.999584317969109, 38.955127797082618 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1633, "NAME": "Langdon Elementary School", "ADDRESS": "1900 EVARTS STREET NE", "X": 401987.32, "Y": 139647.88, "ADDR_ID": 294532.0, "LABEL": 168.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.977081854791805, 38.924703828641448 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1634, "NAME": "Langdon Park Community Center", "ADDRESS": "2901 20TH STREET NE", "X": 402099.41, "Y": 139883.09, "ADDR_ID": 287283.0, "LABEL": 169.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.975788492642735, 38.926822413923333 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1648, "NAME": "Martin Luther King Elementary School", "ADDRESS": "3200 6TH STREET SE", "X": 400152.88, "Y": 130516.03, "ADDR_ID": 294557.0, "LABEL": 183.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.998238990761521, 38.842442852786803 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1649, "NAME": "Martin Luther King Jr. Memorial Central Library", "ADDRESS": "901 G STREET NW", "X": 397851.64, "Y": 136760.32, "ADDR_ID": 239815.0, "LABEL": 184.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.024766254319246, 38.898691330338679 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1650, "NAME": "Maury Elementary School", "ADDRESS": "1250 CONSTITUTION AVENUE NE", "X": 400984.0, "Y": 136037.82, "ADDR_ID": 294511.0, "LABEL": 186.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.988657500856704, 38.892184860599286 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1651, "NAME": "MC Terrell \/ McGogney Elementary School", "ADDRESS": "3301 WHEELER ROAD SE", "X": 400512.16, "Y": 130413.48, "ADDR_ID": 294563.0, "LABEL": 187.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.994100557170114, 38.841518900703811 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1652, "NAME": "Mckinley Tech", "ADDRESS": "151 T STREET NE", "X": 399642.48, "Y": 138594.83, "ADDR_ID": 296345.0, "LABEL": 188.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.0041224390595, 38.915219785761813 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1653, "NAME": "Meyer Elementary School", "ADDRESS": "2501 11TH STREET NW", "X": 397694.0, "Y": 139439.5, "ADDR_ID": 242979.0, "LABEL": 189.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.026592522240747, 38.92282589663801 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1654, "NAME": "Miner Elementary School", "ADDRESS": "601 15TH STREET NE", "X": 401483.0, "Y": 136614.12, "ADDR_ID": 289548.0, "LABEL": 190.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.982904318851737, 38.897375682183309 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1655, "NAME": "Montgomery Elementary School", "ADDRESS": "421 P STREET NW", "X": 398428.65, "Y": 138002.89, "ADDR_ID": 294487.0, "LABEL": 191.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.018117336764902, 38.90988605824851 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1656, "NAME": "Moten Elementary School @ Wilkinson", "ADDRESS": "2330 POMEROY ROAD SE", "X": 401254.17, "Y": 132114.8, "ADDR_ID": 294542.0, "LABEL": 192.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.985550427911875, 38.856844389462509 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1657, "NAME": "MPD and Internal Affairs", "ADDRESS": "51 N STREET NE", "X": 399397.51, "Y": 137677.55, "ADDR_ID": 13663.0, "LABEL": 195.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.006946298305792, 38.90695648151064 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1658, "NAME": "MPD Evidence Warehouse", "ADDRESS": "17 DC VILLAGE LANE SW", "X": 398877.24, "Y": 127307.6, "ADDR_ID": 307895.0, "LABEL": 197.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.01292772494881, 38.813539112742127 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1659, "NAME": "Mt. Pleasant Neighborhood Library", "ADDRESS": "3160 16TH STREET NW", "X": 396779.31, "Y": 140288.09, "ADDR_ID": 295138.0, "LABEL": 199.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.037144601104487, 38.930467385281872 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1660, "NAME": "Murch Elementary School", "ADDRESS": "4810 36TH STREET NW", "X": 393925.57, "Y": 142783.67, "ADDR_ID": 294602.0, "LABEL": 200.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.070079209155921, 38.952933189593139 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1661, "NAME": "Nalle Elementary School", "ADDRESS": "219 50TH STREET SE", "X": 406004.16, "Y": 135348.37, "ADDR_ID": 294474.0, "LABEL": 201.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.93079650533295, 38.885954085231965 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1662, "NAME": "Northeast Neighborhood Library", "ADDRESS": "330 7TH STREET NE", "X": 400315.86, "Y": 136284.39, "ADDR_ID": 37106.0, "LABEL": 208.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.996358990505968, 38.89440654813972 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1663, "NAME": "Northwest One Library", "ADDRESS": "155 L STREET NW", "X": 398818.89, "Y": 137349.69, "ADDR_ID": 307736.0, "LABEL": 209.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.013616827900989, 38.904002416974876 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1664, "NAME": "Noyes Elementary School", "ADDRESS": "2725 10TH STREET NE", "X": 400707.33, "Y": 139700.26, "ADDR_ID": 289594.0, "LABEL": 210.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.991842884279151, 38.92517764684203 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1665, "NAME": "OCTO OAG", "ADDRESS": "1100 15TH STREET NW", "X": 396964.47, "Y": 137356.58, "ADDR_ID": 278811.0, "LABEL": 211.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.034996167881602, 38.904060036569355 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1666, "NAME": "Office of Aging", "ADDRESS": "1134 11TH STREET NW", "X": 397622.67, "Y": 137506.65, "ADDR_ID": 239118.0, "LABEL": 212.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.027408399253233, 38.905413946319882 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1667, "NAME": "One Judiciary Square (OJS)", "ADDRESS": "441 4TH STREET NW", "X": 398635.86, "Y": 136399.72, "ADDR_ID": 285552.0, "LABEL": 213.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.015725064833646, 38.895444481401228 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1668, "NAME": "OPEFM \/ RFK \/ RFK Trailer DDOT", "ADDRESS": "2400 EAST CAPITOL STREET SE", "X": 402438.25, "Y": 135772.32, "ADDR_ID": 293222.0, "LABEL": 214.0, "TYPE": "INDOOR", "NUMBER_OF_": 3 }, "geometry": { "type": "Point", "coordinates": [ -76.971895405805128, 38.889790307199547 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1669, "NAME": "Orr Elementary School", "ADDRESS": "2200 MINNESOTA AVENUE SE", "X": 402214.23, "Y": 133774.84, "ADDR_ID": 294539.0, "LABEL": 215.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.97448401732575, 38.87179682397673 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1670, "NAME": "OTR \/ DCRA", "ADDRESS": "941 NORTH CAPITOL STREET NE", "X": 399267.78, "Y": 137129.91, "ADDR_ID": 289094.0, "LABEL": 216.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.008441412769983, 38.902023049587804 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1671, "NAME": "Bread for the City SE", "ADDRESS": "1640 GOOD HOPE ROAD SE", "X": 401644.18, "Y": 133153.45, "ADDR_ID": 286380.0, "LABEL": 20.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.981054552437016, 38.86620034055688 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1672, "NAME": "Community of Hope", "ADDRESS": "1320 MISSISSIPPI AVENUE SE", "X": 401091.19, "Y": 130260.28, "ADDR_ID": 290141.0, "LABEL": 43.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.987431098577702, 38.84013827866967 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1673, "NAME": "Fleet", "ADDRESS": "2175 WEST VIRGINIA AVENUE NE", "X": 401894.38, "Y": 138696.42, "ADDR_ID": 50951.0, "LABEL": 130.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.978156281682715, 38.916132973313871 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1674, "NAME": "Matthews Baptist Church", "ADDRESS": "2616 MARTIN LUTHER KING JR AVENUE SE", "X": 400435.52, "Y": 132317.08, "ADDR_ID": 278192.0, "LABEL": 185.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.994982148877142, 38.858667399834211 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1675, "NAME": "MPD (Merritt)", "ADDRESS": "5002 HAYES STREET NE", "X": 406060.67, "Y": 136933.16, "ADDR_ID": 294606.0, "LABEL": 193.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.930131195353752, 38.900230067259287 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1676, "NAME": "National Air and Space Museum", "ADDRESS": "INDEPENDENCE AVENUE SW AND 6TH STREET SW", "X": 398278.05, "Y": 135596.11, "ADDR_ID": 301565.0, "LABEL": 203.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.019847689950936, 38.888204636055363 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1677, "NAME": "National Gallery of Art", "ADDRESS": "4TH STREET NW AND MADISON DRIVE NW", "X": 398271.65, "Y": 135939.53, "ADDR_ID": 293249.0, "LABEL": 204.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.019922322036649, 38.891298279515652 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1678, "NAME": "National Museum of American History", "ADDRESS": "CONSTITUTION AVENUE NW AND 14TH STREET NW", "X": 397398.34, "Y": 135928.76, "ADDR_ID": 293200.0, "LABEL": 205.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.029988738868269, 38.891199108718581 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1679, "NAME": "National Museum of Natural History", "ADDRESS": "CONSTITUTION AVENUE NW AND 10TH STREET NW", "X": 397748.34, "Y": 135930.56, "ADDR_ID": 293188.0, "LABEL": 206.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.025954375174592, 38.891216289872496 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1680, "NAME": "National Museum of the American Indian", "ADDRESS": "INDEPENDENCE AVENUE SW AND 4TH STREET SW", "X": 398557.25, "Y": 135603.87, "ADDR_ID": 294429.0, "LABEL": 207.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.016629566983838, 38.888275043563766 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1681, "NAME": "SOD EOD", "ADDRESS": "4669 BLUE PLAINS DRIVE SW", "X": 398758.81, "Y": 128035.66, "ADDR_ID": 299768.0, "LABEL": 251.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.014292668538971, 38.820097669865326 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1682, "NAME": "SOD K-9", "ADDRESS": "4667 BLUE PLAINS DRIVE SW", "X": 398798.77, "Y": 128050.55, "ADDR_ID": 299767.0, "LABEL": 252.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.013832543353786, 38.820231861562178 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1683, "NAME": "US Department of Agriculture", "ADDRESS": "1400 INDEPENDENCE AVENUE SW", "X": 397394.16, "Y": 135431.16, "ADDR_ID": 291739.0, "LABEL": 278.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.030035033645007, 38.886716528629385 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1635, "NAME": "Langley", "ADDRESS": "101 T STREET NE", "X": 399489.48, "Y": 138589.14, "ADDR_ID": 285757.0, "LABEL": 170.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.005886624733137, 38.915168452785061 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1636, "NAME": "LaSalle Elementary School \/ LaSalle Community Center", "ADDRESS": "501 RIGGS ROAD NE", "X": 400010.18, "Y": 143562.69, "ADDR_ID": 294489.0, "LABEL": 171.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.999882544250042, 38.959971809983664 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1637, "NAME": "Leckie Elementary School", "ADDRESS": "4201 MARTIN LUTHER KING JR AVENUE SW", "X": 398880.58, "Y": 128934.66, "ADDR_ID": 294592.0, "LABEL": 172.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.012891913093682, 38.828196450281176 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1638, "NAME": "Logan", "ADDRESS": "215 G STREET NE", "X": 399777.37, "Y": 136742.12, "ADDR_ID": 286687.0, "LABEL": 173.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.002566468683455, 38.89852997521065 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1639, "NAME": "Loughran Recreation Center", "ADDRESS": "2500 14TH STREET NW", "X": 397193.65, "Y": 139347.84, "ADDR_ID": 234200.0, "LABEL": 174.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.032362124753817, 38.921998738496796 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1640, "NAME": "Ludlow-Taylor Elementary School", "ADDRESS": "659 G STREET NE", "X": 400304.26, "Y": 136765.86, "ADDR_ID": 294494.0, "LABEL": 175.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.996492493812951, 38.898743809228868 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1641, "NAME": "Luke C. Moore Academy Senior High School", "ADDRESS": "1001 MONROE STREET NE", "X": 400666.21, "Y": 140488.24, "ADDR_ID": 294504.0, "LABEL": 176.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.992316326077997, 38.932276047837512 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1642, "NAME": "MacFarland Middle School", "ADDRESS": "4400 IOWA AVENUE NW", "X": 397592.04, "Y": 141746.55, "ADDR_ID": 294595.0, "LABEL": 177.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.027776407969256, 38.943608228348296 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1643, "NAME": "Macomb Recreation Center", "ADDRESS": "3409 MACOMB STREET NW", "X": 394191.58, "Y": 140648.83, "ADDR_ID": 221115.0, "LABEL": 178.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.066992244023965, 38.933703744863294 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1644, "NAME": "Malcolm X Elementary School \/ Malcolm X Recreation Center", "ADDRESS": "1351 ALABAMA AVENUE SE", "X": 401202.63, "Y": 130797.63, "ADDR_ID": 289201.0, "LABEL": 179.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.986146534669984, 38.844978822120702 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1645, "NAME": "Mamie D Lee Elementary School", "ADDRESS": "100 GALLATIN STREET NE", "X": 399373.74, "Y": 142734.73, "ADDR_ID": 294470.0, "LABEL": 180.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.007224964748303, 38.952513105054059 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1646, "NAME": "Mann Elementary School", "ADDRESS": "4430 NEWARK STREET NW", "X": 392385.28, "Y": 140715.66, "ADDR_ID": 294597.0, "LABEL": 181.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.08782619402335, 38.934291971689944 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1647, "NAME": "Marie Reed Recreation Center \/ Reed L C Elementary School", "ADDRESS": "2200 CHAMPLAIN STREET NW", "X": 396485.22, "Y": 139033.81, "ADDR_ID": 235577.0, "LABEL": 182.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.040529953192816, 38.919167306664555 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1684, "NAME": "Oyster Elementary School", "ADDRESS": "2801 CALVERT STREET NW", "X": 395039.6, "Y": 139526.15, "ADDR_ID": 275944.0, "LABEL": 217.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.057203372800387, 38.923595492965461 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1685, "NAME": "Palisades Community Center", "ADDRESS": "5200 SHERIER PLACE NW", "X": 390931.96, "Y": 139636.31, "ADDR_ID": 268352.0, "LABEL": 218.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.104574133597708, 38.924555061523129 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1686, "NAME": "Palisades Neighborhood Library", "ADDRESS": "4901 V STREET NW", "X": 391572.87, "Y": 138950.28, "ADDR_ID": 224474.0, "LABEL": 219.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.097174637994158, 38.918381465113953 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1687, "NAME": "Parklands-Turner Community Library", "ADDRESS": "1547 ALABAMA AVENUE SE", "X": 401627.56, "Y": 130931.77, "ADDR_ID": 304504.0, "LABEL": 220.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.981251317908303, 38.846186530992917 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1688, "NAME": "Parkview Community Center", "ADDRESS": "693 OTIS PLACE NW", "X": 398148.9, "Y": 140791.13, "ADDR_ID": 295160.0, "LABEL": 221.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.021350314279189, 38.935002875205896 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1689, "NAME": "Patterson Elementary School", "ADDRESS": "4399 SOUTH CAPITOL TERRACE SW", "X": 399263.25, "Y": 128798.03, "ADDR_ID": 301073.0, "LABEL": 222.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.00848470930849, 38.826966026907797 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1690, "NAME": "Payne Elementary School", "ADDRESS": "305 15TH STREET SE", "X": 401371.28, "Y": 135254.99, "ADDR_ID": 294478.0, "LABEL": 223.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.98419491376464, 38.885132314488978 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1691, "NAME": "Peabody Elementary School", "ADDRESS": "425 C STREET NE", "X": 400012.32, "Y": 136116.7, "ADDR_ID": 288145.0, "LABEL": 224.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.999857986806902, 38.892895991457841 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1692, "NAME": "Petworth Neighborhood Library", "ADDRESS": "4200 KANSAS AVENUE NW", "X": 397734.08, "Y": 141590.17, "ADDR_ID": 295146.0, "LABEL": 225.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.026137425414618, 38.942199890372414 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1693, "NAME": "Petworth Recreation Center", "ADDRESS": "801 TAYLOR STREET NW", "X": 397919.04, "Y": 141457.96, "ADDR_ID": 296169.0, "LABEL": 226.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.024003507800956, 38.941009362112986 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1694, "NAME": "Phelps Architecture, Construction, and Engineering High School", "ADDRESS": "704 26TH STREET NE", "X": 402437.64, "Y": 137126.77, "ADDR_ID": 294495.0, "LABEL": 227.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.971897630939239, 38.901991688358827 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1695, "NAME": "Plummer Elementary School", "ADDRESS": "4601 TEXAS AVENUE SE", "X": 405211.23, "Y": 135490.54, "ADDR_ID": 19536.0, "LABEL": 228.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.939934675604363, 38.88723986369677 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1696, "NAME": "Powell Elementary School", "ADDRESS": "1350 UPSHUR STREET NW", "X": 397292.79, "Y": 141516.39, "ADDR_ID": 255302.0, "LABEL": 229.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.031227421518949, 38.941534009868171 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1697, "NAME": "Prospect  LC", "ADDRESS": "920 F STREET NE", "X": 400591.35, "Y": 136634.98, "ADDR_ID": 289072.0, "LABEL": 230.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.993183035888919, 38.897564648639204 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1698, "NAME": "Randle Highlands Elementary School", "ADDRESS": "1650 30TH STREET SE", "X": 403093.17, "Y": 133585.82, "ADDR_ID": 156337.0, "LABEL": 231.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.964356283216134, 38.870091403188283 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1699, "NAME": "Raymond Education Campus", "ADDRESS": "915 SPRING ROAD NW", "X": 397708.28, "Y": 140880.94, "ADDR_ID": 226682.0, "LABEL": 232.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.026432660023815, 38.935810871761859 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1700, "NAME": "Reeves Center \/ Ward One Senior Wellness Center", "ADDRESS": "2000 14TH STREET NW", "X": 397189.88, "Y": 138842.23, "ADDR_ID": 239976.0, "LABEL": 233.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.032403529842, 38.917444026972369 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1701, "NAME": "River Terrace Elementary School", "ADDRESS": "420 34TH STREET NE", "X": 403660.17, "Y": 136398.67, "ADDR_ID": 294485.0, "LABEL": 234.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.957807556855016, 38.895428461355834 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1702, "NAME": "Ron H. Brown Middle School", "ADDRESS": "4800 MEADE STREET NE", "X": 405836.91, "Y": 137635.93, "ADDR_ID": 294601.0, "LABEL": 235.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.932704779070008, 38.906562380020617 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1703, "NAME": "Roosevelt Senior High School", "ADDRESS": "4301 13TH STREET NW", "X": 397468.88, "Y": 141682.3, "ADDR_ID": 252605.0, "LABEL": 236.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.029196851580139, 38.943029099793371 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1704, "NAME": "Ross Elementary School", "ADDRESS": "1730 R STREET NW", "X": 396560.15, "Y": 138281.53, "ADDR_ID": 241714.0, "LABEL": 238.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.039662144695399, 38.912390815299133 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1705, "NAME": "Savoy Elementary School", "ADDRESS": "2400 SHANNON PLACE SE", "X": 400555.08, "Y": 132781.57, "ADDR_ID": 278153.0, "LABEL": 239.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.993604261358954, 38.862851653343149 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1706, "NAME": "School Without Walls", "ADDRESS": "2130 G STREET NW", "X": 395820.01, "Y": 136698.13, "ADDR_ID": 242528.0, "LABEL": 240.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.048186465638153, 38.898123787570832 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1707, "NAME": "Seaton Elementary School", "ADDRESS": "1503 10TH STREET NW", "X": 397841.92, "Y": 138084.32, "ADDR_ID": 279203.0, "LABEL": 241.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.0248824665358, 38.910618362688325 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1708, "NAME": "Septima and Excel Charter School", "ADDRESS": "3845 SOUTH CAPITOL STREET SW", "X": 399247.99, "Y": 129580.0, "ADDR_ID": 301907.0, "LABEL": 242.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.00866130403007, 38.83401036254331 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1709, "NAME": "Shadd Elementary School (Transition Academy)", "ADDRESS": "5601 EAST CAPITOL STREET SE", "X": 406789.33, "Y": 135740.32, "ADDR_ID": 294610.0, "LABEL": 243.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.921742826688799, 38.889479205184088 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1710, "NAME": "Shaed Elementary School", "ADDRESS": "301 DOUGLAS STREET NE", "X": 399779.89, "Y": 139531.17, "ADDR_ID": 294477.0, "LABEL": 244.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.002538312236197, 38.923654687421894 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1711, "NAME": "Sharpe Health School", "ADDRESS": "4300 13TH STREET NW", "X": 397358.67, "Y": 141731.76, "ADDR_ID": 255254.0, "LABEL": 245.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.03046833090616, 38.943474325157986 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1712, "NAME": "Shaw Middle School @ Garnet-Patterson", "ADDRESS": "2001 10TH STREET NW", "X": 397767.0, "Y": 138853.23, "ADDR_ID": 294533.0, "LABEL": 246.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.025748787878896, 38.917544774484917 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1713, "NAME": "Sherwood Recreation Center", "ADDRESS": "640 10TH STREET NE", "X": 400605.76, "Y": 136743.84, "ADDR_ID": 301075.0, "LABEL": 247.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.993016824306153, 38.898545289068032 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1714, "NAME": "Simon Elementary School", "ADDRESS": "401 MISSISSIPPI AVENUE SE", "X": 399983.07, "Y": 129798.63, "ADDR_ID": 294481.0, "LABEL": 248.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.00019499730395, 38.835980202827393 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1715, "NAME": "Smothers Elementary School", "ADDRESS": "4400 BROOKS STREET NE", "X": 405337.95, "Y": 136191.51, "ADDR_ID": 294596.0, "LABEL": 249.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.938468638784286, 38.893553701828701 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1716, "NAME": "Sousa Middle School", "ADDRESS": "3650 ELY PLACE SE", "X": 404064.1, "Y": 135118.46, "ADDR_ID": 294584.0, "LABEL": 253.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.953158845205095, 38.883894076551201 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1717, "NAME": "Southeast Neighborhood Library", "ADDRESS": "403 7TH STREET SE", "X": 400302.33, "Y": 135138.52, "ADDR_ID": 280068.0, "LABEL": 254.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.996515458913066, 38.884084125504963 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1718, "NAME": "Southeast Tennis & Learning Center", "ADDRESS": "701 MISSISSIPPI AVENUE SE", "X": 400473.4, "Y": 130079.58, "ADDR_ID": 295830.0, "LABEL": 255.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.994547253637833, 38.838511000863335 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1719, "NAME": "Southwest Neighborhood Library", "ADDRESS": "900 WESLEY PLACE SW", "X": 398626.28, "Y": 134540.69, "ADDR_ID": 295165.0, "LABEL": 256.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.01583178137156, 38.878697619808236 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1720, "NAME": "Spingarn Senior High School", "ADDRESS": "2500 BENNING ROAD NE", "X": 402516.7, "Y": 136805.15, "ADDR_ID": 294545.0, "LABEL": 257.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.970987364997413, 38.899094197738094 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1721, "NAME": "Stanton Elementary School", "ADDRESS": "2701 NAYLOR ROAD SE", "X": 402734.84, "Y": 132384.63, "ADDR_ID": 294547.0, "LABEL": 258.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.968490226786457, 38.859271774722352 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1722, "NAME": "Stead Recreation Center", "ADDRESS": "1625 P STREET NW", "X": 396737.09, "Y": 138018.79, "ADDR_ID": 295822.0, "LABEL": 259.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.037620743594516, 38.910024638900659 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1723, "NAME": "Stoddert Elementary School \/ Stoddert Recreation Center", "ADDRESS": "4001 CALVERT STREET NW", "X": 393143.05, "Y": 139466.38, "ADDR_ID": 224730.0, "LABEL": 260.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.079073796225515, 38.923044313620181 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1724, "NAME": "Stuart-Hobson Middle School", "ADDRESS": "410 E STREET NE", "X": 399999.62, "Y": 136494.28, "ADDR_ID": 294483.0, "LABEL": 261.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.000004380485947, 38.896297370808789 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1725, "NAME": "Takoma Community Center", "ADDRESS": "300 VAN BUREN STREET NW", "X": 398435.64, "Y": 144552.48, "ADDR_ID": 296168.0, "LABEL": 262.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.018051676182949, 38.968886691314118 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1726, "NAME": "Takoma Educational Campus", "ADDRESS": "7010 PINEY BRANCH ROAD NW", "X": 398024.76, "Y": 145235.93, "ADDR_ID": 250934.0, "LABEL": 263.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.02279492780832, 38.975042541471559 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1727, "NAME": "Takoma Park Neighborhood Library", "ADDRESS": "416 CEDAR STREET NW", "X": 398253.34, "Y": 145168.59, "ADDR_ID": 251267.0, "LABEL": 264.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.020156866937455, 38.974436411675882 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1728, "NAME": "Tenley-Friendship Neighborhood Library", "ADDRESS": "4450 WISCONSIN AVENUE NW", "X": 393074.94, "Y": 142193.23, "ADDR_ID": 284921.0, "LABEL": 265.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.079886753161375, 38.947608052117097 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1729, "NAME": "Theodore Hagan Cultural Center - Senior Service", "ADDRESS": "3201 FORT LINCOLN DRIVE NE", "X": 403611.81, "Y": 139592.92, "ADDR_ID": 295140.0, "LABEL": 266.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.958348224072523, 38.924203556090092 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1730, "NAME": "Thomas Elementary School", "ADDRESS": "650 ANACOSTIA AVENUE NE", "X": 404154.01, "Y": 137048.33, "ADDR_ID": 294493.0, "LABEL": 267.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.952110911086194, 38.901278637591247 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1731, "NAME": "Thomson Elementary School", "ADDRESS": "1200 L STREET NW", "X": 397533.99, "Y": 137293.77, "ADDR_ID": 240922.0, "LABEL": 268.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.02843003259288, 38.903496004276342 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1732, "NAME": "Trinidad Recreation Center", "ADDRESS": "1310 CHILDRESS STREET NE", "X": 401496.88, "Y": 137620.38, "ADDR_ID": 68509.0, "LABEL": 269.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.982742120484048, 38.906440406171505 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1733, "NAME": "Truesdell Elementary School", "ADDRESS": "800 INGRAHAM STREET NW", "X": 397826.84, "Y": 142896.55, "ADDR_ID": 294497.0, "LABEL": 270.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.025071575903652, 38.953968358094251 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1776, "NAME": "Bunker Hill Elementary School", "ADDRESS": "1401 MICHIGAN AVENUE NE", "X": 401300.77, "Y": 141569.11, "ADDR_ID": 286131.0, "LABEL": 28.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.984995635765713, 38.942012135008888 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1777, "NAME": "Burroughs Elementary School", "ADDRESS": "1820 MONROE STREET NE", "X": 401867.9, "Y": 140624.56, "ADDR_ID": 294530.0, "LABEL": 29.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.978456370398874, 38.933502326896445 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1778, "NAME": "Burrville Elementary School", "ADDRESS": "801 DIVISION AVENUE NE", "X": 406552.65, "Y": 136970.78, "ADDR_ID": 289787.0, "LABEL": 30.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.924459179809446, 38.900565431854403 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1779, "NAME": "C. W. Harris Elementary School \/ Harris Recreation Center", "ADDRESS": "301 53RD STREET SE", "X": 406410.5, "Y": 135087.2, "ADDR_ID": 289801.0, "LABEL": 31.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.926115499494827, 38.883598497887021 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1780, "NAME": "Capitol View Neighborhood Library", "ADDRESS": "5001 CENTRAL AVENUE SE", "X": 406109.69, "Y": 135681.52, "ADDR_ID": 15509.0, "LABEL": 32.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.929577212813882, 38.888954498632195 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1781, "NAME": "Cardozo High School", "ADDRESS": "1200 CLIFTON STREET NW", "X": 397531.11, "Y": 139367.02, "ADDR_ID": 294513.0, "LABEL": 33.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.028470689872307, 38.922172530986394 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1734, "NAME": "Tubman Elementary School", "ADDRESS": "3101 13TH STREET NW", "X": 397447.02, "Y": 140146.96, "ADDR_ID": 294555.0, "LABEL": 271.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.029443297833467, 38.929198236416632 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1735, "NAME": "Turkey Thicket Recreation Center", "ADDRESS": "1100 MICHIGAN AVENUE NE", "X": 400641.56, "Y": 141130.75, "ADDR_ID": 74603.0, "LABEL": 272.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.992600023972429, 38.93806398900756 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1736, "NAME": "Turner Elementary School @ Green", "ADDRESS": "1500 MISSISSIPPI AVENUE SE", "X": 401441.25, "Y": 130427.6, "ADDR_ID": 294523.0, "LABEL": 273.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.983398572622932, 38.841645068508846 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1737, "NAME": "Tyler Elementary School", "ADDRESS": "1001 G STREET SE", "X": 400690.52, "Y": 134805.51, "ADDR_ID": 294505.0, "LABEL": 274.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.992041662599206, 38.881084023670084 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1738, "NAME": "UCC (St. Elizabeth's Campus)", "ADDRESS": "2720 MARTIN LUTHER KING JR AVENUE SE", "X": 400430.11, "Y": 131768.69, "ADDR_ID": 301360.0, "LABEL": 275.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.99504482324356, 38.853727271496069 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1739, "NAME": "UDC Campus", "ADDRESS": "4200 CONNECTICUT AVENUE NW", "X": 394423.74, "Y": 141839.77, "ADDR_ID": 297694.0, "LABEL": 276.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.064324272973408, 38.944433583129253 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1740, "NAME": "Upshur Recreation Center", "ADDRESS": "4300 ARKANSAS AVENUE NW", "X": 397198.6, "Y": 141713.95, "ADDR_ID": 295147.0, "LABEL": 277.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.032314701199155, 38.943313391748468 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1741, "NAME": "Van Ness Elementary School", "ADDRESS": "1150 5TH STREET SE", "X": 400065.6, "Y": 134329.49, "ADDR_ID": 294508.0, "LABEL": 279.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.999243996463733, 38.876796117687654 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1742, "NAME": "Volta Park Recreation Center (formerly Georgetown)", "ADDRESS": "1555 34TH STREET NW", "X": 394206.11, "Y": 138028.79, "ADDR_ID": 279236.0, "LABEL": 280.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.066802547062636, 38.91010168208954 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1743, "NAME": "Walker Johns Elementary School", "ADDRESS": "1125 NEW JERSEY AVENUE NW", "X": 398792.97, "Y": 137370.7, "ADDR_ID": 307735.0, "LABEL": 281.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.013915692345691, 38.90419164723351 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1744, "NAME": "Warn Tower Site \/ Fletcher Johnson Education Center", "ADDRESS": "4650 BENNING ROAD SE", "X": 405742.68, "Y": 135126.89, "ADDR_ID": 288259.0, "LABEL": 282.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.933812153838019, 38.883960655988616 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1745, "NAME": "Waterfront East Tower", "ADDRESS": "1100 4TH STREET SW", "X": 398511.05, "Y": 134420.39, "ADDR_ID": 307170.0, "LABEL": 283.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.017159517828091, 38.877613722570487 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1746, "NAME": "Waterfront West Tower", "ADDRESS": "1101 4TH STREET SW", "X": 398425.11, "Y": 134419.16, "ADDR_ID": 307156.0, "LABEL": 284.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.018149937068486, 38.877602492523486 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1747, "NAME": "Watha T. Daniel \/ Shaw Neighborhood Library", "ADDRESS": "1630 7TH STREET NW", "X": 398073.03, "Y": 138286.68, "ADDR_ID": 308201.0, "LABEL": 285.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.022218357189274, 38.912441827333687 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1748, "NAME": "Watkins Elementary School \/ Watkins Recreation Center", "ADDRESS": "420 12TH STREET SE", "X": 400867.92, "Y": 135070.02, "ADDR_ID": 294486.0, "LABEL": 286.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.989996769310935, 38.883466674789091 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1749, "NAME": "Marvin Gaye Recreation Center", "ADDRESS": "6201 BANKS PLACE NE", "X": 407607.38, "Y": 135995.36, "ADDR_ID": 288795.0, "LABEL": 287.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.912310759732065, 38.89177000176398 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1750, "NAME": "Wellness Center", "ADDRESS": "500 K STREET NE", "X": 400071.4, "Y": 137220.4, "ADDR_ID": 300865.0, "LABEL": 288.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.999176854277124, 38.902838517658978 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1751, "NAME": "West Elementary School", "ADDRESS": "1338 FARRAGUT STREET NW", "X": 397204.26, "Y": 142607.98, "ADDR_ID": 294517.0, "LABEL": 289.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.032253055598915, 38.951367080950824 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1752, "NAME": "West End Neighborhood Library", "ADDRESS": "1101 24TH STREET NW", "X": 395567.82, "Y": 137352.7, "ADDR_ID": 218248.0, "LABEL": 290.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.05109790736914, 38.90401915136222 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1753, "NAME": "Wheatley Elementary School \/ Joseph H. Cole Recreation Center", "ADDRESS": "1299 NEAL STREET NE", "X": 400997.43, "Y": 137362.43, "ADDR_ID": 294512.0, "LABEL": 291.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.988500770855779, 38.904117410997998 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1754, "NAME": "Whittier Elementary School", "ADDRESS": "6201 5TH STREET NW", "X": 398332.71, "Y": 144216.17, "ADDR_ID": 294614.0, "LABEL": 292.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.019238602179172, 38.965856939616032 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1755, "NAME": "William O. Lockridge \/ Bellevue Neighborhood Library", "ADDRESS": "115 ATLANTIC STREET SW", "X": 399186.87, "Y": 129281.97, "ADDR_ID": 302935.0, "LABEL": 294.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.009364903837451, 38.831325516600245 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1756, "NAME": "Wilson Building", "ADDRESS": "1350 PENNSYLVANIA AVENUE NW", "X": 397280.14, "Y": 136350.99, "ADDR_ID": 293203.0, "LABEL": 295.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.031352874632702, 38.895002354625383 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1757, "NAME": "J.O. Wilson Elementary School", "ADDRESS": "660 K STREET NE", "X": 400295.87, "Y": 137211.43, "ADDR_ID": 288841.0, "LABEL": 296.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.996589021722201, 38.902757665829746 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1758, "NAME": "Winston Educational Campus", "ADDRESS": "3100 ERIE STREET SE", "X": 403226.53, "Y": 132196.58, "ADDR_ID": 294554.0, "LABEL": 297.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.96282604683509, 38.857576074584586 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1759, "NAME": "Woodridge Neighborhood Library", "ADDRESS": "1801 HAMLIN STREET NE", "X": 401853.38, "Y": 139951.63, "ADDR_ID": 286483.0, "LABEL": 298.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.978625655644066, 38.927440397093633 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1760, "NAME": "Woodrow Wilson Senior High School", "ADDRESS": "3950 CHESAPEAKE STREET NW", "X": 393258.18, "Y": 142475.96, "ADDR_ID": 294587.0, "LABEL": 299.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.077775695871097, 38.950156386554475 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1761, "NAME": "Woodson Senior High School", "ADDRESS": "5500 EADS STREET NE", "X": 406704.96, "Y": 136485.52, "ADDR_ID": 294609.0, "LABEL": 300.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.922708043967461, 38.896192887555607 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1762, "NAME": "Community of Hope", "ADDRESS": "801 17TH STREET NE", "X": 401888.91, "Y": 136995.37, "ADDR_ID": 288960.0, "LABEL": 44.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.978224033997193, 38.900809340821397 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1763, "NAME": "Community of Hope", "ADDRESS": "1413 GIRARD STREET NW", "X": 397125.26, "Y": 139760.79, "ADDR_ID": 234321.0, "LABEL": 45.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.033152510412705, 38.925718502596204 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1764, "NAME": "Early Childhood Academy-Admin", "ADDRESS": "4025 9TH STREET SE", "X": 400822.11, "Y": 129329.27, "ADDR_ID": 278471.0, "LABEL": 83.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.99053161605562, 38.831751608529011 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1765, "NAME": "Early Childhood Academy-School", "ADDRESS": "4301 9TH STREET SE", "X": 400902.69, "Y": 129245.01, "ADDR_ID": 298086.0, "LABEL": 84.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.989603672697257, 38.830992476484887 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1766, "NAME": "MPD Air Support Branch", "ADDRESS": "1724 SOUTH CAPITOL STREET SE", "X": 399245.82, "Y": 133436.49, "ADDR_ID": 277757.0, "LABEL": 194.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.008690525544424, 38.868751294327993 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1767, "NAME": "MPD Automated Traffic Enforcement", "ADDRESS": "3165 V STREET NE", "X": 403305.46, "Y": 138941.4, "ADDR_ID": 149333.0, "LABEL": 196.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.961884221405413, 38.918335659415689 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1768, "NAME": "Narcotics & Special Invest (NSID)", "ADDRESS": "1215 3RD STREET NE", "X": 399860.15, "Y": 137608.99, "ADDR_ID": 71435.0, "LABEL": 202.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.001612361048984, 38.906339064559837 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1769, "NAME": "Rosedale Library \/ Rosedale Community Center", "ADDRESS": "1701 GALES STREET NE", "X": 401793.32, "Y": 136667.15, "ADDR_ID": 307101.0, "LABEL": 237.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.979326883307237, 38.897852817340166 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1770, "NAME": "So Others May Eat (SOME)", "ADDRESS": "60 O STREET NW", "X": 399037.2, "Y": 137820.26, "ADDR_ID": 236940.0, "LABEL": 250.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.01110062661779, 38.908241741747403 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1771, "NAME": "William Doar Charter School on Edgewood", "ADDRESS": "705 EDGEWOOD STREET NE", "X": 400359.57, "Y": 139530.04, "ADDR_ID": 289576.0, "LABEL": 293.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.995853433282932, 38.923644462022587 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1772, "NAME": "Georgetown Neighborhood Library", "ADDRESS": "3260 R STREET NW", "X": 394275.35, "Y": 138398.68, "ADDR_ID": 295142.0, "LABEL": 138.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.066007305842078, 38.913434229544386 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1773, "NAME": "Kelly Miller Pool", "ADDRESS": "4900 BROOKS STREET NE", "X": 405965.86, "Y": 136182.91, "ADDR_ID": 295154.0, "LABEL": 301.0, "TYPE": "OUTDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.931230702022091, 38.893472193012563 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1774, "NAME": "Bruce- Monroe Elementary School @ Parkview", "ADDRESS": "3560 WARDER STREET NW", "X": 398163.16, "Y": 140725.73, "ADDR_ID": 294583.0, "LABEL": 26.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.021185666492656, 38.934413762276513 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1775, "NAME": "Bundy School", "ADDRESS": "429 O STREET NW", "X": 398516.53, "Y": 137890.65, "ADDR_ID": 237434.0, "LABEL": 27.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.017103856310399, 38.9088751145446 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1782, "NAME": "CFSA at Saratoga", "ADDRESS": "1345 SARATOGA AVENUE NE", "X": 401190.75, "Y": 139326.74, "ADDR_ID": 149277.0, "LABEL": 37.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.986268605604081, 38.921812337172049 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1783, "NAME": "CFSA at MLK", "ADDRESS": "2041 MARTIN LUTHER KING JR AVENUE SE", "X": 400882.92, "Y": 133122.47, "ADDR_ID": 278056.0, "LABEL": 35.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.989826388033507, 38.865922353703503 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1784, "NAME": "CFSA at Paul Robenson School", "ADDRESS": "1800 M STREET NW", "X": 396336.44, "Y": 137497.81, "ADDR_ID": 241302.0, "LABEL": 36.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.042237383500549, 38.905329892611839 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1785, "NAME": "Chevy Chase Community Center", "ADDRESS": "5601 CONNECTICUT AVENUE NW", "X": 393490.74, "Y": 144141.13, "ADDR_ID": 263959.0, "LABEL": 38.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.075108619032321, 38.96515842126967 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1786, "NAME": "Chevy Chase Neighborhood Library", "ADDRESS": "5625 CONNECTICUT AVENUE NW", "X": 393460.61, "Y": 144186.75, "ADDR_ID": 263960.0, "LABEL": 39.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.075456716032903, 38.965569153534418 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1787, "NAME": "Cleveland Elementary School", "ADDRESS": "1825 8TH STREET NW", "X": 398030.71, "Y": 138586.76, "ADDR_ID": 294531.0, "LABEL": 40.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.022707176041493, 38.915144954895446 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1788, "NAME": "Cleveland Park Neighborhood Library", "ADDRESS": "3310 CONNECTICUT AVENUE NW", "X": 394984.89, "Y": 140660.69, "ADDR_ID": 221190.0, "LABEL": 41.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.057842578826666, 38.933815469553579 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1789, "NAME": "Columbia Heights Community Center", "ADDRESS": "1480 GIRARD STREET NW", "X": 396956.78, "Y": 139707.59, "ADDR_ID": 284045.0, "LABEL": 42.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.035095244841344, 38.925238692865634 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1790, "NAME": "Congress Heights Recreation Center", "ADDRESS": "611 ALABAMA AVENUE SE", "X": 400270.18, "Y": 130495.24, "ADDR_ID": 307835.0, "LABEL": 46.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.996887832105088, 38.842255538971223 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1791, "NAME": "Consolidated Forensic Lab", "ADDRESS": "415 4TH STREET SW", "X": 398451.08, "Y": 135079.34, "ADDR_ID": 294484.0, "LABEL": 47.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.017852131734756, 38.883549696974669 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1792, "NAME": "Coolidge Senior High School", "ADDRESS": "6315 5TH STREET NW", "X": 398303.3, "Y": 144374.62, "ADDR_ID": 294615.0, "LABEL": 48.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.019578351739341, 38.967284239673525 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1793, "NAME": "Davis Elementary School", "ADDRESS": "4430 H STREET SE", "X": 405412.99, "Y": 134583.53, "ADDR_ID": 294598.0, "LABEL": 49.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.937616308091023, 38.879067951066915 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1794, "NAME": "DC General Hospital", "ADDRESS": "1900 MASSACHUSETTS AVENUE SE", "X": 402119.23, "Y": 135264.83, "ADDR_ID": 301068.0, "LABEL": 50.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.97557416862314, 38.885219472285328 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1795, "NAME": "DC Net Central Office", "ADDRESS": "655 15TH STREET NW", "X": 397122.2, "Y": 136673.07, "ADDR_ID": 279876.0, "LABEL": 51.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.033174858972117, 38.89790326552577 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1796, "NAME": "DC Public Records", "ADDRESS": "1300 NAYLOR COURT NW", "X": 397850.45, "Y": 137783.36, "ADDR_ID": 303382.0, "LABEL": 52.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.024783174361417, 38.907907232661643 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1797, "NAME": "Therapeutic Recreation Center", "ADDRESS": "3030 G STREET SE", "X": 403192.75, "Y": 134782.54, "ADDR_ID": 288770.0, "LABEL": 53.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.963203228378831, 38.880871575495092 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1798, "NAME": "DCLB", "ADDRESS": "2101 MARTIN LUTHER KING JR AVENUE SE", "X": 400852.49, "Y": 133066.21, "ADDR_ID": 278064.0, "LABEL": 54.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.990177093191505, 38.865415570457486 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1799, "NAME": "DCOA", "ADDRESS": "3551 GEORGIA AVENUE NW", "X": 397943.36, "Y": 140698.43, "ADDR_ID": 228610.0, "LABEL": 55.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.023720704390016, 38.934167348648351 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1800, "NAME": "DCPS HQ \/ DDOE", "ADDRESS": "1200 1ST STREET NE", "X": 399448.73, "Y": 137581.05, "ADDR_ID": 302635.0, "LABEL": 56.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.006355689222019, 38.906087209558983 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1801, "NAME": "Adams Elementary School (Oyster)", "ADDRESS": "2020 19TH STREET NW", "X": 396151.48, "Y": 138827.7, "ADDR_ID": 294534.0, "LABEL": 1.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.044377250510621, 38.917309202120244 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1802, "NAME": "DCPS Warehouse \/ Adams Place Bus Lot (OCD)", "ADDRESS": "2000 ADAMS PLACE NE", "X": 402039.88, "Y": 139009.0, "ADDR_ID": 286574.0, "LABEL": 57.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.976477621523628, 38.918948471256058 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1803, "NAME": "Aiton Elementary School", "ADDRESS": "533 48TH PLACE NE", "X": 405751.28, "Y": 136574.53, "ADDR_ID": 294490.0, "LABEL": 2.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.933700916121367, 38.897001478408271 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1804, "NAME": "Amidon Elementary School", "ADDRESS": "401 I STREET SW", "X": 398427.29, "Y": 134631.47, "ADDR_ID": 294482.0, "LABEL": 3.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.0181252993046, 38.87951506818338 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1805, "NAME": "Anacostia Fitness Center", "ADDRESS": "1800 ANACOSTIA DRIVE SE", "X": 401466.4, "Y": 133862.52, "ADDR_ID": 295129.0, "LABEL": 4.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.983101551475158, 38.87258824568103 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1806, "NAME": "Anacostia Neighborhood Library", "ADDRESS": "1800 GOOD HOPE ROAD SE", "X": 401854.99, "Y": 133121.03, "ADDR_ID": 53560.0, "LABEL": 5.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.978625532590982, 38.865907868473236 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1807, "NAME": "Anacostia Senior High School", "ADDRESS": "1601 16TH STREET SE", "X": 401468.56, "Y": 133584.5, "ADDR_ID": 155922.0, "LABEL": 6.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.983077254060177, 38.870083725755734 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1808, "NAME": "Arboretum Community Center", "ADDRESS": "2412 RAND PLACE NE", "X": 402500.41, "Y": 138428.3, "ADDR_ID": 296167.0, "LABEL": 7.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.971169247316837, 38.913716143631035 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1809, "NAME": "Bald Eagle Community Center", "ADDRESS": "100 JOLIET STREET SW", "X": 399117.53, "Y": 127901.54, "ADDR_ID": 301277.0, "LABEL": 8.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.010161730173635, 38.818889885441543 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1810, "NAME": "Ballou Senior High School", "ADDRESS": "3401 4TH STREET SE", "X": 399915.33, "Y": 130176.29, "ADDR_ID": 294567.0, "LABEL": 9.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.000975263347513, 38.839382331531873 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1811, "NAME": "Bancroft Elementary School", "ADDRESS": "1755 NEWTON STREET NW", "X": 396483.93, "Y": 140715.67, "ADDR_ID": 294528.0, "LABEL": 10.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.040553444036135, 38.934318023513057 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1812, "NAME": "Banneker Recreation Center", "ADDRESS": "2500 GEORGIA AVENUE NW", "X": 398041.68, "Y": 139425.87, "ADDR_ID": 232292.0, "LABEL": 11.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.022583078447667, 38.922703956808618 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1813, "NAME": "Benjamin Banneker Senior High \/ Early Care", "ADDRESS": "800 EUCLID STREET NW", "X": 397920.84, "Y": 139551.17, "ADDR_ID": 294496.0, "LABEL": 16.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.023976968255838, 38.923832421688878 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1814, "NAME": "Barnard Elementary School", "ADDRESS": "430 DECATUR STREET NW", "X": 398458.99, "Y": 142259.46, "ADDR_ID": 248305.0, "LABEL": 12.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.017777080008301, 38.948230614415095 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1815, "NAME": "Barry Farm Recreation Center", "ADDRESS": "1230 SUMNER ROAD SE", "X": 400290.79, "Y": 132532.6, "ADDR_ID": 285960.0, "LABEL": 13.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.996649566909326, 38.86060895455919 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1816, "NAME": "Beers Elementary School", "ADDRESS": "3600 ALABAMA AVENUE SE", "X": 403852.94, "Y": 132948.76, "ADDR_ID": 278406.0, "LABEL": 14.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.955604750019802, 38.864349505695401 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1817, "NAME": "Bell Multicultural Middle School \/ Columbia Heights Education Campus", "ADDRESS": "3101 16TH STREET NW", "X": 396890.8, "Y": 140185.59, "ADDR_ID": 234375.0, "LABEL": 15.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.035858309450546, 38.929544435283134 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1818, "NAME": "Benning Neighborhood Library", "ADDRESS": "3935 BENNING ROAD NE", "X": 404530.91, "Y": 136260.63, "ADDR_ID": 295144.0, "LABEL": 17.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.947771053504525, 38.894180889997116 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1819, "NAME": "Benning Park Community Center", "ADDRESS": "5100 SOUTHERN AVENUE SE", "X": 406339.46, "Y": 134665.37, "ADDR_ID": 296175.0, "LABEL": 18.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.926938164904811, 38.879799006071963 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1820, "NAME": "Benning Stoddert Community Center", "ADDRESS": "100 STODDERT PLACE SE", "X": 404490.19, "Y": 135667.78, "ADDR_ID": 295821.0, "LABEL": 19.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.948244317623434, 38.888840486407311 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1821, "NAME": "Brent Elementary School", "ADDRESS": "301 NORTH CAROLINA AVENUE SE", "X": 399873.34, "Y": 135218.08, "ADDR_ID": 294479.0, "LABEL": 21.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.00145984985808, 38.884800875330619 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1822, "NAME": "Brentwood Recreation Center", "ADDRESS": "2311 14TH STREET NE", "X": 401481.38, "Y": 139241.02, "ADDR_ID": 286825.0, "LABEL": 22.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.982917327158702, 38.921039701849985 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1823, "NAME": "Brightwood Elementary School", "ADDRESS": "1300 NICHOLSON STREET NW", "X": 397340.19, "Y": 143625.7, "ADDR_ID": 294515.0, "LABEL": 23.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.030688846219704, 38.960535392859974 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1824, "NAME": "Brookland Elementary School", "ADDRESS": "1150 MICHIGAN AVENUE NE", "X": 400775.13, "Y": 141176.41, "ADDR_ID": 294507.0, "LABEL": 24.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.991059329596197, 38.938475200052501 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1825, "NAME": "Browne Middle School", "ADDRESS": "850 26TH STREET NE", "X": 402544.36, "Y": 137194.17, "ADDR_ID": 294501.0, "LABEL": 25.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.970667058238348, 38.902598549009682 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1826, "NAME": "DDOT", "ADDRESS": "2217 14TH STREET NW", "X": 397254.89, "Y": 139103.17, "ADDR_ID": 284289.0, "LABEL": 58.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.031654942115622, 38.919794865395097 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1827, "NAME": "DDOT", "ADDRESS": "414 FARRAGUT STREET NE", "X": 400023.36, "Y": 142594.21, "ADDR_ID": 309422.0, "LABEL": 59.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.999730507808664, 38.951247485740616 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1828, "NAME": "DDOT HQ", "ADDRESS": "55 M STREET SE", "X": 399393.47, "Y": 134269.52, "ADDR_ID": 306664.0, "LABEL": 60.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.006989868178508, 38.876255677470482 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1829, "NAME": "DDS", "ADDRESS": "1125 15TH STREET NW", "X": 397041.86, "Y": 137401.91, "ADDR_ID": 240247.0, "LABEL": 61.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.034104145556526, 38.904468648970528 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1830, "NAME": "Deal Middle School", "ADDRESS": "3815 FORT DRIVE NW", "X": 393481.78, "Y": 142779.94, "ADDR_ID": 277548.0, "LABEL": 62.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.075199067861377, 38.952896407687987 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1831, "NAME": "Deanwood Recreation Center \/ Deanwood Neighborhood Library", "ADDRESS": "1350 49TH STREET NE", "X": 405884.39, "Y": 137844.91, "ADDR_ID": 307551.0, "LABEL": 63.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.932155579644615, 38.908444627123934 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1832, "NAME": "DHCD", "ADDRESS": "1800 MARTIN LUTHER KING JR AVENUE SE", "X": 401034.28, "Y": 133299.78, "ADDR_ID": 56153.0, "LABEL": 64.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.988082047218171, 38.867519469998534 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1833, "NAME": "DHS", "ADDRESS": "717 14TH STREET NW", "X": 397262.45, "Y": 136783.55, "ADDR_ID": 279904.0, "LABEL": 65.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.031558517828842, 38.898898957142244 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1834, "NAME": "DMH", "ADDRESS": "1125 SPRING ROAD NW", "X": 397520.31, "Y": 140926.42, "ADDR_ID": 283920.0, "LABEL": 66.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.02860086706049, 38.936220058760256 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1835, "NAME": "DMH\/DOES", "ADDRESS": "609 H STREET NE", "X": 400174.19, "Y": 136907.02, "ADDR_ID": 288773.0, "LABEL": 67.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.997991903654139, 38.900015464647517 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1836, "NAME": "DOES", "ADDRESS": "3720 MARTIN LUTHER KING JR AVENUE SE", "X": 399462.71, "Y": 129919.8, "ADDR_ID": 278424.0, "LABEL": 68.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.006188523510474, 38.837071593465261 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1837, "NAME": "DOES", "ADDRESS": "625 H STREET NE", "X": 400226.57, "Y": 136899.1, "ADDR_ID": 288803.0, "LABEL": 69.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.997388059394979, 38.899944106508087 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1838, "NAME": "DOES", "ADDRESS": "64 NEW YORK AVENUE NE", "X": 399396.03, "Y": 137923.7, "ADDR_ID": 289616.0, "LABEL": 70.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.006963578176112, 38.909173884699143 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1839, "NAME": "DOES", "ADDRESS": "77 P STREET NE", "X": 399399.75, "Y": 137953.63, "ADDR_ID": 301561.0, "LABEL": 71.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.006920713944297, 38.909443506962496 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1840, "NAME": "DOES", "ADDRESS": "801 NORTH CAPITOL STREET NE", "X": 399253.51, "Y": 136961.13, "ADDR_ID": 79625.0, "LABEL": 72.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.008605741318178, 38.900502607194625 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1841, "NAME": "DOES", "ADDRESS": "4058 MINNESOTA AVENUE NE", "X": 404523.47, "Y": 136570.1, "ADDR_ID": 305174.0, "LABEL": 73.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.947854778537263, 38.896968746750943 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1842, "NAME": "DOH", "ADDRESS": "825 NORTH CAPITOL STREET NE", "X": 399267.37, "Y": 137018.38, "ADDR_ID": 289003.0, "LABEL": 74.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.00844602050303, 38.901018347305026 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1843, "NAME": "DOH at DC Village \/ DOH Warehouse", "ADDRESS": "5 DC VILLAGE LANE SW", "X": 398523.0, "Y": 127466.17, "ADDR_ID": 309409.0, "LABEL": 75.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.017006868393693, 38.814967065251359 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1844, "NAME": "Douglass Community Center", "ADDRESS": "1898 STANTON TERRACE SE", "X": 401930.33, "Y": 131647.8, "ADDR_ID": 286513.0, "LABEL": 76.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.977761548811543, 38.852636229366837 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1845, "NAME": "DPR Headquarters", "ADDRESS": "3149 16TH STREET NW", "X": 396869.35, "Y": 140252.71, "ADDR_ID": 234376.0, "LABEL": 77.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.036105997790813, 38.930148996779437 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1846, "NAME": "DPR HQ \/ DRES", "ADDRESS": "1250 U STREET NW", "X": 397481.94, "Y": 138760.45, "ADDR_ID": 297746.0, "LABEL": 78.0, "TYPE": "INDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.02903548253289, 38.916708211093713 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1847, "NAME": "DPW", "ADDRESS": "1725 15TH STREET NE", "X": 401634.83, "Y": 138372.61, "ADDR_ID": 301201.0, "LABEL": 79.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.981149871913146, 38.913216505727014 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1848, "NAME": "DPW", "ADDRESS": "2800 NEW YORK AVENUE NE", "X": 402915.72, "Y": 138864.78, "ADDR_ID": 300368.0, "LABEL": 80.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.96637869954246, 38.917646820785912 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1849, "NAME": "Drew Elementary School", "ADDRESS": "5600 EADS STREET NE", "X": 406946.23, "Y": 136463.61, "ADDR_ID": 277686.0, "LABEL": 81.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.919927007925182, 38.89599364104081 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1850, "NAME": "Dunbar Senior High School", "ADDRESS": "1301 NEW JERSEY AVENUE NW", "X": 398725.55, "Y": 137851.55, "ADDR_ID": 279021.0, "LABEL": 82.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.014693861080744, 38.908523216217993 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1851, "NAME": "MPD Juvenile Processing Center \/ DYRS", "ADDRESS": "1000 MOUNT OLIVET ROAD NE", "X": 400989.94, "Y": 138252.92, "ADDR_ID": 290013.0, "LABEL": 198.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 3 }, "geometry": { "type": "Point", "coordinates": [ -76.98858583836352, 38.912139260765422 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1852, "NAME": "Eastern Market", "ADDRESS": "225 7TH STREET SE", "X": 400306.4, "Y": 135397.02, "ADDR_ID": 300829.0, "LABEL": 85.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.996468434375089, 38.886412790832118 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1853, "NAME": "Eastern Senior High School", "ADDRESS": "1700 EAST CAPITOL STREET NE", "X": 401762.5, "Y": 135840.08, "ADDR_ID": 289529.0, "LABEL": 86.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.979684293316438, 38.890402329031858 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1854, "NAME": "Eaton Elementary School", "ADDRESS": "3301 LOWELL STREET NW", "X": 394293.04, "Y": 140540.3, "ADDR_ID": 294562.0, "LABEL": 87.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.065821138452662, 38.932726738823582 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1855, "NAME": "Eliot Middle School", "ADDRESS": "1830 CONSTITUTION AVENUE NE", "X": 401823.73, "Y": 136065.31, "ADDR_ID": 286499.0, "LABEL": 88.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.978977919200759, 38.892431159767348 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1856, "NAME": "Ellington School of The Arts", "ADDRESS": "3500 R STREET NW", "X": 393902.4, "Y": 138400.27, "ADDR_ID": 294569.0, "LABEL": 89.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.070307568060286, 38.91344604442115 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1857, "NAME": "Emery Educational Campus", "ADDRESS": "1720 1ST STREET NE", "X": 399412.34, "Y": 138404.24, "ADDR_ID": 294527.0, "LABEL": 90.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.006775940412183, 38.913502763443148 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1858, "NAME": "Emery Recreation Center", "ADDRESS": "5801 GEORGIA AVENUE NW", "X": 397583.92, "Y": 143434.89, "ADDR_ID": 285269.0, "LABEL": 91.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.027876021198495, 38.958817231647117 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1859, "NAME": "FEMS-Engine Company 18 (Truck Company 7)", "ADDRESS": "414 8TH STREET SE", "X": 400465.33, "Y": 135046.96, "ADDR_ID": 280007.0, "LABEL": 105.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.994636844642628, 38.883259246669247 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1860, "NAME": "FEMS-Engine Company 2 (Rescue Squad 1)", "ADDRESS": "500 F STREET NW", "X": 398309.58, "Y": 136580.68, "ADDR_ID": 299998.0, "LABEL": 107.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.01948668859967, 38.897074068144626 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1861, "NAME": "FEMS", "ADDRESS": "3170 V STREET NE", "X": 403289.84, "Y": 139022.37, "ADDR_ID": 287707.0, "LABEL": 92.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.962063950057541, 38.919065122267689 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1862, "NAME": "FEMS HQ at Grimke Building", "ADDRESS": "1923 VERMONT AVENUE NW", "X": 397800.12, "Y": 138714.15, "ADDR_ID": 239514.0, "LABEL": 94.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.025366434584726, 38.916291979419199 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1863, "NAME": "CCDC - PR Harris \/ FEMS", "ADDRESS": "4600 LIVINGSTON ROAD SE", "X": 399731.95, "Y": 128458.05, "ADDR_ID": 294600.0, "LABEL": 34.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 3 }, "geometry": { "type": "Point", "coordinates": [ -77.003086839218952, 38.823903594499008 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1864, "NAME": "FEMS Fire Boat", "ADDRESS": "550 WATER STREET SW", "X": 398190.8, "Y": 134005.4, "ADDR_ID": 294491.0, "LABEL": 93.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.020849170976291, 38.873874727483781 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1865, "NAME": "FEMS Training Academy", "ADDRESS": "4600 SHEPHERD PARKWAY SW", "X": 398603.56, "Y": 128084.18, "ADDR_ID": 295479.0, "LABEL": 95.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.016080516414178, 38.820534528564032 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1866, "NAME": "FEMS-Engine Company 1", "ADDRESS": "2225 M STREET NW", "X": 395680.65, "Y": 137516.39, "ADDR_ID": 294540.0, "LABEL": 96.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.049798137723911, 38.905494289764228 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1867, "NAME": "FEMS-Engine Company 10", "ADDRESS": "1342 FLORIDA AVENUE NE", "X": 401154.17, "Y": 137081.59, "ADDR_ID": 294519.0, "LABEL": 97.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.986694209549697, 38.901587313095099 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1868, "NAME": "FEMS-Engine Company 11", "ADDRESS": "3420 14TH STREET NW", "X": 397133.32, "Y": 140485.45, "ADDR_ID": 234580.0, "LABEL": 98.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.033062586396895, 38.932246490818827 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1869, "NAME": "FEMS-Engine Company 12", "ADDRESS": "2225 5TH STREET NE", "X": 400070.72, "Y": 139115.87, "ADDR_ID": 294541.0, "LABEL": 99.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.999184498549297, 38.919913555740578 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1870, "NAME": "FEMS-Engine Company 13", "ADDRESS": "450 6TH STREET SW", "X": 398317.42, "Y": 135085.66, "ADDR_ID": 294488.0, "LABEL": 100.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.019392650177579, 38.883606384341853 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1871, "NAME": "FEMS-Engine Company 14", "ADDRESS": "4801 NORTH CAPITOL STREET NE", "X": 399281.07, "Y": 142329.91, "ADDR_ID": 288276.0, "LABEL": 101.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -77.008293645101617, 38.948866304974345 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1872, "NAME": "FEMS-Engine Company 15", "ADDRESS": "2101 14TH STREET SE", "X": 401208.69, "Y": 133005.19, "ADDR_ID": 156246.0, "LABEL": 102.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.986072848081108, 38.864865459690392 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1873, "NAME": "FEMS-Engine Company 16", "ADDRESS": "1018 13TH STREET NW", "X": 397396.45, "Y": 137273.24, "ADDR_ID": 240645.0, "LABEL": 103.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.030015620039194, 38.903310666174164 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1874, "NAME": "FEMS-Engine Company 17", "ADDRESS": "1227 MONROE STREET NE", "X": 400873.27, "Y": 140493.83, "ADDR_ID": 294510.0, "LABEL": 104.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.989928210844425, 38.932326222866799 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1875, "NAME": "FEMS-Engine Company 19", "ADDRESS": "2813 PENNSYLVANIA AVENUE SE", "X": 402864.79, "Y": 133752.76, "ADDR_ID": 44167.0, "LABEL": 106.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.966987292655915, 38.871596039745967 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1876, "NAME": "FEMS-Engine Company 20", "ADDRESS": "4300 WISCONSIN AVENUE NW", "X": 393201.59, "Y": 141900.67, "ADDR_ID": 222965.0, "LABEL": 108.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.078422833706341, 38.944973579721513 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1877, "NAME": "FEMS-Engine Company 21", "ADDRESS": "1763 LANIER PLACE NW", "X": 396339.34, "Y": 139655.95, "ADDR_ID": 236004.0, "LABEL": 109.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.042215455360946, 38.924771148181001 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1878, "NAME": "FEMS-Engine Company 22", "ADDRESS": "5760 GEORGIA AVENUE NW", "X": 397543.85, "Y": 143564.1, "ADDR_ID": 294612.0, "LABEL": 110.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.028338799843326, 38.95998107744164 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1879, "NAME": "FEMS-Engine Company 23", "ADDRESS": "2119 G STREET NW", "X": 395868.76, "Y": 136749.03, "ADDR_ID": 242505.0, "LABEL": 111.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.047624787209813, 38.898582543546055 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1880, "NAME": "FEMS-Engine Company 24", "ADDRESS": "5101 GEORGIA AVENUE NW", "X": 397656.83, "Y": 142694.1, "ADDR_ID": 251752.0, "LABEL": 112.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.027032276153662, 38.952144197051467 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1881, "NAME": "FEMS-Engine Company 25", "ADDRESS": "3203 MARTIN LUTHER KING JR AVENUE SE", "X": 399932.28, "Y": 130595.23, "ADDR_ID": 278344.0, "LABEL": 113.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.000780067617981, 38.843156332407759 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1882, "NAME": "FEMS-Engine Company 26", "ADDRESS": "1340 RHODE ISLAND AVENUE NE", "X": 401147.38, "Y": 139656.9, "ADDR_ID": 294518.0, "LABEL": 114.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -76.986768184398784, 38.924786581810125 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1883, "NAME": "FEMS-Engine Company 27", "ADDRESS": "4201 MINNESOTA AVENUE NE", "X": 404922.84, "Y": 137027.2, "ADDR_ID": 294591.0, "LABEL": 115.0, "TYPE": "INDOOR+OUTDOOR", "NUMBER_OF_": 2 }, "geometry": { "type": "Point", "coordinates": [ -76.943247684852395, 38.901084321570728 ] } },
+{ "type": "Feature", "properties": { "OBJECTID": 1884, "NAME": "FEMS-Engine Company 3", "ADDRESS": "439 NEW JERSEY AVENUE NW", "X": 399054.4, "Y": 136442.95, "ADDR_ID": 237163.0, "LABEL": 116.0, "TYPE": "INDOOR", "NUMBER_OF_": 1 }, "geometry": { "type": "Point", "coordinates": [ -77.01090042265082, 38.895834462874255 ] } }
+]
+}
+
+},{}],11:[function(require,module,exports){
 var config = require('./client_config');
 var tweet_markers = require('./tweet_markers');
 var instagram_markers = require('./instagram_markers');
 var _ = require('lodash');
 var FadeMarker = require('./base_markers').FadeMarker;
 _.str =require('underscore.string');
-var lineSequences = require('./line_sequences.json');
 var metroLines = require('./data/straight_metro_lines.json');
+var fundraisers = require('./data/fundraisers.json');
 
 $(document).ready(function(){
 
-// var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-// var map = new L.Map('map', { zoomControl:false });
-//     var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-//     var osm = new L.TileLayer(osmUrl, {minZoom: 15, maxZoom: 19, attribution: osmAttrib});       
-    // map.addLayer(osm);
     var map = L.mapbox.map('map', 'willhorning.ja8hjdhd', { zoomControl:false });
     map.setView(config.MAP_CENTER, config.MAP_ZOOM);
     
@@ -9706,77 +9772,127 @@ $(document).ready(function(){
     layers.instagrams = L.layerGroup().addTo(map);
     layers.crimes = L.layerGroup();
     layers.trains = L.layerGroup();
-    // layers.cameras = new L.MarkerClusterGroup({disableClusteringAtZoom: 14});
+    // layers.cameras = L.layerGroup();
     layers.embassies = L.layerGroup();
     layers.metroLines = L.layerGroup().addTo(map);
     layers.metroStations = L.layerGroup().addTo(map);
     layers.wifi = L.layerGroup();
 
-    var lineStyle = function(line){
-        switch (line) {
-            case 'BL': return "#0000B0";
-            case 'RD':   return "#9E0003";
-            case 'OR': return "#C97600";
-            case 'YL': return "#DBD800";
-            case 'GR': return "#059600";
-            default: return "#aaaaaa";
+    layers.fundraisers = L.layerGroup().addTo(map);
+
+    _.forEach(fundraisers, function(p){
+        console.log(p);
+        var popupContent = [
+            'Address: ' + p.venue.address1,
+            'Venue: ' + p.venue.venue_name,
+            'Beneficiary: ' + p.beneficiaries[0].name,
+            'Party: ' + p.party,
+            'Avg. Contribution: ' + p.contributions_info,
+            'Date :' + p.start_date
+        ].join('<br><br>');
+        var iconUrl = config.NO_PARTY_ICON;
+        if(p.party == 'R') iconUrl = config.GOP_ICON;
+        else if(p.party == 'D') iconUrl = config.DNC_ICON;
+        var m = new FadeMarker([p.lat, p.lon], {icon: L.icon({
+            iconUrl: iconUrl,
+            iconsize: [16,16]
+        })}).bindPopup(popupContent);
+        layers.fundraisers.addLayer(m);
+    })
+
+    var control = require('./controls')(map, layers);
+
+     $.getJSON('/tweet_queue', function(tweets){
+        _.forEach(tweets, function(tweet){
+            if(tweetMarkerQueue.length > config.MARKER_QUEUE_SIZE){
+                layers.tweets.removeLayer(tweetMarkerQueue.shift());
+            }
+            var m = tweet_markers.addMarker(tweet, map);
+            tweetMarkerQueue.push(m);
+            layers.tweets.addLayer(m);            
+        })
+    });
+
+    $.getJSON('/instagram_queue', function(instagrams){
+        _.forEach(instagrams, function(ig_post){
+            if(igMarkerQueue.length > config.MARKER_QUEUE_SIZE){
+                layers.instagrams.removeLayer(igMarkerQueue.shift());
+            }
+            var marker = instagram_markers.addMarker(
+                ig_post, 
+                map, 
+                igMarkerQueue
+            );
+            igMarkerQueue.push(marker);        
+            layers.instagrams.addLayer(marker);
+        });
+    });
+
+    $.getJSON('/crime_queue', function(crimes){
+        _.forEach(crimes, function(crime){
+            var crimeIcon = L.divIcon({
+                className: 'markericon',
+                iconAnchor: [12, 12],
+                html: _.str.sprintf(
+                    '<img style="width:24px;" src="%s">', 
+                    config.CRIME_ICON_URLS[crime.offense])
+            });
+            var marker = new FadeMarker(
+                [crime.lat, crime.lon], 
+                {icon: crimeIcon}
+            ).bindPopup(crime.popupContent);
+            layers.crimes.addLayer(marker);
+        });
+    });
+
+    var wifiGeojson = require('./data/wifi.json');
+    layers.wifi = L.geoJson(wifiGeojson, {
+        pointToLayer: function(feature, latlng){
+            var ll = feature.geometry.coordinates;
+            // if(ll[0].isNaN() || ll[1].isNaN()) console.log(ll);
+            return L.circle([ll[1], ll[0]], 100, {stroke: false, fillColor: '#009999', fillOpacity: 0.6});
         }
-    }
-    
-    var parallelLine = function(latlngs, dist, n_lines, colors, options){
-        var lines = [];
-        for(var i = 0; i < n_lines; i++){
-            var newLatlngs = [latlngs[0]];
-            for(var j = 1; j < latlngs.length - 1; j++){
-                newLatlngs.push([latlngs[j][0] + dist * i, latlngs[j][1] + dist * i]);
-            }   
-            newLatlngs.push(latlngs[latlngs.length - 1]);
-            // console.log(newLatlngs);
-            lines.push(L.polyline(newLatlngs, {color: colors[i], weight:3}));
-        }
-        return lines;
-    }
+    });
 
     _.forOwn(metroLines, function(latlngs, line){
-        // if(line == 'BL'){
-        //     var lines = parallelLine(latlngs, 0.0001, 2, ['#0000ff', '#00ff00'], [{},{}]);
-        //     console.log(lines);
-        //     _.forEach(lines, function(l){layers.metroLines.addLayer(l);});
-        // }
-        // else{
-            var color = lineStyle(line);
-            layers.metroLines.addLayer(L.polyline(latlngs, {color: color, opacity: 0.6, weight: 2}));
-        // }
+        var color = config.metro.LINE_COLOR[line];
+        layers.metroLines.addLayer(
+            L.polyline(
+                latlngs, 
+                {color: color, opacity: 0.6, weight: 2}
+            )
+        );
     });
 
 
-
-    var geoLayers = require('./geojson_layers')(layers);
-    var control = require('./controls')(map, layers);
-    // layers.test = new L.MarkerClusterGroup().addTo(map);
-
-    // _.forEach(['GR'], function(line){
-    //     _.forEach(linePoint[line], function(p){
-    //         var m = L.marker([p[1], p[0]]).bindPopup('<iframe src="http://http://www.wmata.com/rider_tools/pids/showpid.cfm?station_id=36"></iframe>');
-    //         layers.test.addLayer(m);
-    //     })  
-    // })
-
-    // var wifiGeojson = require('./data/wifi.json');
-    // layers.wifi = L.geoJson(wifiGeojson, {
+    // layers.cameras.addLayer(L.geoJson(trafficCameras, {
     //     pointToLayer: function(feature, latlng){
-    //         var ll = feature.geometry.coordinates;
-    //         // if(ll[0].isNaN() || ll[1].isNaN()) console.log(ll);
-    //         return L.circle([ll[1], ll[0]], 100, {stroke: false, fillColor: '#009999', fillOpacity: 0.6});
+    //         return new FadeMarker(latlng, {icon: L.divIcon({
+    //             className: 'foo',
+    //             html: '<img style="width:24px;" src="' + config.CAMERA_ICON_URL + '">',
+    //             iconSize: [16,16]
+    //         })}).bindPopup('Traffic Camera');
     //     }
-    // });
+    // }));
 
-    // var wifiPoints = _.map(wifiGeojson.features, function(feature){
-    //     var lonlat = feature.geometry.coordinates;
-    //     return [lonlat[1], lonlat[0]];
-    // })
-    // var heat = L.heatLayer(wifiPoints, {radius: 55, maxZoom: 18}).addTo(map);
-    // var heat = L.heatLayer(crime_vals.slice(0,10000), {radius: 10, maxZoom: 18}).addTo(map);
+    var stationUpdateCodes = require('./data/station-update-codes.json');
+    var stations = require('./data/stations.json');
+    _.forEach(_.values(stations), function(station){
+        var updateCode = stationUpdateCodes[station.Code];
+        var popup = L.popup({
+            maxWidth: 500,
+            maxHeight: 500,
+            className: 'metroPopup'
+        }).setContent('<div class="metroUpdates">' + 
+            '<iframe style="width:350px;height:390px" frameBorder=0 src="' + 
+            _.str.sprintf(config.metro.UPDATES_URL, updateCode) + '""></iframe></div>');
+        var m = new FadeMarker([station.Lat, station.Lon], {icon: L.icon({
+                    iconUrl: '/images/metro_icon.gif',
+                    iconSize: [16, 16],
+                    iconAnchor: [8, 8]
+                })}).bindPopup(popup);
+        layers.metroStations.addLayer(m);    
+    });
 
     map.on('popupopen', function(e){
         if($(e.popup._content).hasClass('tweetPopup')){
@@ -9804,36 +9920,16 @@ $(document).ready(function(){
 
     var socket = io();
 
-    var stationUpdateCodes = require('./data/station-update-codes.json');
-    var stations = require('./data/stations.json');
-    _.forEach(_.values(stations), function(station){
-        var updateCode = stationUpdateCodes[station.Code];
-        var popup = L.popup({
-            maxWidth: 500,
-            maxHeight: 500,
-            className: 'metroPopup'
-        }).setContent('<div class="metroUpdates">' + 
-            '<iframe style="width:350px;height:390px" frameBorder=0 src="' + 
-            _.str.sprintf(config.metro.UPDATES_URL, updateCode) + '""></iframe></div>');
-        var m = new FadeMarker([station.Lat, station.Lon], {icon: L.icon({
-                    iconUrl: '/images/metro_icon.gif',
-                    iconSize: [16, 16],
-                    iconAnchor: [8, 8]
-                })}).bindPopup(popup);
-        layers.metroStations.addLayer(m);    
-    });
-
     var trainMarkers = [];
     socket.on('train_updates', function(updates){
         layers.trains.clearLayers();
         trainMarkers = [];
         _.forEach(updates, function(update){
-            console.log(update.line);
-            var color = lineStyle(update.line);
+            var color = config.metro.LINE_COLOR[update.line];
             var m = L.circleMarker(update.latlon, {radius: 6, stroke: false, fillColor: color, fillOpacity: 0.6});
             layers.trains.addLayer(m);
         });
-    })
+    });
 
     socket.on('tweet', function(tweet){
         if(tweetMarkerQueue.length > config.MARKER_QUEUE_SIZE){
@@ -9858,100 +9954,11 @@ $(document).ready(function(){
             layers.instagrams.addLayer(marker);
         });
     });
-
-    socket.on('crime', function(crime){     
-        var crimeIcon = L.divIcon({
-            className: 'markericon',
-            iconAnchor: [12, 12],
-            html: _.str.sprintf(
-                '<img style="width:24px;" src="%s">', 
-                config.CRIME_ICON_URLS[crime.offense])
-        });
-        var marker = new FadeMarker(
-            [crime.lat, crime.lon], 
-            {icon: crimeIcon}
-        ).bindPopup(crime.popupContent);
-        layers.crimes.addLayer(marker);
-    });
+   
 });
 
 
-},{"./base_markers":3,"./client_config":4,"./controls":5,"./data/station-update-codes.json":7,"./data/stations.json":8,"./data/straight_metro_lines.json":9,"./geojson_layers":11,"./instagram_markers":12,"./line_sequences.json":13,"./tweet_markers":14,"lodash":1,"underscore.string":2}],11:[function(require,module,exports){
-var FadeMarker = require('./base_markers').FadeMarker;
-var config = require('./client_config');
-var country_codes = require('./data/country-codes.json');
-
-module.exports = function(layers){
-
-    // $.getJSON('/javascripts/geojson/metrolines.geojson', function(data){
-    //     layers.metroLines.addLayer(L.geoJson(data, {
-    //         style: function(feature) {
-    //             switch (feature.properties.NAME) {
-    //                 case 'blue': return {color: "#0000ff"};
-    //                 case 'red':   return {color: "#ff0000"};
-    //                 case 'orange': return {color: "#ff6600"};
-    //                 case 'yellow': return {color: "#ffff00"};
-    //                 case 'green': return {color: "#006600"};
-    //                 default: return {color: "#ffffff"};
-    //             }
-    //         }
-    //     }));
-    // });
-
-
-
-    $.getJSON('/javascripts/geojson/wifi.geojson', function(data){
-        layers.wifi.addLayer(L.geoJson(data, {
-            pointToLayer: function(feature, latlng){
-                return new FadeMarker(latlng, {icon: L.icon({
-                    iconUrl: config.WIFI_ICON_URL,
-                    iconSize: [24, 24],
-                    iconAnchor: [12, 12]
-                })}).bindPopup(feature['properties']['NAME']);
-            }
-        }));
-    });
-
-
-    // $.getJSON('/javascripts/geojson/metro_stations.geojson', function(data){
-    //     layers.metroStations.addLayer(L.geoJson(data, {
-    //         pointToLayer: function(feature, latlng){
-    //             return new FadeMarker(latlng, {icon: L.icon({
-    //                 iconUrl: '/images/metro_icon.gif',
-    //                 iconSize: [16, 16],
-    //                 iconAnchor: [8, 8]
-    //             })}).bindPopup(feature['properties']['NAME'] + '    ' + latlng);
-    //         }
-    //     }));
-    // });
-
-    // $.getJSON('/javascripts/geojson/embassies.geojson', function(data){
-    //     layers.embassies.addLayer(L.geoJson(data, {
-    //         pointToLayer: function(feature, latlng){
-    //             var code = country_codes[feature.properties.COUNTRY] || 'ks';
-    //             return new FadeMarker(latlng, {icon: L.icon({
-    //                 iconUrl: '/images/flags/png/' + code.toLowerCase() + '.png',
-    //                 iconSize: [24, 16],
-    //                 iconAnchor: [12, 8]
-    //             })}).bindPopup(feature.properties.COUNTRY);
-    //         }
-    //     }))
-    // })
-
-    // $.getJSON('/javascripts/geojson/TrafficCamera.geojson', function(data){   
-    //     layers.cameras.addLayer(L.geoJson(data, {
-    //         pointToLayer: function(feature, latlng){
-    //             return new FadeMarker(latlng, {icon: L.divIcon({
-    //                 className: 'foo',
-    //                 html: '<img style="width:24px;" src="' + config.CAMERA_ICON_URL + '">',
-    //                 iconSize: [16,16]
-    //             })}).bindPopup('Traffic Camera');
-    //         }
-    //     }));
-    // });
-    return layers;
-};
-},{"./base_markers":3,"./client_config":4,"./data/country-codes.json":6}],12:[function(require,module,exports){
+},{"./base_markers":3,"./client_config":4,"./controls":5,"./data/fundraisers.json":6,"./data/station-update-codes.json":7,"./data/stations.json":8,"./data/straight_metro_lines.json":9,"./data/wifi.json":10,"./instagram_markers":12,"./tweet_markers":13,"lodash":1,"underscore.string":2}],12:[function(require,module,exports){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
@@ -9983,1043 +9990,6 @@ module.exports = {
     addMarker: addMarker
 }
 },{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}],13:[function(require,module,exports){
-module.exports={
-    "GR": [
-        {
-            "DistanceToPrev": 0,
-            "LineCode": "GR",
-            "SeqNum": 1,
-            "StationCode": "F11",
-            "StationName": "Branch Avenue"
-        },
-        {
-            "DistanceToPrev": 9144,
-            "LineCode": "GR",
-            "SeqNum": 2,
-            "StationCode": "F10",
-            "StationName": "Suitland"
-        },
-        {
-            "DistanceToPrev": 7658,
-            "LineCode": "GR",
-            "SeqNum": 3,
-            "StationCode": "F09",
-            "StationName": "Naylor Road"
-        },
-        {
-            "DistanceToPrev": 6612,
-            "LineCode": "GR",
-            "SeqNum": 4,
-            "StationCode": "F08",
-            "StationName": "Southern Ave"
-        },
-        {
-            "DistanceToPrev": 5508,
-            "LineCode": "GR",
-            "SeqNum": 5,
-            "StationCode": "F07",
-            "StationName": "Congress Height"
-        },
-        {
-            "DistanceToPrev": 6851,
-            "LineCode": "GR",
-            "SeqNum": 6,
-            "StationCode": "F06",
-            "StationName": "Anacostia"
-        },
-        {
-            "DistanceToPrev": 6254,
-            "LineCode": "GR",
-            "SeqNum": 7,
-            "StationCode": "F05",
-            "StationName": "Navy Yard"
-        },
-        {
-            "DistanceToPrev": 3326,
-            "LineCode": "GR",
-            "SeqNum": 8,
-            "StationCode": "F04",
-            "StationName": "Waterfront"
-        },
-        {
-            "DistanceToPrev": 4158,
-            "LineCode": "GR",
-            "SeqNum": 9,
-            "StationCode": "F03",
-            "StationName": "L'Enfant Plaza"
-        },
-        {
-            "DistanceToPrev": 2950,
-            "LineCode": "GR",
-            "SeqNum": 10,
-            "StationCode": "F02",
-            "StationName": "Archives"
-        },
-        {
-            "DistanceToPrev": 1879,
-            "LineCode": "GR",
-            "SeqNum": 11,
-            "StationCode": "F01",
-            "StationName": "Gallery Place"
-        },
-        {
-            "DistanceToPrev": 2985,
-            "LineCode": "GR",
-            "SeqNum": 12,
-            "StationCode": "E01",
-            "StationName": "Mt Vernon Sq"
-        },
-        {
-            "DistanceToPrev": 2527,
-            "LineCode": "GR",
-            "SeqNum": 13,
-            "StationCode": "E02",
-            "StationName": "Shaw"
-        },
-        {
-            "DistanceToPrev": 2555,
-            "LineCode": "GR",
-            "SeqNum": 14,
-            "StationCode": "E03",
-            "StationName": "U Street"
-        },
-        {
-            "DistanceToPrev": 4715,
-            "LineCode": "GR",
-            "SeqNum": 15,
-            "StationCode": "E04",
-            "StationName": "Columbia Heights"
-        },
-        {
-            "DistanceToPrev": 4717,
-            "LineCode": "GR",
-            "SeqNum": 16,
-            "StationCode": "E05",
-            "StationName": "Georgia Avenue"
-        },
-        {
-            "DistanceToPrev": 8348,
-            "LineCode": "GR",
-            "SeqNum": 17,
-            "StationCode": "E06",
-            "StationName": "Fort Totten"
-        },
-        {
-            "DistanceToPrev": 10406,
-            "LineCode": "GR",
-            "SeqNum": 18,
-            "StationCode": "E07",
-            "StationName": "West Hyattsville"
-        },
-        {
-            "DistanceToPrev": 6670,
-            "LineCode": "GR",
-            "SeqNum": 19,
-            "StationCode": "E08",
-            "StationName": "Prince Georges Plaza"
-        },
-        {
-            "DistanceToPrev": 10368,
-            "LineCode": "GR",
-            "SeqNum": 20,
-            "StationCode": "E09",
-            "StationName": "College Park"
-        },
-        {
-            "DistanceToPrev": 12981,
-            "LineCode": "GR",
-            "SeqNum": 21,
-            "StationCode": "E10",
-            "StationName": "Greenbelt"
-        }
-    ],
-    "BL": [
-        {
-            "DistanceToPrev": 0,
-            "LineCode": "BL",
-            "SeqNum": 1,
-            "StationCode": "J03",
-            "StationName": "Franconia-Springf'ld"
-        },
-        {
-            "DistanceToPrev": 18695,
-            "LineCode": "BL",
-            "SeqNum": 2,
-            "StationCode": "J02",
-            "StationName": "Van Dorn St"
-        },
-        {
-            "DistanceToPrev": 20158,
-            "LineCode": "BL",
-            "SeqNum": 3,
-            "StationCode": "C13",
-            "StationName": "King Street"
-        },
-        {
-            "DistanceToPrev": 3453,
-            "LineCode": "BL",
-            "SeqNum": 4,
-            "StationCode": "C12",
-            "StationName": "Braddock Road"
-        },
-        {
-            "DistanceToPrev": 16108,
-            "LineCode": "BL",
-            "SeqNum": 5,
-            "StationCode": "C10",
-            "StationName": "National Arpt"
-        },
-        {
-            "DistanceToPrev": 2939,
-            "LineCode": "BL",
-            "SeqNum": 6,
-            "StationCode": "C09",
-            "StationName": "Crystal City"
-        },
-        {
-            "DistanceToPrev": 4068,
-            "LineCode": "BL",
-            "SeqNum": 7,
-            "StationCode": "C08",
-            "StationName": "Pentagon City"
-        },
-        {
-            "DistanceToPrev": 3216,
-            "LineCode": "BL",
-            "SeqNum": 8,
-            "StationCode": "C07",
-            "StationName": "Pentagon"
-        },
-        {
-            "DistanceToPrev": 7036,
-            "LineCode": "BL",
-            "SeqNum": 9,
-            "StationCode": "C06",
-            "StationName": "Arlington Cemetery"
-        },
-        {
-            "DistanceToPrev": 4936,
-            "LineCode": "BL",
-            "SeqNum": 10,
-            "StationCode": "C05",
-            "StationName": "Rosslyn"
-        },
-        {
-            "DistanceToPrev": 6993,
-            "LineCode": "BL",
-            "SeqNum": 11,
-            "StationCode": "C04",
-            "StationName": "Foggy Bottom"
-        },
-        {
-            "DistanceToPrev": 2783,
-            "LineCode": "BL",
-            "SeqNum": 12,
-            "StationCode": "C03",
-            "StationName": "Farragut West"
-        },
-        {
-            "DistanceToPrev": 2001,
-            "LineCode": "BL",
-            "SeqNum": 13,
-            "StationCode": "C02",
-            "StationName": "McPherson Square"
-        },
-        {
-            "DistanceToPrev": 2359,
-            "LineCode": "BL",
-            "SeqNum": 14,
-            "StationCode": "C01",
-            "StationName": "Metro Center"
-        },
-        {
-            "DistanceToPrev": 1561,
-            "LineCode": "BL",
-            "SeqNum": 15,
-            "StationCode": "D01",
-            "StationName": "Federal Triangle"
-        },
-        {
-            "DistanceToPrev": 2016,
-            "LineCode": "BL",
-            "SeqNum": 16,
-            "StationCode": "D02",
-            "StationName": "Smithsonian"
-        },
-        {
-            "DistanceToPrev": 2643,
-            "LineCode": "BL",
-            "SeqNum": 17,
-            "StationCode": "D03",
-            "StationName": "L'Enfant Plaza"
-        },
-        {
-            "DistanceToPrev": 1757,
-            "LineCode": "BL",
-            "SeqNum": 18,
-            "StationCode": "D04",
-            "StationName": "Federal Center SW"
-        },
-        {
-            "DistanceToPrev": 3052,
-            "LineCode": "BL",
-            "SeqNum": 19,
-            "StationCode": "D05",
-            "StationName": "Capitol South"
-        },
-        {
-            "DistanceToPrev": 2703,
-            "LineCode": "BL",
-            "SeqNum": 20,
-            "StationCode": "D06",
-            "StationName": "Eastern Market"
-        },
-        {
-            "DistanceToPrev": 3289,
-            "LineCode": "BL",
-            "SeqNum": 21,
-            "StationCode": "D07",
-            "StationName": "Potomac Avenue"
-        },
-        {
-            "DistanceToPrev": 3750,
-            "LineCode": "BL",
-            "SeqNum": 22,
-            "StationCode": "D08",
-            "StationName": "Stadium Armory"
-        },
-        {
-            "DistanceToPrev": 12162,
-            "LineCode": "BL",
-            "SeqNum": 23,
-            "StationCode": "G01",
-            "StationName": "Benning Road"
-        },
-        {
-            "DistanceToPrev": 7779,
-            "LineCode": "BL",
-            "SeqNum": 24,
-            "StationCode": "G02",
-            "StationName": "Capitol Heights"
-        },
-        {
-            "DistanceToPrev": 5215,
-            "LineCode": "BL",
-            "SeqNum": 25,
-            "StationCode": "G03",
-            "StationName": "Addison Road"
-        },
-        {
-            "DistanceToPrev": 7960,
-            "LineCode": "BL",
-            "SeqNum": 26,
-            "StationCode": "G04",
-            "StationName": "Morgan Blvd"
-        },
-        {
-            "DistanceToPrev": 7256,
-            "LineCode": "BL",
-            "SeqNum": 27,
-            "StationCode": "G05",
-            "StationName": "Largo Town Center"
-        }
-    ],
-    "OR": [
-        {
-            "DistanceToPrev": 0,
-            "LineCode": "OR",
-            "SeqNum": 1,
-            "StationCode": "K08",
-            "StationName": "Vienna"
-        },
-        {
-            "DistanceToPrev": 13165,
-            "LineCode": "OR",
-            "SeqNum": 2,
-            "StationCode": "K07",
-            "StationName": "Dunn Loring"
-        },
-        {
-            "DistanceToPrev": 12638,
-            "LineCode": "OR",
-            "SeqNum": 3,
-            "StationCode": "K06",
-            "StationName": "W Falls Church"
-        },
-        {
-            "DistanceToPrev": 10918,
-            "LineCode": "OR",
-            "SeqNum": 4,
-            "StationCode": "K05",
-            "StationName": "E Falls Church"
-        },
-        {
-            "DistanceToPrev": 13156,
-            "LineCode": "OR",
-            "SeqNum": 5,
-            "StationCode": "K04",
-            "StationName": "Ballston"
-        },
-        {
-            "DistanceToPrev": 2980,
-            "LineCode": "OR",
-            "SeqNum": 6,
-            "StationCode": "K03",
-            "StationName": "Virginia Square"
-        },
-        {
-            "DistanceToPrev": 2473,
-            "LineCode": "OR",
-            "SeqNum": 7,
-            "StationCode": "K02",
-            "StationName": "Clarendon"
-        },
-        {
-            "DistanceToPrev": 2687,
-            "LineCode": "OR",
-            "SeqNum": 8,
-            "StationCode": "K01",
-            "StationName": "Court House"
-        },
-        {
-            "DistanceToPrev": 5807,
-            "LineCode": "OR",
-            "SeqNum": 9,
-            "StationCode": "C05",
-            "StationName": "Rosslyn"
-        },
-        {
-            "DistanceToPrev": 6993,
-            "LineCode": "OR",
-            "SeqNum": 10,
-            "StationCode": "C04",
-            "StationName": "Foggy Bottom"
-        },
-        {
-            "DistanceToPrev": 2783,
-            "LineCode": "OR",
-            "SeqNum": 11,
-            "StationCode": "C03",
-            "StationName": "Farragut West"
-        },
-        {
-            "DistanceToPrev": 2001,
-            "LineCode": "OR",
-            "SeqNum": 12,
-            "StationCode": "C02",
-            "StationName": "McPherson Square"
-        },
-        {
-            "DistanceToPrev": 2359,
-            "LineCode": "OR",
-            "SeqNum": 13,
-            "StationCode": "C01",
-            "StationName": "Metro Center"
-        },
-        {
-            "DistanceToPrev": 1561,
-            "LineCode": "OR",
-            "SeqNum": 14,
-            "StationCode": "D01",
-            "StationName": "Federal Triangle"
-        },
-        {
-            "DistanceToPrev": 2016,
-            "LineCode": "OR",
-            "SeqNum": 15,
-            "StationCode": "D02",
-            "StationName": "Smithsonian"
-        },
-        {
-            "DistanceToPrev": 2643,
-            "LineCode": "OR",
-            "SeqNum": 16,
-            "StationCode": "D03",
-            "StationName": "L'Enfant Plaza"
-        },
-        {
-            "DistanceToPrev": 1757,
-            "LineCode": "OR",
-            "SeqNum": 17,
-            "StationCode": "D04",
-            "StationName": "Federal Center SW"
-        },
-        {
-            "DistanceToPrev": 3052,
-            "LineCode": "OR",
-            "SeqNum": 18,
-            "StationCode": "D05",
-            "StationName": "Capitol South"
-        },
-        {
-            "DistanceToPrev": 2703,
-            "LineCode": "OR",
-            "SeqNum": 19,
-            "StationCode": "D06",
-            "StationName": "Eastern Market"
-        },
-        {
-            "DistanceToPrev": 3289,
-            "LineCode": "OR",
-            "SeqNum": 20,
-            "StationCode": "D07",
-            "StationName": "Potomac Avenue"
-        },
-        {
-            "DistanceToPrev": 3750,
-            "LineCode": "OR",
-            "SeqNum": 21,
-            "StationCode": "D08",
-            "StationName": "Stadium Armory"
-        },
-        {
-            "DistanceToPrev": 11080,
-            "LineCode": "OR",
-            "SeqNum": 22,
-            "StationCode": "D09",
-            "StationName": "Minnesota Avenue"
-        },
-        {
-            "DistanceToPrev": 4723,
-            "LineCode": "OR",
-            "SeqNum": 23,
-            "StationCode": "D10",
-            "StationName": "Deanwood"
-        },
-        {
-            "DistanceToPrev": 6149,
-            "LineCode": "OR",
-            "SeqNum": 24,
-            "StationCode": "D11",
-            "StationName": "Cheverly"
-        },
-        {
-            "DistanceToPrev": 9665,
-            "LineCode": "OR",
-            "SeqNum": 25,
-            "StationCode": "D12",
-            "StationName": "Landover"
-        },
-        {
-            "DistanceToPrev": 7655,
-            "LineCode": "OR",
-            "SeqNum": 26,
-            "StationCode": "D13",
-            "StationName": "New Carrollton"
-        }
-    ],
-    "SV": [
-        {
-            "DistanceToPrev": 0,
-            "LineCode": "SV",
-            "SeqNum": 1,
-            "StationCode": "N06",
-            "StationName": "Wiehle-Reston East"
-        },
-        {
-            "DistanceToPrev": 30867,
-            "LineCode": "SV",
-            "SeqNum": 2,
-            "StationCode": "N04",
-            "StationName": "Spring Hill"
-        },
-        {
-            "DistanceToPrev": 3634,
-            "LineCode": "SV",
-            "SeqNum": 3,
-            "StationCode": "N03",
-            "StationName": "Greensboro"
-        },
-        {
-            "DistanceToPrev": 3902,
-            "LineCode": "SV",
-            "SeqNum": 4,
-            "StationCode": "N02",
-            "StationName": "Tysons Corner"
-        },
-        {
-            "DistanceToPrev": 3440,
-            "LineCode": "SV",
-            "SeqNum": 5,
-            "StationCode": "N01",
-            "StationName": "McLean"
-        },
-        {
-            "DistanceToPrev": 24745,
-            "LineCode": "SV",
-            "SeqNum": 6,
-            "StationCode": "K05",
-            "StationName": "E Falls Church"
-        },
-        {
-            "DistanceToPrev": 13156,
-            "LineCode": "SV",
-            "SeqNum": 7,
-            "StationCode": "K04",
-            "StationName": "Ballston"
-        },
-        {
-            "DistanceToPrev": 2980,
-            "LineCode": "SV",
-            "SeqNum": 8,
-            "StationCode": "K03",
-            "StationName": "Virginia Square"
-        },
-        {
-            "DistanceToPrev": 2473,
-            "LineCode": "SV",
-            "SeqNum": 9,
-            "StationCode": "K02",
-            "StationName": "Clarendon"
-        },
-        {
-            "DistanceToPrev": 2687,
-            "LineCode": "SV",
-            "SeqNum": 10,
-            "StationCode": "K01",
-            "StationName": "Court House"
-        },
-        {
-            "DistanceToPrev": 4936,
-            "LineCode": "SV",
-            "SeqNum": 11,
-            "StationCode": "C05",
-            "StationName": "Rosslyn"
-        },
-        {
-            "DistanceToPrev": 6993,
-            "LineCode": "SV",
-            "SeqNum": 12,
-            "StationCode": "C04",
-            "StationName": "Foggy Bottom"
-        },
-        {
-            "DistanceToPrev": 2783,
-            "LineCode": "SV",
-            "SeqNum": 13,
-            "StationCode": "C03",
-            "StationName": "Farragut West"
-        },
-        {
-            "DistanceToPrev": 2001,
-            "LineCode": "SV",
-            "SeqNum": 14,
-            "StationCode": "C02",
-            "StationName": "McPherson Square"
-        },
-        {
-            "DistanceToPrev": 2359,
-            "LineCode": "SV",
-            "SeqNum": 15,
-            "StationCode": "C01",
-            "StationName": "Metro Center"
-        },
-        {
-            "DistanceToPrev": 1561,
-            "LineCode": "SV",
-            "SeqNum": 16,
-            "StationCode": "D01",
-            "StationName": "Federal Triangle"
-        },
-        {
-            "DistanceToPrev": 2016,
-            "LineCode": "SV",
-            "SeqNum": 17,
-            "StationCode": "D02",
-            "StationName": "Smithsonian"
-        },
-        {
-            "DistanceToPrev": 2643,
-            "LineCode": "SV",
-            "SeqNum": 18,
-            "StationCode": "D03",
-            "StationName": "L'Enfant Plaza"
-        },
-        {
-            "DistanceToPrev": 1757,
-            "LineCode": "SV",
-            "SeqNum": 19,
-            "StationCode": "D04",
-            "StationName": "Federal Center SW"
-        },
-        {
-            "DistanceToPrev": 3052,
-            "LineCode": "SV",
-            "SeqNum": 20,
-            "StationCode": "D05",
-            "StationName": "Capitol South"
-        },
-        {
-            "DistanceToPrev": 2703,
-            "LineCode": "SV",
-            "SeqNum": 21,
-            "StationCode": "D06",
-            "StationName": "Eastern Market"
-        },
-        {
-            "DistanceToPrev": 3289,
-            "LineCode": "SV",
-            "SeqNum": 22,
-            "StationCode": "D07",
-            "StationName": "Potomac Avenue"
-        },
-        {
-            "DistanceToPrev": 3750,
-            "LineCode": "SV",
-            "SeqNum": 23,
-            "StationCode": "D08",
-            "StationName": "Stadium Armory"
-        },
-        {
-            "DistanceToPrev": 12162,
-            "LineCode": "SV",
-            "SeqNum": 24,
-            "StationCode": "G01",
-            "StationName": "Benning Road"
-        },
-        {
-            "DistanceToPrev": 7779,
-            "LineCode": "SV",
-            "SeqNum": 25,
-            "StationCode": "G02",
-            "StationName": "Capitol Heights"
-        },
-        {
-            "DistanceToPrev": 5215,
-            "LineCode": "SV",
-            "SeqNum": 26,
-            "StationCode": "G03",
-            "StationName": "Addison Road"
-        },
-        {
-            "DistanceToPrev": 7960,
-            "LineCode": "SV",
-            "SeqNum": 27,
-            "StationCode": "G04",
-            "StationName": "Morgan Blvd"
-        },
-        {
-            "DistanceToPrev": 7256,
-            "LineCode": "SV",
-            "SeqNum": 28,
-            "StationCode": "G05",
-            "StationName": "Largo Town Center"
-        }
-    ],
-    "RD": [
-        {
-            "DistanceToPrev": 0,
-            "LineCode": "RD",
-            "SeqNum": 1,
-            "StationCode": "A15",
-            "StationName": "Shady Grove"
-        },
-        {
-            "DistanceToPrev": 14151,
-            "LineCode": "RD",
-            "SeqNum": 2,
-            "StationCode": "A14",
-            "StationName": "Rockville"
-        },
-        {
-            "DistanceToPrev": 10586,
-            "LineCode": "RD",
-            "SeqNum": 3,
-            "StationCode": "A13",
-            "StationName": "Twinbrook"
-        },
-        {
-            "DistanceToPrev": 5895,
-            "LineCode": "RD",
-            "SeqNum": 4,
-            "StationCode": "A12",
-            "StationName": "White Flint"
-        },
-        {
-            "DistanceToPrev": 7309,
-            "LineCode": "RD",
-            "SeqNum": 5,
-            "StationCode": "A11",
-            "StationName": "Grosvenor"
-        },
-        {
-            "DistanceToPrev": 11821,
-            "LineCode": "RD",
-            "SeqNum": 6,
-            "StationCode": "A10",
-            "StationName": "Medical Center"
-        },
-        {
-            "DistanceToPrev": 5530,
-            "LineCode": "RD",
-            "SeqNum": 7,
-            "StationCode": "A09",
-            "StationName": "Bethesda"
-        },
-        {
-            "DistanceToPrev": 9095,
-            "LineCode": "RD",
-            "SeqNum": 8,
-            "StationCode": "A08",
-            "StationName": "Friendship Heights"
-        },
-        {
-            "DistanceToPrev": 4135,
-            "LineCode": "RD",
-            "SeqNum": 9,
-            "StationCode": "A07",
-            "StationName": "Tenleytown"
-        },
-        {
-            "DistanceToPrev": 5841,
-            "LineCode": "RD",
-            "SeqNum": 10,
-            "StationCode": "A06",
-            "StationName": "Van Ness UDC"
-        },
-        {
-            "DistanceToPrev": 3320,
-            "LineCode": "RD",
-            "SeqNum": 11,
-            "StationCode": "A05",
-            "StationName": "Cleveland Park"
-        },
-        {
-            "DistanceToPrev": 3740,
-            "LineCode": "RD",
-            "SeqNum": 12,
-            "StationCode": "A04",
-            "StationName": "Woodley Park Zoo"
-        },
-        {
-            "DistanceToPrev": 6304,
-            "LineCode": "RD",
-            "SeqNum": 13,
-            "StationCode": "A03",
-            "StationName": "Dupont Circle"
-        },
-        {
-            "DistanceToPrev": 2487,
-            "LineCode": "RD",
-            "SeqNum": 14,
-            "StationCode": "A02",
-            "StationName": "Farragut North"
-        },
-        {
-            "DistanceToPrev": 4178,
-            "LineCode": "RD",
-            "SeqNum": 15,
-            "StationCode": "A01",
-            "StationName": "Metro Center"
-        },
-        {
-            "DistanceToPrev": 1505,
-            "LineCode": "RD",
-            "SeqNum": 16,
-            "StationCode": "B01",
-            "StationName": "Gallery Place"
-        },
-        {
-            "DistanceToPrev": 1967,
-            "LineCode": "RD",
-            "SeqNum": 17,
-            "StationCode": "B02",
-            "StationName": "Judiciary Square"
-        },
-        {
-            "DistanceToPrev": 3446,
-            "LineCode": "RD",
-            "SeqNum": 18,
-            "StationCode": "B03",
-            "StationName": "Union Station"
-        },
-        {
-            "DistanceToPrev": 3548,
-            "LineCode": "RD",
-            "SeqNum": 19,
-            "StationCode": "B35",
-            "StationName": "New York Avenue"
-        },
-        {
-            "DistanceToPrev": 5771,
-            "LineCode": "RD",
-            "SeqNum": 20,
-            "StationCode": "B04",
-            "StationName": "Rhode Island Avenue"
-        },
-        {
-            "DistanceToPrev": 4553,
-            "LineCode": "RD",
-            "SeqNum": 21,
-            "StationCode": "B05",
-            "StationName": "Brookland"
-        },
-        {
-            "DistanceToPrev": 7378,
-            "LineCode": "RD",
-            "SeqNum": 22,
-            "StationCode": "B06",
-            "StationName": "Fort Totten"
-        },
-        {
-            "DistanceToPrev": 10026,
-            "LineCode": "RD",
-            "SeqNum": 23,
-            "StationCode": "B07",
-            "StationName": "Takoma"
-        },
-        {
-            "DistanceToPrev": 7484,
-            "LineCode": "RD",
-            "SeqNum": 24,
-            "StationCode": "B08",
-            "StationName": "Silver Spring"
-        },
-        {
-            "DistanceToPrev": 8871,
-            "LineCode": "RD",
-            "SeqNum": 25,
-            "StationCode": "B09",
-            "StationName": "Forest Glen"
-        },
-        {
-            "DistanceToPrev": 8484,
-            "LineCode": "RD",
-            "SeqNum": 26,
-            "StationCode": "B10",
-            "StationName": "Wheaton"
-        },
-        {
-            "DistanceToPrev": 9334,
-            "LineCode": "RD",
-            "SeqNum": 27,
-            "StationCode": "B11",
-            "StationName": "Glenmont"
-        }
-    ],
-    "YL": [
-        {
-            "DistanceToPrev": 0,
-            "LineCode": "YL",
-            "SeqNum": 1,
-            "StationCode": "C15",
-            "StationName": "Huntington"
-        },
-        {
-            "DistanceToPrev": 2770,
-            "LineCode": "YL",
-            "SeqNum": 2,
-            "StationCode": "C14",
-            "StationName": "Eisenhower Avenue"
-        },
-        {
-            "DistanceToPrev": 3734,
-            "LineCode": "YL",
-            "SeqNum": 3,
-            "StationCode": "C13",
-            "StationName": "King Street"
-        },
-        {
-            "DistanceToPrev": 3453,
-            "LineCode": "YL",
-            "SeqNum": 4,
-            "StationCode": "C12",
-            "StationName": "Braddock Road"
-        },
-        {
-            "DistanceToPrev": 16108,
-            "LineCode": "YL",
-            "SeqNum": 5,
-            "StationCode": "C10",
-            "StationName": "National Arpt"
-        },
-        {
-            "DistanceToPrev": 2939,
-            "LineCode": "YL",
-            "SeqNum": 6,
-            "StationCode": "C09",
-            "StationName": "Crystal City"
-        },
-        {
-            "DistanceToPrev": 4068,
-            "LineCode": "YL",
-            "SeqNum": 7,
-            "StationCode": "C08",
-            "StationName": "Pentagon City"
-        },
-        {
-            "DistanceToPrev": 3216,
-            "LineCode": "YL",
-            "SeqNum": 8,
-            "StationCode": "C07",
-            "StationName": "Pentagon"
-        },
-        {
-            "DistanceToPrev": 12524,
-            "LineCode": "YL",
-            "SeqNum": 9,
-            "StationCode": "F03",
-            "StationName": "L'Enfant Plaza"
-        },
-        {
-            "DistanceToPrev": 2950,
-            "LineCode": "YL",
-            "SeqNum": 10,
-            "StationCode": "F02",
-            "StationName": "Archives"
-        },
-        {
-            "DistanceToPrev": 1879,
-            "LineCode": "YL",
-            "SeqNum": 11,
-            "StationCode": "F01",
-            "StationName": "Gallery Place"
-        },
-        {
-            "DistanceToPrev": 2985,
-            "LineCode": "YL",
-            "SeqNum": 12,
-            "StationCode": "E01",
-            "StationName": "Mt Vernon Sq"
-        },
-        {
-            "DistanceToPrev": 2527,
-            "LineCode": "YL",
-            "SeqNum": 13,
-            "StationCode": "E02",
-            "StationName": "Shaw"
-        },
-        {
-            "DistanceToPrev": 2555,
-            "LineCode": "YL",
-            "SeqNum": 14,
-            "StationCode": "E03",
-            "StationName": "U Street"
-        },
-        {
-            "DistanceToPrev": 4715,
-            "LineCode": "YL",
-            "SeqNum": 15,
-            "StationCode": "E04",
-            "StationName": "Columbia Heights"
-        },
-        {
-            "DistanceToPrev": 4717,
-            "LineCode": "YL",
-            "SeqNum": 16,
-            "StationCode": "E05",
-            "StationName": "Georgia Avenue"
-        },
-        {
-            "DistanceToPrev": 8348,
-            "LineCode": "YL",
-            "SeqNum": 17,
-            "StationCode": "E06",
-            "StationName": "Fort Totten"
-        }
-    ]
-}
-},{}],14:[function(require,module,exports){
 var _ = require('lodash');
 var config = require('./client_config');
 _.str = require('underscore.string');
@@ -11053,4 +10023,4 @@ module.exports = {
 };
 
 
-},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}]},{},[10])
+},{"./base_markers":3,"./client_config":4,"lodash":1,"underscore.string":2}]},{},[11])

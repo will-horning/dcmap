@@ -10,55 +10,6 @@ _.str = require('underscore.string');
 var fs = require('fs');
 var jade = require('jade');
 var MongoClient = require('mongodb').MongoClient;
-// var trainpath = require('./trainpath');
-var lineSequences = require('./data/line_sequences.json');
-var linepoints = require('./data/linepoints.json');
-var stations = require('./public/javascripts/data/stations.json');
-var moment = require('moment');
-var triptimes = require('./public/javascripts/data/triptimes.json');
-var crime_template;
-fs.readFile('views/crime_popup.jade', function(err, data){
-    if(err) throw err;
-    crime_template = jade.compile(data); 
-});
-
-
-
-// var FeedParser = require('feedparser');
-// var request = require('request');
-
-// var req = request(config.CRIME_FEED_URL);
-// var feedparser = new FeedParser({});
-
-// req.on('response', function(res){
-//     var stream = this;
-//     stream.pipe(feedparser);
-// });
-
-// var CONV_HOST = 'http://citizenatlas.dc.gov/';
-// var SPS_CONV_URL = CONV_HOST + 'usng/getusng.asmx/MD_SPCStoLL?SPCSXYSTR=%s,%s';
-
-// var atomToJSON = function(article, callback){
-//     var json_article = {};
-//     article = article['atom:content']['dcst:reportedcrime'];
-//     _.forIn(article, function(value, key){
-//         if(_.str.include(key, 'dcst:')){
-//             json_article[key.replace('dcst:', '')] = value['#'];
-//         }
-//     });
-//     var spc_x = json_article.blockxcoord;
-//     var spc_y = json_article.blockycoord;
-//     request(_.str.sprintf(SPS_CONV_URL, spc_x, spc_y), function(err, res, body){
-//         var latlon = body.match(/<ConvStr>(.*?)<\/ConvStr>/)[1].split(',');
-//         json_article.lat = latlon[0];
-//         json_article.lon = latlon[1];
-//         callback(json_article);
-//     });
-// };
-
-// var Geocodio = require('geocodio');
-// var geocodio = new Geocodio({'api_key': config.geocodio.API_KEY});
-
 
 app.set('view engine', 'jade');
 
@@ -73,75 +24,63 @@ app.get('/sidebar', function(req, res){
     res.render('sidebar.jade');
 });
 
-// setTimeout(function(){
-//  var url = _.str.sprintf(config.sunlight.EVENTS_URL, '2014-08-01', config.sunlight.API_KEY);
-//     console.log(url);
-//     request({url: url, json: true}, function(err, res, body){
-//         var events = _.filter(body.objects, function(e){
-//             return _.contains(['DC', 'MD', 'VA'], e.venue.state);
-//         });
-//         var addresses = _.map(events, function(e){
-//             return e.venue.address1 + ' Washington DC';
-//         });
-//         geocodio.geocode(addresses, function(err, response){
-//             if(err) throw err;
-//             console.log(response);
-//             io.emit('events', response);
-//         })
-//         // socket.emit('events', events);
-//     });
-   
-// }, 6000)
- 
-io.on('connection', function(socket){
-   
-
+app.get('/tweet_queue', function(req, res){
     MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
         if(err) console.log(err);
         var tweet_queue = db.collection('tweet_queue');
         tweet_queue.find({}, {limit: 10, sort: {created_at: -1}}).toArray(function(err, tweets){
-            _.forEach(tweets, function(tweet){
-                socket.emit('tweet', tweet);
-            });
+            tweets = _.map(tweets, function(tweet){
+                return {coordinates: tweet.coordinates, id_str: tweet.id_str};
+            })
+            res.json(tweets);
         });
+    });
+})
+
+app.get('/instagram_queue', function(req, res){
+    MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
+        if(err) console.log(err);
         var instagram_queue = db.collection('instagram_queue');
-        instagram_queue.find({}, {limit: 10, sort: {date: -1}}).toArray(function(err, instagrams){
-            socket.emit('instagram', instagrams);
+        instagram_queue.find({}, {limit: 10, sort: {created_at: -1}}).toArray(function(err, instagrams){
+            instagrams = _.map(instagrams, function(instagram){
+                return {latlon: instagram.latlon, embed_url: instagram.embed_url};
+            })
+            res.json(instagrams);
         });
+    });
+})
+
+var crime_template;
+fs.readFile('views/crime_popup.jade', function(err, data){
+    if(err) throw err;
+    crime_template = jade.compile(data); 
+});
+app.get('/crime_queue', function(req, res){
+    MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
+        if(err) console.log(err);
         var crime_queue = db.collection('crimes');
         crime_queue.find({}, {limit:30, sort: {start_date: -1}}).toArray(function(err, crimes){
-            _.forEach(crimes, function(crime){
-                crime.popupContent = crime_template({crime: crime});
-                socket.emit('crime', crime);
+            crimes = _.map(crimes, function(crime){
+                return {
+                    popupContent: crime_template({crime: crime}),
+                    lat: crime.lat,
+                    lon: crime.lon,
+                    offense: crime.offense
+                }
             });
-        });
-
-        // var params = {
-        //     "ll": "38.89325255235421, -77.03738125506788",
-        //     'radius': 5000e
-        // };
-
-        // foursquare.getVenues(params, function(error, res) {
-        //     if (!error) {
-        //         console.log('foo');
-        //         socket.emit('venues', res.response.venues);
-        //     }
-        //     else{
-        //         console.log(error);
-        //     }
-        // });
-
+            res.json(crimes);
+        });    
     });
-});
+})
 
-// var trains = require('./trains.js');
-// setInterval(function(){trains.moveEnrouteTrains(io);}, config.metro.ANIM_INTERVAL);
-// setInterval(trains.updateTrains, config.metro.PREDICTION_INTERVAL);
+var trains = require('./trains.js');
+setInterval(function(){trains.moveEnrouteTrains(io);}, config.metro.ANIM_INTERVAL);
+setInterval(trains.updateTrains, config.metro.PREDICTION_INTERVAL);
 
-// MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
-//     var twitter_stream = require('./twitter_stream.js')(io, db);
-//     var instagram_stream = require('./instagram_stream')(app, io, db);
-// })
+MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
+    var twitter_stream = require('./twitter_stream.js')(io, db);
+    var instagram_stream = require('./instagram_stream')(app, io, db);
+})
 
 http.listen(process.env.PORT || 5000, function(){
 	console.log('Listening on *:' + process.env.PORT || 5000);
