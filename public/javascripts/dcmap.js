@@ -25,30 +25,12 @@ $(document).ready(function(){
     layers.metroStations = L.layerGroup().addTo(map);
     layers.wifi = L.layerGroup();
 
-    layers.fundraisers = L.layerGroup();
 
-    _.forEach(fundraisers, function(p){
-        var popupContent = [
-            'Address: ' + p.venue.address1,
-            'Venue: ' + p.venue.venue_name,
-            'Beneficiary: ' + p.beneficiaries[0].name,
-            'Party: ' + p.party,
-            'Avg. Contribution: ' + p.contributions_info,
-            'Date :' + p.start_date
-        ].join('<br><br>');
-        var iconUrl = config.NO_PARTY_ICON;
-        if(p.party == 'R') iconUrl = config.GOP_ICON;
-        else if(p.party == 'D') iconUrl = config.DNC_ICON;
-        var m = new FadeMarker([p.lat, p.lon], {icon: L.icon({
-            iconUrl: iconUrl,
-            iconsize: [16,16]
-        })}).bindPopup(popupContent);
-        layers.fundraisers.addLayer(m);
-    })
 
     var control = require('./controls')(map, layers);
 
-     $.getJSON('/tweet_queue', function(tweets){
+    var tweetQueueDone = false; 
+    $.getJSON('/tweet_queue', function(tweets){
         _.forEach(tweets, function(tweet){
             if(tweetMarkerQueue.length > config.MARKER_QUEUE_SIZE){
                 layers.tweets.removeLayer(tweetMarkerQueue.shift());
@@ -57,8 +39,10 @@ $(document).ready(function(){
             tweetMarkerQueue.push(m);
             layers.tweets.addLayer(m);            
         })
+        tweetQueueDone = true;
     });
 
+    var igQueueDone = false;
     $.getJSON('/instagram_queue', function(instagrams){
         _.forEach(instagrams, function(ig_post){
             if(igMarkerQueue.length > config.MARKER_QUEUE_SIZE){
@@ -72,6 +56,7 @@ $(document).ready(function(){
             igMarkerQueue.push(marker);        
             layers.instagrams.addLayer(marker);
         });
+        igQueueDone = true;
     });
 
     $.getJSON('/crime_queue', function(crimes){
@@ -110,7 +95,26 @@ $(document).ready(function(){
         );
     });
 
+    layers.fundraisers = L.layerGroup();
 
+    _.forEach(fundraisers, function(p){
+            var popupContent = [
+                'Address: ' + p.venue.address1,
+                'Venue: ' + p.venue.venue_name,
+                'Beneficiary: ' + p.beneficiaries[0].name,
+                'Party: ' + p.party,
+                'Avg. Contribution: ' + p.contributions_info,
+                'Date :' + p.start_date
+            ].join('<br><br>');
+            var iconUrl = config.NO_PARTY_ICON;
+            if(p.party == 'R') iconUrl = config.GOP_ICON;
+            else if(p.party == 'D') iconUrl = config.DNC_ICON;
+            var m = new FadeMarker([p.lat, p.lon], {icon: L.icon({
+                iconUrl: iconUrl,
+                iconsize: [16,16]
+            })}).bindPopup(popupContent);
+            layers.fundraisers.addLayer(m);
+    })
     // layers.cameras.addLayer(L.geoJson(trafficCameras, {
     //     pointToLayer: function(feature, latlng){
     //         return new FadeMarker(latlng, {icon: L.divIcon({
@@ -168,13 +172,15 @@ $(document).ready(function(){
 
     var trainMarkers = [];
     socket.on('train_updates', function(updates){
-        layers.trains.clearLayers();
-        trainMarkers = [];
-        _.forEach(updates, function(update){
-            var color = config.metro.LINE_COLOR[update.line];
-            var m = L.circleMarker(update.latlon, {radius: 6, stroke: false, fillColor: color, fillOpacity: 0.6});
-            layers.trains.addLayer(m);
-        });
+        if(tweetQueueDone && igQueueDone){
+            layers.trains.clearLayers();
+            trainMarkers = [];
+            _.forEach(updates, function(update){
+                var color = config.metro.LINE_COLOR[update.line];
+                var m = L.circleMarker(update.latlon, {radius: 6, stroke: false, fillColor: color, fillOpacity: 0.6});
+                layers.trains.addLayer(m);
+            });
+        }
     });
 
     socket.on('tweet', function(tweet){
