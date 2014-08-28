@@ -20,18 +20,12 @@ $(document).ready(function(){
     layers.crimes = L.layerGroup();
     layers.trains = L.layerGroup();
     // layers.cameras = L.layerGroup();
-    layers.embassies = L.layerGroup();
+    // layers.embassies = L.layerGroup();
     layers.metroLines = L.layerGroup().addTo(map);
     layers.metroStations = L.layerGroup().addTo(map);
     layers.wifi = L.layerGroup();
 
-    // layers.fundraisers = L.layerGroup().addTo(map);
-    layers.fundraisers = new L.MarkerClusterGroup({
-        iconCreateFunction: function(cluster) {
-                return new L.DivIcon({ html: '<b>' + cluster.getChildCount() + '</b>' });
-            }
-        });
-    })
+    layers.fundraisers = L.layerGroup();
 
     _.forEach(fundraisers, function(p){
         var popupContent = [
