@@ -41,7 +41,7 @@ app.get('/instagram_queue', function(req, res){
     MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
         if(err) console.log(err);
         var instagram_queue = db.collection('instagram_queue');
-        instagram_queue.find({}, {limit: 10, sort: {created_at: -1}}).toArray(function(err, instagrams){
+        instagram_queue.find({}, {limit: 10, sort: {date: -1}}).toArray(function(err, instagrams){
             instagrams = _.map(instagrams, function(instagram){
                 return {latlon: instagram.latlon, embed_url: instagram.embed_url};
             })
@@ -78,8 +78,8 @@ setInterval(function(){trains.moveEnrouteTrains(io);}, config.metro.ANIM_INTERVA
 setInterval(trains.updateTrains, config.metro.PREDICTION_INTERVAL);
 
 MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
-    var twitter_stream = require('./twitter_stream.js')(io, db);
-    var instagram_stream = require('./instagram_stream')(app, io, db);
+    // var twitter_stream = require('./twitter_stream.js')(io, db);
+    // var instagram_stream = require('./instagram_stream')(app, io, db);
 })
 
 http.listen(process.env.PORT || 5000, function(){

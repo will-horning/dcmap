@@ -14,7 +14,7 @@ var addToQueue = function(db, new_instagram){
         queue.find({}, function(err, instagrams){
             if(instagrams.length > config.mongo.QUEUE_SIZE){
                 var sorted_instagrams = _.sortBy(instagrams, function(ig){
-                    return ig.created_time;
+                    return ig.date;
                 });
                 queue.remove(sorted_instagrams[0]);
             }
