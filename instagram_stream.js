@@ -3,6 +3,7 @@ var config = require('./config');
 var request = require('request');
 var _ = require('lodash');
 _.str =require('underscore.string');
+var qs = require('qs');
 
 Instagram.set('client_id', config.instagram.CLIENT_ID);
 Instagram.set('client_secret', config.instagram.CLIENT_SECRET);
@@ -114,8 +115,8 @@ module.exports = function(app, io, db){
         radius: 1000,
         callback_url: 'http://dcmap.herokuapp.com/instagram_callback'
     };
-
-    request.post({url: url, qs: params}, function(err, res, body){
+    url += qs.stringify(params);
+    request.post(url, function(err, res, body){
         console.log(body);
         if(err) throw err;
     });
