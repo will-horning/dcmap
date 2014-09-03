@@ -63,17 +63,11 @@ var startGeoSub = function(callback){
 
 module.exports = function(app, io, db){
     app.get('/instagram_callback', function(req, res){
-        console.log('ig challenge received');
-        console.log(req.query['hub.challenge']);
         res.send(req.query['hub.challenge']);
     });
 
-// 'https://api.instagram.com/v1/geographies/%s/media/recent?client_id=%s';
-
-    // startGeoSub('/instagram_callback');
     var instagram_links = [];
     app.post('/instagram_callback', function(req, res){
-        console.log('ig callback received');
         var url = _.str.sprintf(
             config.instagram.PHOTO_POST_URL, 
             req.body[0].object_id,
@@ -114,13 +108,15 @@ module.exports = function(app, io, db){
         aspect: 'media',
         lat: config.instagram.CENTER_LAT,
         lng: config.instagram.CENTER_LON,
-        radius: 1000,
+        radius: config.instagram.RADIUS,
         callback_url: config.instagram.CALLBACK_URL
     };
     // url += qs.stringify(params);
     console.log(url);
-    request.post({url: url, form: params}, function(err, res, body){
-        console.log(body);
-        if(err) throw err;
+    deleteInstagramSubs(function(){
+        request.post({url: url, form: params}, function(err, res, body){
+            console.log(body);
+            if(err) throw err;
+        });  
     });
 };
