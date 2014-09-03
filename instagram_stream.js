@@ -63,7 +63,8 @@ var startGeoSub = function(callback){
 
 module.exports = function(app, io, db){
     app.get('/instagram_callback', function(req, res){
-        console.log('ig challenge received')
+        console.log('ig challenge received');
+        console.log(req.query['hub.challenge']);
         res.send(req.query['hub.challenge']);
     });
 
@@ -71,7 +72,7 @@ module.exports = function(app, io, db){
     // startGeoSub('/instagram_callback');
     var instagram_links = [];
     app.post('/instagram_callback', function(req, res){
-        console.log('ig callback received')
+        console.log('ig callback received');
         var url = _.str.sprintf(
             config.instagram.PHOTO_POST_URL, 
             req.body[0].object_id,
@@ -113,7 +114,7 @@ module.exports = function(app, io, db){
         lat: config.instagram.CENTER_LAT,
         lon: config.instagram.CENTER_LON,
         radius: 1000,
-        callback_url: 'http://dcmap.herokuapp.com/instagram_callback'
+        callback_url: config.instagram.CALLBACK_URL
     };
     url += qs.stringify(params);
     console.log(url);
