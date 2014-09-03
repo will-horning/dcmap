@@ -68,6 +68,7 @@ module.exports = function(app, io, db){
         res.send(req.query['hub.challenge']);
     });
 
+// 'https://api.instagram.com/v1/geographies/%s/media/recent?client_id=%s';
 
     // startGeoSub('/instagram_callback');
     var instagram_links = [];
