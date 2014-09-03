@@ -105,12 +105,12 @@ module.exports = function(app, io, db){
 
     var url = 'https://api.instagram.com/v1/subscriptions/';
     var params = {
-        lat: config.instagram.CENTER_LAT,
-        lon: config.instagram.CENTER_LON,
         client_id: config.instagram.CLIENT_ID,
         client_secret: config.instagram.CLIENT_SECRET,
         object: 'geography',
         aspect: 'media',
+        lat: config.instagram.CENTER_LAT,
+        lon: config.instagram.CENTER_LON,
         radius: 1000,
         callback_url: 'http://dcmap.herokuapp.com/instagram_callback'
     };
