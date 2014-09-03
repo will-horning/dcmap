@@ -8,14 +8,15 @@ var addToQueue = function(db, new_tweet){
     var queue = db.collection('tweet_queue');
     new_tweet.created_at = moment(new_tweet.created_at).unix();
     queue.insert(new_tweet, function(err, doc){
-        queue.find({}, function(err, tweets){
-            if(tweets.length > config.mongo.QUEUE_SIZE){
-                var sorted_tweets = _.sortBy(tweets, function(t){
-                    return t.created_at
-                });
-                queue.remove(sorted_tweets[0]);
-            }
-        })
+        if(err) throw err;
+        // queue.find({}, function(err, tweets){
+        //     if(tweets.length > config.mongo.QUEUE_SIZE){
+        //         var sorted_tweets = _.sortBy(tweets, function(t){
+        //             return t.created_at;
+        //         });
+        //         queue.remove(sorted_tweets[0]);
+        //     }
+        // });
     });
 };
 

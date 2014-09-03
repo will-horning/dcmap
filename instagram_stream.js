@@ -11,14 +11,15 @@ Instagram.set('callback_url', config.instagram.CALLBACK_URL);
 var addToQueue = function(db, new_instagram){
     var queue = db.collection('instagram_queue');
     queue.insert(new_instagram, function(err, doc){
-        queue.find({}, function(err, instagrams){
-            if(instagrams.length > config.mongo.QUEUE_SIZE){
-                var sorted_instagrams = _.sortBy(instagrams, function(ig){
-                    return ig.date;
-                });
-                queue.remove(sorted_instagrams[0]);
-            }
-        });
+        if(err) throw err;
+        // queue.find({}, function(err, instagrams){
+        //     if(instagrams.length > config.mongo.QUEUE_SIZE){
+        //         var sorted_instagrams = _.sortBy(instagrams, function(ig){
+        //             return ig.date;
+        //         });
+        //         queue.remove(sorted_instagrams[0]);
+        //     }
+        // });
     });
 };
 
