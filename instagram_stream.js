@@ -109,7 +109,8 @@ module.exports = function(app, io, db){
         client_secret: config.instagram.CLIENT_SECRET,
         object: 'geography',
         aspect: 'media',
-        radius: 1000
+        radius: 1000,
+        callback_url: 'http://dcmap.herokuapp.com/instagram_callback'
     };
 
     request({url: url, params: params}, function(err, res, body){
