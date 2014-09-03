@@ -78,7 +78,7 @@ setInterval(function(){trains.moveEnrouteTrains(io);}, config.metro.ANIM_INTERVA
 setInterval(trains.updateTrains, config.metro.PREDICTION_INTERVAL);
 
 MongoClient.connect(config.mongo.MONGOHQ_URL, function(err, db){
-    var twitter_stream = require('./twitter_stream.js')(io, db);
+    // var twitter_stream = require('./twitter_stream.js')(io, db);
     var instagram_stream = require('./instagram_stream')(app, io, db);
 });
 
