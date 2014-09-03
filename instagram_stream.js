@@ -111,12 +111,8 @@ module.exports = function(app, io, db){
         radius: config.instagram.RADIUS,
         callback_url: config.instagram.CALLBACK_URL
     };
-    // url += qs.stringify(params);
-    console.log(url);
-    deleteInstagramSubs(function(){
-        request.post({url: url, form: params}, function(err, res, body){
-            console.log(body);
-            if(err) throw err;
-        });  
-    });
+
+    request.post({url: url, form: params}, function(err, res, body){
+        if(err) throw err;
+    });  
 };
