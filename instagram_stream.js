@@ -120,7 +120,7 @@ module.exports = function(app, io, db){
     url += qs.stringify(params);
     console.log(url);
     request.post(url, function(err, res, body){
-        // console.log(body);
+        console.log(body);
         if(err) throw err;
     });
 };
