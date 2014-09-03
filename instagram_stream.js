@@ -62,6 +62,7 @@ var startGeoSub = function(callback){
 
 module.exports = function(app, io, db){
     app.get('/instagram_callback', function(req, res){
+        console.log('ig challenge received')
         res.send(req.query['hub.challenge']);
     });
 
@@ -69,6 +70,7 @@ module.exports = function(app, io, db){
     // startGeoSub('/instagram_callback');
     var instagram_links = [];
     app.post('/instagram_callback', function(req, res){
+        console.log('ig callback received')
         var url = _.str.sprintf(
             config.instagram.PHOTO_POST_URL, 
             req.body[0].object_id,
@@ -114,6 +116,7 @@ module.exports = function(app, io, db){
     };
 
     request({url: url, params: params}, function(err, res, body){
+        console.log(body);
         if(err) throw err;
     });
 };
