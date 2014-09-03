@@ -116,8 +116,9 @@ module.exports = function(app, io, db){
         callback_url: 'http://dcmap.herokuapp.com/instagram_callback'
     };
     url += qs.stringify(params);
+    console.log(url);
     request.post(url, function(err, res, body){
-        console.log(body);
+        // console.log(body);
         if(err) throw err;
     });
 };
