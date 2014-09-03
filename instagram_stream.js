@@ -113,13 +113,13 @@ module.exports = function(app, io, db){
         object: 'geography',
         aspect: 'media',
         lat: config.instagram.CENTER_LAT,
-        lon: config.instagram.CENTER_LON,
+        lng: config.instagram.CENTER_LON,
         radius: 1000,
         callback_url: config.instagram.CALLBACK_URL
     };
-    url += qs.stringify(params);
+    // url += qs.stringify(params);
     console.log(url);
-    request.post(url, function(err, res, body){
+    request.post({url: url, form: params}, function(err, res, body){
         console.log(body);
         if(err) throw err;
     });
