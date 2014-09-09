@@ -57,7 +57,7 @@ io.on('connection', function(socket){
         config.instagram.CLIENT_SECRET,
         config.instagram.CLIENT_ID
     );
-    request(url, function(err, res, body){
+    request({url: url, json: true}, function(err, res, body){
         if(body.data.length === 0){
             var instagram_stream = require('./instagram_stream')(app, io, db);
         }
