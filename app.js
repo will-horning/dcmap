@@ -50,6 +50,20 @@ app.get('/instagram_queue', function(req, res){
     });
 });
 
+io.on('connection', function(socket){
+    var sub_data = {};
+    var url = _.str.sprintf(
+        config.instagram.GET_SUBS_URL,
+        config.instagram.CLIENT_SECRET,
+        config.instagram.CLIENT_ID
+    );
+    request(url, function(err, res, body){
+        if(body.data.length === 0){
+            var instagram_stream = require('./instagram_stream')(app, io, db);
+        }
+    });
+})
+
 var crime_template;
 fs.readFile('views/crime_popup.jade', function(err, data){
     if(err) throw err;
@@ -66,12 +80,12 @@ app.get('/crime_queue', function(req, res){
                     lat: crime.lat,
                     lon: crime.lon,
                     offense: crime.offense
-                }
+                };
             });
             res.json(crimes);
         });    
     });
-})
+});
 
 var trains = require('./trains.js');
 setInterval(function(){trains.moveEnrouteTrains(io);}, config.metro.ANIM_INTERVAL);
