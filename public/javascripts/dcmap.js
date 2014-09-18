@@ -26,7 +26,6 @@ $(document).ready(function(){
     layers.wifi = L.layerGroup();
 
 
-
     var control = require('./controls')(map, layers);
 
     var tweetQueueDone = false; 
@@ -169,6 +168,10 @@ $(document).ready(function(){
     });
 
     var socket = io();
+
+    socket.on('subs', function(body){
+        console.log(body);
+    })
 
     var trainMarkers = [];
     socket.on('train_updates', function(updates){
