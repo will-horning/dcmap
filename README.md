@@ -4,11 +4,18 @@ Plotting some publicly available data from the DC city government, and some soci
 
 Licenses and Attribution:
 -------------------------
-- Twitter and Instagram icons courtesy of [www.vectorgraphit.com/](http://www.vectorgraphit.com/), License: [Creative Commons (Attribution 3.0 Unported)](http://creativecommons.org/licenses/by/3.0/)
-- Other icons are courtesy of [mapicons.nicolasmollet.com](http://mapicons.nicolasmollet.com/), License: [Creative Commons Attribution-Share Alike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0/)
+- Twitter and Instagram icons courtesy of [www.vectorgraphit.com/](http://www.vectorgraphit.com/), 
+    License: [Creative Commons (Attribution 3.0 Unported)](http://creativecommons.org/licenses/by/3.0/)
+
+- Other icons are courtesy of [mapicons.nicolasmollet.com](http://mapicons.nicolasmollet.com/), 
+    License: [Creative Commons Attribution-Share Alike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0/)
+
 - Metro data is from the [WMATA API](http://developer.wmata.com/)
+
 - Fundraiser data is from the Sunlight Foundation's [Political Party Time API](http://tryit.sunlightfoundation.com/partytime)
+
 - Wifi locations and crime reports are courtesy of [data.dc.gov](http://data.dc.gov) 
+
 > ## Disclaimer:
 > The data made available here has been modified for use from its original 
 > source, which is the Government of the District of Columbia. Neither the 
