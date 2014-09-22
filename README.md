@@ -14,9 +14,7 @@ Licenses and Attribution:
 
 - Fundraiser data is from the Sunlight Foundation's [Political Party Time API](http://tryit.sunlightfoundation.com/partytime)
 
-- Wifi locations and crime reports are courtesy of [data.dc.gov](http://data.dc.gov)
-
-    Disclaimer:
+- Wifi locations and crime reports are courtesy of [data.dc.gov](http://data.dc.gov), Disclaimer:
     > The data made available here has been modified for use from its original 
     > source, which is the Government of the District of Columbia. Neither the 
     > District of Columbia Government nor the Office of the Chief Technology 
